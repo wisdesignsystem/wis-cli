@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url)
 export default function (plugin) {
   plugin.hooks.context.tap((context) => {
     plugin.hooks.plugin.tapStream((pluginData) => {
-      if (pluginData.includes('@doerjs/plugin-router')) {
+      if (pluginData.includes('@wisdesign/plugin-router')) {
         pluginData.option.extensions.push('.ts')
         pluginData.option.extensions.push('.tsx')
       }

@@ -1,7 +1,7 @@
 import path from 'node:path'
-import * as file from '@doerjs/utils/file.js'
-import * as is from '@doerjs/utils/is.js'
-import trace from '@doerjs/utils/trace.js'
+import * as file from '@wisdesign/utils/file.js'
+import * as is from '@wisdesign/utils/is.js'
+import trace from '@wisdesign/utils/trace.js'
 
 import Parser from './Parser.js'
 

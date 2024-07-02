@@ -1,8 +1,8 @@
 import { createRequire } from 'node:module'
 import express from 'express'
 import cors from 'cors'
-import * as is from '@doerjs/utils/is.js'
-import * as file from '@doerjs/utils/file.js'
+import * as is from '@wisdesign/utils/is.js'
+import * as file from '@wisdesign/utils/file.js'
 
 const require = createRequire(import.meta.url)
 

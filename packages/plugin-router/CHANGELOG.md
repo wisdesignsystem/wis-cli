@@ -1,7 +1,9 @@
-# @doerjs/plugin-router
+# @wisdesign/plugin-router
 
-## 0.0.10
+## 0.0.1
 
 ### Patch Changes
 
-- 项目内跨端引用的简化改造
+- [feature] CLI basic framework capabilities, including routing, resources, packaging, etc.
+- Updated dependencies
+  - @wisdesign/utils@0.0.1

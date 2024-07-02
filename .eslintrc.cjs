@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['@doerjs/eslint-config/cli.config.cjs'],
+  extends: ['@wisdesign/eslint-config/cli.config.cjs'],
 }

@@ -5,10 +5,10 @@ import chalk from 'chalk'
 import download from 'download-git-repo'
 import ora from 'ora'
 import ejs from 'ejs'
-import trace from '@doerjs/utils/trace.js'
-import * as is from '@doerjs/utils/is.js'
-import * as file from '@doerjs/utils/file.js'
-import * as shell from '@doerjs/utils/shell.js'
+import trace from '@wisdesign/utils/trace.js'
+import * as is from '@wisdesign/utils/is.js'
+import * as file from '@wisdesign/utils/file.js'
+import * as shell from '@wisdesign/utils/shell.js'
 
 import cliPath from '../context/cliPath.js'
 
@@ -85,7 +85,9 @@ async function answers(options) {
 
 export default async function create(options) {
   const config = await answers(options)
-  const template = config.typescript ? 'doerjs/template-typescript#main' : 'doerjs/template-javascript#main'
+  const template = config.typescript
+    ? 'wisdesignsystem/template-typescript#main'
+    : 'wisdesignsystem/template-javascript#main'
 
   console.info()
   const spin = ora('下载项目模版').start()
@@ -110,14 +112,14 @@ export default async function create(options) {
   const renderContext = {
     config,
     packages: {
-      '@doerjs/cli': require(cliPath.packagePath),
-      '@doerjs/utils': require('@doerjs/utils/package.json'),
-      '@doerjs/prettier-config': require('@doerjs/prettier-config/package.json'),
-      '@doerjs/eslint-config': require('@doerjs/eslint-config/package.json'),
-      '@doerjs/plugin-less': require('@doerjs/plugin-less/package.json'),
-      '@doerjs/plugin-cross': require('@doerjs/plugin-less/package.json'),
-      '@doerjs/plugin-mock': require('@doerjs/plugin-mock/package.json'),
-      '@doerjs/plugin-typescript': require('@doerjs/plugin-typescript/package.json'),
+      '@wisdesign/cli': require(cliPath.packagePath),
+      '@wisdesign/utils': require('@wisdesign/utils/package.json'),
+      '@wisdesign/prettier-config': require('@wisdesign/prettier-config/package.json'),
+      '@wisdesign/eslint-config': require('@wisdesign/eslint-config/package.json'),
+      '@wisdesign/plugin-less': require('@wisdesign/plugin-less/package.json'),
+      '@wisdesign/plugin-cross': require('@wisdesign/plugin-less/package.json'),
+      '@wisdesign/plugin-mock': require('@wisdesign/plugin-mock/package.json'),
+      '@wisdesign/plugin-typescript': require('@wisdesign/plugin-typescript/package.json'),
     },
   }
 
@@ -136,7 +138,7 @@ export default async function create(options) {
 
   shell.execSync(`cd ${projectPath} && git init`)
 
-  trace.note('应用创建成功，感谢使用Doer')
+  trace.note('应用创建成功，感谢使用Wis')
   trace.note('你可以执行如下命令来启动程序')
   console.info()
   trace.note('进入目录')

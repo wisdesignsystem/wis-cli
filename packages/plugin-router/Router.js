@@ -2,9 +2,9 @@ import path from 'node:path'
 import url from 'node:url'
 import ejs from 'ejs'
 import babelParser from '@babel/parser'
-import * as file from '@doerjs/utils/file.js'
-import * as shell from '@doerjs/utils/shell.js'
-import * as tool from '@doerjs/utils/tool.js'
+import * as file from '@wisdesign/utils/file.js'
+import * as shell from '@wisdesign/utils/shell.js'
+import * as tool from '@wisdesign/utils/tool.js'
 
 import * as ast from './ast.js'
 

@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/plugin-router",
-  "version": "0.0.10",
+  "name": "@wisdesign/plugin-router",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@babel/parser": "7.23.0",
-    "@doerjs/utils": "workspace:*",
+    "@wisdesign/utils": "workspace:*",
     "ejs": "3.1.10"
   }
 }

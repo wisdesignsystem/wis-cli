@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/prettier-config",
-  "version": "0.1.0",
+  "name": "@wisdesign/prettier-config",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "prettier.config.cjs",
   "files": [

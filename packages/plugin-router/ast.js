@@ -1,4 +1,4 @@
-import * as is from '@doerjs/utils/is.js'
+import * as is from '@wisdesign/utils/is.js'
 
 function parseSpecifier(node) {
   return node.exported.name

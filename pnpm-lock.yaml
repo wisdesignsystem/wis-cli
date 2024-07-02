@@ -20,10 +20,10 @@ importers:
       '@commitlint/config-conventional':
         specifier: 18.6.3
         version: 18.6.3
-      '@doerjs/eslint-config':
+      '@wisdesign/eslint-config':
         specifier: workspace:*
         version: link:packages/eslint-config
-      '@doerjs/prettier-config':
+      '@wisdesign/prettier-config':
         specifier: workspace:*
         version: link:packages/prettier-config
       husky:
@@ -47,48 +47,48 @@ importers:
       '@babel/preset-react':
         specifier: 7.22.15
         version: 7.22.15(@babel/core@7.23.2)
-      '@doerjs/configure':
-        specifier: workspace:*
-        version: link:../configure
-      '@doerjs/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@doerjs/log-webpack-plugin':
-        specifier: workspace:*
-        version: link:../log-webpack-plugin
-      '@doerjs/plugin-cross':
-        specifier: workspace:*
-        version: link:../plugin-cross
-      '@doerjs/plugin-less':
-        specifier: workspace:*
-        version: link:../plugin-less
-      '@doerjs/plugin-mock':
-        specifier: workspace:*
-        version: link:../plugin-mock
-      '@doerjs/plugin-router':
-        specifier: workspace*
-        version: link:../plugin-router
-      '@doerjs/plugin-typescript':
-        specifier: workspace:*
-        version: link:../plugin-typescript
-      '@doerjs/prettier-config':
-        specifier: workspace:*
-        version: link:../prettier-config
-      '@doerjs/remote-webpack-plugin':
-        specifier: workspace:*
-        version: link:../remote-webpack-plugin
-      '@doerjs/setup-html-webpack-plugin':
-        specifier: workspace:*
-        version: link:../setup-html-webpack-plugin
-      '@doerjs/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@pmmmwh/react-refresh-webpack-plugin':
         specifier: 0.5.15
         version: 0.5.15(react-refresh@0.14.2)(type-fest@0.21.3)(webpack-dev-server@5.0.4(webpack@5.91.0))(webpack@5.91.0)
       '@svgr/webpack':
         specifier: 8.1.0
         version: 8.1.0(typescript@5.5.3)
+      '@wisdesign/configure':
+        specifier: workspace:*
+        version: link:../configure
+      '@wisdesign/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@wisdesign/log-webpack-plugin':
+        specifier: workspace:*
+        version: link:../log-webpack-plugin
+      '@wisdesign/plugin-cross':
+        specifier: workspace:*
+        version: link:../plugin-cross
+      '@wisdesign/plugin-less':
+        specifier: workspace:*
+        version: link:../plugin-less
+      '@wisdesign/plugin-mock':
+        specifier: workspace:*
+        version: link:../plugin-mock
+      '@wisdesign/plugin-router':
+        specifier: workspace*
+        version: link:../plugin-router
+      '@wisdesign/plugin-typescript':
+        specifier: workspace:*
+        version: link:../plugin-typescript
+      '@wisdesign/prettier-config':
+        specifier: workspace:*
+        version: link:../prettier-config
+      '@wisdesign/remote-webpack-plugin':
+        specifier: workspace:*
+        version: link:../remote-webpack-plugin
+      '@wisdesign/setup-html-webpack-plugin':
+        specifier: workspace:*
+        version: link:../setup-html-webpack-plugin
+      '@wisdesign/utils':
+        specifier: workspace:*
+        version: link:../utils
       address:
         specifier: 2.0.1
         version: 2.0.1
@@ -215,7 +215,7 @@ importers:
 
   packages/configure:
     dependencies:
-      '@doerjs/utils':
+      '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
 
@@ -275,7 +275,7 @@ importers:
 
   packages/log-webpack-plugin:
     dependencies:
-      '@doerjs/utils':
+      '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       chalk:
@@ -287,10 +287,10 @@ importers:
 
   packages/plugin-cross:
     dependencies:
-      '@doerjs/cross-webpack-plugin':
+      '@wisdesign/cross-webpack-plugin':
         specifier: workspace:*
         version: link:../cross-webpack-plugin
-      '@doerjs/utils':
+      '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       postcss-px-to-viewport:
@@ -311,7 +311,7 @@ importers:
 
   packages/plugin-mock:
     dependencies:
-      '@doerjs/utils':
+      '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       cors:
@@ -326,7 +326,7 @@ importers:
       '@babel/parser':
         specifier: 7.23.0
         version: 7.23.0
-      '@doerjs/utils':
+      '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       ejs:

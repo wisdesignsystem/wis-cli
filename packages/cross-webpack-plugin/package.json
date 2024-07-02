@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/cross-webpack-plugin",
-  "version": "0.1.3",
+  "name": "@wisdesign/cross-webpack-plugin",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "CrossWebpackPlugin.js",
   "type": "module",

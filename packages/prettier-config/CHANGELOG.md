@@ -1,7 +1,7 @@
-# @doerjs/prettier-config
+# @wisdesign/prettier-config
 
-## 0.1.0
+## 0.0.1
 
-### Minor Changes
+### Patch Changes
 
-- 83f98b1: 脚手架基本功能开发
+- [feature] CLI basic framework capabilities, including routing, resources, packaging, etc.

@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/plugin-typescript",
-  "version": "0.1.2",
+  "name": "@wisdesign/plugin-typescript",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",

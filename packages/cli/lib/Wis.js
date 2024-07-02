@@ -1,5 +1,5 @@
 import chokidar from 'chokidar'
-import * as file from '@doerjs/utils/file.js'
+import * as file from '@wisdesign/utils/file.js'
 
 import Context from '../context/Context.js'
 import plugin from './plugin.js'
@@ -8,7 +8,7 @@ import TapStream from './TapStream.js'
 import Webpack from './Webpack.js'
 import WebpackDevServer from './WebpackDevServer.js'
 
-class Doer {
+class Wis {
   constructor() {
     this.context = Context.create()
   }
@@ -83,7 +83,7 @@ class Doer {
 
   async plugins() {
     const routerPlugin = {
-      path: '@doerjs/plugin-router',
+      path: '@wisdesign/plugin-router',
       option: { extensions: ['.js', '.jsx'] },
     }
 
@@ -124,4 +124,4 @@ class Doer {
   }
 }
 
-export default Doer
+export default Wis

@@ -40,13 +40,13 @@ function Container({ children }) {
 
 function getRemotes() {
   try {
-    const localUrls = window.sessionStorage.getItem('<%= appName %>__doer_remotes__')
+    const localUrls = window.sessionStorage.getItem('<%= appName %>__wis_remotes__')
     if (localUrls) {
       return JSON.parse(localUrls)
     }
   } catch (e) {}
 
-  return window.__doer_remotes__
+  return window.__wis_remotes__
 }
 
 function DebugContent({ onClose = noop }) {
@@ -58,14 +58,14 @@ function DebugContent({ onClose = noop }) {
   }
 
   function handleReset() {
-    window.sessionStorage.removeItem('<%= appName %>__doer_remotes__')
+    window.sessionStorage.removeItem('<%= appName %>__wis_remotes__')
     onClose()
     window.location.reload()
     setSearchText('')
   }
 
   function handleConfirm() {
-    window.sessionStorage.setItem('<%= appName %>__doer_remotes__', JSON.stringify(remotes.current))
+    window.sessionStorage.setItem('<%= appName %>__wis_remotes__', JSON.stringify(remotes.current))
     onClose()
     window.location.reload()
   }
@@ -103,7 +103,7 @@ function DebugContent({ onClose = noop }) {
               <div className={styles.remote} key={option.label}>
                 <div className={styles.label}>{option.label}:</div>
                 <input className={styles.value} defaultValue={option.value} onChange={handleInputChange} />
-                <div className={styles.tip}>{window.__doer_remotes__[option.label]}(默认值)</div>
+                <div className={styles.tip}>{window.__wis_remotes__[option.label]}(默认值)</div>
               </div>
             )
           })}

@@ -2,10 +2,10 @@ import path from 'node:path'
 import { createRequire } from 'node:module'
 import webpack from 'webpack'
 import loaderUtils from 'loader-utils'
-import { ObjectSet } from '@doerjs/configure'
-import SetupHtmlWebpackPlugin from '@doerjs/setup-html-webpack-plugin'
-import LogWebpackPlugin from '@doerjs/log-webpack-plugin'
-import RemoteWebpackPlugin from '@doerjs/remote-webpack-plugin'
+import { ObjectSet } from '@wisdesign/configure'
+import SetupHtmlWebpackPlugin from '@wisdesign/setup-html-webpack-plugin'
+import LogWebpackPlugin from '@wisdesign/log-webpack-plugin'
+import RemoteWebpackPlugin from '@wisdesign/remote-webpack-plugin'
 import MiniCssExtractWebpackPlugin from 'mini-css-extract-plugin'
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -394,8 +394,8 @@ class Webpack {
 
     // 设置脚手架对外暴露的API方法别名
     // 使用方法
-    // import {} from 'doer'
-    alias.set('doer', path.resolve(this.context.path.complier, 'expose.js'))
+    // import {} from 'wis'
+    alias.set('wis', path.resolve(this.context.path.complier, 'expose.js'))
 
     // 设置用户自定义的别名
     Object.keys(this.context.config.alias).forEach((name) => {
@@ -470,7 +470,7 @@ class Webpack {
         name: packageData.name,
         filename: this.context.remoteFileName,
         scopeName: 'remote',
-        windowScopeName: '__doer_remotes__',
+        windowScopeName: '__wis_remotes__',
         exposes: {
           ...this.context.config.exposes,
           './$$Router': path.resolve(this.context.path.complier, 'Router.jsx'),
@@ -513,15 +513,15 @@ class Webpack {
     this.config.set(
       'plugins.webpackbar',
       {
-        name: 'Doer',
+        name: 'Wis',
         color: '#08979c',
         reporter: {
           afterAllDone: () => {
             const cliPackage = require(this.context.path.cliPackageJson)
             const appPackage = require(this.context.path.packageJson)
             clearConsole()
-            console.info(figlet.textSync('Doer', 'Ghost'))
-            console.info(`👣 Doer v${cliPackage.version}`)
+            console.info(figlet.textSync('Wis', 'Ghost'))
+            console.info(`👣 Wis v${cliPackage.version}`)
             console.info()
             console.info(`👣 应用名称：${chalk.blue(chalk.bold(appPackage.name))}`)
             console.info()

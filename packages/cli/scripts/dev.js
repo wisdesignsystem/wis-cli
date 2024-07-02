@@ -1,4 +1,4 @@
-import Doer from '../lib/Doer.js'
+import Wis from '../lib/Wis.js'
 
 export default function () {
   process.env.NODE_ENV = 'development'
@@ -6,6 +6,6 @@ export default function () {
     process.env.ENV = 'dev'
   }
 
-  const doer = new Doer()
-  doer.dev()
+  const wis = new Wis()
+  wis.dev()
 }

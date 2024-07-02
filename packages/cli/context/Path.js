@@ -9,8 +9,8 @@ class Path extends Parser {
     const runtimePath = process.cwd()
     const srcPath = path.resolve(runtimePath, 'src')
     const publicPath = path.resolve(runtimePath, './public')
-    const prodComplierPath = path.resolve(srcPath, '.doer.prod')
-    const devComplierPath = path.resolve(srcPath, '.doer')
+    const prodComplierPath = path.resolve(srcPath, '.wis.prod')
+    const devComplierPath = path.resolve(srcPath, '.wis')
     const complierPath = process.env.NODE_ENV === 'production' ? prodComplierPath : devComplierPath
 
     // 脚手架路径
@@ -23,8 +23,8 @@ class Path extends Parser {
     this.src = srcPath
     // 环境变量配置文件路径
     this.env = path.resolve(runtimePath, './.env')
-    // doer配置文件路径
-    this.config = path.resolve(runtimePath, '.doerrc.js')
+    // 配置文件路径
+    this.config = path.resolve(runtimePath, '.wisrc.js')
     // 网站public path
     this.public = publicPath
     // 网站路口index.html路径

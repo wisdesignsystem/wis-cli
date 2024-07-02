@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/remote-webpack-plugin",
-  "version": "0.1.1",
+  "name": "@wisdesign/remote-webpack-plugin",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "RemoteWebpackPlugin.js",
   "type": "module",

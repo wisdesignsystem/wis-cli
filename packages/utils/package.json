@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/utils",
-  "version": "0.1.0",
+  "name": "@wisdesign/utils",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "type": "module",
   "main": "index.js",

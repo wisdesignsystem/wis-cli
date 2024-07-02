@@ -4,7 +4,7 @@ import cluster from 'node:cluster'
 import { createRequire } from 'node:module'
 import { Command, Option, InvalidArgumentError } from 'commander'
 import figlet from 'figlet'
-import * as is from '@doerjs/utils/is.js'
+import * as is from '@wisdesign/utils/is.js'
 
 import cliPath from '../context/cliPath.js'
 import create, { validateName } from '../scripts/create.js'
@@ -28,8 +28,8 @@ if (cluster.isPrimary) {
   const require = createRequire(import.meta.url)
   const cliPackage = require(cliPath.packagePath)
 
-  console.info(figlet.textSync('Doer', 'Ghost'))
-  console.info(`👣 Doer v${cliPackage.version}`)
+  console.info(figlet.textSync('Wis', 'Ghost'))
+  console.info(`👣 Wis v${cliPackage.version}`)
   console.info()
 
   function ensureName(value) {
@@ -44,7 +44,7 @@ if (cluster.isPrimary) {
   const cli = new Command()
 
   cli
-    .name('doer')
+    .name('wis')
     .description('一款集项目模版，研发和打包一体化的工具集合')
     .version(cliPackage.version, '-v --version', '查看工具版本号')
     .helpOption('-h, --help', '查看帮助信息')

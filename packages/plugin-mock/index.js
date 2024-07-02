@@ -1,5 +1,5 @@
 import path from 'node:path'
-import * as env from '@doerjs/utils/env.js'
+import * as env from '@wisdesign/utils/env.js'
 
 import Mock from './Mock.js'
 

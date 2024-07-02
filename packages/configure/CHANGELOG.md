@@ -1,24 +1,9 @@
-# @doerjs/configure
+# @wisdesign/configure
 
-## 0.1.2
-
-### Patch Changes
-
-- e5574ce: 实现脚手架的跨端能力
-
-## 0.1.1
+## 0.0.1
 
 ### Patch Changes
 
-- 7e5016d: feat: 修改配置走configure clone方法
-
-## 0.1.0
-
-### Minor Changes
-
-- 83f98b1: 脚手架基本功能开发
-
-### Patch Changes
-
-- Updated dependencies [83f98b1]
-  - @doerjs/utils@0.1.0
+- [feature] CLI basic framework capabilities, including routing, resources, packaging, etc.
+- Updated dependencies
+  - @wisdesign/utils@0.0.1

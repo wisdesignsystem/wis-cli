@@ -1,9 +1,9 @@
 import { createRequire } from 'node:module'
 import path from 'node:path'
-import CrossWebpackPlugin from '@doerjs/cross-webpack-plugin'
-import * as is from '@doerjs/utils/is.js'
-import * as file from '@doerjs/utils/file.js'
-import * as tool from '@doerjs/utils/tool.js'
+import CrossWebpackPlugin from '@wisdesign/cross-webpack-plugin'
+import * as is from '@wisdesign/utils/is.js'
+import * as file from '@wisdesign/utils/file.js'
+import * as tool from '@wisdesign/utils/tool.js'
 
 const require = createRequire(import.meta.url)
 

@@ -2,7 +2,7 @@ import { remotes } from './config.js'
 import { isDebug, isUndefined } from './helper.js'
 
 (async () => {
-  window.doer = {}
+  window.wis = {}
 
   let urls = await remotes()
 
@@ -14,13 +14,13 @@ import { isDebug, isUndefined } from './helper.js'
 
   if (isDebug()) {
     try {
-      const localUrls = window.sessionStorage.getItem(`${appName}__doer_remotes__`)
+      const localUrls = window.sessionStorage.getItem(`${appName}__wis_remotes__`)
       urls = localUrls ? Object.assign(urls, JSON.parse(localUrls)) : urls
     } catch (e) {}
   }
 
   if (Proxy !== undefined) {
-    window.__doer_remotes__ = new Proxy({}, {
+    window.__wis_remotes__ = new Proxy({}, {
       get(_, prop) {
         if (!prop) {
           return
@@ -34,10 +34,10 @@ import { isDebug, isUndefined } from './helper.js'
       },
     })
   } else {
-    window.__doer_remotes__ = urls
+    window.__wis_remotes__ = urls
   }
 
-  window.__doer_uncheck_remote = function (name) {
+  window.__wis_uncheck_remote = function (name) {
     return urls[name]
   }
 

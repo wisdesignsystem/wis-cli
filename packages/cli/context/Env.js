@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 import dotenvExpand from 'dotenv-expand'
-import * as file from '@doerjs/utils/file.js'
-import * as env from '@doerjs/utils/env.js'
+import * as file from '@wisdesign/utils/file.js'
+import * as env from '@wisdesign/utils/env.js'
 
 import Parser from './Parser.js'
 

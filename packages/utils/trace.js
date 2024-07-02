@@ -1,7 +1,7 @@
 import signale from 'signale'
 
 export default new signale.Signale({
-  scope: 'Doer',
+  scope: 'Wis',
   types: {
     note: {
       badge: '👣',

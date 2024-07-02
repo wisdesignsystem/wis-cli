@@ -1,8 +1,8 @@
 {
-  "name": "@doerjs/plugin-less",
-  "version": "0.1.1",
+  "name": "@wisdesign/plugin-less",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",

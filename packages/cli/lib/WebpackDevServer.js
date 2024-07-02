@@ -3,7 +3,7 @@ import { ip } from 'address'
 import chalk from 'chalk'
 import clipboard from 'clipboardy'
 import WebpackDevServer from 'webpack-dev-server'
-import { ObjectSet } from '@doerjs/configure'
+import { ObjectSet } from '@wisdesign/configure'
 
 import plugin from './plugin.js'
 

@@ -1,14 +1,14 @@
 {
-  "name": "@doerjs/plugin-cross",
-  "version": "0.1.4",
+  "name": "@wisdesign/plugin-cross",
+  "version": "0.0.1",
   "description": "",
-  "author": "FaureWu <502556093@qq.com>",
+  "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",
   "dependencies": {
-    "@doerjs/cross-webpack-plugin": "workspace:*",
-    "@doerjs/utils": "workspace:*",
+    "@wisdesign/cross-webpack-plugin": "workspace:*",
+    "@wisdesign/utils": "workspace:*",
     "postcss-px-to-viewport": "1.1.1",
     "webpack-sources": "3.2.3"
   },
