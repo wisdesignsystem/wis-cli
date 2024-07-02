@@ -1,6 +1,6 @@
 {
   "name": "@wisdesign/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "@wisdesign/plugin-less": "workspace:*",
     "@wisdesign/plugin-mock": "workspace:*",
     "@wisdesign/plugin-cross": "workspace:*",
-    "@wisdesign/plugin-router": "workspace*",
+    "@wisdesign/plugin-router": "workspace:*",
     "@wisdesign/plugin-typescript": "workspace:*",
     "@wisdesign/prettier-config": "workspace:*",
     "@wisdesign/remote-webpack-plugin": "workspace:*",
