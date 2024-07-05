@@ -11,8 +11,13 @@ import create, { validateName } from '../scripts/create.js'
 import dev from '../scripts/dev.js'
 import build from '../scripts/build.js'
 
-// 支持服务重启功能
-if (cluster.isPrimary) {
+// 是否是开发环境
+function isDevelopment() {
+  return process.argv[2] === 'dev'
+}
+
+// 开发环境下需要启动主从进程，方便服务重启
+if (isDevelopment() && cluster.isPrimary) {
   let worker
   function create() {
     worker = cluster.fork()

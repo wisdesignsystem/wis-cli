@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.3
+
+### Patch Changes
+
+- [fix] Limit the restart feature in development mode
+
 ## 0.0.2
 
 ### Patch Changes
