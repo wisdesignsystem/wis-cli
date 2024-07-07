@@ -1,5 +1,13 @@
 import { remotes } from './config.js'
-import { isDebug, isUndefined } from './helper.js'
+
+function debug() {
+  return new URLSearchParams(window.location.search).get('debug')
+}
+
+// 此模式下可编辑且生效
+function isDebug() {
+  return debug() === 'true' && process.env.NODE_ENV === 'development'
+}
 
 (async () => {
   window.wis = {}
@@ -8,7 +16,7 @@ import { isDebug, isUndefined } from './helper.js'
 
   const appName = '<%= appName %>'
 
-  if (isUndefined(urls[appName])) {
+  if (urls[appName] === undefined) {
     urls[appName] = process.env.PUBLIC_URL.slice(0, process.env.PUBLIC_URL.length - 1)
   }
 
@@ -26,7 +34,7 @@ import { isDebug, isUndefined } from './helper.js'
           return
         }
 
-        if (!urls[prop]) {
+        if (urls[prop] === undefined) {
           throw new Error(`Remote url not found for ${prop}`)
         }
 

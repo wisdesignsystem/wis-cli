@@ -116,7 +116,7 @@ export default function (plugin, options) {
   }
 
   function getCrossExpose(context, filePath) {
-    const { dir } = path.parse(filePath)
+    const { dir, name: basename } = path.parse(filePath)
 
     const agent = path.basename(dir)
     if (!['mobile', 'pc'].includes(agent)) {
@@ -130,7 +130,7 @@ export default function (plugin, options) {
 
     return {
       name: `./${item.join('/')}`,
-      path: filePath,
+      path: path.resolve(dir, basename),
     }
   }
 

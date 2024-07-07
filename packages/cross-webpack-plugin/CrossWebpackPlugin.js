@@ -19,7 +19,12 @@ class CrossWebpackPlugin {
           const sourceMap = compilation.codeGenerationResults.get(module).sources
           const rawSource = sourceMap.get('javascript')
 
-          const ast = babelParser.parse(rawSource.source(), {
+          const code = rawSource.source()
+          if (code.includes(this.getMobileRegex())) {
+            return
+          }
+
+          const ast = babelParser.parse(code, {
             sourceType: 'module',
           })
           babelTraverse.default(ast, {
@@ -38,10 +43,14 @@ class CrossWebpackPlugin {
     })
   }
 
+  getMobileRegex() {
+    return '/Mobi|Android|iPhone/i'
+  }
+
   generatorAgentSource() {
     return `
       var agent = 'pc'
-      if (/Mobi|Android|iPhone/i.test(navigator.userAgent)) {
+      if (${this.getMobileRegex()}.test(navigator.userAgent)) {
         agent = 'mobile'
       }
 

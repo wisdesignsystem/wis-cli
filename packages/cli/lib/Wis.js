@@ -86,8 +86,11 @@ class Wis {
       path: '@wisdesign/plugin-router',
       option: { extensions: ['.js', '.jsx'] },
     }
+    const crossPlugin = {
+      path: '@wisdesign/plugin-cross',
+    }
 
-    const plugins = [routerPlugin].concat(this.context.config.plugins)
+    const plugins = [crossPlugin, routerPlugin].concat(this.context.config.plugins)
     if (!plugins.length) {
       return
     }

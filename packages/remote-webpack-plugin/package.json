@@ -7,7 +7,7 @@
   "main": "RemoteWebpackPlugin.js",
   "type": "module",
   "peerDependencies": {
-    "webpack": ">= 5"
+    "webpack": "5.92.1"
   },
   "publishConfig": {
     "access": "public"

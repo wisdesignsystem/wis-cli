@@ -41,8 +41,6 @@ class RemoteWebpackPlugin {
       compiler.options.output.enabledLibraryTypes.push(this.library.type)
     }
 
-    const remotes = []
-
     compiler.hooks.afterPlugins.tap('RemoteWebpackPlugin', () => {
       compiler.hooks.make.tapAsync('RemoteWebpackPlugin', (compilation, callback) => {
         const dep = new ContainerEntryDependency(this.name, this.exposes, this.shareScope)
@@ -77,7 +75,6 @@ class RemoteWebpackPlugin {
         normalModuleFactory.hooks.factorize.tap('RemoteWebpackPlugin', (data) => {
           if (!this.isRemote(data.request)) return
 
-          remotes.push(data.request)
           const remote = this.getRemote(data.request)
           return new RemoteModule(remote.request, remote.externalRequests, remote.internalRequest, remote.shareScope)
         })
@@ -90,7 +87,6 @@ class RemoteWebpackPlugin {
           }
 
           const remoteName = this.getRemoteName(dependency.request)
-
           const externalModule = new ExternalModule(
             `${remoteName}@[${this.windowScopeName}.${remoteName}]/${this.remoteFileName}`,
             this.type,
@@ -126,7 +122,11 @@ class RemoteWebpackPlugin {
   }
 
   getRemote(request) {
-    const [remoteName, ...rest] = request.slice(this.remoteScopeName.length).split('/')
+    let [remoteName, ...rest] = request.slice(this.remoteScopeName.length).split('/')
+
+    if (remoteName === 'self') {
+      remoteName = this.name
+    }
 
     return {
       request: `${remoteName}/${rest.join('/')}`,
