@@ -40,10 +40,6 @@ class Config extends Parser {
   // 项目模式 project项目 library组件库
   mode = 'project'
 
-  // mode为library时，作为库名的前缀
-  // 当mode为library时，libraryName不能为空
-  libraryName = ''
-
   // 项目别名
   alias = {}
 
@@ -119,7 +115,6 @@ class Config extends Parser {
     const getValue = createGetValue(config)
 
     this.mode = getValue('mode', is.isEnum(['project', 'library']), this.mode)
-    this.libraryName = getValue('libraryName', is.isString, this.libraryName)
     this.alias = getValue('alias', is.isObject, this.alias)
     this.extraBabelCompileNodeModules = getValue(
       'extraBabelCompileNodeModules',
@@ -134,11 +129,6 @@ class Config extends Parser {
 
     this.parseLoading(config)
     this.parsePlugins(config)
-
-    if (this.mode === 'library' && !this.libraryName) {
-      trace.error(`[libraryName] 库项目缺少的配置项，请检查配置文件`)
-      process.exit(-1)
-    }
   }
 
   parseLoading(config) {

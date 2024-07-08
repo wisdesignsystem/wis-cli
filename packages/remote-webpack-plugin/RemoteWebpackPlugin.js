@@ -40,7 +40,6 @@ class RemoteWebpackPlugin {
     if (!compiler.options.output.enabledLibraryTypes.includes(this.library.type)) {
       compiler.options.output.enabledLibraryTypes.push(this.library.type)
     }
-
     compiler.hooks.afterPlugins.tap('RemoteWebpackPlugin', () => {
       compiler.hooks.make.tapAsync('RemoteWebpackPlugin', (compilation, callback) => {
         const dep = new ContainerEntryDependency(this.name, this.exposes, this.shareScope)

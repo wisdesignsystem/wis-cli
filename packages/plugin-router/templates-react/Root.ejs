@@ -23,7 +23,7 @@ export function getAppName(hasLayout) {
   const [layoutName = '', appName = ''] = routerPath.split('/').filter(item => item)
   const name = hasLayout ? appName : layoutName
 
-  if (window.__wis_uncheck_remote(name)) {
+  if (window.$__wis_uncheck_remote(name)) {
     return name
   }
 }

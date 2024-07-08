@@ -42,7 +42,7 @@ function createGetLibraryLocalIndent(libraryName) {
     const { dir, name } = path.parse(context.resourcePath)
     const res = path.parse(path.resolve(dir, name))
     const prefix = libraryName ? `${libraryName}-` : ''
-    return `${prefix}${res.name}__${localName}`
+    return `${prefix}${res.name}-${localName}`
   }
 }
 
@@ -60,7 +60,8 @@ function getVenderName(module) {
     name = [name.replace(/@/g, ''), parts[1]].join('-')
   }
 
-  return ['vender', name.replace(/\//g, '-')].filter(Boolean).join('~')
+  const result = ['vender', name.replace(/\//g, '-')].filter(Boolean).join('~')
+  return result
 }
 
 class Webpack {
@@ -147,7 +148,7 @@ class Webpack {
   }
 
   sourcemap() {
-    this.config.set('devtool', 'cheap-module-source-map')
+    this.config.set('devtool', 'source-map')
 
     this.config.set('module.rules.sourcemap', {
       test: [],
@@ -295,6 +296,7 @@ class Webpack {
     cssModule.set('test.cssModule', /\.module\.css$/)
 
     cssModule.set('use.miniCss', MiniCssExtractWebpackPlugin.loader)
+
     cssModule.set('use.css', {
       loader: require.resolve('css-loader'),
       options: {
@@ -303,7 +305,7 @@ class Webpack {
         modules: {
           getLocalIdent:
             this.context.config.mode === 'library'
-              ? createGetLibraryLocalIndent(this.context.config.libraryName)
+              ? createGetLibraryLocalIndent(require(this.context.path.packageJson).name)
               : getProjectLocalIdent,
         },
       },
@@ -403,6 +405,33 @@ class Webpack {
     })
   }
 
+  shared() {
+    const cliPackageData = require(this.context.path.cliPackageJson)
+    return {
+      ...this.context.config.shared,
+      'react': {
+        singleton: true,
+        requiredVersion: cliPackageData.dependencies.react,
+        strictVersion: true,
+      },
+      'react-dom': {
+        singleton: true,
+        requiredVersion: cliPackageData.dependencies['react-dom'],
+        strictVersion: true,
+      },
+      'react-router-dom': {
+        singleton: true,
+        requiredVersion: cliPackageData.dependencies['react-router-dom'],
+        strictVersion: true,
+      },
+      'history': {
+        singleton: true,
+        requiredVersion: cliPackageData.dependencies.history,
+        strictVersion: true,
+      },
+    }
+  }
+
   registerHtmlPlugin() {
     this.config.set(
       'plugins.html',
@@ -460,8 +489,6 @@ class Webpack {
 
   registerRemotePlugin() {
     const packageData = require(this.context.path.packageJson)
-    const cliPackageData = require(this.context.path.cliPackageJson)
-
     this.config.set(`entry.${packageData.name}`, path.resolve(this.context.path.complier, 'publicPath.js'))
 
     this.config.set(
@@ -470,35 +497,13 @@ class Webpack {
         name: packageData.name,
         filename: this.context.remoteFileName,
         scopeName: 'remote',
-        windowScopeName: '__wis_remotes__',
+        windowScopeName: '$$__wis_remotes__',
         exposes: {
           ...this.context.config.exposes,
           './$$Router': path.resolve(this.context.path.complier, 'Router.jsx'),
           './$$app': path.resolve(this.context.path.complier, 'app.js'),
         },
-        shared: {
-          ...this.context.config.shared,
-          'react': {
-            singleton: true,
-            requiredVersion: cliPackageData.dependencies.react,
-            strictVersion: true,
-          },
-          'react-dom': {
-            singleton: true,
-            requiredVersion: cliPackageData.dependencies['react-dom'],
-            strictVersion: true,
-          },
-          'react-router-dom': {
-            singleton: true,
-            requiredVersion: cliPackageData.dependencies['react-router-dom'],
-            strictVersion: true,
-          },
-          'history': {
-            singleton: true,
-            requiredVersion: cliPackageData.dependencies.history,
-            strictVersion: true,
-          },
-        },
+        shared: this.shared(),
       },
       { type: 'ClassSet', ClassObject: RemoteWebpackPlugin },
     )
@@ -573,9 +578,7 @@ class Webpack {
 
     // 第三方包打包机制
     const venderCacheGroup = {
-      test: (module) => {
-        return /[\\/]node_modules[\\/]/.test(module.context)
-      },
+      test: /[\\/]node_modules[\\/]/,
       name: (module) => {
         return getVenderName(module)
       },

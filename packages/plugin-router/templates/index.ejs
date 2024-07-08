@@ -10,7 +10,7 @@ function isDebug() {
 }
 
 (async () => {
-  window.wis = {}
+  window.$__wis_remotes__ = {}
 
   let urls = await remotes()
 
@@ -28,7 +28,7 @@ function isDebug() {
   }
 
   if (Proxy !== undefined) {
-    window.__wis_remotes__ = new Proxy({}, {
+    window.$__wis_remotes__ = new Proxy({}, {
       get(_, prop) {
         if (!prop) {
           return
@@ -42,10 +42,10 @@ function isDebug() {
       },
     })
   } else {
-    window.__wis_remotes__ = urls
+    window.$__wis_remotes__ = urls
   }
 
-  window.__wis_uncheck_remote = function (name) {
+  window.$__wis_uncheck_remote = function (name) {
     return urls[name]
   }
 

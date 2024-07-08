@@ -50,7 +50,7 @@ function isScopeLoaded(scope) {
 export async function loadScopeScript(scope) {
   if (isScopeLoaded(scope)) return
 
-  let scopeRemoteUrl = window.__wis_remotes__[scope]
+  let scopeRemoteUrl = window.$__wis_remotes__[scope]
   if (!isString(scopeRemoteUrl) || !scopeRemoteUrl) {
     throw new Error(`application ${scope} not register`)
   }

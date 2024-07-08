@@ -46,7 +46,7 @@ function getRemotes() {
     }
   } catch (e) {}
 
-  return window.__wis_remotes__
+  return window.$__wis_remotes__
 }
 
 function DebugContent({ onClose = noop }) {
@@ -103,7 +103,7 @@ function DebugContent({ onClose = noop }) {
               <div className={styles.remote} key={option.label}>
                 <div className={styles.label}>{option.label}:</div>
                 <input className={styles.value} defaultValue={option.value} onChange={handleInputChange} />
-                <div className={styles.tip}>{window.__wis_remotes__[option.label]}(默认值)</div>
+                <div className={styles.tip}>{window.$__wis_remotes__[option.label]}(默认值)</div>
               </div>
             )
           })}
