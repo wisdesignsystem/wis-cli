@@ -1,0 +1,16 @@
+{
+  "@wisdesign/cli": "0.0.3",
+  "@wisdesign/configure": "0.0.1",
+  "@wisdesign/cross-webpack-plugin": "0.0.1",
+  "@wisdesign/eslint-config": "0.0.1",
+  "@wisdesign/log-webpack-plugin": "0.0.1",
+  "@wisdesign/plugin-cross": "0.0.1",
+  "@wisdesign/plugin-less": "0.0.1",
+  "@wisdesign/plugin-mock": "0.0.1",
+  "@wisdesign/plugin-router": "0.0.1",
+  "@wisdesign/plugin-typescript": "0.0.1",
+  "@wisdesign/prettier-config": "0.0.1",
+  "@wisdesign/remote-webpack-plugin": "0.0.1",
+  "@wisdesign/setup-html-webpack-plugin": "0.0.1",
+  "@wisdesign/utils": "0.0.1"
+}

@@ -17,7 +17,7 @@
     "rc": "pnpm changeset pre enter rc",
     "exit": "pnpm changeset pre exit",
     "changeset": "npx changeset",
-    "version": "pnpm changeset version",
+    "version": "pnpm changeset version && node ./scripts/version.js",
     "publish": "pnpm publish -r",
     "clean": "rm -rf node_modules **/*/node_modules"
   },

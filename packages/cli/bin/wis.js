@@ -11,6 +11,8 @@ import create, { validateName } from '../scripts/create.js'
 import dev from '../scripts/dev.js'
 import build from '../scripts/build.js'
 
+const require = createRequire(import.meta.url)
+
 // 是否是开发环境
 function isDevelopment() {
   return process.argv[2] === 'dev'
@@ -30,7 +32,6 @@ if (isDevelopment() && cluster.isPrimary) {
   }
   create()
 } else {
-  const require = createRequire(import.meta.url)
   const cliPackage = require(cliPath.packagePath)
 
   console.info(figlet.textSync('Wis', 'Ghost'))

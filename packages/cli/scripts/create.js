@@ -10,8 +10,6 @@ import * as is from '@wisdesign/utils/is.js'
 import * as file from '@wisdesign/utils/file.js'
 import * as shell from '@wisdesign/utils/shell.js'
 
-import cliPath from '../context/cliPath.js'
-
 const require = createRequire(import.meta.url)
 
 function downloadTemplate(source, target) {
@@ -111,16 +109,7 @@ export default async function create(options) {
 
   const renderContext = {
     config,
-    packages: {
-      '@wisdesign/cli': require(cliPath.packagePath),
-      '@wisdesign/utils': require('@wisdesign/utils/package.json'),
-      '@wisdesign/prettier-config': require('@wisdesign/prettier-config/package.json'),
-      '@wisdesign/eslint-config': require('@wisdesign/eslint-config/package.json'),
-      '@wisdesign/plugin-less': require('@wisdesign/plugin-less/package.json'),
-      '@wisdesign/plugin-cross': require('@wisdesign/plugin-less/package.json'),
-      '@wisdesign/plugin-mock': require('@wisdesign/plugin-mock/package.json'),
-      '@wisdesign/plugin-typescript': require('@wisdesign/plugin-typescript/package.json'),
-    },
+    packages: require('../versionInfo.json'),
   }
 
   for (let i = 0; i < templateFiles.length; i++) {

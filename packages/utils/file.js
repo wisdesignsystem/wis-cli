@@ -3,7 +3,11 @@ import fs from 'node:fs'
 
 // 是否存在
 export function isExist(filePath) {
-  return !!fs.statSync(filePath, { throwIfNoEntry: false })
+  try {
+    return !!fs.statSync(filePath)
+  } catch (error) {
+    return false
+  }
 }
 
 // 是一个文件
