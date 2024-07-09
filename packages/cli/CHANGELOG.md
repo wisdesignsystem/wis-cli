@@ -1,5 +1,15 @@
 # @wisdesign/cli
 
+## 0.0.4
+
+### Patch Changes
+
+- fce6747: cli remote feature problem fix
+- Updated dependencies [fce6747]
+  - @wisdesign/remote-webpack-plugin@0.0.2
+  - @wisdesign/plugin-router@0.0.2
+  - @wisdesign/plugin-cross@0.0.2
+
 ## 0.0.3
 
 ### Patch Changes
