@@ -497,7 +497,7 @@ class Webpack {
         name: packageData.name,
         filename: this.context.remoteFileName,
         scopeName: 'remote',
-        windowScopeName: '$$__wis_remotes__',
+        windowScopeName: '$__wis_remotes__',
         exposes: {
           ...this.context.config.exposes,
           './$$Router': path.resolve(this.context.path.complier, 'Router.jsx'),
