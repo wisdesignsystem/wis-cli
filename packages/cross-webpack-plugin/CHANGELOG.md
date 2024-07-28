@@ -1,5 +1,11 @@
 # @wisdesign/cross-webpack-plugin
 
+## 0.0.3
+
+### Patch Changes
+
+- bde03b3: [feature] support controlling the cross-terminal agent through global variables
+
 ## 0.0.2
 
 ### Patch Changes
