@@ -56,30 +56,15 @@ importers:
       '@wisdesign/configure':
         specifier: workspace:*
         version: link:../configure
-      '@wisdesign/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
       '@wisdesign/log-webpack-plugin':
         specifier: workspace:*
         version: link:../log-webpack-plugin
       '@wisdesign/plugin-cross':
         specifier: workspace:*
         version: link:../plugin-cross
-      '@wisdesign/plugin-less':
-        specifier: workspace:*
-        version: link:../plugin-less
-      '@wisdesign/plugin-mock':
-        specifier: workspace:*
-        version: link:../plugin-mock
       '@wisdesign/plugin-router':
         specifier: workspace:*
         version: link:../plugin-router
-      '@wisdesign/plugin-typescript':
-        specifier: workspace:*
-        version: link:../plugin-typescript
-      '@wisdesign/prettier-config':
-        specifier: workspace:*
-        version: link:../prettier-config
       '@wisdesign/remote-webpack-plugin':
         specifier: workspace:*
         version: link:../remote-webpack-plugin

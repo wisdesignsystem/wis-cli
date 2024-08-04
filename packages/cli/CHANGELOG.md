@@ -4,14 +4,14 @@
 
 ### Patch Changes
 
-- bde03b3: [feature] support controlling the cross-terminal agent through global variables
+- [feature] support controlling the cross-terminal agent through global variables
   - @wisdesign/plugin-cross@0.0.3
 
 ## 0.0.4
 
 ### Patch Changes
 
-- fce6747: cli remote feature problem fix
+- [fix] cli remote feature problem fix
 - Updated dependencies [fce6747]
   - @wisdesign/remote-webpack-plugin@0.0.2
   - @wisdesign/plugin-router@0.0.2

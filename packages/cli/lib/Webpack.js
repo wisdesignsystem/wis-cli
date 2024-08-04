@@ -185,13 +185,20 @@ class Webpack {
     image.set('test.gif', /\.gif$/)
     image.set('test.jpg', /\.jpe?g$/)
     image.set('test.png', /\.png$/)
-    image.set('test.svg', /\.svg$/)
   }
 
   svgr() {
+    this.config.set('module.rules.svg', {
+      type: 'asset',
+      test: [],
+    })
+
+    const svg = this.config.get('module.rules.svg')
+    svg.set('test.svg', /\.svg$/)
+
     this.config.set('module.rules.svgr', {
       test: [],
-      resourceQuery: /svgr/,
+      resourceQuery: /inline/,
       use: [],
     })
 
@@ -202,13 +209,12 @@ class Webpack {
     svgr.set('use.svgr', {
       loader: require.resolve('@svgr/webpack'),
       options: {
-        prettier: false,
-        svgo: false,
-        svgoConfig: {
-          plugins: [{ removeViewBox: false }],
-        },
-        titleProp: true,
+        icon: true,
         ref: true,
+        replaceAttrValues: {
+          '#000': 'currentColor',
+          '#000000': 'currentColor',
+        },
       },
     })
   }
