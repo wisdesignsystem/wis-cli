@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.6
+
+### Patch Changes
+
+- 2cbced3: [feature] support use inline query to use svg component
+
 ## 0.0.5
 
 ### Patch Changes
