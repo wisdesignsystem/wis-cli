@@ -5,7 +5,7 @@ import { createRequire } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import prettier from '@prettier/sync'
-import * as file from '@wisdesign/utils/file'
+import * as file from '@wisdesign/utils/file.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
