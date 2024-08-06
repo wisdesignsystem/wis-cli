@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@changesets/changelog-git':
-        specifier: 0.2.0
-        version: 0.2.0
       '@changesets/cli':
         specifier: 2.27.5
         version: 2.27.5
@@ -333,6 +330,21 @@ importers:
         version: 5.92.1
 
   packages/setup-html-webpack-plugin: {}
+
+  packages/token:
+    dependencies:
+      '@prettier/sync':
+        specifier: 0.5.2
+        version: 0.5.2(prettier@3.3.1)
+      '@wisdesign/utils':
+        specifier: workspace:*
+        version: link:../utils
+      commander:
+        specifier: 12.1.0
+        version: 12.1.0
+      prettier:
+        specifier: 3.3.1
+        version: 3.3.1
 
   packages/utils:
     dependencies:
@@ -1501,6 +1513,11 @@ packages:
 
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
+
+  '@prettier/sync@0.5.2':
+    resolution: {integrity: sha512-Yb569su456XNx5BsH/Vyem7xD6g/y9iLmLUzRKM1a/dhU/D7HqqvkAG72znulXlMXztbV0iiu9O5AL8K98TzZQ==}
+    peerDependencies:
+      prettier: '*'
 
   '@remix-run/router@1.11.0':
     resolution: {integrity: sha512-BHdhcWgeiudl91HvVa2wxqZjSHbheSgIiDvxrF1VjFzBzpTtuDPkOdOi3Iqvc08kXtFkLjhbS+ML9aM8mJS+wQ==}
@@ -4050,6 +4067,9 @@ packages:
   make-dir@2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
     engines: {node: '>=6'}
+
+  make-synchronized@0.2.9:
+    resolution: {integrity: sha512-4wczOs8SLuEdpEvp3vGo83wh8rjJ78UsIk7DIX5fxdfmfMJGog4bQzxfvOwq7Q3yCHLC4jp1urPHIxRS/A93gA==}
 
   map-obj@1.0.1:
     resolution: {integrity: sha512-7N/q3lyZ+LVCp7PzuxrJr4KMbBE2hW7BT7YNia330OFxIf4d3r5zVpicP2650l7CPN6RM9zOJRl3NGpqSiw3Eg==}
@@ -7551,6 +7571,11 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
+  '@prettier/sync@0.5.2(prettier@3.3.1)':
+    dependencies:
+      make-synchronized: 0.2.9
+      prettier: 3.3.1
+
   '@remix-run/router@1.11.0': {}
 
   '@rushstack/eslint-patch@1.10.3': {}
@@ -10425,6 +10450,8 @@ snapshots:
       pify: 4.0.1
       semver: 5.7.2
     optional: true
+
+  make-synchronized@0.2.9: {}
 
   map-obj@1.0.1: {}
 

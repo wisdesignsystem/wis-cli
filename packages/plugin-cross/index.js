@@ -134,6 +134,10 @@ export default function (plugin, options) {
     }
   }
 
+  function isCrossExpose(context, filePath) {
+    return !!getCrossExpose(context, filePath)
+  }
+
   function replaceAlias(context, filePath) {
     const aliasName = Object.keys(context.config.alias).find((name) => {
       return filePath.startsWith(name + '/')
@@ -162,12 +166,12 @@ export default function (plugin, options) {
     plugin.hooks.watcher.tap((watcher) => {
       watcher
         .on('add', (filePath) => {
-          if (getCrossExpose(context, filePath)) {
+          if (isCrossExpose(context, filePath)) {
             plugin.restart()
           }
         })
         .on('unlink', (filePath) => {
-          if (getCrossExpose(context, filePath)) {
+          if (isCrossExpose(context, filePath)) {
             plugin.restart()
           }
         })
