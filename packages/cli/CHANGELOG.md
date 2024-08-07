@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.7
+
+### Patch Changes
+
+- 14ca8e1: [fix] fix the svg component not valid
+
 ## 0.0.6
 
 ### Patch Changes
