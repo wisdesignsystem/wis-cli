@@ -28,7 +28,7 @@ token
 token.parse()
 
 const opts = token.opts()
-const whitelist = ['color', 'gradient', 'border', 'padding', 'margin', 'font', 'shadow', 'background']
+const whitelist = ['size', 'icon', 'color', 'gradient', 'border', 'padding', 'margin', 'font', 'shadow', 'background']
 
 function isTokenValue(data) {
   return '$type' in data && '$value' in data
