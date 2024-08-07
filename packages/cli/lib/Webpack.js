@@ -190,6 +190,7 @@ class Webpack {
   svgr() {
     this.config.set('module.rules.svg', {
       type: 'asset',
+      resourceQuery: { not: [/inline/] },
       test: [],
     })
 
