@@ -1,5 +1,12 @@
 # @wisdesign/plugin-cross
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [26bad28]
+  - @wisdesign/utils@0.0.2
+
 ## 0.0.3
 
 ### Patch Changes

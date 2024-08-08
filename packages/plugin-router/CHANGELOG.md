@@ -1,5 +1,13 @@
 # @wisdesign/plugin-router
 
+## 0.0.3
+
+### Patch Changes
+
+- 26bad28: [feature] add the remote entry feature
+- Updated dependencies [26bad28]
+  - @wisdesign/utils@0.0.2
+
 ## 0.0.2
 
 ### Patch Changes

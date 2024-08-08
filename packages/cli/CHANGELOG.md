@@ -1,5 +1,18 @@
 # @wisdesign/cli
 
+## 0.0.8
+
+### Patch Changes
+
+- 26bad28: [feature] add the remote entry feature
+- Updated dependencies [26bad28]
+  - @wisdesign/plugin-router@0.0.3
+  - @wisdesign/utils@0.0.2
+  - @wisdesign/remote-entry-webpack-plugin@0.0.1
+  - @wisdesign/configure@0.0.2
+  - @wisdesign/log-webpack-plugin@0.0.2
+  - @wisdesign/plugin-cross@0.0.4
+
 ## 0.0.7
 
 ### Patch Changes
