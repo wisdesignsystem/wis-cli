@@ -62,6 +62,9 @@ importers:
       '@wisdesign/plugin-router':
         specifier: workspace:*
         version: link:../plugin-router
+      '@wisdesign/remote-entry-webpack-plugin':
+        specifier: workspace:*
+        version: link:../remote-entry-webpack-plugin
       '@wisdesign/remote-webpack-plugin':
         specifier: workspace:*
         version: link:../remote-webpack-plugin
@@ -322,6 +325,15 @@ importers:
         version: 7.23.2(@babel/core@7.23.2)
 
   packages/prettier-config: {}
+
+  packages/remote-entry-webpack-plugin:
+    dependencies:
+      webpack:
+        specifier: 5.92.1
+        version: 5.92.1
+      webpack-sources:
+        specifier: 3.2.3
+        version: 3.2.3
 
   packages/remote-webpack-plugin:
     dependencies:

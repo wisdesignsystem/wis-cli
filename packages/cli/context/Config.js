@@ -61,6 +61,9 @@ class Config extends Parser {
   // 是否开启browserHistory
   browserHistory = false
 
+  // 配置远程入口需要加载的模块
+  remoteEntry = ''
+
   // webpack配置式勾子
   webpackConfigure = () => {}
 
@@ -121,6 +124,7 @@ class Config extends Parser {
       is.isArray,
       this.extraBabelCompileNodeModules,
     )
+    this.remoteEntry = getValue('remoteEntry', is.isString, this.remoteEntry)
     this.exposes = getValue('exposes', is.isObject, this.exposes)
     this.shared = getValue('shared', is.isObject, this.shared)
     this.browserHistory = getValue('browserHistory', is.isBoolean, this.browserHistory)

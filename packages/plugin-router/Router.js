@@ -118,17 +118,8 @@ class Router {
     return layoutRegex.test(basename)
   }
 
-  // 检测是否是配置文件
-  isConfig(filePath) {
-    const configPath = path.resolve(this.options.srcPath, 'config')
-    return this.options.extensions.some((ext) => {
-      return filePath === configPath + ext
-    })
-  }
-
-  // 检测是否是app.js
-  isAppEntry(filePath) {
-    const globalScriptPath = path.resolve(this.options.srcPath, 'app')
+  isGlobalPath(filePath, name) {
+    const globalScriptPath = path.resolve(this.options.srcPath, name)
     return this.options.extensions.some((ext) => {
       return filePath === globalScriptPath + ext
     })
@@ -160,8 +151,8 @@ class Router {
     }
   }
 
-  getAppConfigPath() {
-    const appConfigPath = path.resolve(this.options.srcPath, 'config')
+  getGlobalPath(name) {
+    const appConfigPath = path.resolve(this.options.srcPath, name)
     let ext = this.options.extensions.find((ext) => {
       return file.isExist(appConfigPath + ext)
     })
@@ -171,26 +162,10 @@ class Router {
     return appConfigPath + ext
   }
 
-  getAppEntryPath() {
-    const appEntryPath = path.resolve(this.options.srcPath, 'app')
-    let ext = this.options.extensions.find((ext) => {
-      return file.isExist(appEntryPath + ext)
-    })
-    if (!ext) {
-      ext = '.js'
-    }
-    return appEntryPath + ext
-  }
-
-  // 物理删除文件
-  removeFile(filePath) {
-    shell.execSync(`rm ${filePath}`)
-  }
-
   writeConfig() {
     const configFileName = 'config.js'
 
-    const configPath = this.getAppConfigPath()
+    const configPath = this.getGlobalPath('config')
 
     const isExist = file.isExist(configPath)
     const configData = {
@@ -215,7 +190,7 @@ class Router {
   writeAppEntry() {
     const appFileName = 'app.js'
 
-    const appEntryPath = this.getAppEntryPath()
+    const appEntryPath = this.getGlobalPath('app')
 
     const isExist = file.isExist(appEntryPath)
     const appData = {
@@ -283,6 +258,11 @@ class Router {
     file.writeFile(filePath, code)
   }
 
+  removeTemplate(fileName) {
+    const filePath = path.resolve(this.options.outputPath, fileName)
+    file.removeFile(filePath)
+  }
+
   createPage(filePath) {
     const page = this.parsePage(filePath)
     this.pages.push(page)
@@ -303,11 +283,11 @@ class Router {
       this.createLayout(filePath)
     }
 
-    if (this.isAppEntry(filePath)) {
+    if (this.isGlobalPath(filePath, 'app')) {
       this.writeAppEntry()
     }
 
-    if (this.isConfig(filePath)) {
+    if (this.isGlobalPath(filePath, 'config')) {
       this.writeConfig()
     }
   }
@@ -332,11 +312,11 @@ class Router {
       this.removeLayout(filePath)
     }
 
-    if (this.isAppEntry(filePath)) {
+    if (this.isGlobalPath(filePath, 'app')) {
       this.writeAppEntry()
     }
 
-    if (this.isConfig(filePath)) {
+    if (this.isGlobalPath(filePath, 'config')) {
       this.writeConfig()
     }
   }
@@ -371,11 +351,11 @@ class Router {
       this.changeLayout(filePath)
     }
 
-    if (this.isAppEntry(filePath)) {
+    if (this.isGlobalPath(filePath, 'app')) {
       this.writeAppEntry()
     }
 
-    if (this.isConfig(filePath)) {
+    if (this.isGlobalPath(filePath, 'config')) {
       this.writeConfig()
     }
   }

@@ -6,6 +6,7 @@ import { ObjectSet } from '@wisdesign/configure'
 import SetupHtmlWebpackPlugin from '@wisdesign/setup-html-webpack-plugin'
 import LogWebpackPlugin from '@wisdesign/log-webpack-plugin'
 import RemoteWebpackPlugin from '@wisdesign/remote-webpack-plugin'
+import RemoteEntryWebpackPlugin from '@wisdesign/remote-entry-webpack-plugin'
 import MiniCssExtractWebpackPlugin from 'mini-css-extract-plugin'
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -507,8 +508,6 @@ class Webpack {
         windowScopeName: '$__wis_remotes__',
         exposes: {
           ...this.context.config.exposes,
-          './$$Router': path.resolve(this.context.path.complier, 'Router.jsx'),
-          './$$app': path.resolve(this.context.path.complier, 'app.js'),
         },
         shared: this.shared(),
       },
@@ -518,6 +517,11 @@ class Webpack {
     this.config.set('plugins.externalRemotes', undefined, {
       type: 'ClassSet',
       ClassObject: ExternalRemotesWebpackPlugin,
+    })
+
+    this.config.set('plugins.remoteEntry', this.context.config.remoteEntry, {
+      type: 'ClassSet',
+      ClassObject: RemoteEntryWebpackPlugin,
     })
   }
 

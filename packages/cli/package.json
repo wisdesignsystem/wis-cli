@@ -20,6 +20,7 @@
     "@wisdesign/plugin-router": "workspace:*",
     "@wisdesign/remote-webpack-plugin": "workspace:*",
     "@wisdesign/setup-html-webpack-plugin": "workspace:*",
+    "@wisdesign/remote-entry-webpack-plugin": "workspace:*",
     "@wisdesign/utils": "workspace:*",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.15",
     "@svgr/webpack": "8.1.0",

@@ -1,0 +1,18 @@
+{
+  "name": "@wisdesign/remote-entry-webpack-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "RemoteEntryWebpackPlugin.js",
+  "type": "module",
+  "dependencies": {
+    "webpack-sources": "3.2.3"
+  },
+  "peerDependencies": {
+    "webpack": "5.92.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

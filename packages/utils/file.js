@@ -70,6 +70,11 @@ export function writeFile(filePath, content) {
   fs.writeFileSync(filePath, content)
 }
 
+// 删除文件
+export function removeFile(filePath) {
+  fs.rmSync(filePath, { force: true })
+}
+
 // 创建文件夹
 export function mkdir(filePath) {
   if (isExist(filePath) && isDir(filePath)) {

@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module'
+import path from 'node:path'
 
 import ReactRouter from './ReactRouter.js'
 
@@ -35,6 +36,12 @@ export default function (plugin, options) {
         .on('change', (filePath) => {
           router.change(filePath)
         })
+    })
+
+    plugin.hooks.webpackConfigure.tap((webpackConfigure) => {
+      const exposes = webpackConfigure.get('plugins.remote.exposes')
+      exposes.set('\\./$$Router', path.resolve(context.path.complier, 'Router.jsx'))
+      exposes.set('\\./$$app', path.resolve(context.path.complier, 'app.js'))
     })
   })
 }
