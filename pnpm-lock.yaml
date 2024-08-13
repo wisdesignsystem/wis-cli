@@ -343,7 +343,7 @@ importers:
 
   packages/setup-html-webpack-plugin: {}
 
-  packages/token:
+  packages/toolkit:
     dependencies:
       '@prettier/sync':
         specifier: 0.5.2

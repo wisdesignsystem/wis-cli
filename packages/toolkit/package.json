@@ -1,13 +1,14 @@
 {
-  "name": "@wisdesign/token",
-  "version": "0.0.4",
+  "name": "@wisdesign/toolkit",
+  "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "token": "bin/token.js"
+    "token": "bin/token.js",
+    "icon": "bin/icon.js"
   },
   "publishConfig": {
     "access": "public"

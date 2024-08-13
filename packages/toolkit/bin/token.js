@@ -20,8 +20,11 @@ token
   .description('A quick tool for converting Figma token JSON files into CSS variables')
   .version(packageData.version)
   .helpOption('-h, --help', 'View help information')
-  .requiredOption('-l, --light <file>', 'Light theme token source file')
-  .requiredOption('-d, --dark <file>', 'Dark theme token source file')
+  .requiredOption('-s, --source <file>', 'The default theme token source file')
+  .requiredOption(
+    '-t, --theme <file>',
+    'Other theme files, in the format such as: dark:../dark.json, multiple ones separated by commas',
+  )
   .option('-o, --output <path>', 'Output token file root path', './tokens')
   .option('-n, --namespace <namespace>', 'Theme token namespace', 'token')
 
@@ -76,8 +79,13 @@ function flatten(json) {
   return result
 }
 
-function groupTokenMap(lightTokenMap, darkTokenMap) {
-  return Object.keys(lightTokenMap).reduce((result, key) => {
+function parseThemeExpression(themeExpression) {
+  const [theme, themeFilePath] = themeExpression.split(':')
+  return { theme, themeFilePath }
+}
+
+function groupTokens(sourceToken, themeTokens) {
+  return Object.keys(sourceToken).reduce((result, key) => {
     let group = key.replace(`--${opts.namespace}`, '').split('-').filter(Boolean)[0]
     if (whitelist.includes(group)) {
       group = 'base'
@@ -92,10 +100,10 @@ function groupTokenMap(lightTokenMap, darkTokenMap) {
 
     result[group].children.push({
       key,
-      value: {
-        light: lightTokenMap[key],
-        dark: darkTokenMap[key],
-      },
+      token: sourceToken[key],
+      themeTokens: themeTokens.map(({ theme, tokens }) => {
+        return { theme, token: tokens[key] }
+      }),
     })
 
     return result
@@ -111,21 +119,29 @@ function generateTokenFiles(groupTokens) {
   const imports = []
   Object.keys(groupTokens).forEach((groupKey) => {
     const group = groupTokens[groupKey]
-    const { light, dark } = group.children.reduce(
-      (result, item) => {
-        result.light.push(`${item.key}: ${item.value.light}`)
-        result.dark.push(`${item.key}: ${item.value.dark}`)
-        return result
-      },
-      { light: [], dark: [] },
-    )
+
+    const defaultTheme = []
+    const themes = group.children.reduce((result, item) => {
+      defaultTheme.push(`${item.key}: ${item.token}`)
+      item.themeTokens.forEach(({ theme, token }) => {
+        if (!result[theme]) {
+          result[theme] = []
+        }
+
+        result[theme].push(`${item.key}: ${token}`)
+      })
+
+      return result
+    }, {})
 
     const content = `:root {
-      ${light.join(';')}
+      ${defaultTheme.join(';')}
     }
-    html[data-theme='dark'] {
-      ${dark.join(';')}
-    }
+    ${Object.keys(themes).map((theme) => {
+      return `html[data-theme='${theme}'] {
+        ${themes[theme].join(';')}
+      }`
+    })}
     `
 
     file.writeFile(path.resolve(outputPath, group.fileName), format(content))
@@ -135,15 +151,21 @@ function generateTokenFiles(groupTokens) {
   file.writeFile(path.resolve(outputPath, 'index.css'), format(imports.join('')))
 }
 
-const lightSourceFilePath = resolvePath(opts.light)
-const darkSourceFilePath = resolvePath(opts.dark)
+const sourceFilePath = resolvePath(opts.source)
+const themes = opts.theme
+  .split(',')
+  .filter(Boolean)
+  .map((themeExpression) => {
+    const { theme, themeFilePath } = parseThemeExpression(themeExpression)
+    return { theme, themeFilePath: resolvePath(themeFilePath) }
+  })
 
-const lightJSON = require(lightSourceFilePath)
-const darkJSON = require(darkSourceFilePath)
+const sourceTokens = flatten(require(sourceFilePath))
+const themeTokens = themes.map(({ theme, themeFilePath }) => {
+  return {
+    theme,
+    tokens: flatten(require(themeFilePath)),
+  }
+})
 
-const lightTokenMap = flatten(lightJSON)
-const darkTokenMap = flatten(darkJSON)
-
-const groupTokens = groupTokenMap(lightTokenMap, darkTokenMap)
-
-generateTokenFiles(groupTokens)
+generateTokenFiles(groupTokens(sourceTokens, themeTokens))
