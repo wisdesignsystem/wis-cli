@@ -31,7 +31,19 @@ token
 token.parse()
 
 const opts = token.opts()
-const whitelist = ['size', 'icon', 'color', 'gradient', 'border', 'padding', 'margin', 'font', 'shadow', 'background']
+const whitelist = [
+  'size',
+  'icon',
+  'color',
+  'gradient',
+  'border',
+  'padding',
+  'margin',
+  'space',
+  'font',
+  'shadow',
+  'background',
+]
 
 function isTokenValue(data) {
   return '$type' in data && '$value' in data
@@ -111,7 +123,8 @@ function groupTokens(sourceToken, themeTokens) {
 }
 
 function format(content) {
-  return prettier.format(content, { parser: 'css' })
+  const config = prettier.resolveConfig()
+  return prettier.format(content, { ...config, parser: 'css' })
 }
 
 const outputPath = resolvePath(opts.output)
