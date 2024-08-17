@@ -6,6 +6,10 @@
   "license": "MIT",
   "main": "dist/icons.esm.js",
   "module": "dist/icons.esm.js",
+  "files": [
+    "dist",
+    "components"
+  ],
   "type": "module",
   "scripts": {
     "create": "node ./scripts/icons.js",
