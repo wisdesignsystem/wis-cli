@@ -98,6 +98,7 @@ class Webpack {
     this.config.set('watch', !this.env.isProduction)
 
     this.config.set('output', {
+      clean: true,
       path: this.context.path.dist,
       filename: this.env.isProduction ? 'static/js/[name].[contenthash:8].js' : 'static/js/[name].js',
       chunkFilename: this.env.isProduction ? 'static/js/[name].[contenthash:8].chunk.js' : 'static/js/[name].chunk.js',
@@ -564,6 +565,8 @@ class Webpack {
 
   optimization() {
     this.config.set('optimization', {
+      chunkIds: 'named',
+      usedExports: true,
       minimize: this.env.isProduction,
       minimizer: [],
     })
@@ -639,6 +642,10 @@ class Webpack {
     // 启用gzip
     if (this.env.isEnableGzip) {
       this.registerCompressionPlugin()
+    }
+
+    if (this.env.isEnableAnalyzer) {
+      this.registerBundleAnalyzerPlugin()
     }
 
     this.context.config.webpackConfigure(this.config)

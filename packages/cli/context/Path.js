@@ -9,7 +9,7 @@ class Path extends Parser {
     const runtimePath = process.cwd()
     const srcPath = path.resolve(runtimePath, 'src')
     const publicPath = path.resolve(runtimePath, './public')
-    const prodComplierPath = path.resolve(srcPath, '.wis.prod')
+    const prodComplierPath = path.resolve(srcPath, '.wis')
     const devComplierPath = path.resolve(srcPath, '.wis')
     const complierPath = process.env.NODE_ENV === 'production' ? prodComplierPath : devComplierPath
 

@@ -3,4 +3,4 @@
 **/*.log
 **/.DS_Store
 **/.wis
-**/.wis.prod
+**/.env.local

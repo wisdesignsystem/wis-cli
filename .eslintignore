@@ -4,3 +4,5 @@
 **/templates
 **/templates-react
 examples
+packages/icons/components
+**/dist

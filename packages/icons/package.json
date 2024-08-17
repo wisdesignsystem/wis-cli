@@ -1,0 +1,41 @@
+{
+  "name": "@wisdesign/icons",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "dist/icons.esm.js",
+  "module": "dist/icons.esm.js",
+  "type": "module",
+  "scripts": {
+    "create": "node ./scripts/icons.js",
+    "build": "NODE_ENV=production rollup -c"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^16",
+    "react-dom": "^16"
+  },
+  "devDependencies": {
+    "@babel/core": "7.23.2",
+    "@babel/plugin-transform-runtime": "7.23.2",
+    "@babel/preset-env": "7.23.2",
+    "@babel/preset-react": "7.22.15",
+    "@figma-export/core": "6.0.0",
+    "@figma-export/output-components-as-svgr": "6.0.1",
+    "@figma-export/transform-svg-with-svgo": "6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.20.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "@prettier/sync": "0.5.2",
+    "@svgr/plugin-jsx": "8.1.0",
+    "@wisdesign/utils": "workspace:*",
+    "dotenv": "16.3.1",
+    "dotenv-expand": "10.0.0",
+    "ora": "8.0.1",
+    "prettier": "3.3.1"
+  }
+}

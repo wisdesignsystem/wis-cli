@@ -19,7 +19,9 @@
     "changeset": "npx changeset",
     "version": "pnpm changeset version && node ./scripts/version.js",
     "publish": "pnpm publish -r",
-    "clean": "rm -rf node_modules **/*/node_modules"
+    "clean": "rm -rf node_modules **/*/node_modules",
+    "create:icons": "pnpm --filter @wisdesign/icons create",
+    "build:icons": "pnpm --filter @wisdesign/icons build"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [

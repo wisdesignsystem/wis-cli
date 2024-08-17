@@ -7,8 +7,7 @@
   "main": "index.js",
   "type": "module",
   "bin": {
-    "token": "bin/token.js",
-    "icon": "bin/icon.js"
+    "token": "bin/token.js"
   },
   "publishConfig": {
     "access": "public"
