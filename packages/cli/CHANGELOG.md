@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.9
+
+### Patch Changes
+
+- 33ad706: [feature] add webpack clean and replace .wis.prod by .wis
+
 ## 0.0.8
 
 ### Patch Changes
