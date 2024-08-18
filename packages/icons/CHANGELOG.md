@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.3
+
+### Patch Changes
+
+- 1e92fa2: [feature] generate wis icons
+
 ## 0.0.2
 
 ### Patch Changes
