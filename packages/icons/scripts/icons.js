@@ -159,6 +159,8 @@ async function icon(iconOption) {
           const category = getComponentCategory(option)
           const suffix = getComponentStyle(componentName)
 
+          const exportComponentName = `${componentName}Icon`
+
           const styleItem = styles.find((item) => item.name === suffix)
           let categoryItem = styleItem.children.find((item) => item.name === category)
           if (!categoryItem) {
@@ -174,12 +176,13 @@ async function icon(iconOption) {
           if (!visited[componentName]) {
             categoryItem.children.push({
               type: 'component',
-              name: componentName,
+              title: componentName,
+              name: exportComponentName,
             })
             visited[componentName] = true
           }
 
-          return componentName
+          return exportComponentName
         },
         getSvgrConfig: () => {
           return {

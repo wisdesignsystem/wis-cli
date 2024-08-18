@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-const LeftBig = (props) =>
+const LeftBigIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -15,7 +15,7 @@ const LeftBig = (props) =>
     ),
   )
 
-const RightBig = (props) =>
+const RightBigIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -30,7 +30,7 @@ const RightBig = (props) =>
     ),
   )
 
-const Up = (props) =>
+const UpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -41,7 +41,7 @@ const Up = (props) =>
     ),
   )
 
-const Down = (props) =>
+const DownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -52,7 +52,7 @@ const Down = (props) =>
     ),
   )
 
-const Left = (props) =>
+const LeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -63,7 +63,7 @@ const Left = (props) =>
     ),
   )
 
-const Right = (props) =>
+const RightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -74,7 +74,7 @@ const Right = (props) =>
     ),
   )
 
-const DoubleArrowUp = (props) =>
+const DoubleArrowUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -89,7 +89,7 @@ const DoubleArrowUp = (props) =>
     ),
   )
 
-const DoubleArrowDown = (props) =>
+const DoubleArrowDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -106,7 +106,7 @@ const DoubleArrowDown = (props) =>
     ),
   )
 
-const DoubleArrowLeft = (props) =>
+const DoubleArrowLeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -121,7 +121,7 @@ const DoubleArrowLeft = (props) =>
     ),
   )
 
-const DoubleArrowRight = (props) =>
+const DoubleArrowRightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -136,7 +136,7 @@ const DoubleArrowRight = (props) =>
     ),
   )
 
-const ArrowUp = (props) =>
+const ArrowUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -151,7 +151,7 @@ const ArrowUp = (props) =>
     ),
   )
 
-const ArrowDown = (props) =>
+const ArrowDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -166,7 +166,7 @@ const ArrowDown = (props) =>
     ),
   )
 
-const Home = (props) =>
+const HomeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -181,7 +181,7 @@ const Home = (props) =>
     ),
   )
 
-const ArrowLeft = (props) =>
+const ArrowLeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -196,7 +196,7 @@ const ArrowLeft = (props) =>
     ),
   )
 
-const MenuThwartwise = (props) =>
+const MenuThwartwiseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -211,7 +211,7 @@ const MenuThwartwise = (props) =>
     ),
   )
 
-const Menu2 = (props) =>
+const Menu2Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -226,7 +226,7 @@ const Menu2 = (props) =>
     ),
   )
 
-const ArrowRight = (props) =>
+const ArrowRightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -241,7 +241,7 @@ const ArrowRight = (props) =>
     ),
   )
 
-const MenuEndways = (props) =>
+const MenuEndwaysIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -256,7 +256,7 @@ const MenuEndways = (props) =>
     ),
   )
 
-const CloseSmall = (props) =>
+const CloseSmallIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -271,7 +271,7 @@ const CloseSmall = (props) =>
     ),
   )
 
-const Apps = (props) =>
+const AppsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -289,7 +289,7 @@ const Apps = (props) =>
     ),
   )
 
-const OpenNew = (props) =>
+const OpenNewIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -304,7 +304,7 @@ const OpenNew = (props) =>
     ),
   )
 
-const ShellWindowMaximize = (props) =>
+const ShellWindowMaximizeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -319,7 +319,7 @@ const ShellWindowMaximize = (props) =>
     ),
   )
 
-const ShellWindowMinimize = (props) =>
+const ShellWindowMinimizeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -330,7 +330,7 @@ const ShellWindowMinimize = (props) =>
     ),
   )
 
-const TriangleRight = (props) =>
+const TriangleRightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -345,7 +345,7 @@ const TriangleRight = (props) =>
     ),
   )
 
-const Sort = (props) =>
+const SortIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -365,7 +365,7 @@ const Sort = (props) =>
     ),
   )
 
-const TriangleUp = (props) =>
+const TriangleUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -380,7 +380,7 @@ const TriangleUp = (props) =>
     ),
   )
 
-const TriangleDown = (props) =>
+const TriangleDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -395,7 +395,7 @@ const TriangleDown = (props) =>
     ),
   )
 
-const Question = (props) =>
+const QuestionIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -418,7 +418,7 @@ const Question = (props) =>
     ),
   )
 
-const CircleInformation = (props) =>
+const CircleInformationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -440,7 +440,7 @@ const CircleInformation = (props) =>
     ),
   )
 
-const TriangleWarning = (props) =>
+const TriangleWarningIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -457,7 +457,7 @@ const TriangleWarning = (props) =>
     ),
   )
 
-const Wifi = (props) =>
+const WifiIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -478,7 +478,7 @@ const Wifi = (props) =>
     ),
   )
 
-const WifiAbnormal = (props) =>
+const WifiAbnormalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -496,7 +496,7 @@ const WifiAbnormal = (props) =>
     ),
   )
 
-const WifiClose = (props) =>
+const WifiCloseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -513,7 +513,7 @@ const WifiClose = (props) =>
     ),
   )
 
-const CircleMore = (props) =>
+const CircleMoreIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -530,7 +530,7 @@ const CircleMore = (props) =>
     ),
   )
 
-const More = (props) =>
+const MoreIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -547,7 +547,7 @@ const More = (props) =>
     ),
   )
 
-const CircleHelp = (props) =>
+const CircleHelpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -564,7 +564,7 @@ const CircleHelp = (props) =>
     ),
   )
 
-const RemindClose = (props) =>
+const RemindCloseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -579,7 +579,7 @@ const RemindClose = (props) =>
     ),
   )
 
-const CircleWarning = (props) =>
+const CircleWarningIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -598,7 +598,7 @@ const CircleWarning = (props) =>
     ),
   )
 
-const Exclamation = (props) =>
+const ExclamationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -616,7 +616,7 @@ const Exclamation = (props) =>
     ),
   )
 
-const AddChat2 = (props) =>
+const AddChat2Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -640,7 +640,7 @@ const AddChat2 = (props) =>
     ),
   )
 
-const Drag = (props) =>
+const DragIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -682,7 +682,7 @@ const Drag = (props) =>
     ),
   )
 
-const Phone = (props) =>
+const PhoneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -697,7 +697,7 @@ const Phone = (props) =>
     ),
   )
 
-const RefreshDone = (props) =>
+const RefreshDoneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -719,7 +719,7 @@ const RefreshDone = (props) =>
     ),
   )
 
-const RefreshDoing = (props) =>
+const RefreshDoingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -737,7 +737,7 @@ const RefreshDoing = (props) =>
     ),
   )
 
-const Refresh = (props) =>
+const RefreshIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -754,7 +754,7 @@ const Refresh = (props) =>
     ),
   )
 
-const Clockwise90 = (props) =>
+const Clockwise90Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -806,7 +806,7 @@ const Clockwise90 = (props) =>
     ),
   )
 
-const Decimal = (props) =>
+const DecimalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -832,7 +832,7 @@ const Decimal = (props) =>
     ),
   )
 
-const No = (props) =>
+const NoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -853,7 +853,7 @@ const No = (props) =>
     ),
   )
 
-const ScatterDiagram = (props) =>
+const ScatterDiagramIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -900,7 +900,7 @@ const ScatterDiagram = (props) =>
     ),
   )
 
-const PieTwo = (props) =>
+const PieTwoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -922,7 +922,7 @@ const PieTwo = (props) =>
     ),
   )
 
-const Lock = (props) =>
+const LockIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -937,7 +937,7 @@ const Lock = (props) =>
     ),
   )
 
-const Unlock = (props) =>
+const UnlockIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -952,7 +952,7 @@ const Unlock = (props) =>
     ),
   )
 
-const SandGlass = (props) =>
+const SandGlassIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -967,7 +967,7 @@ const SandGlass = (props) =>
     ),
   )
 
-const Time = (props) =>
+const TimeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -982,7 +982,7 @@ const Time = (props) =>
     ),
   )
 
-const Leaf = (props) =>
+const LeafIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -997,7 +997,7 @@ const Leaf = (props) =>
     ),
   )
 
-const PackingBox = (props) =>
+const PackingBoxIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1012,7 +1012,7 @@ const PackingBox = (props) =>
     ),
   )
 
-const Amount = (props) =>
+const AmountIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1027,7 +1027,7 @@ const Amount = (props) =>
     ),
   )
 
-const Purse = (props) =>
+const PurseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1042,7 +1042,7 @@ const Purse = (props) =>
     ),
   )
 
-const Fire = (props) =>
+const FireIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1057,7 +1057,7 @@ const Fire = (props) =>
     ),
   )
 
-const Gift = (props) =>
+const GiftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1072,7 +1072,7 @@ const Gift = (props) =>
     ),
   )
 
-const Label = (props) =>
+const LabelIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1087,7 +1087,7 @@ const Label = (props) =>
     ),
   )
 
-const Location = (props) =>
+const LocationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1104,7 +1104,7 @@ const Location = (props) =>
     ),
   )
 
-const Park = (props) =>
+const ParkIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1119,7 +1119,7 @@ const Park = (props) =>
     ),
   )
 
-const Hospital = (props) =>
+const HospitalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1134,7 +1134,7 @@ const Hospital = (props) =>
     ),
   )
 
-const School = (props) =>
+const SchoolIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1149,7 +1149,7 @@ const School = (props) =>
     ),
   )
 
-const Shopping = (props) =>
+const ShoppingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1164,7 +1164,7 @@ const Shopping = (props) =>
     ),
   )
 
-const Basket = (props) =>
+const BasketIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1179,7 +1179,7 @@ const Basket = (props) =>
     ),
   )
 
-const Berth = (props) =>
+const BerthIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1194,7 +1194,7 @@ const Berth = (props) =>
     ),
   )
 
-const Soup = (props) =>
+const SoupIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1209,7 +1209,7 @@ const Soup = (props) =>
     ),
   )
 
-const Bun = (props) =>
+const BunIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1224,7 +1224,7 @@ const Bun = (props) =>
     ),
   )
 
-const StapleFood = (props) =>
+const StapleFoodIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1239,7 +1239,7 @@ const StapleFood = (props) =>
     ),
   )
 
-const Bunch = (props) =>
+const BunchIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1254,7 +1254,7 @@ const Bunch = (props) =>
     ),
   )
 
-const Chips = (props) =>
+const ChipsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1269,7 +1269,7 @@ const Chips = (props) =>
     ),
   )
 
-const Order = (props) =>
+const OrderIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1284,7 +1284,7 @@ const Order = (props) =>
     ),
   )
 
-const Chef = (props) =>
+const ChefIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1299,7 +1299,7 @@ const Chef = (props) =>
     ),
   )
 
-const Sunny = (props) =>
+const SunnyIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1314,7 +1314,7 @@ const Sunny = (props) =>
     ),
   )
 
-const Cloudy = (props) =>
+const CloudyIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1329,7 +1329,7 @@ const Cloudy = (props) =>
     ),
   )
 
-const LightRain = (props) =>
+const LightRainIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1344,7 +1344,7 @@ const LightRain = (props) =>
     ),
   )
 
-const HeavyRain = (props) =>
+const HeavyRainIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1359,7 +1359,7 @@ const HeavyRain = (props) =>
     ),
   )
 
-const LightSnow = (props) =>
+const LightSnowIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1374,7 +1374,7 @@ const LightSnow = (props) =>
     ),
   )
 
-const HeavySnow = (props) =>
+const HeavySnowIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1389,7 +1389,7 @@ const HeavySnow = (props) =>
     ),
   )
 
-const Haze = (props) =>
+const HazeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1404,7 +1404,7 @@ const Haze = (props) =>
     ),
   )
 
-const Sand = (props) =>
+const SandIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1419,7 +1419,7 @@ const Sand = (props) =>
     ),
   )
 
-const Music = (props) =>
+const MusicIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1434,7 +1434,7 @@ const Music = (props) =>
     ),
   )
 
-const Computer = (props) =>
+const ComputerIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1449,7 +1449,7 @@ const Computer = (props) =>
     ),
   )
 
-const Building = (props) =>
+const BuildingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1464,7 +1464,7 @@ const Building = (props) =>
     ),
   )
 
-const Comments = (props) =>
+const CommentsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1479,7 +1479,7 @@ const Comments = (props) =>
     ),
   )
 
-const Coupon = (props) =>
+const CouponIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1494,7 +1494,7 @@ const Coupon = (props) =>
     ),
   )
 
-const Checkstand = (props) =>
+const CheckstandIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1509,7 +1509,7 @@ const Checkstand = (props) =>
     ),
   )
 
-const Store = (props) =>
+const StoreIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1524,7 +1524,7 @@ const Store = (props) =>
     ),
   )
 
-const House = (props) =>
+const HouseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1539,7 +1539,7 @@ const House = (props) =>
     ),
   )
 
-const Calendar = (props) =>
+const CalendarIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1554,7 +1554,7 @@ const Calendar = (props) =>
     ),
   )
 
-const Stamp = (props) =>
+const StampIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1569,7 +1569,7 @@ const Stamp = (props) =>
     ),
   )
 
-const Picture = (props) =>
+const PictureIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1584,7 +1584,7 @@ const Picture = (props) =>
     ),
   )
 
-const PictureOff = (props) =>
+const PictureOffIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1599,7 +1599,7 @@ const PictureOff = (props) =>
     ),
   )
 
-const QrCode = (props) =>
+const QrCodeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1614,7 +1614,7 @@ const QrCode = (props) =>
     ),
   )
 
-const Gather = (props) =>
+const GatherIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1629,7 +1629,7 @@ const Gather = (props) =>
     ),
   )
 
-const Puzzle = (props) =>
+const PuzzleIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1644,7 +1644,7 @@ const Puzzle = (props) =>
     ),
   )
 
-const BarCode = (props) =>
+const BarCodeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1659,7 +1659,7 @@ const BarCode = (props) =>
     ),
   )
 
-const Handshake = (props) =>
+const HandshakeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1674,7 +1674,7 @@ const Handshake = (props) =>
     ),
   )
 
-const Flag = (props) =>
+const FlagIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1689,7 +1689,7 @@ const Flag = (props) =>
     ),
   )
 
-const Motorcycle = (props) =>
+const MotorcycleIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1704,7 +1704,7 @@ const Motorcycle = (props) =>
     ),
   )
 
-const Shield = (props) =>
+const ShieldIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1719,7 +1719,7 @@ const Shield = (props) =>
     ),
   )
 
-const Vip = (props) =>
+const VipIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1734,7 +1734,7 @@ const Vip = (props) =>
     ),
   )
 
-const Calculator = (props) =>
+const CalculatorIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1749,7 +1749,7 @@ const Calculator = (props) =>
     ),
   )
 
-const Equipment = (props) =>
+const EquipmentIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1764,7 +1764,7 @@ const Equipment = (props) =>
     ),
   )
 
-const OnlineGateway = (props) =>
+const OnlineGatewayIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1779,7 +1779,7 @@ const OnlineGateway = (props) =>
     ),
   )
 
-const OfflineGateway = (props) =>
+const OfflineGatewayIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1794,7 +1794,7 @@ const OfflineGateway = (props) =>
     ),
   )
 
-const Monitoring = (props) =>
+const MonitoringIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1809,7 +1809,7 @@ const Monitoring = (props) =>
     ),
   )
 
-const Promotion = (props) =>
+const PromotionIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1824,7 +1824,7 @@ const Promotion = (props) =>
     ),
   )
 
-const Service = (props) =>
+const ServiceIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1839,7 +1839,7 @@ const Service = (props) =>
     ),
   )
 
-const ShoppingCart = (props) =>
+const ShoppingCartIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1854,7 +1854,7 @@ const ShoppingCart = (props) =>
     ),
   )
 
-const Camera = (props) =>
+const CameraIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1869,7 +1869,7 @@ const Camera = (props) =>
     ),
   )
 
-const Earth = (props) =>
+const EarthIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1884,7 +1884,7 @@ const Earth = (props) =>
     ),
   )
 
-const EmailSend = (props) =>
+const EmailSendIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1899,7 +1899,7 @@ const EmailSend = (props) =>
     ),
   )
 
-const PushMgt = (props) =>
+const PushMgtIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1914,7 +1914,7 @@ const PushMgt = (props) =>
     ),
   )
 
-const New = (props) =>
+const NewIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1948,7 +1948,7 @@ const New = (props) =>
     ),
   )
 
-const Deal = (props) =>
+const DealIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -1989,7 +1989,7 @@ const Deal = (props) =>
     ),
   )
 
-const Incubator = (props) =>
+const IncubatorIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2006,7 +2006,7 @@ const Incubator = (props) =>
     ),
   )
 
-const MiniApp = (props) =>
+const MiniAppIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2030,7 +2030,7 @@ const MiniApp = (props) =>
     ),
   )
 
-const Shelf = (props) =>
+const ShelfIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2047,7 +2047,7 @@ const Shelf = (props) =>
     ),
   )
 
-const PickingAll = (props) =>
+const PickingAllIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2064,7 +2064,7 @@ const PickingAll = (props) =>
     ),
   )
 
-const WorkingOdd = (props) =>
+const WorkingOddIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2103,7 +2103,7 @@ const WorkingOdd = (props) =>
     ),
   )
 
-const WorkOrderAbnormal = (props) =>
+const WorkOrderAbnormalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2120,7 +2120,7 @@ const WorkOrderAbnormal = (props) =>
     ),
   )
 
-const FileAvi = (props) =>
+const FileAviIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2137,7 +2137,7 @@ const FileAvi = (props) =>
     ),
   )
 
-const FileTxt = (props) =>
+const FileTxtIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2154,7 +2154,7 @@ const FileTxt = (props) =>
     ),
   )
 
-const FilePng = (props) =>
+const FilePngIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2171,7 +2171,7 @@ const FilePng = (props) =>
     ),
   )
 
-const FileJpg = (props) =>
+const FileJpgIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2188,7 +2188,7 @@ const FileJpg = (props) =>
     ),
   )
 
-const FileZip = (props) =>
+const FileZipIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2213,7 +2213,7 @@ const FileZip = (props) =>
     ),
   )
 
-const FileXls = (props) =>
+const FileXlsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2235,7 +2235,7 @@ const FileXls = (props) =>
     ),
   )
 
-const FileRar = (props) =>
+const FileRarIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2252,7 +2252,7 @@ const FileRar = (props) =>
     ),
   )
 
-const FilePpt = (props) =>
+const FilePptIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2269,7 +2269,7 @@ const FilePpt = (props) =>
     ),
   )
 
-const FilePdf = (props) =>
+const FilePdfIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2286,7 +2286,7 @@ const FilePdf = (props) =>
     ),
   )
 
-const FileMov = (props) =>
+const FileMovIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2303,7 +2303,7 @@ const FileMov = (props) =>
     ),
   )
 
-const FileMp3 = (props) =>
+const FileMp3Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2320,7 +2320,7 @@ const FileMp3 = (props) =>
     ),
   )
 
-const FileMp4 = (props) =>
+const FileMp4Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2352,7 +2352,7 @@ const FileMp4 = (props) =>
     ),
   )
 
-const FileDoc = (props) =>
+const FileDocIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2369,7 +2369,7 @@ const FileDoc = (props) =>
     ),
   )
 
-const FileCdr = (props) =>
+const FileCdrIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2386,7 +2386,7 @@ const FileCdr = (props) =>
     ),
   )
 
-const FileCsv = (props) =>
+const FileCsvIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2419,7 +2419,7 @@ const FileCsv = (props) =>
     ),
   )
 
-const Remind = (props) =>
+const RemindIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2434,7 +2434,7 @@ const Remind = (props) =>
     ),
   )
 
-const AddOne = (props) =>
+const AddOneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2445,7 +2445,7 @@ const AddOne = (props) =>
     ),
   )
 
-const Minus = (props) =>
+const MinusIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2460,7 +2460,7 @@ const Minus = (props) =>
     ),
   )
 
-const Disable = (props) =>
+const DisableIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2475,7 +2475,7 @@ const Disable = (props) =>
     ),
   )
 
-const CircleClose = (props) =>
+const CircleCloseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2490,7 +2490,7 @@ const CircleClose = (props) =>
     ),
   )
 
-const CircleStar = (props) =>
+const CircleStarIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2512,7 +2512,7 @@ const CircleStar = (props) =>
     ),
   )
 
-const CircleAdd = (props) =>
+const CircleAddIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2527,7 +2527,7 @@ const CircleAdd = (props) =>
     ),
   )
 
-const CircleSucceed = (props) =>
+const CircleSucceedIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2542,7 +2542,7 @@ const CircleSucceed = (props) =>
     ),
   )
 
-const Check = (props) =>
+const CheckIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2553,7 +2553,7 @@ const Check = (props) =>
     ),
   )
 
-const Clear = (props) =>
+const ClearIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2568,7 +2568,7 @@ const Clear = (props) =>
     ),
   )
 
-const MoveUp = (props) =>
+const MoveUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2583,7 +2583,7 @@ const MoveUp = (props) =>
     ),
   )
 
-const MoveDown = (props) =>
+const MoveDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2598,7 +2598,7 @@ const MoveDown = (props) =>
     ),
   )
 
-const Undo = (props) =>
+const UndoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2613,7 +2613,7 @@ const Undo = (props) =>
     ),
   )
 
-const ThumbDown = (props) =>
+const ThumbDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2628,7 +2628,7 @@ const ThumbDown = (props) =>
     ),
   )
 
-const ThumbUp = (props) =>
+const ThumbUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2643,7 +2643,7 @@ const ThumbUp = (props) =>
     ),
   )
 
-const Pin = (props) =>
+const PinIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2658,7 +2658,7 @@ const Pin = (props) =>
     ),
   )
 
-const PinPre = (props) =>
+const PinPreIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2673,7 +2673,7 @@ const PinPre = (props) =>
     ),
   )
 
-const View = (props) =>
+const ViewIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2699,7 +2699,7 @@ const View = (props) =>
     ),
   )
 
-const ViewOff = (props) =>
+const ViewOffIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2733,7 +2733,7 @@ const ViewOff = (props) =>
     ),
   )
 
-const InfuseOne = (props) =>
+const InfuseOneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2748,7 +2748,7 @@ const InfuseOne = (props) =>
     ),
   )
 
-const Download = (props) =>
+const DownloadIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2763,7 +2763,7 @@ const Download = (props) =>
     ),
   )
 
-const Uploading = (props) =>
+const UploadingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2778,7 +2778,7 @@ const Uploading = (props) =>
     ),
   )
 
-const ToTop = (props) =>
+const ToTopIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2793,7 +2793,7 @@ const ToTop = (props) =>
     ),
   )
 
-const Top = (props) =>
+const TopIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2808,7 +2808,7 @@ const Top = (props) =>
     ),
   )
 
-const Goto = (props) =>
+const GotoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2823,7 +2823,7 @@ const Goto = (props) =>
     ),
   )
 
-const ToBottom = (props) =>
+const ToBottomIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2838,7 +2838,7 @@ const ToBottom = (props) =>
     ),
   )
 
-const Link = (props) =>
+const LinkIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2853,7 +2853,7 @@ const Link = (props) =>
     ),
   )
 
-const Unlink = (props) =>
+const UnlinkIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2868,7 +2868,7 @@ const Unlink = (props) =>
     ),
   )
 
-const InfuseTwo = (props) =>
+const InfuseTwoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2883,7 +2883,7 @@ const InfuseTwo = (props) =>
     ),
   )
 
-const ExportTwo = (props) =>
+const ExportTwoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2898,7 +2898,7 @@ const ExportTwo = (props) =>
     ),
   )
 
-const Control = (props) =>
+const ControlIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2913,7 +2913,7 @@ const Control = (props) =>
     ),
   )
 
-const Decorate = (props) =>
+const DecorateIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2928,7 +2928,7 @@ const Decorate = (props) =>
     ),
   )
 
-const FormatPainter = (props) =>
+const FormatPainterIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2943,7 +2943,7 @@ const FormatPainter = (props) =>
     ),
   )
 
-const CopyOne = (props) =>
+const CopyOneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2958,7 +2958,7 @@ const CopyOne = (props) =>
     ),
   )
 
-const Delete = (props) =>
+const DeleteIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2973,7 +2973,7 @@ const Delete = (props) =>
     ),
   )
 
-const MapLocation = (props) =>
+const MapLocationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -2988,7 +2988,7 @@ const MapLocation = (props) =>
     ),
   )
 
-const Scan = (props) =>
+const ScanIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3003,7 +3003,7 @@ const Scan = (props) =>
     ),
   )
 
-const Filter = (props) =>
+const FilterIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3018,7 +3018,7 @@ const Filter = (props) =>
     ),
   )
 
-const Switch = (props) =>
+const SwitchIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3033,7 +3033,7 @@ const Switch = (props) =>
     ),
   )
 
-const Share = (props) =>
+const ShareIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3048,7 +3048,7 @@ const Share = (props) =>
     ),
   )
 
-const SettingSearch = (props) =>
+const SettingSearchIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3063,7 +3063,7 @@ const SettingSearch = (props) =>
     ),
   )
 
-const Setting = (props) =>
+const SettingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3085,7 +3085,7 @@ const Setting = (props) =>
     ),
   )
 
-const Swerve = (props) =>
+const SwerveIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3100,7 +3100,7 @@ const Swerve = (props) =>
     ),
   )
 
-const Urgency = (props) =>
+const UrgencyIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3115,7 +3115,7 @@ const Urgency = (props) =>
     ),
   )
 
-const Save = (props) =>
+const SaveIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3130,7 +3130,7 @@ const Save = (props) =>
     ),
   )
 
-const SaveAs = (props) =>
+const SaveAsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3150,7 +3150,7 @@ const SaveAs = (props) =>
     ),
   )
 
-const Print = (props) =>
+const PrintIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3165,7 +3165,7 @@ const Print = (props) =>
     ),
   )
 
-const Power = (props) =>
+const PowerIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3180,7 +3180,7 @@ const Power = (props) =>
     ),
   )
 
-const AmountUp = (props) =>
+const AmountUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3195,7 +3195,7 @@ const AmountUp = (props) =>
     ),
   )
 
-const AmountDown = (props) =>
+const AmountDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3210,7 +3210,7 @@ const AmountDown = (props) =>
     ),
   )
 
-const Submit = (props) =>
+const SubmitIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3225,7 +3225,7 @@ const Submit = (props) =>
     ),
   )
 
-const Search = (props) =>
+const SearchIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3240,7 +3240,7 @@ const Search = (props) =>
     ),
   )
 
-const Checkbox = (props) =>
+const CheckboxIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3255,7 +3255,7 @@ const Checkbox = (props) =>
     ),
   )
 
-const Export = (props) =>
+const ExportIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3270,7 +3270,7 @@ const Export = (props) =>
     ),
   )
 
-const CheckCorrect = (props) =>
+const CheckCorrectIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3287,7 +3287,7 @@ const CheckCorrect = (props) =>
     ),
   )
 
-const CheckDisabled = (props) =>
+const CheckDisabledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3305,7 +3305,7 @@ const CheckDisabled = (props) =>
     ),
   )
 
-const RadioUnselected = (props) =>
+const RadioUnselectedIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3320,7 +3320,7 @@ const RadioUnselected = (props) =>
     ),
   )
 
-const RadioSelected = (props) =>
+const RadioSelectedIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3350,7 +3350,7 @@ const RadioSelected = (props) =>
     ),
   )
 
-const Translate = (props) =>
+const TranslateIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3365,7 +3365,7 @@ const Translate = (props) =>
     ),
   )
 
-const Clothes = (props) =>
+const ClothesIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3380,7 +3380,7 @@ const Clothes = (props) =>
     ),
   )
 
-const Paste = (props) =>
+const PasteIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3395,7 +3395,7 @@ const Paste = (props) =>
     ),
   )
 
-const Rollback = (props) =>
+const RollbackIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3410,7 +3410,7 @@ const Rollback = (props) =>
     ),
   )
 
-const BatchCheck = (props) =>
+const BatchCheckIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3425,7 +3425,7 @@ const BatchCheck = (props) =>
     ),
   )
 
-const BatchAdd = (props) =>
+const BatchAddIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3440,7 +3440,7 @@ const BatchAdd = (props) =>
     ),
   )
 
-const Microphone = (props) =>
+const MicrophoneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3455,7 +3455,7 @@ const Microphone = (props) =>
     ),
   )
 
-const AddChat = (props) =>
+const AddChatIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3472,7 +3472,7 @@ const AddChat = (props) =>
     ),
   )
 
-const SortDefault = (props) =>
+const SortDefaultIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3489,7 +3489,7 @@ const SortDefault = (props) =>
     ),
   )
 
-const SortA2Z = (props) =>
+const SortA2ZIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3504,7 +3504,7 @@ const SortA2Z = (props) =>
     ),
   )
 
-const SortZ2A = (props) =>
+const SortZ2AIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3519,7 +3519,7 @@ const SortZ2A = (props) =>
     ),
   )
 
-const ScreenFull = (props) =>
+const ScreenFullIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3534,7 +3534,7 @@ const ScreenFull = (props) =>
     ),
   )
 
-const ScreenOff = (props) =>
+const ScreenOffIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3549,7 +3549,7 @@ const ScreenOff = (props) =>
     ),
   )
 
-const Move = (props) =>
+const MoveIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3564,7 +3564,7 @@ const Move = (props) =>
     ),
   )
 
-const Pointer = (props) =>
+const PointerIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3579,7 +3579,7 @@ const Pointer = (props) =>
     ),
   )
 
-const Coverage = (props) =>
+const CoverageIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3594,7 +3594,7 @@ const Coverage = (props) =>
     ),
   )
 
-const SurfaceTop = (props) =>
+const SurfaceTopIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3609,7 +3609,7 @@ const SurfaceTop = (props) =>
     ),
   )
 
-const SurfaceLeft = (props) =>
+const SurfaceLeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3624,7 +3624,7 @@ const SurfaceLeft = (props) =>
     ),
   )
 
-const SurfaceRight = (props) =>
+const SurfaceRightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3639,7 +3639,7 @@ const SurfaceRight = (props) =>
     ),
   )
 
-const Anticlockwise90 = (props) =>
+const Anticlockwise90Icon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3679,7 +3679,7 @@ const Anticlockwise90 = (props) =>
     ),
   )
 
-const CopyTwo = (props) =>
+const CopyTwoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3696,7 +3696,7 @@ const CopyTwo = (props) =>
     ),
   )
 
-const Hight = (props) =>
+const HightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3713,7 +3713,7 @@ const Hight = (props) =>
     ),
   )
 
-const HightLessen = (props) =>
+const HightLessenIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3730,7 +3730,7 @@ const HightLessen = (props) =>
     ),
   )
 
-const Width = (props) =>
+const WidthIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3746,7 +3746,7 @@ const Width = (props) =>
     ),
   )
 
-const VerticalSplit = (props) =>
+const VerticalSplitIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3766,7 +3766,7 @@ const VerticalSplit = (props) =>
     ),
   )
 
-const VerticalCenter = (props) =>
+const VerticalCenterIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3781,7 +3781,7 @@ const VerticalCenter = (props) =>
     ),
   )
 
-const CenterHorizontally = (props) =>
+const CenterHorizontallyIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3796,7 +3796,7 @@ const CenterHorizontally = (props) =>
     ),
   )
 
-const TopAlign = (props) =>
+const TopAlignIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3811,7 +3811,7 @@ const TopAlign = (props) =>
     ),
   )
 
-const BottomAlign = (props) =>
+const BottomAlignIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3826,7 +3826,7 @@ const BottomAlign = (props) =>
     ),
   )
 
-const FrontSquare = (props) =>
+const FrontSquareIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3841,7 +3841,7 @@ const FrontSquare = (props) =>
     ),
   )
 
-const BackSquare = (props) =>
+const BackSquareIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3856,7 +3856,7 @@ const BackSquare = (props) =>
     ),
   )
 
-const LeftSquare = (props) =>
+const LeftSquareIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3877,7 +3877,7 @@ const LeftSquare = (props) =>
     ),
   )
 
-const RightSquare = (props) =>
+const RightSquareIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3903,7 +3903,7 @@ const RightSquare = (props) =>
     ),
   )
 
-const Text = (props) =>
+const TextIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3918,7 +3918,7 @@ const Text = (props) =>
     ),
   )
 
-const Keyboard = (props) =>
+const KeyboardIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3933,7 +3933,7 @@ const Keyboard = (props) =>
     ),
   )
 
-const ZoomOut = (props) =>
+const ZoomOutIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3948,7 +3948,7 @@ const ZoomOut = (props) =>
     ),
   )
 
-const ZoomIn = (props) =>
+const ZoomInIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3963,7 +3963,7 @@ const ZoomIn = (props) =>
     ),
   )
 
-const Volume = (props) =>
+const VolumeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3978,7 +3978,7 @@ const Volume = (props) =>
     ),
   )
 
-const VolumeUp = (props) =>
+const VolumeUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -3993,7 +3993,7 @@ const VolumeUp = (props) =>
     ),
   )
 
-const VolumeDown = (props) =>
+const VolumeDownIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4008,7 +4008,7 @@ const VolumeDown = (props) =>
     ),
   )
 
-const Play = (props) =>
+const PlayIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4024,7 +4024,7 @@ const Play = (props) =>
     ),
   )
 
-const Stop = (props) =>
+const StopIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4043,7 +4043,7 @@ const Stop = (props) =>
     ),
   )
 
-const Suspend = (props) =>
+const SuspendIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4070,7 +4070,7 @@ const Suspend = (props) =>
     ),
   )
 
-const FitScreen = (props) =>
+const FitScreenIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4085,7 +4085,7 @@ const FitScreen = (props) =>
     ),
   )
 
-const RotationLeft = (props) =>
+const RotationLeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4100,7 +4100,7 @@ const RotationLeft = (props) =>
     ),
   )
 
-const OneToOne = (props) =>
+const OneToOneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4115,7 +4115,7 @@ const OneToOne = (props) =>
     ),
   )
 
-const AlignTxtBoth = (props) =>
+const AlignTxtBothIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4130,7 +4130,7 @@ const AlignTxtBoth = (props) =>
     ),
   )
 
-const AlignTxtLeft = (props) =>
+const AlignTxtLeftIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4145,7 +4145,7 @@ const AlignTxtLeft = (props) =>
     ),
   )
 
-const AlignTxtRight = (props) =>
+const AlignTxtRightIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4160,7 +4160,7 @@ const AlignTxtRight = (props) =>
     ),
   )
 
-const AlignTxtCenter = (props) =>
+const AlignTxtCenterIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4175,7 +4175,7 @@ const AlignTxtCenter = (props) =>
     ),
   )
 
-const VolumeMute = (props) =>
+const VolumeMuteIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4190,7 +4190,7 @@ const VolumeMute = (props) =>
     ),
   )
 
-const SurfaceFront = (props) =>
+const SurfaceFrontIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4205,7 +4205,7 @@ const SurfaceFront = (props) =>
     ),
   )
 
-const DensityL = (props) =>
+const DensityLIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4221,7 +4221,7 @@ const DensityL = (props) =>
     ),
   )
 
-const DensityM = (props) =>
+const DensityMIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4238,7 +4238,7 @@ const DensityM = (props) =>
     ),
   )
 
-const DensityS = (props) =>
+const DensitySIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4253,7 +4253,7 @@ const DensityS = (props) =>
     ),
   )
 
-const Find = (props) =>
+const FindIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4268,7 +4268,7 @@ const Find = (props) =>
     ),
   )
 
-const RowHeightS = (props) =>
+const RowHeightSIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4283,7 +4283,7 @@ const RowHeightS = (props) =>
     ),
   )
 
-const LineChart = (props) =>
+const LineChartIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4299,7 +4299,7 @@ const LineChart = (props) =>
     ),
   )
 
-const AreaChart = (props) =>
+const AreaChartIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4314,7 +4314,7 @@ const AreaChart = (props) =>
     ),
   )
 
-const Bar = (props) =>
+const BarIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4329,7 +4329,7 @@ const Bar = (props) =>
     ),
   )
 
-const Column = (props) =>
+const ColumnIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4344,7 +4344,7 @@ const Column = (props) =>
     ),
   )
 
-const WordCloud = (props) =>
+const WordCloudIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4359,7 +4359,7 @@ const WordCloud = (props) =>
     ),
   )
 
-const Tree = (props) =>
+const TreeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4374,7 +4374,7 @@ const Tree = (props) =>
     ),
   )
 
-const Table = (props) =>
+const TableIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4389,7 +4389,7 @@ const Table = (props) =>
     ),
   )
 
-const PieOne = (props) =>
+const PieOneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4404,7 +4404,7 @@ const PieOne = (props) =>
     ),
   )
 
-const Annular = (props) =>
+const AnnularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4419,7 +4419,7 @@ const Annular = (props) =>
     ),
   )
 
-const Thermodynamic = (props) =>
+const ThermodynamicIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4445,7 +4445,7 @@ const Thermodynamic = (props) =>
     ),
   )
 
-const Lightning = (props) =>
+const LightningIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4460,7 +4460,7 @@ const Lightning = (props) =>
     ),
   )
 
-const Measure = (props) =>
+const MeasureIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4475,7 +4475,7 @@ const Measure = (props) =>
     ),
   )
 
-const Data = (props) =>
+const DataIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4490,7 +4490,7 @@ const Data = (props) =>
     ),
   )
 
-const RadarChart = (props) =>
+const RadarChartIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4514,7 +4514,7 @@ const RadarChart = (props) =>
     ),
   )
 
-const Compiling = (props) =>
+const CompilingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4529,7 +4529,7 @@ const Compiling = (props) =>
     ),
   )
 
-const DataScreen = (props) =>
+const DataScreenIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4544,7 +4544,7 @@ const DataScreen = (props) =>
     ),
   )
 
-const Constitute = (props) =>
+const ConstituteIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4559,7 +4559,7 @@ const Constitute = (props) =>
     ),
   )
 
-const Percent = (props) =>
+const PercentIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4574,7 +4574,7 @@ const Percent = (props) =>
     ),
   )
 
-const Database = (props) =>
+const DatabaseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4589,7 +4589,7 @@ const Database = (props) =>
     ),
   )
 
-const Consume = (props) =>
+const ConsumeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4604,7 +4604,7 @@ const Consume = (props) =>
     ),
   )
 
-const VipConsume = (props) =>
+const VipConsumeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4619,7 +4619,7 @@ const VipConsume = (props) =>
     ),
   )
 
-const Rail = (props) =>
+const RailIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4634,7 +4634,7 @@ const Rail = (props) =>
     ),
   )
 
-const IntegralDistribute = (props) =>
+const IntegralDistributeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4649,7 +4649,7 @@ const IntegralDistribute = (props) =>
     ),
   )
 
-const Integral = (props) =>
+const IntegralIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4664,7 +4664,7 @@ const Integral = (props) =>
     ),
   )
 
-const Picking = (props) =>
+const PickingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4679,7 +4679,7 @@ const Picking = (props) =>
     ),
   )
 
-const Distribution = (props) =>
+const DistributionIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4694,7 +4694,7 @@ const Distribution = (props) =>
     ),
   )
 
-const Goods = (props) =>
+const GoodsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4709,7 +4709,7 @@ const Goods = (props) =>
     ),
   )
 
-const WarehousePre = (props) =>
+const WarehousePreIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4724,7 +4724,7 @@ const WarehousePre = (props) =>
     ),
   )
 
-const Warehouse = (props) =>
+const WarehouseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4739,7 +4739,7 @@ const Warehouse = (props) =>
     ),
   )
 
-const Inventory = (props) =>
+const InventoryIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4754,7 +4754,7 @@ const Inventory = (props) =>
     ),
   )
 
-const Replenishment = (props) =>
+const ReplenishmentIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4769,7 +4769,7 @@ const Replenishment = (props) =>
     ),
   )
 
-const ShelfUp = (props) =>
+const ShelfUpIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4784,7 +4784,7 @@ const ShelfUp = (props) =>
     ),
   )
 
-const ProcessMode = (props) =>
+const ProcessModeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4799,7 +4799,7 @@ const ProcessMode = (props) =>
     ),
   )
 
-const GoodsSearch = (props) =>
+const GoodsSearchIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4814,7 +4814,7 @@ const GoodsSearch = (props) =>
     ),
   )
 
-const PickingGuidance = (props) =>
+const PickingGuidanceIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4829,7 +4829,7 @@ const PickingGuidance = (props) =>
     ),
   )
 
-const PickingPath = (props) =>
+const PickingPathIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4844,7 +4844,7 @@ const PickingPath = (props) =>
     ),
   )
 
-const Path = (props) =>
+const PathIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4859,7 +4859,7 @@ const Path = (props) =>
     ),
   )
 
-const Management = (props) =>
+const ManagementIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4874,7 +4874,7 @@ const Management = (props) =>
     ),
   )
 
-const Overtime = (props) =>
+const OvertimeIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4911,7 +4911,7 @@ const Overtime = (props) =>
     ),
   )
 
-const SalesReturn = (props) =>
+const SalesReturnIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4926,7 +4926,7 @@ const SalesReturn = (props) =>
     ),
   )
 
-const ManagementStockout = (props) =>
+const ManagementStockoutIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4941,7 +4941,7 @@ const ManagementStockout = (props) =>
     ),
   )
 
-const Operation = (props) =>
+const OperationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4956,7 +4956,7 @@ const Operation = (props) =>
     ),
   )
 
-const Marketing = (props) =>
+const MarketingIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4971,7 +4971,7 @@ const Marketing = (props) =>
     ),
   )
 
-const WarehouseInto = (props) =>
+const WarehouseIntoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -4986,7 +4986,7 @@ const WarehouseInto = (props) =>
     ),
   )
 
-const OutOfWarehouse = (props) =>
+const OutOfWarehouseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5001,7 +5001,7 @@ const OutOfWarehouse = (props) =>
     ),
   )
 
-const Scale = (props) =>
+const ScaleIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5016,7 +5016,7 @@ const Scale = (props) =>
     ),
   )
 
-const ToggleWarehouseY = (props) =>
+const ToggleWarehouseYIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5031,7 +5031,7 @@ const ToggleWarehouseY = (props) =>
     ),
   )
 
-const Marketplace = (props) =>
+const MarketplaceIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5046,7 +5046,7 @@ const Marketplace = (props) =>
     ),
   )
 
-const ToggleWarehouseX = (props) =>
+const ToggleWarehouseXIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5061,7 +5061,7 @@ const ToggleWarehouseX = (props) =>
     ),
   )
 
-const WorkOrder = (props) =>
+const WorkOrderIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5076,7 +5076,7 @@ const WorkOrder = (props) =>
     ),
   )
 
-const WorkOrderAppointment = (props) =>
+const WorkOrderAppointmentIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5091,7 +5091,7 @@ const WorkOrderAppointment = (props) =>
     ),
   )
 
-const WorkOrderCheck = (props) =>
+const WorkOrderCheckIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5106,7 +5106,7 @@ const WorkOrderCheck = (props) =>
     ),
   )
 
-const OrderClose = (props) =>
+const OrderCloseIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5121,7 +5121,7 @@ const OrderClose = (props) =>
     ),
   )
 
-const OrderIntegral = (props) =>
+const OrderIntegralIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5136,7 +5136,7 @@ const OrderIntegral = (props) =>
     ),
   )
 
-const OrderAbnormal = (props) =>
+const OrderAbnormalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5161,7 +5161,7 @@ const OrderAbnormal = (props) =>
     ),
   )
 
-const OrderDone = (props) =>
+const OrderDoneIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5176,7 +5176,7 @@ const OrderDone = (props) =>
     ),
   )
 
-const OrderEdit = (props) =>
+const OrderEditIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5191,7 +5191,7 @@ const OrderEdit = (props) =>
     ),
   )
 
-const Crowd = (props) =>
+const CrowdIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5237,7 +5237,7 @@ const Crowd = (props) =>
     ),
   )
 
-const User = (props) =>
+const UserIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5252,7 +5252,7 @@ const User = (props) =>
     ),
   )
 
-const UserPortrayal = (props) =>
+const UserPortrayalIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5267,7 +5267,7 @@ const UserPortrayal = (props) =>
     ),
   )
 
-const BlackList = (props) =>
+const BlackListIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5282,7 +5282,7 @@ const BlackList = (props) =>
     ),
   )
 
-const WhiteList = (props) =>
+const WhiteListIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5297,7 +5297,7 @@ const WhiteList = (props) =>
     ),
   )
 
-const UserSilence = (props) =>
+const UserSilenceIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5312,7 +5312,7 @@ const UserSilence = (props) =>
     ),
   )
 
-const UserActive = (props) =>
+const UserActiveIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5327,7 +5327,7 @@ const UserActive = (props) =>
     ),
   )
 
-const UserLeave = (props) =>
+const UserLeaveIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5342,7 +5342,7 @@ const UserLeave = (props) =>
     ),
   )
 
-const UserAll = (props) =>
+const UserAllIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5357,7 +5357,7 @@ const UserAll = (props) =>
     ),
   )
 
-const UserNew = (props) =>
+const UserNewIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5372,7 +5372,7 @@ const UserNew = (props) =>
     ),
   )
 
-const Report = (props) =>
+const ReportIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5387,7 +5387,7 @@ const Report = (props) =>
     ),
   )
 
-const Contract = (props) =>
+const ContractIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5402,7 +5402,7 @@ const Contract = (props) =>
     ),
   )
 
-const ContractExclamation = (props) =>
+const ContractExclamationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5428,7 +5428,7 @@ const ContractExclamation = (props) =>
     ),
   )
 
-const ContractAcross = (props) =>
+const ContractAcrossIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5450,7 +5450,7 @@ const ContractAcross = (props) =>
     ),
   )
 
-const ComputerExclamation = (props) =>
+const ComputerExclamationIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5472,7 +5472,7 @@ const ComputerExclamation = (props) =>
     ),
   )
 
-const ComputerAcross = (props) =>
+const ComputerAcrossIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5500,7 +5500,7 @@ const ComputerAcross = (props) =>
     ),
   )
 
-const Attachments = (props) =>
+const AttachmentsIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5515,7 +5515,7 @@ const Attachments = (props) =>
     ),
   )
 
-const WorkOrderInfo = (props) =>
+const WorkOrderInfoIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5546,7 +5546,7 @@ const WorkOrderInfo = (props) =>
     ),
   )
 
-const FileImport = (props) =>
+const FileImportIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5563,7 +5563,7 @@ const FileImport = (props) =>
     ),
   )
 
-const CircleWarningRegular = (props) =>
+const CircleWarningRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5580,7 +5580,7 @@ const CircleWarningRegular = (props) =>
     ),
   )
 
-const CircleSucceedRegular = (props) =>
+const CircleSucceedRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5597,7 +5597,7 @@ const CircleSucceedRegular = (props) =>
     ),
   )
 
-const CircleHelpRegular = (props) =>
+const CircleHelpRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5614,7 +5614,7 @@ const CircleHelpRegular = (props) =>
     ),
   )
 
-const CircleStarRegular = (props) =>
+const CircleStarRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5631,7 +5631,7 @@ const CircleStarRegular = (props) =>
     ),
   )
 
-const CircleCloseRegular = (props) =>
+const CircleCloseRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5648,7 +5648,7 @@ const CircleCloseRegular = (props) =>
     ),
   )
 
-const CircleAddRegular = (props) =>
+const CircleAddRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5666,7 +5666,7 @@ const CircleAddRegular = (props) =>
     ),
   )
 
-const CircleMoreRegular = (props) =>
+const CircleMoreRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5683,7 +5683,7 @@ const CircleMoreRegular = (props) =>
     ),
   )
 
-const StarRegular = (props) =>
+const StarRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5698,7 +5698,7 @@ const StarRegular = (props) =>
     ),
   )
 
-const ThumbUpRegular = (props) =>
+const ThumbUpRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5715,7 +5715,7 @@ const ThumbUpRegular = (props) =>
     ),
   )
 
-const ThumbDownRegular = (props) =>
+const ThumbDownRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5732,7 +5732,7 @@ const ThumbDownRegular = (props) =>
     ),
   )
 
-const VolumeMuteRegular = (props) =>
+const VolumeMuteRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5749,7 +5749,7 @@ const VolumeMuteRegular = (props) =>
     ),
   )
 
-const Locked = (props) =>
+const LockedIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5766,7 +5766,7 @@ const Locked = (props) =>
     ),
   )
 
-const Unlocked = (props) =>
+const UnlockedIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5783,7 +5783,7 @@ const Unlocked = (props) =>
     ),
   )
 
-const VolumeRegular = (props) =>
+const VolumeRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5800,7 +5800,7 @@ const VolumeRegular = (props) =>
     ),
   )
 
-const RemindRegular = (props) =>
+const RemindRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5817,7 +5817,7 @@ const RemindRegular = (props) =>
     ),
   )
 
-const RemindOffRegular = (props) =>
+const RemindOffRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5834,7 +5834,7 @@ const RemindOffRegular = (props) =>
     ),
   )
 
-const PinRegular = (props) =>
+const PinRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5860,7 +5860,7 @@ const PinRegular = (props) =>
     ),
   )
 
-const PinPreRegular = (props) =>
+const PinPreRegularIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5877,7 +5877,7 @@ const PinPreRegular = (props) =>
     ),
   )
 
-const CircleWarningFilled = (props) =>
+const CircleWarningFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5894,7 +5894,7 @@ const CircleWarningFilled = (props) =>
     ),
   )
 
-const CircleSucceedFilled = (props) =>
+const CircleSucceedFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5911,7 +5911,7 @@ const CircleSucceedFilled = (props) =>
     ),
   )
 
-const CircleHelpFilled = (props) =>
+const CircleHelpFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5928,7 +5928,7 @@ const CircleHelpFilled = (props) =>
     ),
   )
 
-const CircleStarFilled = (props) =>
+const CircleStarFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5945,7 +5945,7 @@ const CircleStarFilled = (props) =>
     ),
   )
 
-const CircleCloseFilled = (props) =>
+const CircleCloseFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5962,7 +5962,7 @@ const CircleCloseFilled = (props) =>
     ),
   )
 
-const CircleAddFilled = (props) =>
+const CircleAddFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5979,7 +5979,7 @@ const CircleAddFilled = (props) =>
     ),
   )
 
-const CircleMoreFilled = (props) =>
+const CircleMoreFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -5996,7 +5996,7 @@ const CircleMoreFilled = (props) =>
     ),
   )
 
-const StarFilled = (props) =>
+const StarFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6025,7 +6025,7 @@ const StarFilled = (props) =>
     ),
   )
 
-const PinFilled = (props) =>
+const PinFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6051,7 +6051,7 @@ const PinFilled = (props) =>
     ),
   )
 
-const PinPreFilled = (props) =>
+const PinPreFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6068,7 +6068,7 @@ const PinPreFilled = (props) =>
     ),
   )
 
-const CheckCorrectFilled = (props) =>
+const CheckCorrectFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6085,7 +6085,7 @@ const CheckCorrectFilled = (props) =>
     ),
   )
 
-const CheckDisabledFilled = (props) =>
+const CheckDisabledFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6102,7 +6102,7 @@ const CheckDisabledFilled = (props) =>
     ),
   )
 
-const ThumbUpFilled = (props) =>
+const ThumbUpFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6126,7 +6126,7 @@ const ThumbUpFilled = (props) =>
     ),
   )
 
-const ThumbDownFilled = (props) =>
+const ThumbDownFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6150,7 +6150,7 @@ const ThumbDownFilled = (props) =>
     ),
   )
 
-const VolumeMuteFilled = (props) =>
+const VolumeMuteFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6167,7 +6167,7 @@ const VolumeMuteFilled = (props) =>
     ),
   )
 
-const RemindFilled = (props) =>
+const RemindFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6184,7 +6184,7 @@ const RemindFilled = (props) =>
     ),
   )
 
-const VolumeFilled = (props) =>
+const VolumeFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6201,7 +6201,7 @@ const VolumeFilled = (props) =>
     ),
   )
 
-const RemindOffFilled = (props) =>
+const RemindOffFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6218,7 +6218,7 @@ const RemindOffFilled = (props) =>
     ),
   )
 
-const PlayFilled = (props) =>
+const PlayFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6235,7 +6235,7 @@ const PlayFilled = (props) =>
     ),
   )
 
-const SuspendFilled = (props) =>
+const SuspendFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6252,7 +6252,7 @@ const SuspendFilled = (props) =>
     ),
   )
 
-const LocationFilled = (props) =>
+const LocationFilledIcon = (props) =>
   /* @__PURE__ */ React.createElement(
     'svg',
     { xmlns: 'http://www.w3.org/2000/svg', width: '1em', height: '1em', fill: 'none', viewBox: '0 0 16 16', ...props },
@@ -6270,373 +6270,373 @@ const LocationFilled = (props) =>
   )
 
 export {
-  AddChat,
-  AddChat2,
-  AddOne,
-  AlignTxtBoth,
-  AlignTxtCenter,
-  AlignTxtLeft,
-  AlignTxtRight,
-  Amount,
-  AmountDown,
-  AmountUp,
-  Annular,
-  Anticlockwise90,
-  Apps,
-  AreaChart,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-  ArrowUp,
-  Attachments,
-  BackSquare,
-  Bar,
-  BarCode,
-  Basket,
-  BatchAdd,
-  BatchCheck,
-  Berth,
-  BlackList,
-  BottomAlign,
-  Building,
-  Bun,
-  Bunch,
-  Calculator,
-  Calendar,
-  Camera,
-  CenterHorizontally,
-  Check,
-  CheckCorrect,
-  CheckCorrectFilled,
-  CheckDisabled,
-  CheckDisabledFilled,
-  Checkbox,
-  Checkstand,
-  Chef,
-  Chips,
-  CircleAdd,
-  CircleAddFilled,
-  CircleAddRegular,
-  CircleClose,
-  CircleCloseFilled,
-  CircleCloseRegular,
-  CircleHelp,
-  CircleHelpFilled,
-  CircleHelpRegular,
-  CircleInformation,
-  CircleMore,
-  CircleMoreFilled,
-  CircleMoreRegular,
-  CircleStar,
-  CircleStarFilled,
-  CircleStarRegular,
-  CircleSucceed,
-  CircleSucceedFilled,
-  CircleSucceedRegular,
-  CircleWarning,
-  CircleWarningFilled,
-  CircleWarningRegular,
-  Clear,
-  Clockwise90,
-  CloseSmall,
-  Clothes,
-  Cloudy,
-  Column,
-  Comments,
-  Compiling,
-  Computer,
-  ComputerAcross,
-  ComputerExclamation,
-  Constitute,
-  Consume,
-  Contract,
-  ContractAcross,
-  ContractExclamation,
-  Control,
-  CopyOne,
-  CopyTwo,
-  Coupon,
-  Coverage,
-  Crowd,
-  Data,
-  DataScreen,
-  Database,
-  Deal,
-  Decimal,
-  Decorate,
-  Delete,
-  DensityL,
-  DensityM,
-  DensityS,
-  Disable,
-  Distribution,
-  DoubleArrowDown,
-  DoubleArrowLeft,
-  DoubleArrowRight,
-  DoubleArrowUp,
-  Down,
-  Download,
-  Drag,
-  Earth,
-  EmailSend,
-  Equipment,
-  Exclamation,
-  Export,
-  ExportTwo,
-  FileAvi,
-  FileCdr,
-  FileCsv,
-  FileDoc,
-  FileImport,
-  FileJpg,
-  FileMov,
-  FileMp3,
-  FileMp4,
-  FilePdf,
-  FilePng,
-  FilePpt,
-  FileRar,
-  FileTxt,
-  FileXls,
-  FileZip,
-  Filter,
-  Find,
-  Fire,
-  FitScreen,
-  Flag,
-  FormatPainter,
-  FrontSquare,
-  Gather,
-  Gift,
-  Goods,
-  GoodsSearch,
-  Goto,
-  Handshake,
-  Haze,
-  HeavyRain,
-  HeavySnow,
-  Hight,
-  HightLessen,
-  Home,
-  Hospital,
-  House,
-  Incubator,
-  InfuseOne,
-  InfuseTwo,
-  Integral,
-  IntegralDistribute,
-  Inventory,
-  Keyboard,
-  Label,
-  Leaf,
-  Left,
-  LeftBig,
-  LeftSquare,
-  LightRain,
-  LightSnow,
-  Lightning,
-  LineChart,
-  Link,
-  Location,
-  LocationFilled,
-  Lock,
-  Locked,
-  Management,
-  ManagementStockout,
-  MapLocation,
-  Marketing,
-  Marketplace,
-  Measure,
-  Menu2,
-  MenuEndways,
-  MenuThwartwise,
-  Microphone,
-  MiniApp,
-  Minus,
-  Monitoring,
-  More,
-  Motorcycle,
-  Move,
-  MoveDown,
-  MoveUp,
-  Music,
-  New,
-  No,
-  OfflineGateway,
-  OneToOne,
-  OnlineGateway,
-  OpenNew,
-  Operation,
-  Order,
-  OrderAbnormal,
-  OrderClose,
-  OrderDone,
-  OrderEdit,
-  OrderIntegral,
-  OutOfWarehouse,
-  Overtime,
-  PackingBox,
-  Park,
-  Paste,
-  Path,
-  Percent,
-  Phone,
-  Picking,
-  PickingAll,
-  PickingGuidance,
-  PickingPath,
-  Picture,
-  PictureOff,
-  PieOne,
-  PieTwo,
-  Pin,
-  PinFilled,
-  PinPre,
-  PinPreFilled,
-  PinPreRegular,
-  PinRegular,
-  Play,
-  PlayFilled,
-  Pointer,
-  Power,
-  Print,
-  ProcessMode,
-  Promotion,
-  Purse,
-  PushMgt,
-  Puzzle,
-  QrCode,
-  Question,
-  RadarChart,
-  RadioSelected,
-  RadioUnselected,
-  Rail,
-  Refresh,
-  RefreshDoing,
-  RefreshDone,
-  Remind,
-  RemindClose,
-  RemindFilled,
-  RemindOffFilled,
-  RemindOffRegular,
-  RemindRegular,
-  Replenishment,
-  Report,
-  Right,
-  RightBig,
-  RightSquare,
-  Rollback,
-  RotationLeft,
-  RowHeightS,
-  SalesReturn,
-  Sand,
-  SandGlass,
-  Save,
-  SaveAs,
-  Scale,
-  Scan,
-  ScatterDiagram,
-  School,
-  ScreenFull,
-  ScreenOff,
-  Search,
-  Service,
-  Setting,
-  SettingSearch,
-  Share,
-  Shelf,
-  ShelfUp,
-  ShellWindowMaximize,
-  ShellWindowMinimize,
-  Shield,
-  Shopping,
-  ShoppingCart,
-  Sort,
-  SortA2Z,
-  SortDefault,
-  SortZ2A,
-  Soup,
-  Stamp,
-  StapleFood,
-  StarFilled,
-  StarRegular,
-  Stop,
-  Store,
-  Submit,
-  Sunny,
-  SurfaceFront,
-  SurfaceLeft,
-  SurfaceRight,
-  SurfaceTop,
-  Suspend,
-  SuspendFilled,
-  Swerve,
-  Switch,
-  Table,
-  Text,
-  Thermodynamic,
-  ThumbDown,
-  ThumbDownFilled,
-  ThumbDownRegular,
-  ThumbUp,
-  ThumbUpFilled,
-  ThumbUpRegular,
-  Time,
-  ToBottom,
-  ToTop,
-  ToggleWarehouseX,
-  ToggleWarehouseY,
-  Top,
-  TopAlign,
-  Translate,
-  Tree,
-  TriangleDown,
-  TriangleRight,
-  TriangleUp,
-  TriangleWarning,
-  Undo,
-  Unlink,
-  Unlock,
-  Unlocked,
-  Up,
-  Uploading,
-  Urgency,
-  User,
-  UserActive,
-  UserAll,
-  UserLeave,
-  UserNew,
-  UserPortrayal,
-  UserSilence,
-  VerticalCenter,
-  VerticalSplit,
-  View,
-  ViewOff,
-  Vip,
-  VipConsume,
-  Volume,
-  VolumeDown,
-  VolumeFilled,
-  VolumeMute,
-  VolumeMuteFilled,
-  VolumeMuteRegular,
-  VolumeRegular,
-  VolumeUp,
-  Warehouse,
-  WarehouseInto,
-  WarehousePre,
-  WhiteList,
-  Width,
-  Wifi,
-  WifiAbnormal,
-  WifiClose,
-  WordCloud,
-  WorkOrder,
-  WorkOrderAbnormal,
-  WorkOrderAppointment,
-  WorkOrderCheck,
-  WorkOrderInfo,
-  WorkingOdd,
-  ZoomIn,
-  ZoomOut,
+  AddChat2Icon,
+  AddChatIcon,
+  AddOneIcon,
+  AlignTxtBothIcon,
+  AlignTxtCenterIcon,
+  AlignTxtLeftIcon,
+  AlignTxtRightIcon,
+  AmountDownIcon,
+  AmountIcon,
+  AmountUpIcon,
+  AnnularIcon,
+  Anticlockwise90Icon,
+  AppsIcon,
+  AreaChartIcon,
+  ArrowDownIcon,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ArrowUpIcon,
+  AttachmentsIcon,
+  BackSquareIcon,
+  BarCodeIcon,
+  BarIcon,
+  BasketIcon,
+  BatchAddIcon,
+  BatchCheckIcon,
+  BerthIcon,
+  BlackListIcon,
+  BottomAlignIcon,
+  BuildingIcon,
+  BunIcon,
+  BunchIcon,
+  CalculatorIcon,
+  CalendarIcon,
+  CameraIcon,
+  CenterHorizontallyIcon,
+  CheckCorrectFilledIcon,
+  CheckCorrectIcon,
+  CheckDisabledFilledIcon,
+  CheckDisabledIcon,
+  CheckIcon,
+  CheckboxIcon,
+  CheckstandIcon,
+  ChefIcon,
+  ChipsIcon,
+  CircleAddFilledIcon,
+  CircleAddIcon,
+  CircleAddRegularIcon,
+  CircleCloseFilledIcon,
+  CircleCloseIcon,
+  CircleCloseRegularIcon,
+  CircleHelpFilledIcon,
+  CircleHelpIcon,
+  CircleHelpRegularIcon,
+  CircleInformationIcon,
+  CircleMoreFilledIcon,
+  CircleMoreIcon,
+  CircleMoreRegularIcon,
+  CircleStarFilledIcon,
+  CircleStarIcon,
+  CircleStarRegularIcon,
+  CircleSucceedFilledIcon,
+  CircleSucceedIcon,
+  CircleSucceedRegularIcon,
+  CircleWarningFilledIcon,
+  CircleWarningIcon,
+  CircleWarningRegularIcon,
+  ClearIcon,
+  Clockwise90Icon,
+  CloseSmallIcon,
+  ClothesIcon,
+  CloudyIcon,
+  ColumnIcon,
+  CommentsIcon,
+  CompilingIcon,
+  ComputerAcrossIcon,
+  ComputerExclamationIcon,
+  ComputerIcon,
+  ConstituteIcon,
+  ConsumeIcon,
+  ContractAcrossIcon,
+  ContractExclamationIcon,
+  ContractIcon,
+  ControlIcon,
+  CopyOneIcon,
+  CopyTwoIcon,
+  CouponIcon,
+  CoverageIcon,
+  CrowdIcon,
+  DataIcon,
+  DataScreenIcon,
+  DatabaseIcon,
+  DealIcon,
+  DecimalIcon,
+  DecorateIcon,
+  DeleteIcon,
+  DensityLIcon,
+  DensityMIcon,
+  DensitySIcon,
+  DisableIcon,
+  DistributionIcon,
+  DoubleArrowDownIcon,
+  DoubleArrowLeftIcon,
+  DoubleArrowRightIcon,
+  DoubleArrowUpIcon,
+  DownIcon,
+  DownloadIcon,
+  DragIcon,
+  EarthIcon,
+  EmailSendIcon,
+  EquipmentIcon,
+  ExclamationIcon,
+  ExportIcon,
+  ExportTwoIcon,
+  FileAviIcon,
+  FileCdrIcon,
+  FileCsvIcon,
+  FileDocIcon,
+  FileImportIcon,
+  FileJpgIcon,
+  FileMovIcon,
+  FileMp3Icon,
+  FileMp4Icon,
+  FilePdfIcon,
+  FilePngIcon,
+  FilePptIcon,
+  FileRarIcon,
+  FileTxtIcon,
+  FileXlsIcon,
+  FileZipIcon,
+  FilterIcon,
+  FindIcon,
+  FireIcon,
+  FitScreenIcon,
+  FlagIcon,
+  FormatPainterIcon,
+  FrontSquareIcon,
+  GatherIcon,
+  GiftIcon,
+  GoodsIcon,
+  GoodsSearchIcon,
+  GotoIcon,
+  HandshakeIcon,
+  HazeIcon,
+  HeavyRainIcon,
+  HeavySnowIcon,
+  HightIcon,
+  HightLessenIcon,
+  HomeIcon,
+  HospitalIcon,
+  HouseIcon,
+  IncubatorIcon,
+  InfuseOneIcon,
+  InfuseTwoIcon,
+  IntegralDistributeIcon,
+  IntegralIcon,
+  InventoryIcon,
+  KeyboardIcon,
+  LabelIcon,
+  LeafIcon,
+  LeftBigIcon,
+  LeftIcon,
+  LeftSquareIcon,
+  LightRainIcon,
+  LightSnowIcon,
+  LightningIcon,
+  LineChartIcon,
+  LinkIcon,
+  LocationFilledIcon,
+  LocationIcon,
+  LockIcon,
+  LockedIcon,
+  ManagementIcon,
+  ManagementStockoutIcon,
+  MapLocationIcon,
+  MarketingIcon,
+  MarketplaceIcon,
+  MeasureIcon,
+  Menu2Icon,
+  MenuEndwaysIcon,
+  MenuThwartwiseIcon,
+  MicrophoneIcon,
+  MiniAppIcon,
+  MinusIcon,
+  MonitoringIcon,
+  MoreIcon,
+  MotorcycleIcon,
+  MoveDownIcon,
+  MoveIcon,
+  MoveUpIcon,
+  MusicIcon,
+  NewIcon,
+  NoIcon,
+  OfflineGatewayIcon,
+  OneToOneIcon,
+  OnlineGatewayIcon,
+  OpenNewIcon,
+  OperationIcon,
+  OrderAbnormalIcon,
+  OrderCloseIcon,
+  OrderDoneIcon,
+  OrderEditIcon,
+  OrderIcon,
+  OrderIntegralIcon,
+  OutOfWarehouseIcon,
+  OvertimeIcon,
+  PackingBoxIcon,
+  ParkIcon,
+  PasteIcon,
+  PathIcon,
+  PercentIcon,
+  PhoneIcon,
+  PickingAllIcon,
+  PickingGuidanceIcon,
+  PickingIcon,
+  PickingPathIcon,
+  PictureIcon,
+  PictureOffIcon,
+  PieOneIcon,
+  PieTwoIcon,
+  PinFilledIcon,
+  PinIcon,
+  PinPreFilledIcon,
+  PinPreIcon,
+  PinPreRegularIcon,
+  PinRegularIcon,
+  PlayFilledIcon,
+  PlayIcon,
+  PointerIcon,
+  PowerIcon,
+  PrintIcon,
+  ProcessModeIcon,
+  PromotionIcon,
+  PurseIcon,
+  PushMgtIcon,
+  PuzzleIcon,
+  QrCodeIcon,
+  QuestionIcon,
+  RadarChartIcon,
+  RadioSelectedIcon,
+  RadioUnselectedIcon,
+  RailIcon,
+  RefreshDoingIcon,
+  RefreshDoneIcon,
+  RefreshIcon,
+  RemindCloseIcon,
+  RemindFilledIcon,
+  RemindIcon,
+  RemindOffFilledIcon,
+  RemindOffRegularIcon,
+  RemindRegularIcon,
+  ReplenishmentIcon,
+  ReportIcon,
+  RightBigIcon,
+  RightIcon,
+  RightSquareIcon,
+  RollbackIcon,
+  RotationLeftIcon,
+  RowHeightSIcon,
+  SalesReturnIcon,
+  SandGlassIcon,
+  SandIcon,
+  SaveAsIcon,
+  SaveIcon,
+  ScaleIcon,
+  ScanIcon,
+  ScatterDiagramIcon,
+  SchoolIcon,
+  ScreenFullIcon,
+  ScreenOffIcon,
+  SearchIcon,
+  ServiceIcon,
+  SettingIcon,
+  SettingSearchIcon,
+  ShareIcon,
+  ShelfIcon,
+  ShelfUpIcon,
+  ShellWindowMaximizeIcon,
+  ShellWindowMinimizeIcon,
+  ShieldIcon,
+  ShoppingCartIcon,
+  ShoppingIcon,
+  SortA2ZIcon,
+  SortDefaultIcon,
+  SortIcon,
+  SortZ2AIcon,
+  SoupIcon,
+  StampIcon,
+  StapleFoodIcon,
+  StarFilledIcon,
+  StarRegularIcon,
+  StopIcon,
+  StoreIcon,
+  SubmitIcon,
+  SunnyIcon,
+  SurfaceFrontIcon,
+  SurfaceLeftIcon,
+  SurfaceRightIcon,
+  SurfaceTopIcon,
+  SuspendFilledIcon,
+  SuspendIcon,
+  SwerveIcon,
+  SwitchIcon,
+  TableIcon,
+  TextIcon,
+  ThermodynamicIcon,
+  ThumbDownFilledIcon,
+  ThumbDownIcon,
+  ThumbDownRegularIcon,
+  ThumbUpFilledIcon,
+  ThumbUpIcon,
+  ThumbUpRegularIcon,
+  TimeIcon,
+  ToBottomIcon,
+  ToTopIcon,
+  ToggleWarehouseXIcon,
+  ToggleWarehouseYIcon,
+  TopAlignIcon,
+  TopIcon,
+  TranslateIcon,
+  TreeIcon,
+  TriangleDownIcon,
+  TriangleRightIcon,
+  TriangleUpIcon,
+  TriangleWarningIcon,
+  UndoIcon,
+  UnlinkIcon,
+  UnlockIcon,
+  UnlockedIcon,
+  UpIcon,
+  UploadingIcon,
+  UrgencyIcon,
+  UserActiveIcon,
+  UserAllIcon,
+  UserIcon,
+  UserLeaveIcon,
+  UserNewIcon,
+  UserPortrayalIcon,
+  UserSilenceIcon,
+  VerticalCenterIcon,
+  VerticalSplitIcon,
+  ViewIcon,
+  ViewOffIcon,
+  VipConsumeIcon,
+  VipIcon,
+  VolumeDownIcon,
+  VolumeFilledIcon,
+  VolumeIcon,
+  VolumeMuteFilledIcon,
+  VolumeMuteIcon,
+  VolumeMuteRegularIcon,
+  VolumeRegularIcon,
+  VolumeUpIcon,
+  WarehouseIcon,
+  WarehouseIntoIcon,
+  WarehousePreIcon,
+  WhiteListIcon,
+  WidthIcon,
+  WifiAbnormalIcon,
+  WifiCloseIcon,
+  WifiIcon,
+  WordCloudIcon,
+  WorkOrderAbnormalIcon,
+  WorkOrderAppointmentIcon,
+  WorkOrderCheckIcon,
+  WorkOrderIcon,
+  WorkOrderInfoIcon,
+  WorkingOddIcon,
+  ZoomInIcon,
+  ZoomOutIcon,
 }
