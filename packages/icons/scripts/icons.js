@@ -9,6 +9,7 @@ import * as tool from '@wisdesign/utils/tool.js'
 import prettier from '@prettier/sync'
 import dotenv from 'dotenv'
 import dotenvExpand from 'dotenv-expand'
+import ora from 'ora'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -25,18 +26,34 @@ envPaths.forEach((envFile) => {
   dotenvExpand.expand(dotenv.config({ path: envFile }))
 })
 
+const defaultStyle = 'outline'
+const outline = {
+  type: 'style',
+  name: defaultStyle,
+  title: 'Outline',
+  children: [],
+}
+const solid = {
+  type: 'style',
+  name: 'filled',
+  title: 'Solid',
+  children: [],
+}
+const styles = [outline, solid]
+const styleWhitelist = styles.map((item) => item.name)
+
 function isValidIconName(name) {
   return /^[a-zA-Z][a-zA-Z0-9-]*$/.test(name)
 }
 
 // 是一个正常组件
-function isNormalComponent(name, type) {
-  return isValidIconName(name) && (!type || name.endsWith(tool.toFirstUpperCase(type)))
+function isNormalComponent(name) {
+  return isValidIconName(name)
 }
 
 // 是一个变量组件
-function isVariantComponent(name, type) {
-  return name.startsWith(`type=${type}`)
+function isVariantComponent(name) {
+  return styleWhitelist.some((item) => name === `type=${item}`)
 }
 
 function getName(name) {
@@ -50,6 +67,38 @@ function getName(name) {
 function format(content) {
   const config = prettier.resolveConfig()
   return prettier.format(content, { ...config, parser: 'babel' })
+}
+
+function getVariantComponentName(option) {
+  const style = option.componentName.replace(/^type=/, '')
+  const component = option.pathToComponent.find((item) => item.type === 'COMPONENT_SET')
+  return component.name
+    .split('-')
+    .concat(style)
+    .filter(Boolean)
+    .map((item) => tool.toFirstUpperCase(item.trim()))
+    .join('')
+}
+
+function getComponentName(option) {
+  if (isVariantComponent(option.componentName)) {
+    return getVariantComponentName(option)
+  }
+
+  return option.componentName
+    .split('-')
+    .filter(Boolean)
+    .map((item) => tool.toFirstUpperCase(item.trim()))
+    .join('')
+}
+
+function getComponentCategory(option) {
+  const category = option.pathToComponent.find((item) => item.type === 'FRAME')
+  return category ? category.name : 'common'
+}
+
+function getComponentStyle(componentName) {
+  return styleWhitelist.find((item) => componentName.endsWith(tool.toFirstUpperCase(item))) || defaultStyle
 }
 
 const replaceCurrentColorPlugin = {
@@ -66,6 +115,16 @@ const replaceCurrentColorPlugin = {
           if (node.attributes.stroke && node.attributes.stroke !== 'none') {
             node.attributes.stroke = 'currentColor'
           }
+
+          if (!node.attributes.fill || node.attributes.fill === 'none') {
+            delete node.attributes['stroke-linecap']
+            delete node.attributes['stroke-linejoin']
+            delete node.attributes['stroke-width']
+
+            delete node.attributes.strokeLineCap
+            delete node.attributes.strokeLineJoin
+            delete node.attributes.strokeWidth
+          }
         },
       },
     }
@@ -73,11 +132,8 @@ const replaceCurrentColorPlugin = {
 }
 
 async function icon(iconOption) {
-  const result = {
-    type: iconOption.style,
-    title: getName(iconOption.style),
-    children: [],
-  }
+  const spin = ora({})
+  spin.start()
 
   const visited = {}
   await components({
@@ -85,12 +141,13 @@ async function icon(iconOption) {
     fileId: process.env.FIGMA_FILE_ID,
     onlyFromPages: [process.env.FIGMA_PAGE],
     filterComponent: (option) => {
-      return (
-        isVariantComponent(option.name, iconOption.type) ||
-        isNormalComponent(option.name, iconOption.ignoreType ? undefined : iconOption.type)
-      )
+      return isVariantComponent(option.name) || isNormalComponent(option.name)
     },
-    transformers: iconOption.transformers,
+    transformers: [
+      svgo({
+        plugins: ['sortAttrs', replaceCurrentColorPlugin],
+      }),
+    ],
     outputters: [
       svgr({
         output: outputPath,
@@ -98,24 +155,20 @@ async function icon(iconOption) {
           return 'components'
         },
         getComponentName: (option) => {
-          const category = option.pathToComponent.find((item) => item.type === 'FRAME')
-          const component = option.pathToComponent.find((item) => item.type === 'COMPONENT_SET')
-          const name = component ? component.name : option.componentName
-          const names = name.split('-')
+          const componentName = getComponentName(option)
+          const category = getComponentCategory(option)
+          const suffix = getComponentStyle(componentName)
 
-          const componentName = names
-            .concat(iconOption.ignoreType ? [] : [iconOption.type])
-            .map((item) => tool.toFirstUpperCase(item.trim()))
-            .join('')
-
-          let categoryItem = result.children.find((item) => item.type === category.name)
+          const styleItem = styles.find((item) => item.name === suffix)
+          let categoryItem = styleItem.children.find((item) => item.name === category)
           if (!categoryItem) {
             categoryItem = {
-              type: category.name,
-              title: getName(category.name),
+              type: 'category',
+              name: category,
+              title: getName(category),
               children: [],
             }
-            result.children.push(categoryItem)
+            styleItem.children.push(categoryItem)
           }
 
           if (!visited[componentName]) {
@@ -136,53 +189,22 @@ async function icon(iconOption) {
         },
       }),
     ],
+    log: (message) => {
+      spin.text = message
+    },
+  }).catch((error) => {
+    spin.fail()
+    throw error
   })
 
-  return result
-}
-
-async function outline() {
-  const result = await icon({
-    style: 'outline',
-    type: 'outline',
-    ignoreType: true,
-    transformers: [
-      svgo({
-        plugins: [
-          'sortAttrs',
-          'removeEmptyAttrs',
-          replaceCurrentColorPlugin,
-          { name: 'removeAttrs', params: { attrs: ['stroke-linecap', 'stroke-linejoin', 'stroke-width'] } },
-        ],
-      }),
-    ],
-  })
-  return result
-}
-
-async function solid() {
-  const result = await icon({
-    style: 'solid',
-    type: 'filled',
-    transformers: [
-      svgo({
-        plugins: ['sortAttrs', 'removeEmptyAttrs', replaceCurrentColorPlugin],
-      }),
-    ],
-  })
-  return result
+  spin.succeed('done')
 }
 
 async function main() {
   shell.execSync(`rm -rf ${path.resolve(rootPath, './components')}`)
-
-  const outlineMeta = await outline()
-  const solidMeta = await solid()
-
-  const meta = [outlineMeta, solidMeta]
-
+  await icon()
   const components = []
-  meta.forEach((style) => {
+  styles.forEach((style) => {
     style.children.forEach((category) => {
       category.children.forEach((component) => {
         components.push(component)
@@ -193,7 +215,7 @@ async function main() {
   file.writeFile(
     metaPath,
     format(`
-    export default ${JSON.stringify(meta)}  
+    export default ${JSON.stringify(styles)}  
   `),
   )
 
