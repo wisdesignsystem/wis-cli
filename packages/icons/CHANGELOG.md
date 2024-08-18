@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.4
+
+### Patch Changes
+
+- ba84537: [feature] change the component meta info
+
 ## 0.0.3
 
 ### Patch Changes
