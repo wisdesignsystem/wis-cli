@@ -1,3 +1,4 @@
 **/node_modules
 .history
 packages/cli/versionInfo.json
+packages/icons/components
