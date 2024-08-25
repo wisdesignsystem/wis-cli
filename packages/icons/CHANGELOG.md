@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.5
+
+### Patch Changes
+
+- 2db18a3: [feature]: rebuild icons components
+
 ## 0.0.4
 
 ### Patch Changes
