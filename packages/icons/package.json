@@ -17,6 +17,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "react": ">=16"
+  },
   "devDependencies": {
     "@babel/core": "7.23.2",
     "@babel/plugin-transform-runtime": "7.23.2",
@@ -25,10 +28,10 @@
     "@figma-export/core": "6.0.0",
     "@figma-export/output-components-as-svgr": "6.0.1",
     "@figma-export/transform-svg-with-svgo": "6.0.1",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "rollup": "^4.20.0",
-    "rollup-plugin-cleaner": "^1.0.0",
-    "rollup-plugin-esbuild": "^6.1.1",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "rollup": "4.20.0",
+    "rollup-plugin-cleaner": "1.0.0",
+    "rollup-plugin-esbuild": "6.1.1",
     "@prettier/sync": "0.5.2",
     "@svgr/plugin-jsx": "8.1.0",
     "@wisdesign/utils": "workspace:*",
