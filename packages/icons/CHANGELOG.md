@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.6
+
+### Patch Changes
+
+- c22bdbc: [feature] rebuild icon components
+
 ## 0.0.5
 
 ### Patch Changes
