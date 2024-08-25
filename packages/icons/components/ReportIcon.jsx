@@ -1,3 +1,3 @@
 import * as React from "react";
-const ReportIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 18 18" {...props}><g id="report"><rect width={17} height={17} x={0.5} y={0.5} stroke="currentColor" /><path id="Vector" stroke="currentColor" d="M8.5625 2.54546H3.5V13.4545H12.5V6.36364M8.5625 2.54546L12.5 6.36364M8.5625 2.54546V6.36364H12.5M5.5 15.5H14.5V8.5M5 8.5H11M5 6H7M5 11H11" /></g></svg>;
+const ReportIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="report"><path id="Vector" stroke="currentColor" d="M7.5625 1.54546H2.5V12.4545H11.5V5.36364M7.5625 1.54546L11.5 5.36364M7.5625 1.54546V5.36364H11.5M4.5 14.5H13.5V7.5M4 7.5H10M4 5H6M4 10H10" /></g></svg>;
 export default ReportIcon;
