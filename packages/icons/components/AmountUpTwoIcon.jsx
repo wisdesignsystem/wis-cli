@@ -1,0 +1,3 @@
+import * as React from "react";
+const AmountUpTwoIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="amount-up-two"><path id="Vector" stroke="currentColor" d="M1.70764 12.6607H7.70764M4.70762 3.66066H7.70762M11.4541 14.0891L11.4542 3.08912M8.95421 4.88202L11.4542 2.58911L13.9542 4.88202M3.70764 6.66066H7.70764M2.70762 9.66066H7.70762" /></g></svg>;
+export default AmountUpTwoIcon;

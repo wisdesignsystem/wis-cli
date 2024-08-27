@@ -1,0 +1,3 @@
+import * as React from "react";
+const LightningFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M8.6635 1.02746C8.86494 1.09714 9.00007 1.28685 9.00007 1.5L9.00001 7H12C12.1914 7 12.366 7.10928 12.4497 7.28143C12.5334 7.45358 12.5114 7.6584 12.3932 7.80891L6.89323 14.8089C6.76154 14.9765 6.53808 15.0422 6.33663 14.9725C6.13519 14.9029 6.00007 14.7131 6.00007 14.5V9H3.00007C2.80865 9 2.63404 8.89072 2.55037 8.71857C2.46669 8.54641 2.48865 8.3416 2.60691 8.19109L8.10691 1.19109C8.2386 1.02348 8.46206 0.957792 8.6635 1.02746Z" clipRule="evenodd" /></g></svg>;
+export default LightningFilledIcon;

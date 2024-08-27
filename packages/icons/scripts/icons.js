@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url'
 import { components } from '@figma-export/core'
 import svgr from '@figma-export/output-components-as-svgr'
 import svgo from '@figma-export/transform-svg-with-svgo'
+import chalk from 'chalk'
 import * as file from '@wisdesign/utils/file.js'
 import * as shell from '@wisdesign/utils/shell.js'
 import * as tool from '@wisdesign/utils/tool.js'
@@ -17,7 +18,6 @@ const __dirname = path.dirname(__filename)
 const rootPath = path.resolve(__dirname, '..')
 const outputPath = path.resolve(rootPath, './')
 const metaPath = path.resolve(rootPath, './components/meta.js')
-const indexPath = path.resolve(rootPath, './components/index.js')
 
 const envPaths = [path.resolve(rootPath, './.env.local'), path.resolve(rootPath, './.env')].filter(file.isExist)
 
@@ -53,7 +53,7 @@ function isNormalComponent(name) {
 
 // 是一个变量组件
 function isVariantComponent(name) {
-  return styleWhitelist.some((item) => name === `type=${item}`)
+  return styleWhitelist.some((item) => name === `theme=${item}`)
 }
 
 function getName(name) {
@@ -70,11 +70,11 @@ function format(content) {
 }
 
 function getVariantComponentName(option) {
-  const style = option.componentName.replace(/^type=/, '')
+  const style = option.componentName.replace(/^theme=/, '')
   const component = option.pathToComponent.find((item) => item.type === 'COMPONENT_SET')
   return component.name
     .split('-')
-    .concat(style)
+    .concat(style === defaultStyle ? [] : style)
     .filter(Boolean)
     .map((item) => tool.toFirstUpperCase(item.trim()))
     .join('')
@@ -203,17 +203,29 @@ async function icon(iconOption) {
   spin.succeed('done')
 }
 
-async function main() {
-  shell.execSync(`rm -rf ${path.resolve(rootPath, './components')}`)
-  await icon()
+function getComponentsByMeta(meta) {
   const components = []
-  styles.forEach((style) => {
+  meta.forEach((style) => {
     style.children.forEach((category) => {
       category.children.forEach((component) => {
         components.push(component)
       })
     })
   })
+
+  return components
+}
+
+async function main() {
+  let oldMeta = []
+  try {
+    oldMeta = await import(metaPath).then((module) => module.default)
+  } catch (e) {
+    // no action
+  }
+
+  shell.execSync(`rm -rf ${path.resolve(rootPath, './components')}`)
+  await icon()
 
   file.writeFile(
     metaPath,
@@ -222,16 +234,42 @@ async function main() {
   `),
   )
 
-  file.writeFile(
-    indexPath,
-    format(
-      components
-        .map((component) => {
-          return `export { default as ${component.name} } from './${component.name}.jsx';`
-        })
-        .join('\n'),
-    ),
-  )
+  const oldComponents = getComponentsByMeta(oldMeta)
+  const oldComponentMap = oldComponents.reduce((result, component) => {
+    result[component.name] = true
+    return result
+  }, {})
+
+  const newComponents = getComponentsByMeta(styles)
+  const newComponentMap = newComponents.reduce((result, component) => {
+    result[component.name] = true
+    return result
+  }, {})
+
+  const removeComponents = oldComponents.filter((component) => {
+    return !newComponentMap[component.name]
+  })
+  const addComponents = newComponents.filter((component) => {
+    return !oldComponentMap[component.name]
+  })
+
+  if (removeComponents.length) {
+    console.info('')
+    console.info(`Remove Icons(${chalk.red(removeComponents.length)}):`)
+    console.info('')
+    removeComponents.forEach((component) => {
+      console.info(`${chalk.red('-')} ${component.name}`)
+    })
+  }
+
+  if (addComponents.length) {
+    console.info('')
+    console.info(`Add Icons(${chalk.green(addComponents.length)}):`)
+    console.info('')
+    addComponents.forEach((component) => {
+      console.info(`${chalk.green('+')} ${component.name}`)
+    })
+  }
 }
 
 main()

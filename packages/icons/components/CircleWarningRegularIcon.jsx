@@ -1,3 +1,0 @@
-import * as React from "react";
-const CircleWarningRegularIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="circle-warning-regular"><path id="Vector" stroke="currentColor" d="M8 4V9.5M8 11.25H8.005V11.255H8V11.25ZM8.25 11.25C8.25 11.3881 8.13807 11.5 8 11.5C7.86193 11.5 7.75 11.3881 7.75 11.25C7.75 11.1119 7.86193 11 8 11C8.13807 11 8.25 11.1119 8.25 11.25ZM14.5 8C14.5 11.5899 11.5899 14.5 8 14.5C4.41015 14.5 1.5 11.5899 1.5 8C1.5 4.41015 4.41015 1.5 8 1.5C11.5899 1.5 14.5 4.41015 14.5 8Z" /></g></svg>;
-export default CircleWarningRegularIcon;

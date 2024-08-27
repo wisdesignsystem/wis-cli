@@ -1,0 +1,3 @@
+import * as React from "react";
+const ArrowUpFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M7.97855 2.02145L11.8321 5.87501L11.125 6.58211L8.47855 3.93567L8.47855 12.9786H7.47855L7.47855 3.93567L4.83211 6.58211L4.125 5.87501L7.97855 2.02145Z" clipRule="evenodd" /></g></svg>;
+export default ArrowUpFilledIcon;
