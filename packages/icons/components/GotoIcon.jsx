@@ -1,3 +1,3 @@
 import * as React from "react";
-const GotoIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="goto"><path id="Vector" stroke="currentColor" d="M3.06248 4.53113H9.53123C11.7404 4.53113 13.5312 6.32199 13.5312 8.53113C13.5312 10.7403 11.7404 12.5311 9.53123 12.5311H3.06248M5.31514 7.08644L2.80981 4.5811L5.22759 2.16333" /></g></svg>;
+const GotoIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M3.06248 4.53125H9.53123C11.7404 4.53125 13.5312 6.32211 13.5312 8.53125C13.5312 10.7404 11.7404 12.5313 9.53123 12.5313H3.06248M5.31514 7.08656L2.80981 4.58122L5.22759 2.16345" /></g></svg>;
 export default GotoIcon;

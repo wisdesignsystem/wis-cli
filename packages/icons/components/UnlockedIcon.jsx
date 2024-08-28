@@ -1,3 +1,0 @@
-import * as React from "react";
-const UnlockedIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="Unlocked"><path id="Vector" stroke="currentColor" d="M5.5 7.5V4C5.5 2.61929 6.61929 1.5 8 1.5C9.38071 1.5 10.5 2.61929 10.5 4V5M8.00001 10.5V10.49H7.99001V10.5H8.00001ZM8.00001 10.5L8 12.5M12.5 14.5H3.5V7.5H12.5V14.5ZM8.49001 10.49C8.49001 10.7661 8.26615 10.99 7.99001 10.99C7.71387 10.99 7.49001 10.7661 7.49001 10.49C7.49001 10.2139 7.71387 9.98999 7.99001 9.98999C8.26615 9.98999 8.49001 10.2139 8.49001 10.49Z" /></g></svg>;
-export default UnlockedIcon;

@@ -1,3 +1,0 @@
-import * as React from "react";
-const VolumeMuteRegularIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="volume-mute-regular"><path id="Vector" stroke="currentColor" d="M2 2L14 14M12.7427 3.75735C13.2998 4.31451 13.7418 4.97594 14.0433 5.7039C14.3448 6.43185 14.5 7.21206 14.5 8C14.5 8.78793 14.3448 9.56814 14.0433 10.2961C13.9153 10.6051 13.762 10.9022 13.5853 11.1844M11.2717 9.14803C11.4224 8.78406 11.5 8.39395 11.5 7.99998C11.5 7.60602 11.4224 7.21591 11.2717 6.85193C11.1209 6.48796 10.8999 6.15724 10.6213 5.87866M8.5 6V2.5L6.36838 4.31921M8.5 8.5V13.5L5 10.5H2.5V5.5H5.5" /></g></svg>;
-export default VolumeMuteRegularIcon;

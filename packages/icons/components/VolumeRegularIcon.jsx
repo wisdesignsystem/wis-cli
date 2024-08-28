@@ -1,3 +1,0 @@
-import * as React from "react";
-const VolumeRegularIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="volume-regular"><path id="Vector" stroke="currentColor" d="M12.6994 12.2426C13.2565 11.6855 13.6985 11.0241 14 10.2961C14.3015 9.56815 14.4567 8.78794 14.4567 8C14.4567 7.21207 14.3016 6.43186 14 5.7039C13.6985 4.97595 13.2565 4.31451 12.6994 3.75736M10.6213 10.1213C10.8999 9.84273 11.1209 9.51201 11.2717 9.14803C11.4224 8.78406 11.5 8.39395 11.5 7.99998C11.5 7.60602 11.4224 7.21591 11.2717 6.85193C11.1209 6.48796 10.8999 6.15724 10.6213 5.87866M2.5 5.5H5L8.5 2.49997V13.5L5 10.5H2.5V5.5Z" /></g></svg>;
-export default VolumeRegularIcon;
