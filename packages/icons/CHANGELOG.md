@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.8
+
+### Patch Changes
+
+- dc180ba: [feature] rebuild the icons components
+
 ## 0.0.7
 
 ### Patch Changes
