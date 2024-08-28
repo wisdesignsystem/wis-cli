@@ -1,5 +1,11 @@
 # @wisdesign/icons
 
+## 0.0.10
+
+### Patch Changes
+
+- 3edadec: [feature] rebuild the icons components
+
 ## 0.0.9
 
 ### Patch Changes
