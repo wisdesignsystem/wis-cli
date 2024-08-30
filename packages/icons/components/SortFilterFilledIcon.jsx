@@ -1,3 +1,0 @@
-import * as React from "react";
-const SortFilterFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M4.50006 1.52869L7.33803 4.13156L6.66211 4.86853L5.00022 3.34431L5.00009 14L4.00009 14L4.00022 3.34403L2.33803 4.86853L1.66211 4.13156L4.50006 1.52869ZM10.9542 12.2738L10.9543 1.91081L11.9543 1.91082L11.9542 12.2738L13.6163 10.7494L14.2922 11.4864L11.4542 14.0893L8.61629 11.4864L9.29221 10.7494L10.9542 12.2738Z" clipRule="evenodd" /></g></svg>;
-export default SortFilterFilledIcon;

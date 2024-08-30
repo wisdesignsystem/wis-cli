@@ -1,3 +1,0 @@
-import * as React from "react";
-const CloseSmallFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M7.99998 7.29287L11.1464 4.14642L11.8535 4.85353L8.70709 7.99997L11.8535 11.1464L11.1464 11.8535L7.99998 8.70708L4.85353 11.8535L4.14642 11.1464L7.29287 7.99997L4.14643 4.85353L4.85354 4.14642L7.99998 7.29287Z" clipRule="evenodd" /></g></svg>;
-export default CloseSmallFilledIcon;

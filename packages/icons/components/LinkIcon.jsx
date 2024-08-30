@@ -1,3 +1,0 @@
-import * as React from "react";
-const LinkIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M8.3417 10.6582L6.42567 12.5742C5.59509 13.4048 4.24844 13.4048 3.41786 12.5742C2.58728 11.7437 2.58728 10.397 3.41786 9.56642L5.33389 7.6504M10.6942 8.30567L12.6102 6.38966C13.4408 5.55908 13.4408 4.21243 12.6102 3.38185C11.7797 2.55126 10.433 2.55127 9.60244 3.38185L7.50055 5.48373M5.99688 10.003L9.99222 6.00769" /></g></svg>;
-export default LinkIcon;

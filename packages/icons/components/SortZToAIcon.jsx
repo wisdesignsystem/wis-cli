@@ -1,3 +1,0 @@
-import * as React from "react";
-const SortZToAIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M4.83799 1.91077L4.83788 12.9108M7.33789 11.1179L4.83788 13.4108L2.33789 11.1179M12.3999 12L11.4999 9H10.9999L9.79992 12M12.3999 12C12.3999 12 12.9999 13.5 12.9999 14M12.3999 12H9.79992M8.99992 14C8.99992 13.5 9.79992 12 9.79992 12M13.4999 7H9.49992V6.5L12.9999 3V2.5H8.99992" /></g></svg>;
-export default SortZToAIcon;

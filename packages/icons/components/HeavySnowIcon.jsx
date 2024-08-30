@@ -1,3 +1,0 @@
-import * as React from "react";
-const HeavySnowIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M7.99986 1V15M9.99986 2L7.99986 4L5.99986 2M9.99986 14L7.99986 12L5.99986 14M14.062 4.5L1.93769 11.5M14.196 6.73205L11.464 6L12.196 3.26795M3.80371 12.7321L4.53576 10L1.80371 9.26795M14.0621 11.5L1.9377 4.49999M12.196 12.732L11.464 10L14.196 9.26794M1.80373 6.73205L4.53578 5.99999L3.80373 3.26794" /></g></svg>;
-export default HeavySnowIcon;

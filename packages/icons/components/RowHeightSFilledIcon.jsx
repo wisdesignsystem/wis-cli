@@ -1,3 +1,0 @@
-import * as React from "react";
-const RowHeightSFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M4.50008 1.82153L7.33803 4.42441L6.66211 5.16138L5.00006 3.637L5.00016 12.3629L6.66211 10.8386L7.33803 11.5756L4.50006 14.1785L1.66211 11.5756L2.33803 10.8386L4.00016 12.363L4.00006 3.63704L2.33803 5.16138L1.66211 4.42441L4.50008 1.82153ZM14.0001 4.49999H9.00008V3.49999H14.0001V4.49999ZM14.0001 8.49998H9.00008V7.49998H14.0001V8.49998ZM14.0001 12.5H9.00008V11.5H14.0001V12.5Z" clipRule="evenodd" /></g></svg>;
-export default RowHeightSFilledIcon;

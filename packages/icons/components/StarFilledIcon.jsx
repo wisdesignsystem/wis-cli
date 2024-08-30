@@ -1,3 +1,0 @@
-import * as React from "react";
-const StarFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Star 1 (Stroke)" fill="currentColor" fillRule="evenodd" d="M8.00001 1.91016L10.0355 5.85251L13.9735 6.69754L11.2639 9.56607L11.5631 13.896L8.00001 11.8672L4.43691 13.896L4.7361 9.56607L2.02649 6.69754L5.96453 5.85251L8.00001 1.91016Z" clipRule="evenodd" /></g></svg>;
-export default StarFilledIcon;

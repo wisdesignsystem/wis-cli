@@ -1,3 +1,0 @@
-import * as React from "react";
-const ClothesFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector 325 (Stroke)" fill="currentColor" fillRule="evenodd" d="M3.7596 2H5.99991V2.47343C6.00494 2.48342 6.02601 2.53195 6.10141 2.61992C6.20515 2.74094 6.36707 2.88318 6.57472 3.01979C6.9964 3.29721 7.52668 3.5 7.99991 3.5C8.47314 3.5 9.00342 3.29721 9.4251 3.01979C9.63275 2.88318 9.79467 2.74094 9.89841 2.61992C9.9738 2.53195 9.99487 2.48342 9.99991 2.47343V2H12.2402L14.5516 4.88919L13.3152 9.21664L11.4999 8.30902V14H4.49991V8.30902L2.68466 9.21664L1.44824 4.88919L3.7596 2Z" clipRule="evenodd" /></g></svg>;
-export default ClothesFilledIcon;

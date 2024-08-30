@@ -1,3 +1,0 @@
-import * as React from "react";
-const SortAToZIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M4.83799 1.91077L4.83788 12.9108M7.33789 11.1179L4.83788 13.4108L2.33789 11.1179M8.99992 9.5H13.4999V10L9.49992 13V13.5H13.9999H8.99992M9.49992 7.5C9.49992 7 10.1195 5.43458 10.1195 5.43458M10.1195 5.43458L10.9999 2.5H11.9999L12.8803 5.43458M10.1195 5.43458H12.8803M12.8803 5.43458C12.8803 5.43458 13.4999 7 13.4999 7.5" /></g></svg>;
-export default SortAToZIcon;

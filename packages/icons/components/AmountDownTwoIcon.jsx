@@ -1,3 +1,0 @@
-import * as React from "react";
-const AmountDownTwoIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=outline"><path id="Vector" stroke="currentColor" d="M1.70752 3.66074H7.70752M4.7075 12.6607H7.7075M11.4541 1.91077L11.454 12.9108M13.954 11.1179L11.454 13.4108L8.95403 11.1179M3.70752 9.66074H7.70752M2.7075 6.66074H7.7075" /></g></svg>;
-export default AmountDownTwoIcon;

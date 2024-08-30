@@ -1,3 +1,0 @@
-import * as React from "react";
-const DownFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M7.99998 10.2071L11.8535 6.35354L11.1464 5.64643L7.99998 8.79288L4.85353 5.64643L4.14642 6.35354L7.99998 10.2071Z" clipRule="evenodd" /></g></svg>;
-export default DownFilledIcon;

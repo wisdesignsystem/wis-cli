@@ -1,3 +1,0 @@
-import * as React from "react";
-const AmountUpTwoFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M11.4541 1.91077L14.2921 4.51364L13.6161 5.25061L11.9541 3.72625L11.954 14.0892L10.954 14.0892L10.9541 3.72625L9.29205 5.25061L8.61613 4.51364L11.4541 1.91077ZM7.7075 4.16077H4.7075V3.16077H7.7075V4.16077ZM7.70752 7.16077H3.70752V6.16077H7.70752V7.16077ZM7.7075 10.1608H2.7075V9.16077H7.7075V10.1608ZM7.70752 13.1608H1.70752V12.1608H7.70752V13.1608Z" clipRule="evenodd" /></g></svg>;
-export default AmountUpTwoFilledIcon;

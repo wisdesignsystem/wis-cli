@@ -1,3 +1,0 @@
-import * as React from "react";
-const ArrowLeftFilledIcon = props => <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}><g id="theme=filled"><path id="Vector (Stroke)" fill="currentColor" fillRule="evenodd" d="M5.85354 4.14648L6.56064 4.85359L3.9142 7.50004H12.9571V8.50004H3.9142L6.56065 11.1465L5.85354 11.8536L1.99998 8.00004L5.85354 4.14648Z" clipRule="evenodd" /></g></svg>;
-export default ArrowLeftFilledIcon;
