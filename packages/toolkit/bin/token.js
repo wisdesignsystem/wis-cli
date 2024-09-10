@@ -31,30 +31,21 @@ token
 token.parse()
 
 const opts = token.opts()
-const whitelist = [
-  'size',
-  'icon',
-  'color',
-  'gradient',
-  'border',
-  'padding',
-  'margin',
-  'space',
-  'font',
-  'shadow',
-  'background',
-]
 
 function isTokenValue(data) {
   return '$type' in data && '$value' in data
 }
 
 function isVariableToken(data) {
-  return /\{[a-zA-Z0-9.]+\}/.test(data)
+  return /\{[a-zA-Z0-9-.]+\}/.test(data)
 }
 
 function isPrivateToken(key) {
-  return key.startsWith('_')
+  return key.includes('_')
+}
+
+function kebabToCamel(str) {
+  return str.replace(/-./g, (match) => match.charAt(1).toUpperCase())
 }
 
 function resolvePath(filePath) {
@@ -67,16 +58,31 @@ function getTokenKey(keys) {
 
 function flattenJSONData(json, path = [], result = {}) {
   Object.keys(json).forEach((key) => {
-    if (isPrivateToken(key)) {
+    const item = json[key]
+    const keyPaths = path.concat(key)
+    const tokenKey = getTokenKey(keyPaths)
+
+    if (isPrivateToken(tokenKey)) {
       return
     }
 
-    const item = json[key]
-    const keyPaths = path.concat(key)
     if (isTokenValue(item)) {
-      result[getTokenKey(keyPaths)] = isVariableToken(item.$value)
-        ? `var(${getTokenKey(item.$value.replace('{', '').replace('}', '').split('.'))})`
-        : item.$value
+      let category
+      let group = keyPaths[0]
+      if (['common', 'component'].includes(group)) {
+        category = group
+        group = keyPaths[1]
+      }
+
+      result[tokenKey] = {
+        category,
+        group,
+        key: tokenKey,
+        value: isVariableToken(item.$value)
+          ? `var(${getTokenKey(item.$value.replace('{', '').replace('}', '').split('.'))})`
+          : item.$value,
+      }
+
       return
     }
 
@@ -98,21 +104,18 @@ function parseThemeExpression(themeExpression) {
 
 function groupTokens(sourceToken, themeTokens) {
   return Object.keys(sourceToken).reduce((result, key) => {
-    let group = key.replace(`--${opts.namespace}`, '').split('-').filter(Boolean)[0]
-    if (whitelist.includes(group)) {
-      group = 'base'
-    }
-
-    if (!result[group]) {
-      result[group] = {
-        fileName: `${group}.css`,
+    const token = sourceToken[key]
+    if (!result[token.group]) {
+      result[token.group] = {
+        category: token.category,
+        name: token.group,
         children: [],
       }
     }
 
-    result[group].children.push({
+    result[token.group].children.push({
       key,
-      token: sourceToken[key],
+      value: token.value,
       themeTokens: themeTokens.map(({ theme, tokens }) => {
         return { theme, token: tokens[key] }
       }),
@@ -135,13 +138,13 @@ function generateTokenFiles(groupTokens) {
 
     const defaultTheme = []
     const themes = group.children.reduce((result, item) => {
-      defaultTheme.push(`${item.key}: ${item.token}`)
+      defaultTheme.push(`${item.key}: ${item.value}`)
       item.themeTokens.forEach(({ theme, token }) => {
         if (!result[theme]) {
           result[theme] = []
         }
 
-        result[theme].push(`${item.key}: ${token}`)
+        result[theme].push(`${item.key}: ${token.value}`)
       })
 
       return result
@@ -150,15 +153,21 @@ function generateTokenFiles(groupTokens) {
     const content = `:root {
       ${defaultTheme.join(';')}
     }
-    ${Object.keys(themes).map((theme) => {
-      return `html[data-theme='${theme}'] {
+    ${Object.keys(themes)
+      .map((theme) => {
+        return `html[data-theme='${theme}'] {
         ${themes[theme].join(';')}
       }`
-    })}
+      })
+      .join('')}
     `
 
-    file.writeFile(path.resolve(outputPath, group.fileName), format(content))
-    imports.push(`@import './${group.fileName}';`)
+    const fileName = `${kebabToCamel(group.name)}.css`
+    file.writeFile(path.resolve(outputPath, fileName), format(content))
+
+    if (group.category !== 'component') {
+      imports.push(`@import './${fileName}';`)
+    }
   })
 
   file.writeFile(path.resolve(outputPath, 'index.css'), format(imports.join('')))
