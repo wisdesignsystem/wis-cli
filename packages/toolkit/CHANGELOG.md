@@ -1,5 +1,11 @@
 # @wisdesign/toolkit
 
+## 0.0.2
+
+### Patch Changes
+
+- dffd48e: [feature] Change the token tool to support wis components
+
 ## 0.0.1
 
 ### Patch Changes
