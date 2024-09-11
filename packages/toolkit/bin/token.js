@@ -27,6 +27,7 @@ token
   )
   .option('-o, --output <path>', 'Output token file root path', './tokens')
   .option('-n, --namespace <namespace>', 'Theme token namespace', 'token')
+  .option('--split-component', 'Will not import component category in index.css')
 
 token.parse()
 
@@ -132,45 +133,57 @@ function format(content) {
 
 const outputPath = resolvePath(opts.output)
 function generateTokenFiles(groupTokens) {
-  const imports = []
+  const imports = {}
   Object.keys(groupTokens).forEach((groupKey) => {
     const group = groupTokens[groupKey]
 
-    const defaultTheme = []
-    const themes = group.children.reduce((result, item) => {
-      defaultTheme.push(`${item.key}: ${item.value}`)
-      item.themeTokens.forEach(({ theme, token }) => {
-        if (!result[theme]) {
-          result[theme] = []
-        }
+    const themes = group.children.reduce(
+      (result, item) => {
+        result.default.push(`${item.key}: ${item.value}`)
+        item.themeTokens.forEach(({ theme, token }) => {
+          if (!result[theme]) {
+            result[theme] = []
+          }
 
-        result[theme].push(`${item.key}: ${token.value}`)
-      })
+          result[theme].push(`${item.key}: ${token.value}`)
+        })
 
-      return result
-    }, {})
+        return result
+      },
+      { default: [] },
+    )
 
-    const content = `:root {
-      ${defaultTheme.join(';')}
-    }
-    ${Object.keys(themes)
-      .map((theme) => {
-        return `html[data-theme='${theme}'] {
-        ${themes[theme].join(';')}
-      }`
-      })
-      .join('')}
-    `
+    Object.keys(themes).forEach((theme) => {
+      let content = ''
+      if (theme === 'default') {
+        content = `:root {
+          ${themes[theme].join(';')}
+        }`
+      } else {
+        content = `html[data-theme='${theme}'] {
+          ${themes[theme].join(';')}
+        }`
+      }
 
-    const fileName = `${kebabToCamel(group.name)}.css`
-    file.writeFile(path.resolve(outputPath, fileName), format(content))
+      const themePath = path.resolve(outputPath, `${kebabToCamel(theme)}/${kebabToCamel(group.name)}.css`)
+      file.writeFile(themePath, format(content))
 
-    if (group.category !== 'component') {
-      imports.push(`@import './${fileName}';`)
-    }
+      if (opts.splitComponent && group.category === 'component') {
+        return
+      }
+
+      if (!imports[theme]) {
+        imports[theme] = []
+      }
+
+      imports[theme].push(`@import './${kebabToCamel(group.name)}.css';`)
+    })
   })
 
-  file.writeFile(path.resolve(outputPath, 'index.css'), format(imports.join('')))
+  Object.keys(imports).forEach((theme) => {
+    const themeEntryPath = path.resolve(outputPath, `${kebabToCamel(theme)}/index.css`)
+    file.writeFile(themeEntryPath, format(imports[theme].join('')))
+  })
 }
 
 const sourceFilePath = resolvePath(opts.source)
