@@ -1,5 +1,11 @@
 # @wisdesign/toolkit
 
+## 0.0.3
+
+### Patch Changes
+
+- 0b1895a: [feature] change the token tooltik split the theme file
+
 ## 0.0.2
 
 ### Patch Changes
