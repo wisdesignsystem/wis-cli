@@ -1,10 +1,10 @@
 {
-  "name": "@wisdesign/cross-webpack-plugin",
-  "version": "0.0.3",
+  "name": "@wisdesign/container-entry-webpack-plugin",
+  "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
-  "main": "CrossWebpackPlugin.js",
+  "main": "ContainerEntryWebpackPlugin.js",
   "type": "module",
   "dependencies": {
     "@babel/parser": "7.23.0",

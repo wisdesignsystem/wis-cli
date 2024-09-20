@@ -72,12 +72,15 @@ importers:
       '@wisdesign/plugin-cross':
         specifier: workspace:*
         version: link:../plugin-cross
+      '@wisdesign/plugin-import-demand':
+        specifier: workspace:*
+        version: link:../plugin-import-demand
+      '@wisdesign/plugin-remote-entry':
+        specifier: workspace:*
+        version: link:../plugin-remote-entry
       '@wisdesign/plugin-router':
         specifier: workspace:*
         version: link:../plugin-router
-      '@wisdesign/remote-entry-webpack-plugin':
-        specifier: workspace:*
-        version: link:../remote-entry-webpack-plugin
       '@wisdesign/remote-webpack-plugin':
         specifier: workspace:*
         version: link:../remote-webpack-plugin
@@ -205,7 +208,7 @@ importers:
         specifier: workspace:*
         version: link:../utils
 
-  packages/cross-webpack-plugin:
+  packages/container-entry-webpack-plugin:
     dependencies:
       '@babel/generator':
         specifier: 7.23.0
@@ -273,18 +276,21 @@ importers:
 
   packages/plugin-cross:
     dependencies:
-      '@wisdesign/cross-webpack-plugin':
-        specifier: workspace:*
-        version: link:../cross-webpack-plugin
-      '@wisdesign/utils':
-        specifier: workspace:*
-        version: link:../utils
       postcss-px-to-viewport:
         specifier: 1.1.1
         version: 1.1.1
-      webpack-sources:
-        specifier: 3.2.3
-        version: 3.2.3
+
+  packages/plugin-import-demand:
+    dependencies:
+      '@wisdesign/container-entry-webpack-plugin':
+        specifier: workspace:*
+        version: link:../container-entry-webpack-plugin
+      '@wisdesign/utils':
+        specifier: workspace:*
+        version: link:../utils
+      minimatch:
+        specifier: 10.0.1
+        version: 10.0.1
 
   packages/plugin-less:
     dependencies:
@@ -307,6 +313,15 @@ importers:
         specifier: 4.18.2
         version: 4.18.2
 
+  packages/plugin-remote-entry:
+    dependencies:
+      '@wisdesign/container-entry-webpack-plugin':
+        specifier: workspace:*
+        version: link:../container-entry-webpack-plugin
+      '@wisdesign/utils':
+        specifier: workspace:*
+        version: link:../utils
+
   packages/plugin-router:
     dependencies:
       '@babel/parser':
@@ -326,15 +341,6 @@ importers:
         version: 7.23.2(@babel/core@7.23.2)
 
   packages/prettier-config: {}
-
-  packages/remote-entry-webpack-plugin:
-    dependencies:
-      webpack:
-        specifier: 5.92.1
-        version: 5.92.1
-      webpack-sources:
-        specifier: 3.2.3
-        version: 3.2.3
 
   packages/remote-webpack-plugin:
     dependencies:
@@ -4173,6 +4179,10 @@ packages:
 
   minimalistic-assert@1.0.1:
     resolution: {integrity: sha512-UtJcAD4yEaGtjPezWuO9wC4nwUnVH/8/Im3yEHQP4b67cXlD/Qr9hdITCU1xDbSEXg2XKNaP8jsReV7vQd00/A==}
+
+  minimatch@10.0.1:
+    resolution: {integrity: sha512-ethXTt3SGGR+95gudmqJ1eNhRO7eGEGIgYA9vnPatK4/etz2MEVDno5GMCibdMTuBMyElzIlgxMna3K94XDIDQ==}
+    engines: {node: 20 || >=22}
 
   minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
@@ -10547,6 +10557,10 @@ snapshots:
       webpack: 5.92.1
 
   minimalistic-assert@1.0.1: {}
+
+  minimatch@10.0.1:
+    dependencies:
+      brace-expansion: 2.0.1
 
   minimatch@3.1.2:
     dependencies:

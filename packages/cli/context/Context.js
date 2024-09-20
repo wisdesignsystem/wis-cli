@@ -25,6 +25,12 @@ class Context {
     this.config = Config.create(this.path)
   }
 
+  async init() {
+    await this.path.init()
+    await this.env.init()
+    await this.config.init()
+  }
+
   async parse() {
     await this.path.parse()
     await this.env.parse()

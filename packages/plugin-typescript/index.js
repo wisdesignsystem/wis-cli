@@ -3,14 +3,13 @@ import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 
 export default function (plugin) {
+  plugin.hooks.plugin.tap((pluginData) => {
+    if (pluginData.path.includes('@wisdesign/plugin-router')) {
+      pluginData.option.extensions.push('.ts')
+      pluginData.option.extensions.push('.tsx')
+    }
+  })
   plugin.hooks.context.tap((context) => {
-    plugin.hooks.plugin.tapStream((pluginData) => {
-      if (pluginData.includes('@wisdesign/plugin-router')) {
-        pluginData.option.extensions.push('.ts')
-        pluginData.option.extensions.push('.tsx')
-      }
-    })
-
     plugin.hooks.webpackConfigure.tap((webpackConfigure) => {
       const extensions = webpackConfigure.get('resolve.extensions')
       extensions.set('ts', '.ts')

@@ -1,4 +1,6 @@
 class Parser {
+  init() {}
+
   parse() {}
 }
 

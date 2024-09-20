@@ -7,6 +7,7 @@ import Tap from './Tap.js'
 import TapStream from './TapStream.js'
 import Webpack from './Webpack.js'
 import WebpackDevServer from './WebpackDevServer.js'
+import builtinPlugins from './builtinPlugins.js'
 
 class Wis {
   constructor() {
@@ -14,6 +15,8 @@ class Wis {
   }
 
   async initial() {
+    plugin.register('config', new Tap(['config', 'rawConfig']))
+
     // 获取上下文的勾子方法
     // 包含环境配置env、脚手架配置config、脚手架相关路径path
     plugin.register('context', new Tap(['context']))
@@ -48,8 +51,9 @@ class Wis {
     // 插件配置勾子方法
     plugin.register('plugin', new TapStream(['plugin']))
 
-    await this.context.parse()
+    await this.context.init()
     await this.plugins()
+    await this.context.parse()
     plugin.hooks.context.call(this.context)
 
     // 遍历所有的文件
@@ -82,15 +86,7 @@ class Wis {
   }
 
   async plugins() {
-    const routerPlugin = {
-      path: '@wisdesign/plugin-router',
-      option: { extensions: ['.js', '.jsx'] },
-    }
-    const crossPlugin = {
-      path: '@wisdesign/plugin-cross',
-    }
-
-    const plugins = [crossPlugin, routerPlugin].concat(this.context.config.plugins)
+    const plugins = builtinPlugins.concat(this.context.config.plugins)
     if (!plugins.length) {
       return
     }

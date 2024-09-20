@@ -3,6 +3,7 @@ import * as file from '@wisdesign/utils/file.js'
 import * as is from '@wisdesign/utils/is.js'
 import trace from '@wisdesign/utils/trace.js'
 
+import plugin from '../lib/plugin.js'
 import Parser from './Parser.js'
 
 function createGetValue(config) {
@@ -35,6 +36,8 @@ function replaceAliasPath(filePath, alias) {
 }
 
 class Config extends Parser {
+  rawConfig = {}
+
   path = null
 
   // 项目模式 project项目 library组件库
@@ -60,9 +63,6 @@ class Config extends Parser {
 
   // 是否开启browserHistory
   browserHistory = false
-
-  // 配置远程入口需要加载的模块
-  remoteEntry = ''
 
   // webpack配置式勾子
   webpackConfigure = () => {}
@@ -109,30 +109,35 @@ class Config extends Parser {
     return path.resolve(this.path.runtime, currentPath)
   }
 
-  async parse() {
+  async init() {
     if (!file.isExist(this.path.config)) {
       return
     }
-    const config = await import(this.path.config).then((module) => module.default)
+    this.rawConfig = await import(this.path.config).then((module) => module.default)
 
-    const getValue = createGetValue(config)
+    const getValue = createGetValue(this.rawConfig)
+    this.alias = getValue('alias', is.isObject, this.alias)
+    this.parsePlugins(this.rawConfig)
+  }
+
+  async parse() {
+    const getValue = createGetValue(this.rawConfig)
 
     this.mode = getValue('mode', is.isEnum(['project', 'library']), this.mode)
-    this.alias = getValue('alias', is.isObject, this.alias)
     this.extraBabelCompileNodeModules = getValue(
       'extraBabelCompileNodeModules',
       is.isArray,
       this.extraBabelCompileNodeModules,
     )
-    this.remoteEntry = getValue('remoteEntry', is.isString, this.remoteEntry)
     this.exposes = getValue('exposes', is.isObject, this.exposes)
     this.shared = getValue('shared', is.isObject, this.shared)
     this.browserHistory = getValue('browserHistory', is.isBoolean, this.browserHistory)
     this.webpackConfigure = getValue('webpackConfigure', is.isFunction, this.webpackConfigure)
     this.webpackConfig = getValue('webpackConfig', is.isFunction, this.webpackConfig)
 
-    this.parseLoading(config)
-    this.parsePlugins(config)
+    this.parseLoading(this.rawConfig)
+
+    plugin.hooks.config.call(this, this.rawConfig)
   }
 
   parseLoading(config) {

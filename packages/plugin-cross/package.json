@@ -6,13 +6,10 @@
   "license": "MIT",
   "main": "index.js",
   "type": "module",
-  "dependencies": {
-    "@wisdesign/cross-webpack-plugin": "workspace:*",
-    "@wisdesign/utils": "workspace:*",
-    "postcss-px-to-viewport": "1.1.1",
-    "webpack-sources": "3.2.3"
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "postcss-px-to-viewport": "1.1.1"
   }
 }

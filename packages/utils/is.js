@@ -22,7 +22,6 @@ export function isObject(data) {
   return check(data, 'Object')
 }
 
-// 是否是字面量对象
 export function isLiteObject(data) {
   return data && data.constructor === Object
 }

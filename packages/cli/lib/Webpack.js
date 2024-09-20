@@ -6,7 +6,6 @@ import { ObjectSet } from '@wisdesign/configure'
 import SetupHtmlWebpackPlugin from '@wisdesign/setup-html-webpack-plugin'
 import LogWebpackPlugin from '@wisdesign/log-webpack-plugin'
 import RemoteWebpackPlugin from '@wisdesign/remote-webpack-plugin'
-import RemoteEntryWebpackPlugin from '@wisdesign/remote-entry-webpack-plugin'
 import MiniCssExtractWebpackPlugin from 'mini-css-extract-plugin'
 import CssMinimizerWebpackPlugin from 'css-minimizer-webpack-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
@@ -419,21 +418,25 @@ class Webpack {
     return {
       ...this.context.config.shared,
       'react': {
+        eager: false,
         singleton: true,
         requiredVersion: cliPackageData.dependencies.react,
         strictVersion: true,
       },
       'react-dom': {
+        eager: false,
         singleton: true,
         requiredVersion: cliPackageData.dependencies['react-dom'],
         strictVersion: true,
       },
       'react-router-dom': {
+        eager: false,
         singleton: true,
         requiredVersion: cliPackageData.dependencies['react-router-dom'],
         strictVersion: true,
       },
       'history': {
+        eager: false,
         singleton: true,
         requiredVersion: cliPackageData.dependencies.history,
         strictVersion: true,
@@ -518,11 +521,6 @@ class Webpack {
     this.config.set('plugins.externalRemotes', undefined, {
       type: 'ClassSet',
       ClassObject: ExternalRemotesWebpackPlugin,
-    })
-
-    this.config.set('plugins.remoteEntry', this.context.config.remoteEntry, {
-      type: 'ClassSet',
-      ClassObject: RemoteEntryWebpackPlugin,
     })
   }
 
