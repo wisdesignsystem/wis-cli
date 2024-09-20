@@ -1,5 +1,12 @@
 # @wisdesign/cli
 
+## 0.0.10
+
+### Patch Changes
+
+- f532c93: [feature] add config file parse plugin hook
+- f532c93: [feature] Modify the resource subpackage scheme of the scaffolding
+
 ## 0.0.9
 
 ### Patch Changes

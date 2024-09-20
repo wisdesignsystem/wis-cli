@@ -1,5 +1,11 @@
 # @wisdesign/plugin-cross
 
+## 0.0.5
+
+### Patch Changes
+
+- f532c93: [feature] Modify the subpackage scheme of the cross-platform plugin
+
 ## 0.0.4
 
 ### Patch Changes

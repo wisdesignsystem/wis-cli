@@ -1,5 +1,11 @@
 # @wisdesign/utils
 
+## 0.0.3
+
+### Patch Changes
+
+- f532c93: [doc] add code comment
+
 ## 0.0.2
 
 ### Patch Changes

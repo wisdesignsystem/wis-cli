@@ -1,5 +1,12 @@
 # @wisdesign/log-webpack-plugin
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [f532c93]
+  - @wisdesign/utils@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
