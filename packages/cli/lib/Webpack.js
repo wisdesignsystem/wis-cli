@@ -600,12 +600,12 @@ class Webpack {
 
     optimization.set('splitChunks', {
       chunks: 'async',
-      minSize: 0,
-      minRemainingSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: Infinity,
-      maxInitialRequests: Infinity,
-      enforceSizeThreshold: 50000,
+      // minSize: 0,
+      // minRemainingSize: 0,
+      // minChunks: 1,
+      // maxAsyncRequests: Infinity,
+      // maxInitialRequests: Infinity,
+      // enforceSizeThreshold: 50000,
       cacheGroups,
     })
   }

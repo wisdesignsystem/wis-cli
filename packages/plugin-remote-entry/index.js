@@ -67,7 +67,8 @@ export default function (plugin) {
               VariableDeclarator: (path) => {
                 if (path.node.id.name === 'init') {
                   const node = babel.parser.parse(generateRemoteEntryRunCode())
-                  path.node.init.body.body.unshift(...node.program.body)
+                  const index = path.node.init.body.body.findIndex((node) => node.type === 'ReturnStatement')
+                  path.node.init.body.body.splice(index, 0, ...node.program.body)
                 }
               },
             })
