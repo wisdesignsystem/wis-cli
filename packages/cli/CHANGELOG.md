@@ -1,5 +1,13 @@
 # @wisdesign/cli
 
+## 0.0.12
+
+### Patch Changes
+
+- 96af9c6: [feature] Temporarily remove the current partial subpackage configuration and re-think the subpackage mechanism later.
+- Updated dependencies [96af9c6]
+  - @wisdesign/plugin-remote-entry@0.0.2
+
 ## 0.0.11
 
 ### Patch Changes
