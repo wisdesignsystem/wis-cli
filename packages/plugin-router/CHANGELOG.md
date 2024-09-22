@@ -1,5 +1,11 @@
 # @wisdesign/plugin-router
 
+## 0.0.5
+
+### Patch Changes
+
+- 775d773: [fix] Fix the removeFile function is not exist
+
 ## 0.0.4
 
 ### Patch Changes

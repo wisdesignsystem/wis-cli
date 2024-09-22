@@ -1,5 +1,11 @@
 # @wisdesign/plugin-cross
 
+## 0.0.6
+
+### Patch Changes
+
+- 775d773: [fix] Change the cross plugin subpackage rule
+
 ## 0.0.5
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @wisdesign/cli
 
+## 0.0.13
+
+### Patch Changes
+
+- 775d773: [fix] Fix the user plugin cannot get system plugin config bug
+- Updated dependencies [775d773]
+- Updated dependencies [775d773]
+  - @wisdesign/plugin-cross@0.0.6
+  - @wisdesign/plugin-router@0.0.5
+
 ## 0.0.12
 
 ### Patch Changes
