@@ -86,7 +86,8 @@ class Wis {
   }
 
   async plugins() {
-    const plugins = builtinPlugins.concat(this.context.config.plugins)
+    // TODO How to solve the dependency and sequence issues among plugins
+    const plugins = this.context.config.plugins.concat(builtinPlugins)
     if (!plugins.length) {
       return
     }

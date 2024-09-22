@@ -165,7 +165,7 @@ class ReactRouter extends Router {
     const page = this.parsePage(filePath)
     this.pages = this.pages.filter((item) => item.pageName !== page.pageName)
     this.writeRouter()
-    this.removeFile(page.dynamicPageFilePath)
+    file.removeFile(page.dynamicPageFilePath)
   }
 
   // 继承重写删除布局文件
@@ -173,7 +173,7 @@ class ReactRouter extends Router {
     const layout = this.parseLayout(filePath)
     this.layouts = this.layouts.filter((item) => item.layoutName !== layout.layoutName)
     this.writeLayoutContainer()
-    this.removeFile(layout.dynamicLayoutFilePath)
+    file.removeFile(layout.dynamicLayoutFilePath)
   }
 
   // 继承重写变更页面文件

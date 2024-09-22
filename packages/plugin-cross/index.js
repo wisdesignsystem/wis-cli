@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module'
+import path from 'node:path'
 
 const require = createRequire(import.meta.url)
 
@@ -113,7 +114,25 @@ export default function (plugin, options) {
   plugin.hooks.plugin.tap((pluginData) => {
     if (pluginData.path.includes('@wisdesign/plugin-import-demand')) {
       pluginData.option.push({
-        test: '**/*/{pc,pad,mobile}/*.{js,jsx,ts,tsx}',
+        test: function (fileName) {
+          const { dir: agentDir, name: componentName, ext: componentExt } = path.parse(fileName)
+          const { dir: componentDir, name: agentName } = path.parse(agentDir)
+          const { name } = path.parse(componentDir)
+
+          if (!['pc', 'pad', 'mobile'].includes(agentName)) {
+            return false
+          }
+
+          if (!['.js', '.jsx', '.ts', '.tsx'].includes(componentExt)) {
+            return false
+          }
+
+          if (componentName.toLowerCase() !== name.toLowerCase()) {
+            return false
+          }
+
+          return true
+        },
         name: 'cross',
         getModuleName(name) {
           return name.replace(/^\S/, (c) => c.toUpperCase())
