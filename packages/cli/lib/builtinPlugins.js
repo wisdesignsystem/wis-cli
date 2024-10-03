@@ -16,15 +16,21 @@ export default [
           if (!module.includes('/locales')) {
             return
           }
+
+          const scopes = ['en-US', 'en']
           // eslint-disable-next-line no-var
-          var language = window.localStorage.getItem(window.$__wis_language__) || 'zh-CN'
+          var language = window.localStorage.getItem(window.$__wis_language__)
           if (!language) {
-            return
+            return scopes
+          }
+
+          if (scopes.includes(language)) {
+            return scopes
           }
 
           // eslint-disable-next-line no-var
           var [countryLanguage] = language.split('-').filter(Boolean)
-          return [language, countryLanguage]
+          return [language, countryLanguage].concat(scopes)
         },
       },
       {
@@ -35,13 +41,18 @@ export default [
             return
           }
 
+          const scopes = ['default']
           // eslint-disable-next-line no-var
-          var theme = document.documentElement.getAttribute('data-theme') || 'default'
+          var theme = document.documentElement.getAttribute('data-theme')
           if (!theme) {
-            return 'default'
+            return scopes
           }
 
-          return theme
+          if (scopes.includes(theme)) {
+            return scopes
+          }
+
+          return [theme].concat(scopes)
         },
       },
     ],
