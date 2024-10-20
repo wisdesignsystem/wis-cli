@@ -6,7 +6,13 @@ import { render as customRender } from './app.js'
 import { isFunction } from './helper.js'
 
 function render(Node) {
-  const root = ReactDOM.createRoot(document.getElementById(process.env.ROOT_ELEMENT_ID || 'root'));
+  const rootElement = document.getElementById(process.env.ROOT_ELEMENT_ID || 'root')
+
+  if (!rootElement.hasAttribute('data-root')) {
+    rootElement.setAttribute('data-root', '')
+  }
+
+  const root = ReactDOM.createRoot(rootElement);
   root.render(Node);
 }
 
