@@ -1,5 +1,13 @@
 # @wisdesign/cli
 
+## 0.0.14
+
+### Patch Changes
+
+- 7ab8fdf: [fix] Fix the import demand match rule
+- Updated dependencies
+  - @wisdesign/plugin-router@0.0.6
+
 ## 0.0.13
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @wisdesign/plugin-router
 
+## 0.0.6
+
+### Patch Changes
+
+- [feature] add data-root attribute to root element
+
 ## 0.0.5
 
 ### Patch Changes
