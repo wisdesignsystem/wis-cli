@@ -62,6 +62,9 @@ importers:
       '@wisdesign/plugin-import-demand':
         specifier: workspace:*
         version: link:../plugin-import-demand
+      '@wisdesign/plugin-less':
+        specifier: workspace:*
+        version: link:../plugin-less
       '@wisdesign/plugin-remote-entry':
         specifier: workspace:*
         version: link:../plugin-remote-entry
