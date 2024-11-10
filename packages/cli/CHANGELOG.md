@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.16
+
+### Patch Changes
+
+- 53d41ed: [fix] add the loss less plugin package dependency
+
 ## 0.0.15
 
 ### Patch Changes
