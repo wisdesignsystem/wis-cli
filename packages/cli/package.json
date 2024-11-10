@@ -16,6 +16,7 @@
     "@babel/preset-react": "7.22.15",
     "@wisdesign/configure": "workspace:*",
     "@wisdesign/log-webpack-plugin": "workspace:*",
+    "@wisdesign/plugin-less": "workspace:*",
     "@wisdesign/plugin-sass": "workspace:*",
     "@wisdesign/plugin-cross": "workspace:*",
     "@wisdesign/plugin-router": "workspace:*",
