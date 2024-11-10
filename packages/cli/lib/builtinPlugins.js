@@ -60,4 +60,10 @@ export default [
   {
     path: '@wisdesign/plugin-remote-entry',
   },
+  {
+    path: '@wisdesign/plugin-less',
+  },
+  {
+    path: '@wisdesign/plugin-sass',
+  },
 ]

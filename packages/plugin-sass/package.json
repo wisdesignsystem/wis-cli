@@ -1,0 +1,16 @@
+{
+  "name": "@wisdesign/plugin-sass",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "sass": "1.80.6",
+    "sass-loader": "16.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
