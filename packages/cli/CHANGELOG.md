@@ -1,5 +1,13 @@
 # @wisdesign/cli
 
+## 0.0.15
+
+### Patch Changes
+
+- 87fa865: [feature] add the sass plugin for wis
+- Updated dependencies [87fa865]
+  - @wisdesign/plugin-sass@0.0.1
+
 ## 0.0.14
 
 ### Patch Changes
