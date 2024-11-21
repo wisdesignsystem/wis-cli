@@ -1,0 +1,15 @@
+{
+  "name": "@wisdesign/plugin-javascript-docgen",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "babel-plugin-react-docgen": "4.2.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
