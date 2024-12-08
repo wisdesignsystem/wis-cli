@@ -1,21 +1,21 @@
 {
-  "name": "@wisdesign/container-entry-webpack-plugin",
-  "version": "0.0.1",
-  "description": "",
-  "author": "wisdesign <dev@wis.design>",
-  "license": "MIT",
-  "main": "ContainerEntryWebpackPlugin.js",
-  "type": "module",
-  "dependencies": {
-    "@babel/parser": "7.23.0",
-    "@babel/traverse": "7.23.0",
-    "@babel/generator": "7.23.0",
-    "webpack-sources": "3.2.3"
-  },
-  "peerDependencies": {
-    "webpack": "5.92.1"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@wisdesign/container-entry-webpack-plugin",
+	"version": "0.0.2",
+	"description": "",
+	"author": "wisdesign <dev@wis.design>",
+	"license": "MIT",
+	"main": "ContainerEntryWebpackPlugin.js",
+	"type": "module",
+	"dependencies": {
+		"@babel/parser": "7.23.0",
+		"@babel/traverse": "7.23.0",
+		"@babel/generator": "7.23.0",
+		"webpack-sources": "3.2.3"
+	},
+	"peerDependencies": {
+		"webpack": "5.92.1"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }

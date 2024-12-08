@@ -1,17 +1,17 @@
 {
-  "name": "@wisdesign/plugin-router",
-  "version": "0.0.6",
-  "description": "",
-  "author": "wisdesign <dev@wis.design>",
-  "license": "MIT",
-  "main": "index.js",
-  "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "@babel/parser": "7.23.0",
-    "@wisdesign/utils": "workspace:*",
-    "ejs": "3.1.10"
-  }
+	"name": "@wisdesign/plugin-router",
+	"version": "0.0.7",
+	"description": "",
+	"author": "wisdesign <dev@wis.design>",
+	"license": "MIT",
+	"main": "index.js",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@babel/parser": "7.23.0",
+		"@wisdesign/utils": "workspace:*",
+		"ejs": "3.1.10"
+	}
 }

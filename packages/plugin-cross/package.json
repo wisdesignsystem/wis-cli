@@ -1,15 +1,15 @@
 {
-  "name": "@wisdesign/plugin-cross",
-  "version": "0.0.6",
-  "description": "",
-  "author": "wisdesign <dev@wis.design>",
-  "license": "MIT",
-  "main": "index.js",
-  "type": "module",
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "postcss-px-to-viewport": "1.1.1"
-  }
+	"name": "@wisdesign/plugin-cross",
+	"version": "0.0.7",
+	"description": "",
+	"author": "wisdesign <dev@wis.design>",
+	"license": "MIT",
+	"main": "index.js",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"postcss-px-to-viewport": "1.1.1"
+	}
 }

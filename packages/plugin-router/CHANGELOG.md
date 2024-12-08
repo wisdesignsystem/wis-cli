@@ -1,5 +1,13 @@
 # @wisdesign/plugin-router
 
+## 0.0.7
+
+### Patch Changes
+
+- 6c00ea9: [feature] change the cli to support typescript for project
+- Updated dependencies [6c00ea9]
+  - @wisdesign/utils@0.0.4
+
 ## 0.0.6
 
 ### Patch Changes

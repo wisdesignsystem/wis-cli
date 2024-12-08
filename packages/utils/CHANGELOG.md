@@ -1,5 +1,11 @@
 # @wisdesign/utils
 
+## 0.0.4
+
+### Patch Changes
+
+- 6c00ea9: [feature] change the cli to support typescript for project
+
 ## 0.0.3
 
 ### Patch Changes

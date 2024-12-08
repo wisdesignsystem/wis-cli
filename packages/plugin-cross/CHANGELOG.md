@@ -1,5 +1,11 @@
 # @wisdesign/plugin-cross
 
+## 0.0.7
+
+### Patch Changes
+
+- 6c00ea9: [feature] change the cli to support typescript for project
+
 ## 0.0.6
 
 ### Patch Changes

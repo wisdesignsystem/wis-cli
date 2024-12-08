@@ -1,12 +1,12 @@
 {
-  "name": "@wisdesign/setup-html-webpack-plugin",
-  "version": "0.0.1",
-  "description": "",
-  "author": "wisdesign <dev@wis.design>",
-  "license": "MIT",
-  "main": "SetupHtmlWebpackPlugin.js",
-  "type": "module",
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@wisdesign/setup-html-webpack-plugin",
+	"version": "0.0.2",
+	"description": "",
+	"author": "wisdesign <dev@wis.design>",
+	"license": "MIT",
+	"main": "SetupHtmlWebpackPlugin.js",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	}
 }

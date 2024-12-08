@@ -1,5 +1,13 @@
 # @wisdesign/plugin-remote-entry
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [6c00ea9]
+  - @wisdesign/container-entry-webpack-plugin@0.0.2
+  - @wisdesign/utils@0.0.4
+
 ## 0.0.2
 
 ### Patch Changes

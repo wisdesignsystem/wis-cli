@@ -1,5 +1,22 @@
 # @wisdesign/cli
 
+## 0.0.17
+
+### Patch Changes
+
+- 6c00ea9: [feature] change the cli to support typescript for project
+- Updated dependencies [6c00ea9]
+  - @wisdesign/setup-html-webpack-plugin@0.0.2
+  - @wisdesign/plugin-import-demand@0.0.2
+  - @wisdesign/log-webpack-plugin@0.0.4
+  - @wisdesign/plugin-router@0.0.7
+  - @wisdesign/plugin-cross@0.0.7
+  - @wisdesign/plugin-less@0.0.2
+  - @wisdesign/plugin-sass@0.0.2
+  - @wisdesign/configure@0.0.4
+  - @wisdesign/utils@0.0.4
+  - @wisdesign/plugin-remote-entry@0.0.3
+
 ## 0.0.16
 
 ### Patch Changes

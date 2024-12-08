@@ -1,16 +1,16 @@
 {
-  "name": "@wisdesign/plugin-remote-entry",
-  "version": "0.0.2",
-  "description": "",
-  "author": "wisdesign <dev@wis.design>",
-  "license": "MIT",
-  "main": "index.js",
-  "type": "module",
-  "dependencies": {
-    "@wisdesign/container-entry-webpack-plugin": "workspace:*",
-    "@wisdesign/utils": "workspace:*"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+	"name": "@wisdesign/plugin-remote-entry",
+	"version": "0.0.3",
+	"description": "",
+	"author": "wisdesign <dev@wis.design>",
+	"license": "MIT",
+	"main": "index.js",
+	"type": "module",
+	"dependencies": {
+		"@wisdesign/container-entry-webpack-plugin": "workspace:*",
+		"@wisdesign/utils": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
 }
