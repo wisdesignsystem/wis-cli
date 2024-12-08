@@ -84,19 +84,19 @@ export default class {
     })
   }
 
-  async run(complier) {
+  async run(compiler) {
     this.initial()
 
     plugin.hooks.webpackDevServerConfigure.call(this.config)
     const webpackDevServerConfig = plugin.hooks.webpackDevServerConfig.call(this.config.toValue())
-    const webpackDevServer = new WebpackDevServer(webpackDevServerConfig, complier)
+    const webpackDevServer = new WebpackDevServer(webpackDevServerConfig, compiler)
     plugin.hooks.webpackDevServer.call(webpackDevServer)
 
     const url = resolveServerUrl()
     webpackDevServer.startCallback(() => {
-      let isFirstComplierDone = true
+      let isFirstCompilerDone = true
 
-      complier.hooks.done.tap('done', () => {
+      compiler.hooks.done.tap('done', () => {
         setTimeout(() => {
           console.info(`👣 ${chalk.cyan('服务器启动成功')}`)
           console.info()
@@ -104,10 +104,10 @@ export default class {
           console.info(`👣 ${chalk.cyan(url.realUrl)}`)
           console.info()
 
-          if (isFirstComplierDone) {
-            isFirstComplierDone = false
+          if (isFirstCompilerDone) {
+            isFirstCompilerDone = false
             clipboard.writeSync(url.localUrl)
-            console.info(`👣 访问地址已经复制到剪贴板，粘贴到浏览器查看吧`)
+            console.info('👣 访问地址已经复制到剪贴板，粘贴到浏览器查看吧')
           }
         }, 0)
       })
@@ -115,11 +115,11 @@ export default class {
 
     // 注册结束信号监听
     const closeSigns = ['SIGINT', 'SIGTERM']
-    closeSigns.forEach((sign) => {
+    for (const sign of closeSigns) {
       process.on(sign, () => {
         webpackDevServer.stop()
         process.exit(0)
       })
-    })
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { remotes } from './config.js'
+import { remotes } from './config'
 
 function debug() {
   return new URLSearchParams(window.location.search).get('debug')
@@ -49,5 +49,5 @@ function isDebug() {
     return urls[name]
   }
 
-  import(/* webpackChunkName: "bootstrap" */'./bootstrap.js')
+  import(/* webpackChunkName: "bootstrap" */'./bootstrap')
 })()

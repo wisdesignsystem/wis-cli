@@ -20,7 +20,7 @@ class TapStream {
       const result = handle(next)
 
       if (is.isUndefined(result)) {
-        break
+        continue
       }
 
       next = result

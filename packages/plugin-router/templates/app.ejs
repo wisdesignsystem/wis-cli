@@ -5,11 +5,6 @@ export { default } from '<%= relativeAppEntryPath %>'
 <% } %>
 <% } %>
 
-<% if (!exports.render) { %>
-export function render(oldRender) {
-  oldRender()
-}
-<% } %>
 <% if (!exports.enter) { %>
 export function enter() {}
 <% } %>

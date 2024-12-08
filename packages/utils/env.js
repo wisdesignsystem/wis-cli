@@ -34,7 +34,7 @@ export function setNumber(name, defaultValue) {
 export function setPath(name, defaultValue) {
   const value = process.env[name]
   if (value && !value.endsWith('/')) {
-    process.env[name] = value + '/'
+    process.env[name] = `${value}/`
     return
   }
 

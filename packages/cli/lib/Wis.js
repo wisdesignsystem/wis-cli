@@ -33,8 +33,8 @@ class Wis {
     // webpack配置设置勾子方法
     plugin.register('webpackConfig', new TapStream(['webpackConfig']))
 
-    // webpack complier准备完成勾子方法
-    plugin.register('webpack', new Tap(['complier']))
+    // webpack compiler准备完成勾子方法
+    plugin.register('webpack', new Tap(['compiler']))
 
     // webpack dev server配置器设置勾子方法
     plugin.register('webpackDevServerConfigure', new Tap(['webpackDevServerConfigure']))
@@ -77,7 +77,7 @@ class Wis {
       }
 
       const watcher = chokidar.watch([this.context.path.src].concat(configFiles), {
-        ignored: [this.context.path.prodComplier, this.context.path.devComplierPath],
+        ignored: [this.context.path.prodCompiler, this.context.path.devCompilerPath],
         ignoreInitial: true,
       })
       watcher.on('add', ensureRestart).on('change', ensureRestart).on('unlink', ensureRestart)
@@ -103,20 +103,20 @@ class Wis {
     await this.initial()
 
     const webpack = new Webpack(this.context)
-    const complier = webpack.build((err) => {
+    const compiler = webpack.build((err) => {
       if (err) {
         console.error(err)
       }
     })
-    new WebpackDevServer(this.context).run(complier)
+    new WebpackDevServer(this.context).run(compiler)
   }
 
   async build() {
     await this.initial()
 
     const webpack = new Webpack(this.context)
-    const complier = webpack.build()
-    complier.run((err) => {
+    const compiler = webpack.build()
+    compiler.run((err) => {
       if (err) {
         console.error(err)
       }

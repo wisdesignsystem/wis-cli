@@ -131,7 +131,7 @@ export default async function create(options) {
   trace.note('你可以执行如下命令来启动程序')
   console.info()
   trace.note('进入目录')
-  trace.note(chalk.yellowBright('cd ' + config.name))
+  trace.note(chalk.yellowBright(`cd ${config.name}`))
   console.info()
   trace.note('安装依赖')
   trace.note(chalk.yellowBright('npm install'))

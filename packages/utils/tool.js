@@ -29,7 +29,7 @@ export function toFirstUpperCase(str) {
  */
 export function replaceAlias(alias, filePath) {
   const aliasName = Object.keys(alias).find((name) => {
-    return filePath.startsWith(name + '/')
+    return filePath.startsWith(`${name}/`)
   })
 
   if (aliasName) {

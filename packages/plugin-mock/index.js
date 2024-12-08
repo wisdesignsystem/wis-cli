@@ -22,7 +22,7 @@ export default function (plugin) {
 
   plugin.hooks.webpackDevServerConfigure.tap((webpackDevServerConfigure) => {
     const oldSetupMiddlewares = webpackDevServerConfigure.get('setupMiddlewares')?.toValue()
-    webpackDevServerConfigure.set('setupMiddlewares', function (middlewares, devServer) {
+    webpackDevServerConfigure.set('setupMiddlewares', (middlewares, devServer) => {
       createMock(devServer)
       const nextMiddlewares = oldSetupMiddlewares ? oldSetupMiddlewares(middlewares, devServer) : middlewares
       return nextMiddlewares

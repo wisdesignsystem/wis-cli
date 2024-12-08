@@ -21,11 +21,11 @@ class Env extends Parser {
       pathInstance.env,
     ].filter(file.isExist)
     // 支持环境变量的模版字符串语法
-    envPaths.forEach((envFile) => {
+    for (const envFile of envPaths) {
       if (file.isExist(envFile)) {
         dotenvExpand.expand(dotenv.config({ path: envFile }))
       }
-    })
+    }
 
     // 默认设置为根路径
     env.setPath('PUBLIC_URL', '/')
@@ -37,7 +37,7 @@ class Env extends Parser {
     // 确保路径以 / 结尾
     process.env.PUBLIC_URL = process.env.PUBLIC_URL.endsWith('/')
       ? process.env.PUBLIC_URL
-      : process.env.PUBLIC_URL + '/'
+      : `${process.env.PUBLIC_URL}/`
 
     env.setNumber('IMAGE_INLINE_LIMIT_SIZE', 10000)
     env.setString('HOST', '0.0.0.0')

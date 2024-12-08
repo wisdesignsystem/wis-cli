@@ -114,7 +114,7 @@ export default function (plugin, options) {
   plugin.hooks.plugin.tap((pluginData) => {
     if (pluginData.path.includes('@wisdesign/plugin-import-demand')) {
       pluginData.option.push({
-        test: function (fileName) {
+        test: (fileName) => {
           const { dir: agentDir, name: componentName, ext: componentExt } = path.parse(fileName)
           const { dir: componentDir, name: agentName } = path.parse(agentDir)
           const { name } = path.parse(componentDir)
@@ -137,10 +137,10 @@ export default function (plugin, options) {
         getModuleName(name) {
           return name.replace(/^\S/, (c) => c.toUpperCase())
         },
-        scope: function (module, moduleMap) {
-          // eslint-disable-next-line no-var
+        scope: (module, moduleMap) => {
+          // biome-ignore lint/style/noVar: <explanation>
           var agent = 'pc'
-          // eslint-disable-next-line no-var
+          // biome-ignore lint/style/noVar: <explanation>
           var UA = navigator.userAgent
           if (/\b(BlackBerry|webOS|iPhone|IEMobile|Android|Windows Phone|iPod)\b/i.test(UA)) {
             agent = 'mobile'

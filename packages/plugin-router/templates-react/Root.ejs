@@ -7,16 +7,16 @@ import {
   <% } %>
 } from 'react-router-dom'
 
-import { useHistoryChange } from './history.js'
-import { loadScopeModule } from './loader.js'
-import { loadScopeComponent } from './loaderComponent.js'
-import { isFunction, isString, isUndefined, isObject, isDebug, isEnableEditDebug, getRouterPath } from './helper.js'
-import { enter, leave } from './app.js'
+import { useHistoryChange } from './history'
+import { loadScopeModule } from './loader'
+import { loadScopeComponent } from './loaderComponent'
+import { isFunction, isString, isUndefined, isObject, isDebug, isEnableEditDebug, getRouterPath } from './helper'
+import { enter, leave } from './app'
 
-import Layout, { getLayoutName } from './Layout.jsx'
-import Router from './Router.jsx'
-import Suspense from './Suspense.jsx'
-import Debug from './Debug.jsx'
+import Layout, { getLayoutName } from './Layout'
+import Router from './Router'
+import Suspense from './Suspense'
+import Debug from './Debug'
 
 export function getAppName(hasLayout) {
   const routerPath = getRouterPath()

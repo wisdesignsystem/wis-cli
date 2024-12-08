@@ -36,9 +36,9 @@ class ArraySet extends Configure {
 
   cloneValue() {
     const arraySet = new ArraySet(this.key)
-    this.value.forEach((item) => {
+    for (const item of this.value) {
       arraySet.setValue(item.key, item.cloneValue())
-    })
+    }
     return arraySet
   }
 

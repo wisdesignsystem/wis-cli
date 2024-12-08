@@ -42,21 +42,22 @@ class LogWebpackPlugin {
   }
 
   formatSize(size) {
+    let showSize = size
     const units = ['b', 'kb', 'mb']
-    let exp = Math.floor(Math.log(size) / Math.log(2))
+    let exp = Math.floor(Math.log(showSize) / Math.log(2))
     if (exp < 1) {
       exp = 0
     }
     const i = Math.floor(exp / 10)
-    size = size / Math.pow(2, 10 * i)
+    showSize = showSize / (2 ** (10 * i))
 
-    if (size.toString().length > size.toFixed(2).toString().length) {
-      size = size.toFixed(2)
+    if (showSize.toString().length > showSize.toFixed(2).toString().length) {
+      showSize = showSize.toFixed(2)
     }
 
     const unit = units[i]
-    const message = `${size} ${unit}`
-    if (unit === 'kb' && size > 500) {
+    const message = `${showSize} ${unit}`
+    if (unit === 'kb' && showSize > 500) {
       return chalk.yellow(message)
     }
 
@@ -84,29 +85,28 @@ class LogWebpackPlugin {
   }
 
   printAssets(stats) {
-    stats.assets
-      .sort((a, b) => a.size - b.size)
-      .forEach((asset) => {
-        console.info('👣  ', asset.name, '  ', this.formatSize(asset.size))
-      })
+    for (const asset of stats.assets
+      .sort((a, b) => a.size - b.size)) {
+      console.info('👣  ', asset.name, '  ', this.formatSize(asset.size))
+      }
   }
 
   printErrors(stats) {
-    stats.errors.forEach((error) => {
+    for (const error of stats.errors) {
       console.info(
         `👣 ${chalk.red('[X]')} ${dayjs().format(this.DATE_FORMAT)} 编译错误：${chalk.green(error.moduleName || '')}`,
       )
       console.info(chalk.red(error.stack))
-    })
+    }
   }
 
   printWarning(stats) {
-    stats.warnings.forEach((warn) => {
+    for (const warn of stats.warnings) {
       console.info(
         `👣 ${chalk.yellow('[!]')} ${dayjs().format(this.DATE_FORMAT)} 编译告警：${chalk.green(warn.moduleName || '')}`,
       )
       console.info(chalk.yellow(warn.stack))
-    })
+    }
   }
 }
 

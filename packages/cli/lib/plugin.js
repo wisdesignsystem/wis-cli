@@ -14,14 +14,14 @@ class Plugin {
     const name = namePath[namePath.length - 1]
 
     let next = this.hooks
-    keyPath.forEach((key) => {
+    for (const key of keyPath) {
       if (!next[key]) {
         next[key] = {}
       } else if (next[key] instanceof Tap || next[key] instanceof TapStream) {
         throw new Error('存在无效的插件注册方法，请检查对应插件的plugin.register方法')
       }
       next = next[key]
-    })
+    }
 
     next[name] = instance
   }

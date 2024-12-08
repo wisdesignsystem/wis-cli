@@ -5,13 +5,17 @@ function parseSpecifier(node) {
 }
 
 function parseFunctionDeclaration(node) {
-  return node.id && node.id.name
+  if (node.id) {
+    return node.id.name
+  }
 }
 
 function parseVariableDeclaration(node) {
-  if (is.isArray(node.declarations)) {
-    return (node.declarations[0] || {}).id.name
+  if (!is.isArray(node.declarations) || !node.declarations.length) {
+    return
   }
+
+  return node.declarations[0].id.name
 }
 
 function parseExportNamedDeclaration(node) {

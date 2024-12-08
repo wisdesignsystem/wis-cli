@@ -20,6 +20,7 @@ function readMocks(mockPath) {
   return readScripts(mockPath, []).reduce((result, filePath) => {
     delete require.cache[filePath]
     return {
+      // biome-ignore lint/performance/noAccumulatingSpread: <explanation>
       ...result,
       ...require(filePath).default,
     }

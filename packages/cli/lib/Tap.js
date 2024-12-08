@@ -15,9 +15,9 @@ class Tap {
   }
 
   call(...rest) {
-    this.events.forEach((handle) => {
+    for (const handle of this.events) {
       handle(...rest.slice(0, this.names.length))
-    })
+    }
   }
 }
 

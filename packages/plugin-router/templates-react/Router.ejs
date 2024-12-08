@@ -6,7 +6,7 @@ import <%= page.pageName %> from './pages/<%= page.pageName %>'
 <% if (notFoundPage) { %>
 import NotFound from './pages/<%= notFoundPage.pageName %>'
 <% } else { %>
-import NotFound from './pages/NotFound.jsx'
+import NotFound from './pages/NotFound'
 <% } %>
 
 export default function Router() {

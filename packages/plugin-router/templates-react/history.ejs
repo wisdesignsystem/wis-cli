@@ -7,9 +7,9 @@ import {
   <% } %>
 } from 'history'
 
-import { getLayoutName, hasLayout } from './Layout.jsx'
+import { getLayoutName, hasLayout } from './Layout'
 
-import { isFunction, getRouterPath } from './helper.js'
+import { isFunction, getRouterPath } from './helper'
 
 const history = <% if (browserHistory) { %>createBrowserHistory()<% } else { %>createHashHistory()<% } %>
 

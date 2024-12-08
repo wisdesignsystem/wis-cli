@@ -17,10 +17,10 @@ class SetupHtmlWebpackPlugin {
   apply(compiler) {
     compiler.hooks.compilation.tap('SetupHtmlWebpackPlugin', (compilation) => {
       this.HtmlWebpackPlugin.getHooks(compilation).afterTemplateExecution.tap('SetupHtmlWebpackPlugin', (data) => {
-        Object.keys(this.env).forEach((key) => {
+        for (const key of Object.keys(this.env)) {
           const value = this.env[key]
-          data.html = data.html.replace(new RegExp('%' + escapeStringRegexp(key) + '%', 'g'), value)
-        })
+          data.html = data.html.replace(new RegExp(`%${escapeStringRegexp(key)}%`, 'g'), value)
+        }
       })
     })
   }

@@ -127,9 +127,9 @@ export default function (plugin, options = []) {
       const crossExpose = Object.keys(exposes).reduce((result, key) => {
         const value = exposes[key]
         if (is.isObject(value)) {
-          Object.keys(value).forEach((name) => {
+          for (const name of Object.keys(value)) {
             result[`${key}/${name}`] = value[name]
-          })
+          }
         } else {
           result[key] = value
         }
@@ -143,15 +143,15 @@ export default function (plugin, options = []) {
         return result
       }, {})
 
-      innerLocaleExposes.forEach((expose) => {
+      for (const expose of innerLocaleExposes) {
         const { dir, name } = path.parse(expose.path)
 
         if (exposePaths[path.resolve(dir, name)] || exposePaths[expose.path]) {
-          return
+          continue
         }
 
         crossExpose[expose.name] = expose.path
-      })
+      }
 
       webpackConfigure.set('plugins.remote.exposes', crossExpose)
     })

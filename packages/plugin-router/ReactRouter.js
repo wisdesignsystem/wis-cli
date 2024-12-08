@@ -70,9 +70,9 @@ class ReactRouter extends Router {
 
   writeLayouts() {
     shell.execSync(`mkdir ${this.options.outputPath}/layouts`)
-    this.layouts.forEach((layout) => {
+    for (const layout of this.layouts) {
       this.writeLayout(layout)
-    })
+    }
   }
 
   writeLayoutContainer() {
@@ -83,9 +83,10 @@ class ReactRouter extends Router {
   writePages() {
     shell.execSync(`mkdir ${this.options.outputPath}/pages`)
     this.writeTemplate('pages/NotFound.jsx', templates['NotFound.ejs'])
-    this.pages.forEach((page) => {
+
+    for (const page of this.pages) {
       this.writePage(page)
-    })
+    }
   }
 
   writePage(page) {

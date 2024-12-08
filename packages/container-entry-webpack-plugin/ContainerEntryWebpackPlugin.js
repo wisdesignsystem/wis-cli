@@ -16,15 +16,15 @@ class ContainerEntryWebpackPlugin {
     compiler.hooks.compilation.tap('ContainerEntryWebpackPlugin', (compilation) => {
       let containerModules = []
       compilation.hooks.finishModules.tap('ContainerEntryWebpackPlugin', (modules) => {
-        modules.forEach((module) => {
-          if (module.constructor.name === 'ContainerEntryModule') {
-            containerModules.push(module)
+        for (const item of modules) {
+          if (item.constructor.name === 'ContainerEntryModule') {
+            containerModules.push(item)
           }
-        })
+        }
       })
       compilation.hooks.afterCodeGeneration.tap('ContainerEntryWebpackPlugin', () => {
-        containerModules.forEach((module) => {
-          const sourceMap = compilation.codeGenerationResults.get(module).sources
+        for (const item of containerModules) {
+          const sourceMap = compilation.codeGenerationResults.get(item).sources
           const rawSource = sourceMap.get('javascript')
           const result = this.option.source(rawSource.source(), {
             parser: babelParser,
@@ -35,7 +35,7 @@ class ContainerEntryWebpackPlugin {
             return
           }
           sourceMap.set('javascript', new Source.RawSource(result))
-        })
+        }
         containerModules = []
       })
     })

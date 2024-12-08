@@ -1,29 +1,13 @@
-import ReactDOM from 'react-dom/client'
+import { createRoot } from 'react-dom/client'
 
-import Root from './Root.jsx'
+import Root from './Root'
 
-import { render as customRender } from './app.js'
-import { isFunction } from './helper.js'
+import { isFunction } from './helper'
 
-function render(Node) {
-  const rootElement = document.getElementById(process.env.ROOT_ELEMENT_ID || 'root')
-
-  if (!rootElement.hasAttribute('data-root')) {
-    rootElement.setAttribute('data-root', '')
-  }
-
-  const root = ReactDOM.createRoot(rootElement);
-  root.render(Node);
+const rootElement = document.getElementById(process.env.ROOT_ELEMENT_ID || 'root')
+if (!rootElement.hasAttribute('data-root')) {
+  rootElement.setAttribute('data-root', '')
 }
 
-if (isFunction(customRender)) {
-  customRender((Container) => {
-    if (isFunction(Container)) {
-      return render(Container(<Root />))
-    }
-
-    return render(<Root />)
-  })
-} else {
-  render(<Root />)
-}
+const root = createRoot(rootElement);
+root.render(<Root />);

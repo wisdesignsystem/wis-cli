@@ -14,9 +14,9 @@ class ObjectSet extends Configure {
 
   static create(key, value) {
     const object = new ObjectSet(key)
-    Object.keys(value).forEach((name) => {
+    for (const name of Object.keys(value)) {
       object.set(name.replace(/\./g, '\\.'), Configure.into(name, value[name]))
-    })
+    }
 
     return object
   }
@@ -31,9 +31,9 @@ class ObjectSet extends Configure {
 
   cloneValue() {
     const objectSet = new ObjectSet(this.key)
-    Object.keys(this.value).forEach((key) => {
+    for (const key of Object.keys(this.value)) {
       objectSet.setValue(key, this.value[key].cloneValue())
-    })
+    }
     return objectSet
   }
 

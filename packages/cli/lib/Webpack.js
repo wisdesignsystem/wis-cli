@@ -38,7 +38,7 @@ function getProjectLocalIdent(context, localIdentName, localName, options) {
 }
 
 function createGetLibraryLocalIndent(libraryName) {
-  return function (context, localIdentName, localName, options) {
+  return (context, localIdentName, localName, options) => {
     const { dir, name } = path.parse(context.resourcePath)
     const res = path.parse(path.resolve(dir, name))
     const prefix = libraryName ? `${libraryName}-` : ''
@@ -117,10 +117,10 @@ class Webpack {
     const modules = this.config.get('resolve.modules')
     modules.set('node_modules', 'node_modules')
     const extensions = this.config.get('resolve.extensions')
-    const extensionsData = ['.js', '.jsx']
-    extensionsData.forEach((item) => {
+    const extensionsData = ['.js', '.jsx', '.ts', '.tsx']
+    for (const item of extensionsData) {
       extensions.set(item.replace(/\./g, ''), item)
-    })
+    }
 
     this.config.set('module', {
       strictExportPresence: true,
@@ -137,6 +137,7 @@ class Webpack {
     this.css()
     this.cssModule()
     this.javascript()
+    this.typescript()
     this.registerHtmlPlugin()
     this.registerRemotePlugin()
   }
@@ -162,6 +163,8 @@ class Webpack {
 
     sourcemap.set('test.js', /\.js$/)
     sourcemap.set('test.jsx', /\.jsx$/)
+    sourcemap.set('test.ts', /\.ts$/)
+    sourcemap.set('test.tsx', /\.tsx$/)
 
     sourcemap.set('exclude.babelRuntime', /@babel(?:\/|\\{1,2})runtime/)
     sourcemap.set('exclude.node_modules', /node_modules/)
@@ -342,13 +345,69 @@ class Webpack {
     cssModulePostcssPlugins.set('normalize', require.resolve('postcss-normalize'))
   }
 
+  typescript() {
+    this.config.set('module.rules.typescript', {
+      test: [],
+      resolve: {
+        fullySpecified: false,
+      },
+      use: [],
+      include: [],
+      exclude: [],
+    })
+
+    const typescript = this.config.get('module.rules.typescript')
+    typescript.set('test.ts', /\.ts$/)
+    typescript.set('test.tsx', /\.tsx$/)
+
+    typescript.set('include.src', this.context.path.src)
+    typescript.set('exclude.dts', /\.d\.ts$/)
+
+    typescript.set('use.babel', {
+      loader: require.resolve('babel-loader'),
+      options: {
+        presets: [],
+        plugins: [],
+        browserslistEnv: process.env.NODE_ENV,
+        compact: this.env.isProduction,
+      },
+    })
+
+    const babel = typescript.get('use.babel')
+
+    const babelPresets = babel.get('options.presets')
+    babelPresets.set('presetEnv', [])
+    babelPresets.set('presetEnv.0', require.resolve('@babel/preset-env'))
+    babelPresets.set('presetEnv.1', {
+      useBuiltIns: false,
+      loose: false,
+      debug: false,
+    })
+    babelPresets.set('presetReact', [])
+    babelPresets.set('presetReact.0', require.resolve('@babel/preset-react'))
+    babelPresets.set('presetReact.1', {
+      development: !this.env.isProduction,
+      runtime: 'automatic',
+    })
+    babelPresets.set('presetTypescript', require.resolve('@babel/preset-typescript'))
+
+    const babelPlugins = babel.get('options.plugins')
+    babelPlugins.set('transformRuntime', [])
+    babelPlugins.set('transformRuntime.0', require.resolve('@babel/plugin-transform-runtime'))
+    babelPlugins.set('transformRuntime.1', {
+      corejs: 3,
+      helpers: true,
+      regenerator: true,
+    })
+  }
+
   javascript() {
     this.config.set('module.rules.javascript', {
       test: [],
       resolve: {
         fullySpecified: false,
       },
-      include: this.context.config.extraBabelCompileNodeModules,
+      include: [],
       use: [],
     })
 
@@ -361,14 +420,10 @@ class Webpack {
     javascript.set('use.babel', {
       loader: require.resolve('babel-loader'),
       options: {
-        babelrc: false,
-        configFile: false,
         presets: [],
         plugins: [],
         browserslistEnv: process.env.NODE_ENV,
         compact: this.env.isProduction,
-        sourceMaps: true,
-        inputSourceMap: true,
       },
     })
 
@@ -405,41 +460,32 @@ class Webpack {
     // 设置脚手架对外暴露的API方法别名
     // 使用方法
     // import {} from 'wis'
-    alias.set('wis', path.resolve(this.context.path.complier, 'expose.js'))
+    alias.set('wis', path.resolve(this.context.path.compiler, 'expose.js'))
 
     // 设置用户自定义的别名
-    Object.keys(this.context.config.alias).forEach((name) => {
+    for (const name of Object.keys(this.context.config.alias)) {
       alias.set(name, path.resolve(this.context.path.runtime, this.context.config.alias[name]))
-    })
+    }
   }
 
   shared() {
-    const cliPackageData = require(this.context.path.cliPackageJson)
     return {
       ...this.context.config.shared,
       'react': {
-        eager: false,
+        eager: true,
+        requiredVersion: '^18.2.0',
         singleton: true,
-        requiredVersion: cliPackageData.dependencies.react,
-        strictVersion: true,
       },
       'react-dom': {
-        eager: false,
+        eager: true,
+        requiredVersion: '^18.2.0',
         singleton: true,
-        requiredVersion: cliPackageData.dependencies['react-dom'],
-        strictVersion: true,
       },
       'react-router-dom': {
-        eager: false,
-        singleton: true,
-        requiredVersion: cliPackageData.dependencies['react-router-dom'],
-        strictVersion: true,
+        requiredVersion: '^6.18.0',
       },
       'history': {
-        eager: false,
-        singleton: true,
-        requiredVersion: cliPackageData.dependencies.history,
-        strictVersion: true,
+        requiredVersion: '^5.3.0',
       },
     }
   }
@@ -501,7 +547,7 @@ class Webpack {
 
   registerRemotePlugin() {
     const packageData = require(this.context.path.packageJson)
-    this.config.set(`entry.${packageData.name}`, path.resolve(this.context.path.complier, 'publicPath.js'))
+    this.config.set(`entry.${packageData.name}`, path.resolve(this.context.path.compiler, 'publicPath.js'))
 
     this.config.set(
       'plugins.remote',

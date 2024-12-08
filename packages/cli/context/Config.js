@@ -7,7 +7,7 @@ import plugin from '../lib/plugin.js'
 import Parser from './Parser.js'
 
 function createGetValue(config) {
-  return function (name, check, defaultValue) {
+  return (name, check, defaultValue) => {
     const value = config[name]
 
     if (is.isUndefined(value)) {
@@ -25,7 +25,7 @@ function createGetValue(config) {
 
 function replaceAliasPath(filePath, alias) {
   const aliasName = Object.keys(alias).find((name) => {
-    return filePath.startsWith(name + '/')
+    return filePath.startsWith(`${name}/`)
   })
 
   if (aliasName) {
@@ -45,9 +45,6 @@ class Config extends Parser {
 
   // 项目别名
   alias = {}
-
-  // 配置额外的node_modules编译包，部分第三方包没有提供编译后的版本，需要自行配置编译
-  extraBabelCompileNodeModules = []
 
   // 配置项目导出资源
   exposes = {}
@@ -124,11 +121,6 @@ class Config extends Parser {
     const getValue = createGetValue(this.rawConfig)
 
     this.mode = getValue('mode', is.isEnum(['project', 'library']), this.mode)
-    this.extraBabelCompileNodeModules = getValue(
-      'extraBabelCompileNodeModules',
-      is.isArray,
-      this.extraBabelCompileNodeModules,
-    )
     this.exposes = getValue('exposes', is.isObject, this.exposes)
     this.shared = getValue('shared', is.isObject, this.shared)
     this.browserHistory = getValue('browserHistory', is.isBoolean, this.browserHistory)

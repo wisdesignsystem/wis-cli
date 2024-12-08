@@ -58,7 +58,7 @@ function getTokenKey(keys) {
 }
 
 function flattenJSONData(json, path = [], result = {}) {
-  Object.keys(json).forEach((key) => {
+  for (const key of Object.keys(json)) {
     const item = json[key]
     const keyPaths = path.concat(key)
     const tokenKey = getTokenKey(keyPaths)
@@ -88,7 +88,7 @@ function flattenJSONData(json, path = [], result = {}) {
     }
 
     flattenJSONData(item, keyPaths, result)
-  })
+  }
 }
 
 function flatten(json) {
@@ -134,26 +134,26 @@ function format(content) {
 const outputPath = resolvePath(opts.output)
 function generateTokenFiles(groupTokens) {
   const imports = {}
-  Object.keys(groupTokens).forEach((groupKey) => {
+  for (const key of Object.keys(groupTokens)) {
     const group = groupTokens[groupKey]
 
     const themes = group.children.reduce(
       (result, item) => {
         result.default.push(`${item.key}: ${item.value}`)
-        item.themeTokens.forEach(({ theme, token }) => {
-          if (!result[theme]) {
-            result[theme] = []
+        for (data of item.themeTokens) {
+          if (!result[data.theme]) {
+            result[data.theme] = []
           }
 
-          result[theme].push(`${item.key}: ${token.value}`)
-        })
+          result[data.theme].push(`${item.key}: ${data.token.value}`)
+        }
 
         return result
       },
       { default: [] },
     )
 
-    Object.keys(themes).forEach((theme) => {
+    for (const theme of Object.keys(themes)) {
       let content = ''
       if (theme === 'default') {
         content = `:root {
@@ -177,13 +177,13 @@ function generateTokenFiles(groupTokens) {
       }
 
       imports[theme].push(`@import './${kebabToCamel(group.name)}.css';`)
-    })
-  })
+    }
+  }
 
-  Object.keys(imports).forEach((theme) => {
+  for (const theme of Object.keys(imports)) {
     const themeEntryPath = path.resolve(outputPath, `${kebabToCamel(theme)}/index.css`)
     file.writeFile(themeEntryPath, format(imports[theme].join('')))
-  })
+  }
 }
 
 const sourceFilePath = resolvePath(opts.source)

@@ -4,21 +4,21 @@ export default [
   },
   {
     path: '@wisdesign/plugin-router',
-    option: { extensions: ['.js', '.jsx'] },
+    option: { extensions: ['.ts', '.tsx'] },
   },
   {
     path: '@wisdesign/plugin-import-demand',
     option: [
       {
-        test: '**/*/locales/*/index.{js,ts}',
+        test: '**/*/locales/*/index.ts',
         name: 'locales',
-        scope: function (module, moduleMap) {
+        scope: (module, moduleMap) => {
           if (!module.includes('/locales')) {
             return
           }
 
           const scopes = ['en-US', 'en']
-          // eslint-disable-next-line no-var
+          // biome-ignore lint/style/noVar: <explanation>
           var language = window.localStorage.getItem(window.$__wis_language__)
           if (!language) {
             return scopes
@@ -28,7 +28,7 @@ export default [
             return scopes
           }
 
-          // eslint-disable-next-line no-var
+          // biome-ignore lint/style/noVar: <explanation>
           var [countryLanguage] = language.split('-').filter(Boolean)
           return [language, countryLanguage].concat(scopes)
         },
@@ -36,13 +36,13 @@ export default [
       {
         test: '**/*/themes/*/index.css',
         name: 'themes',
-        scope: function (module, moduleMap) {
+        scope: (module, moduleMap) => {
           if (!module.includes('/themes')) {
             return
           }
 
           const scopes = ['default']
-          // eslint-disable-next-line no-var
+          // biome-ignore lint/style/noVar: <explanation>
           var theme = document.documentElement.getAttribute('data-theme')
           if (!theme) {
             return scopes

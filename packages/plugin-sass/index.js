@@ -39,12 +39,4 @@ export default function (plugin) {
     sass(webpackConfigure)
     sassModule(webpackConfigure)
   })
-
-  plugin.hooks.webpackConfig.tap('Sass', (webpackConfig) => {
-    const sourceMapRule = webpackConfig.module.rules.find((rule) => {
-      return rule.enforce === 'pre' && rule.use.some((item) => item.loader.includes('source-map-loader'))
-    })
-    if (!sourceMapRule) return
-    sourceMapRule.test.push(/\.scss$/)
-  })
 }

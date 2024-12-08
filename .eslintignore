@@ -1,7 +1,0 @@
-**/node_modules
-.history
-packages/cli/versionInfo.json
-**/templates
-**/templates-react
-examples
-**/dist

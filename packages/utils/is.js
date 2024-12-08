@@ -47,7 +47,7 @@ export function isBoolean(data) {
 }
 
 export function isEnum(enums = []) {
-  return function (data) {
+  return (data) => {
     if (isArray(enums)) {
       return enums.some((item) => item === data)
     }

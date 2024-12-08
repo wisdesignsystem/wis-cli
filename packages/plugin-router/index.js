@@ -10,7 +10,7 @@ export default function (plugin, options) {
     const router = new ReactRouter({
       appPackage: require(context.path.packageJson),
       appConfig: context.config,
-      outputPath: context.path.complier,
+      outputPath: context.path.compiler,
       srcPath: context.path.src,
       publicPath: context.path.publicUrl,
       remoteFileName: context.remoteFileName,
@@ -40,8 +40,8 @@ export default function (plugin, options) {
 
     plugin.hooks.webpackConfigure.tap((webpackConfigure) => {
       const exposes = webpackConfigure.get('plugins.remote.exposes')
-      exposes.set('\\./$$Router', path.resolve(context.path.complier, 'Router.jsx'))
-      exposes.set('\\./$$app', path.resolve(context.path.complier, 'app.js'))
+      exposes.set('\\./$$Router', path.resolve(context.path.compiler, 'Router.jsx'))
+      exposes.set('\\./$$app', path.resolve(context.path.compiler, 'app.js'))
     })
   })
 }
