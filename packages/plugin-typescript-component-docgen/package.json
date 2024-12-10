@@ -1,23 +1,16 @@
 {
-  "name": "@wisdesign/toolkit",
-  "version": "0.0.5",
+  "name": "@wisdesign/plugin-typescript-component-docgen",
+  "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
   "main": "index.js",
   "type": "module",
-  "bin": {
-    "token": "bin/token.js",
-    "typescript-docgen": "bin/typescript-docgen.js"
-  },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@wisdesign/utils": "workspace:*",
-    "@prettier/sync": "0.5.2",
-    "commander": "12.1.0",
-    "prettier": "3.3.1",
     "react-docgen-typescript": "2.2.2"
   }
 }

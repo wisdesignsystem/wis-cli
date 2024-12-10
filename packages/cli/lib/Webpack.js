@@ -23,9 +23,9 @@ import plugin from "./plugin.js";
 const require = createRequire(import.meta.url);
 
 function clearConsole() {
-  process.stdout.write(
-    process.platform === "win32" ? "\x1B[2J\x1B[0f" : "\x1B[2J\x1B[3J\x1B[H",
-  );
+  // process.stdout.write(
+  //   process.platform === "win32" ? "\x1B[2J\x1B[0f" : "\x1B[2J\x1B[3J\x1B[H",
+  // );
 }
 
 function getProjectLocalIdent(context, localIdentName, localName, options) {
@@ -105,7 +105,7 @@ class Webpack {
     this.config.set("watch", !this.env.isProduction);
 
     this.config.set("output", {
-      clean: true,
+      clean: false,
       path: this.context.path.dist,
       filename: this.env.isProduction
         ? "static/js/[name].[contenthash:8].js"
