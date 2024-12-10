@@ -1,54 +1,54 @@
-import * as is from '@wisdesign/utils/is.js'
+import * as is from "@wisdesign/utils/is.js";
 
-import Configure from './Configure.js'
+import Configure from "./Configure.js";
 
 class ArraySet extends Configure {
   constructor(key) {
-    super(key)
-    this.value = []
+    super(key);
+    this.value = [];
   }
 
   static check(value) {
-    return is.isArray(value)
+    return is.isArray(value);
   }
 
   static create(key, value) {
-    const array = new ArraySet(key)
+    const array = new ArraySet(key);
     value.forEach((item, index) => {
-      array.setValue(index, Configure.into(index, item))
-    })
+      array.setValue(index, Configure.into(index, item));
+    });
 
-    return array
+    return array;
   }
 
   getValue(key) {
-    return this.value.find((item) => item.key === key)
+    return this.value.find((item) => item.key === key);
   }
 
   setValue(key, value) {
-    const index = this.value.findIndex((item) => item.key === key)
+    const index = this.value.findIndex((item) => item.key === key);
     if (index === -1) {
-      this.value.push(value)
+      this.value.push(value);
     } else {
-      this.value[index] = value
+      this.value[index] = value;
     }
   }
 
   cloneValue() {
-    const arraySet = new ArraySet(this.key)
+    const arraySet = new ArraySet(this.key);
     for (const item of this.value) {
-      arraySet.setValue(item.key, item.cloneValue())
+      arraySet.setValue(item.key, item.cloneValue());
     }
-    return arraySet
+    return arraySet;
   }
 
   toValue() {
     return this.value
       .map((item) => {
-        return item.toValue()
+        return item.toValue();
       })
-      .filter(Boolean)
+      .filter(Boolean);
   }
 }
 
-export default ArraySet
+export default ArraySet;

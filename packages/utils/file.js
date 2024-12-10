@@ -1,149 +1,149 @@
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
 
 // 是否存在
 export function isExist(filePath) {
-	try {
-		return !!fs.statSync(filePath);
-	} catch (error) {
-		return false;
-	}
+  try {
+    return !!fs.statSync(filePath);
+  } catch (error) {
+    return false;
+  }
 }
 
 // 是一个文件
 export function isFile(filePath) {
-	if (!isExist(filePath)) {
-		return false;
-	}
+  if (!isExist(filePath)) {
+    return false;
+  }
 
-	return fs.statSync(filePath).isFile();
+  return fs.statSync(filePath).isFile();
 }
 
 // 是一个文件夹
 export function isDir(filePath) {
-	if (!isExist(filePath)) {
-		return false;
-	}
+  if (!isExist(filePath)) {
+    return false;
+  }
 
-	return fs.statSync(filePath).isDirectory();
+  return fs.statSync(filePath).isDirectory();
 }
 
 // 是否为空
 export function isEmpty(filePath) {
-	if (!isExist(filePath)) {
-		return true;
-	}
+  if (!isExist(filePath)) {
+    return true;
+  }
 
-	if (isFile(filePath)) {
-		return !readFile(filePath).length;
-	}
+  if (isFile(filePath)) {
+    return !readFile(filePath).length;
+  }
 
-	return !readdir(filePath).length;
+  return !readdir(filePath).length;
 }
 
 // 是否是脚本
 export function isScript(filePath) {
-	if (!isExist(filePath)) {
-		return false;
-	}
+  if (!isExist(filePath)) {
+    return false;
+  }
 
-	const ext = path.extname(filePath);
-	return [".js", ".jsx", ".mjs", ".ts", ".tsx", ".cjs", ".ejs"].includes(ext);
+  const ext = path.extname(filePath);
+  return [".js", ".jsx", ".mjs", ".ts", ".tsx", ".cjs", ".ejs"].includes(ext);
 }
 
 // 读取文件内容
 export function readFile(filePath) {
-	if (!isExist(filePath)) {
-		return "";
-	}
+  if (!isExist(filePath)) {
+    return "";
+  }
 
-	return fs.readFileSync(filePath).toString();
+  return fs.readFileSync(filePath).toString();
 }
 
 // 写入文件内容
 export function writeFile(filePath, content) {
-	const dirname = path.dirname(filePath);
-	if (!isExist(dirname)) {
-		mkdir(dirname);
-	}
+  const dirname = path.dirname(filePath);
+  if (!isExist(dirname)) {
+    mkdir(dirname);
+  }
 
-	fs.writeFileSync(filePath, content);
+  fs.writeFileSync(filePath, content);
 }
 
 // 删除文件
 export function removeFile(filePath) {
-	fs.rmSync(filePath, { force: true });
+  fs.rmSync(filePath, { force: true });
 }
 
 // 创建文件夹
 export function mkdir(filePath) {
-	if (isExist(filePath) && isDir(filePath)) {
-		return;
-	}
+  if (isExist(filePath) && isDir(filePath)) {
+    return;
+  }
 
-	fs.mkdirSync(filePath, { recursive: true });
+  fs.mkdirSync(filePath, { recursive: true });
 }
 
 // 读取文件夹
 export function readdir(filePath) {
-	if (!isExist(filePath)) {
-		return [];
-	}
+  if (!isExist(filePath)) {
+    return [];
+  }
 
-	return fs
-		.readdirSync(filePath)
-		.map((fileName) => {
-			return path.resolve(filePath, fileName);
-		})
-		.filter(isFile);
+  return fs
+    .readdirSync(filePath)
+    .map((fileName) => {
+      return path.resolve(filePath, fileName);
+    })
+    .filter(isFile);
 }
 
 export function eachFile(filePath, fn) {
-	if (!isExist(filePath)) {
-		return;
-	}
+  if (!isExist(filePath)) {
+    return;
+  }
 
-	function readdir(currentFilePath) {
-		const files = fs.readdirSync(currentFilePath).map((fileName) => {
-			return path.resolve(currentFilePath, fileName);
-		});
+  function readdir(currentFilePath) {
+    const files = fs.readdirSync(currentFilePath).map((fileName) => {
+      return path.resolve(currentFilePath, fileName);
+    });
 
-		for (const item of files) {
-			if (isFile(item)) {
-				fn(item);
-				continue;
-			}
+    for (const item of files) {
+      if (isFile(item)) {
+        fn(item);
+        continue;
+      }
 
-			readdir(item);
-		}
-	}
+      readdir(item);
+    }
+  }
 
-	readdir(filePath);
+  readdir(filePath);
 }
 
 // 深度递归读取文件夹
 export function readdirDeep(filePath) {
-	if (!isExist(filePath)) {
-		return [];
-	}
+  if (!isExist(filePath)) {
+    return [];
+  }
 
-	const files = [];
-	function readdir(currentFilePath) {
-		const files = fs.readdirSync(currentFilePath).map((fileName) => {
-			return path.resolve(currentFilePath, fileName);
-		});
+  const files = [];
+  function readdir(currentFilePath) {
+    const files = fs.readdirSync(currentFilePath).map((fileName) => {
+      return path.resolve(currentFilePath, fileName);
+    });
 
-		for (const item of files) {
-			if (isFile(item)) {
-				files.push(item);
-				return;
-			}
+    for (const item of files) {
+      if (isFile(item)) {
+        files.push(item);
+        return;
+      }
 
-			readdir(item);
-		}
-	}
+      readdir(item);
+    }
+  }
 
-	readdir(filePath);
+  readdir(filePath);
 
-	return files;
+  return files;
 }

@@ -1,21 +1,21 @@
 {
-	"name": "@wisdesign/toolkit",
-	"version": "0.0.5",
-	"description": "",
-	"author": "wisdesign <dev@wis.design>",
-	"license": "MIT",
-	"main": "index.js",
-	"type": "module",
-	"bin": {
-		"token": "bin/token.js"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"dependencies": {
-		"@wisdesign/utils": "workspace:*",
-		"@prettier/sync": "0.5.2",
-		"commander": "12.1.0",
-		"prettier": "3.3.1"
-	}
+  "name": "@wisdesign/toolkit",
+  "version": "0.0.5",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "token": "bin/token.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@wisdesign/utils": "workspace:*",
+    "@prettier/sync": "0.5.2",
+    "commander": "12.1.0",
+    "prettier": "3.3.1"
+  }
 }

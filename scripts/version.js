@@ -5,36 +5,39 @@
  * packages/cli/versionInfo.json
  */
 
-import { createRequire } from 'node:module'
-import path from 'node:path'
-import fs from 'node:fs'
-import { fileURLToPath } from 'node:url'
+import fs from "node:fs";
+import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 
 function isExist(filePath) {
   try {
-    return !!fs.statSync(filePath)
+    return !!fs.statSync(filePath);
   } catch (error) {
-    return false
+    return false;
   }
 }
 
-const packagePath = path.resolve(__dirname, '../packages')
-const versionInfoFilePath = path.resolve(packagePath, 'cli/versionInfo.json')
+const packagePath = path.resolve(__dirname, "../packages");
+const versionInfoFilePath = path.resolve(packagePath, "cli/versionInfo.json");
 const versionInfo = fs.readdirSync(packagePath).reduce((result, fileName) => {
-  const packageFilePath = path.resolve(path.resolve(packagePath, fileName), 'package.json')
+  const packageFilePath = path.resolve(
+    path.resolve(packagePath, fileName),
+    "package.json",
+  );
   if (!isExist(packageFilePath)) {
-    return result
+    return result;
   }
 
-  const pkg = require(packageFilePath)
-  result[pkg.name] = pkg.version
+  const pkg = require(packageFilePath);
+  result[pkg.name] = pkg.version;
 
-  return result
-}, {})
+  return result;
+}, {});
 
-fs.writeFileSync(versionInfoFilePath, JSON.stringify(versionInfo))
+fs.writeFileSync(versionInfoFilePath, JSON.stringify(versionInfo));

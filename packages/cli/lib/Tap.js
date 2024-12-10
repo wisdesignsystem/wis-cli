@@ -1,24 +1,24 @@
-import * as is from '@wisdesign/utils/is.js'
+import * as is from "@wisdesign/utils/is.js";
 
 class Tap {
   constructor(names = []) {
-    this.events = []
-    this.names = names
+    this.events = [];
+    this.names = names;
   }
 
   tap(handle) {
     if (!is.isFunction(handle)) {
-      return
+      return;
     }
 
-    this.events.push(handle)
+    this.events.push(handle);
   }
 
   call(...rest) {
     for (const handle of this.events) {
-      handle(...rest.slice(0, this.names.length))
+      handle(...rest.slice(0, this.names.length));
     }
   }
 }
 
-export default Tap
+export default Tap;

@@ -1,6 +1,6 @@
-import childProcess from 'node:child_process'
-import util from 'node:util'
+import childProcess from "node:child_process";
+import util from "node:util";
 
-export const execSync = childProcess.execSync
+export const execSync = childProcess.execSync;
 
-export const exec = util.promisify(childProcess.exec)
+export const exec = util.promisify(childProcess.exec);

@@ -1,16 +1,16 @@
-import dotenv from 'dotenv'
-import dotenvExpand from 'dotenv-expand'
-import * as file from '@wisdesign/utils/file.js'
-import * as env from '@wisdesign/utils/env.js'
+import * as env from "@wisdesign/utils/env.js";
+import * as file from "@wisdesign/utils/file.js";
+import dotenv from "dotenv";
+import dotenvExpand from "dotenv-expand";
 
-import Parser from './Parser.js'
+import Parser from "./Parser.js";
 
 class Env extends Parser {
   // 存储当前环境变量
-  env = {}
+  env = {};
 
   constructor(pathInstance) {
-    super()
+    super();
     // 解析环境变量文件
     // 整体解析逻辑不做覆盖处理
     // 意味着最先解析的同名环境变量优先生效
@@ -19,44 +19,50 @@ class Env extends Parser {
       `${pathInstance.env}.${process.env.ENV}`,
       `${pathInstance.env}.local`,
       pathInstance.env,
-    ].filter(file.isExist)
+    ].filter(file.isExist);
     // 支持环境变量的模版字符串语法
     for (const envFile of envPaths) {
       if (file.isExist(envFile)) {
-        dotenvExpand.expand(dotenv.config({ path: envFile }))
+        dotenvExpand.expand(dotenv.config({ path: envFile }));
       }
     }
 
     // 默认设置为根路径
-    env.setPath('PUBLIC_URL', '/')
+    env.setPath("PUBLIC_URL", "/");
     // 开发环境下，PUBLIC_URL 以 http 开头，去除域名部分，仅保留路径部分
-    if (process.env.NODE_ENV === 'development' && process.env.PUBLIC_URL.startsWith('http')) {
-      const publicUrl = new URL(process.env.PUBLIC_URL, 'https://cli.copower.dev')
-      process.env.PUBLIC_URL = publicUrl.pathname
+    if (
+      process.env.NODE_ENV === "development" &&
+      process.env.PUBLIC_URL.startsWith("http")
+    ) {
+      const publicUrl = new URL(
+        process.env.PUBLIC_URL,
+        "https://cli.copower.dev",
+      );
+      process.env.PUBLIC_URL = publicUrl.pathname;
     }
     // 确保路径以 / 结尾
-    process.env.PUBLIC_URL = process.env.PUBLIC_URL.endsWith('/')
+    process.env.PUBLIC_URL = process.env.PUBLIC_URL.endsWith("/")
       ? process.env.PUBLIC_URL
-      : `${process.env.PUBLIC_URL}/`
+      : `${process.env.PUBLIC_URL}/`;
 
-    env.setNumber('IMAGE_INLINE_LIMIT_SIZE', 10000)
-    env.setString('HOST', '0.0.0.0')
-    env.setString('PORT', '3000')
-    env.setString('HTTPS_PORT', '443')
-    env.setString('ROOT_ELEMENT_ID', 'root')
-    env.setBoolean('ENABLE_PROFILER', false)
-    env.setBoolean('GZIP', false)
-    env.setBoolean('ENABLE_ANALYZER', false)
-    env.setBoolean('HTTPS', false)
-    env.setBoolean('FAST_REFRESH', false)
+    env.setNumber("IMAGE_INLINE_LIMIT_SIZE", 10000);
+    env.setString("HOST", "0.0.0.0");
+    env.setString("PORT", "3000");
+    env.setString("HTTPS_PORT", "443");
+    env.setString("ROOT_ELEMENT_ID", "root");
+    env.setBoolean("ENABLE_PROFILER", false);
+    env.setBoolean("GZIP", false);
+    env.setBoolean("ENABLE_ANALYZER", false);
+    env.setBoolean("HTTPS", false);
+    env.setBoolean("FAST_REFRESH", false);
 
     // 解析自定义环境变量，都是以APP_打头
     this.env = Object.keys(process.env)
       .filter((key) => /^APP_/i.test(key))
       .reduce(
         (result, key) => {
-          result[key] = process.env[key]
-          return result
+          result[key] = process.env[key];
+          return result;
         },
         {
           NODE_ENV: process.env.NODE_ENV,
@@ -64,27 +70,27 @@ class Env extends Parser {
           ROOT_ELEMENT_ID: process.env.ROOT_ELEMENT_ID,
           PUBLIC_URL: process.env.PUBLIC_URL,
         },
-      )
+      );
   }
 
-  static instance = null
+  static instance = null;
 
   static create(pathInstance) {
     if (!Env.instance) {
-      Env.instance = new Env(pathInstance)
+      Env.instance = new Env(pathInstance);
     }
 
-    return Env.instance
+    return Env.instance;
   }
 
   stringify() {
     return {
-      'process.env': Object.keys(this.env).reduce((env, key) => {
-        env[key] = JSON.stringify(this.env[key])
-        return env
+      "process.env": Object.keys(this.env).reduce((env, key) => {
+        env[key] = JSON.stringify(this.env[key]);
+        return env;
       }, {}),
-    }
+    };
   }
 }
 
-export default Env
+export default Env;

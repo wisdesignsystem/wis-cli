@@ -1,11 +1,11 @@
-import Wis from '../lib/Wis.js'
+import Wis from "../lib/Wis.js";
 
 export default function () {
-  process.env.NODE_ENV = 'development'
+  process.env.NODE_ENV = "development";
   if (!process.env.ENV) {
-    process.env.ENV = 'dev'
+    process.env.ENV = "dev";
   }
 
-  const wis = new Wis()
-  wis.dev()
+  const wis = new Wis();
+  wis.dev();
 }

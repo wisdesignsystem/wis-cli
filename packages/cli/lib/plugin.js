@@ -1,39 +1,41 @@
-import Tap from './Tap.js'
-import TapStream from './TapStream.js'
+import Tap from "./Tap.js";
+import TapStream from "./TapStream.js";
 
 class Plugin {
-  hooks = {}
+  hooks = {};
 
   register(keys, instance) {
-    const namePath = keys.split('.').filter(Boolean)
+    const namePath = keys.split(".").filter(Boolean);
     if (!namePath.length) {
-      return
+      return;
     }
 
-    const keyPath = namePath.slice(0, namePath.length - 1)
-    const name = namePath[namePath.length - 1]
+    const keyPath = namePath.slice(0, namePath.length - 1);
+    const name = namePath[namePath.length - 1];
 
-    let next = this.hooks
+    let next = this.hooks;
     for (const key of keyPath) {
       if (!next[key]) {
-        next[key] = {}
+        next[key] = {};
       } else if (next[key] instanceof Tap || next[key] instanceof TapStream) {
-        throw new Error('存在无效的插件注册方法，请检查对应插件的plugin.register方法')
+        throw new Error(
+          "存在无效的插件注册方法，请检查对应插件的plugin.register方法",
+        );
       }
-      next = next[key]
+      next = next[key];
     }
 
-    next[name] = instance
+    next[name] = instance;
   }
 
   // 重启服务
   restart() {
-    process.send('RESTART')
+    process.send("RESTART");
   }
 }
 
-const plugin = new Plugin()
-plugin.Tap = Tap
-plugin.TapStream = TapStream
+const plugin = new Plugin();
+plugin.Tap = Tap;
+plugin.TapStream = TapStream;
 
-export default plugin
+export default plugin;

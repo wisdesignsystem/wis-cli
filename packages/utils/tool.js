@@ -1,4 +1,4 @@
-import path from 'node:path'
+import path from "node:path";
 
 /**
  * Converts a file path to a POSIX path.
@@ -7,7 +7,7 @@ import path from 'node:path'
  * @returns {string} The converted POSIX path.
  */
 export function toPosixPath(filePath) {
-  return filePath.replace(new RegExp(path.sep, 'g'), '/')
+  return filePath.replace(new RegExp(path.sep, "g"), "/");
 }
 
 /**
@@ -17,7 +17,7 @@ export function toPosixPath(filePath) {
  * @returns {string} - The modified string with the first character in uppercase.
  */
 export function toFirstUpperCase(str) {
-  return str.replace(/^\S/, (c) => c.toUpperCase())
+  return str.replace(/^\S/, (c) => c.toUpperCase());
 }
 
 /**
@@ -29,12 +29,12 @@ export function toFirstUpperCase(str) {
  */
 export function replaceAlias(alias, filePath) {
   const aliasName = Object.keys(alias).find((name) => {
-    return filePath.startsWith(`${name}/`)
-  })
+    return filePath.startsWith(`${name}/`);
+  });
 
   if (aliasName) {
-    return filePath.replace(aliasName, alias[aliasName])
+    return filePath.replace(aliasName, alias[aliasName]);
   }
 
-  return filePath
+  return filePath;
 }

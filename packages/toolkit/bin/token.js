@@ -1,78 +1,83 @@
 #!/usr/bin/env node
 
-import { Command } from 'commander'
-import { createRequire } from 'node:module'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import prettier from '@prettier/sync'
-import * as file from '@wisdesign/utils/file.js'
+import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import prettier from "@prettier/sync";
+import * as file from "@wisdesign/utils/file.js";
+import { Command } from "commander";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 
-const packageData = require(path.resolve(__dirname, '../package.json'))
+const packageData = require(path.resolve(__dirname, "../package.json"));
 
-const token = new Command()
+const token = new Command();
 token
-  .name('token')
-  .description('A quick tool for converting Figma token JSON files into CSS variables')
-  .version(packageData.version)
-  .helpOption('-h, --help', 'View help information')
-  .requiredOption('-s, --source <file>', 'The default theme token source file')
-  .requiredOption(
-    '-t, --theme <file>',
-    'Other theme files, in the format such as: dark:../dark.json, multiple ones separated by commas',
+  .name("token")
+  .description(
+    "A quick tool for converting Figma token JSON files into CSS variables",
   )
-  .option('-o, --output <path>', 'Output token file root path', './tokens')
-  .option('-n, --namespace <namespace>', 'Theme token namespace', 'token')
-  .option('--split-component', 'Will not import component category in index.css')
+  .version(packageData.version)
+  .helpOption("-h, --help", "View help information")
+  .requiredOption("-s, --source <file>", "The default theme token source file")
+  .requiredOption(
+    "-t, --theme <file>",
+    "Other theme files, in the format such as: dark:../dark.json, multiple ones separated by commas",
+  )
+  .option("-o, --output <path>", "Output token file root path", "./tokens")
+  .option("-n, --namespace <namespace>", "Theme token namespace", "token")
+  .option(
+    "--split-component",
+    "Will not import component category in index.css",
+  );
 
-token.parse()
+token.parse();
 
-const opts = token.opts()
+const opts = token.opts();
 
 function isTokenValue(data) {
-  return '$type' in data && '$value' in data
+  return "$type" in data && "$value" in data;
 }
 
 function isVariableToken(data) {
-  return /\{[a-zA-Z0-9-.]+\}/.test(data)
+  return /\{[a-zA-Z0-9-.]+\}/.test(data);
 }
 
 function isPrivateToken(key) {
-  return key.includes('_')
+  return key.includes("_");
 }
 
 function kebabToCamel(str) {
-  return str.replace(/-./g, (match) => match.charAt(1).toUpperCase())
+  return str.replace(/-./g, (match) => match.charAt(1).toUpperCase());
 }
 
 function resolvePath(filePath) {
-  return path.resolve(process.cwd(), filePath)
+  return path.resolve(process.cwd(), filePath);
 }
 
 function getTokenKey(keys) {
-  return `--${opts.namespace}-${keys.join('-')}`
+  return `--${opts.namespace}-${keys.join("-")}`;
 }
 
 function flattenJSONData(json, path = [], result = {}) {
   for (const key of Object.keys(json)) {
-    const item = json[key]
-    const keyPaths = path.concat(key)
-    const tokenKey = getTokenKey(keyPaths)
+    const item = json[key];
+    const keyPaths = path.concat(key);
+    const tokenKey = getTokenKey(keyPaths);
 
     if (isPrivateToken(tokenKey)) {
-      return
+      return;
     }
 
     if (isTokenValue(item)) {
-      let category
-      let group = keyPaths[0]
-      if (['common', 'component'].includes(group)) {
-        category = group
-        group = keyPaths[1]
+      let category;
+      let group = keyPaths[0];
+      if (["common", "component"].includes(group)) {
+        category = group;
+        group = keyPaths[1];
       }
 
       result[tokenKey] = {
@@ -80,127 +85,133 @@ function flattenJSONData(json, path = [], result = {}) {
         group,
         key: tokenKey,
         value: isVariableToken(item.$value)
-          ? `var(${getTokenKey(item.$value.replace('{', '').replace('}', '').split('.'))})`
+          ? `var(${getTokenKey(item.$value.replace("{", "").replace("}", "").split("."))})`
           : item.$value,
-      }
+      };
 
-      return
+      return;
     }
 
-    flattenJSONData(item, keyPaths, result)
+    flattenJSONData(item, keyPaths, result);
   }
 }
 
 function flatten(json) {
-  const result = {}
-  const path = []
-  flattenJSONData(json, path, result)
-  return result
+  const result = {};
+  const path = [];
+  flattenJSONData(json, path, result);
+  return result;
 }
 
 function parseThemeExpression(themeExpression) {
-  const [theme, themeFilePath] = themeExpression.split(':')
-  return { theme, themeFilePath }
+  const [theme, themeFilePath] = themeExpression.split(":");
+  return { theme, themeFilePath };
 }
 
 function groupTokens(sourceToken, themeTokens) {
   return Object.keys(sourceToken).reduce((result, key) => {
-    const token = sourceToken[key]
+    const token = sourceToken[key];
     if (!result[token.group]) {
       result[token.group] = {
         category: token.category,
         name: token.group,
         children: [],
-      }
+      };
     }
 
     result[token.group].children.push({
       key,
       value: token.value,
       themeTokens: themeTokens.map(({ theme, tokens }) => {
-        return { theme, token: tokens[key] }
+        return { theme, token: tokens[key] };
       }),
-    })
+    });
 
-    return result
-  }, {})
+    return result;
+  }, {});
 }
 
 function format(content) {
-  const config = prettier.resolveConfig()
-  return prettier.format(content, { ...config, parser: 'css' })
+  const config = prettier.resolveConfig();
+  return prettier.format(content, { ...config, parser: "css" });
 }
 
-const outputPath = resolvePath(opts.output)
+const outputPath = resolvePath(opts.output);
 function generateTokenFiles(groupTokens) {
-  const imports = {}
+  const imports = {};
   for (const key of Object.keys(groupTokens)) {
-    const group = groupTokens[groupKey]
+    const group = groupTokens[groupKey];
 
     const themes = group.children.reduce(
       (result, item) => {
-        result.default.push(`${item.key}: ${item.value}`)
+        result.default.push(`${item.key}: ${item.value}`);
         for (data of item.themeTokens) {
           if (!result[data.theme]) {
-            result[data.theme] = []
+            result[data.theme] = [];
           }
 
-          result[data.theme].push(`${item.key}: ${data.token.value}`)
+          result[data.theme].push(`${item.key}: ${data.token.value}`);
         }
 
-        return result
+        return result;
       },
       { default: [] },
-    )
+    );
 
     for (const theme of Object.keys(themes)) {
-      let content = ''
-      if (theme === 'default') {
+      let content = "";
+      if (theme === "default") {
         content = `:root {
-          ${themes[theme].join(';')}
-        }`
+          ${themes[theme].join(";")}
+        }`;
       } else {
         content = `html[data-theme='${theme}'] {
-          ${themes[theme].join(';')}
-        }`
+          ${themes[theme].join(";")}
+        }`;
       }
 
-      const themePath = path.resolve(outputPath, `${kebabToCamel(theme)}/${kebabToCamel(group.name)}.css`)
-      file.writeFile(themePath, format(content))
+      const themePath = path.resolve(
+        outputPath,
+        `${kebabToCamel(theme)}/${kebabToCamel(group.name)}.css`,
+      );
+      file.writeFile(themePath, format(content));
 
-      if (opts.splitComponent && group.category === 'component') {
-        return
+      if (opts.splitComponent && group.category === "component") {
+        return;
       }
 
       if (!imports[theme]) {
-        imports[theme] = []
+        imports[theme] = [];
       }
 
-      imports[theme].push(`@import './${kebabToCamel(group.name)}.css';`)
+      imports[theme].push(`@import './${kebabToCamel(group.name)}.css';`);
     }
   }
 
   for (const theme of Object.keys(imports)) {
-    const themeEntryPath = path.resolve(outputPath, `${kebabToCamel(theme)}/index.css`)
-    file.writeFile(themeEntryPath, format(imports[theme].join('')))
+    const themeEntryPath = path.resolve(
+      outputPath,
+      `${kebabToCamel(theme)}/index.css`,
+    );
+    file.writeFile(themeEntryPath, format(imports[theme].join("")));
   }
 }
 
-const sourceFilePath = resolvePath(opts.source)
+const sourceFilePath = resolvePath(opts.source);
 const themes = opts.theme
-  .split(',')
+  .split(",")
   .filter(Boolean)
   .map((themeExpression) => {
-    const { theme, themeFilePath } = parseThemeExpression(themeExpression)
-    return { theme, themeFilePath: resolvePath(themeFilePath) }
-  })
+    const { theme, themeFilePath } = parseThemeExpression(themeExpression);
+    return { theme, themeFilePath: resolvePath(themeFilePath) };
+  });
 
-const sourceTokens = flatten(require(sourceFilePath))
+const sourceTokens = flatten(require(sourceFilePath));
 const themeTokens = themes.map(({ theme, themeFilePath }) => {
   return {
     theme,
     tokens: flatten(require(themeFilePath)),
-  }
-})
+  };
+});
 
-generateTokenFiles(groupTokens(sourceTokens, themeTokens))
+generateTokenFiles(groupTokens(sourceTokens, themeTokens));

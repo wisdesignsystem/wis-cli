@@ -1,42 +1,42 @@
-import * as is from '@wisdesign/utils/is.js'
+import * as is from "@wisdesign/utils/is.js";
 
 function parseSpecifier(node) {
-  return node.exported.name
+  return node.exported.name;
 }
 
 function parseFunctionDeclaration(node) {
   if (node.id) {
-    return node.id.name
+    return node.id.name;
   }
 }
 
 function parseVariableDeclaration(node) {
   if (!is.isArray(node.declarations) || !node.declarations.length) {
-    return
+    return;
   }
 
-  return node.declarations[0].id.name
+  return node.declarations[0].id.name;
 }
 
 function parseExportNamedDeclaration(node) {
   if (node.specifiers.length) {
     return node.specifiers.reduce((result, item) => {
-      const name = parseSpecifier(item)
-      name && result.push(name)
-      return result
-    }, [])
+      const name = parseSpecifier(item);
+      name && result.push(name);
+      return result;
+    }, []);
   }
 
   if (!node.declaration) {
-    return []
+    return [];
   }
 
-  if (node.declaration.type === 'FunctionDeclaration') {
-    return parseFunctionDeclaration(node.declaration)
+  if (node.declaration.type === "FunctionDeclaration") {
+    return parseFunctionDeclaration(node.declaration);
   }
 
-  if (node.declaration.type === 'VariableDeclaration') {
-    return parseVariableDeclaration(node.declaration)
+  if (node.declaration.type === "VariableDeclaration") {
+    return parseVariableDeclaration(node.declaration);
   }
 }
 
@@ -44,24 +44,24 @@ function parseExportNamedDeclaration(node) {
 // 仅解析导出名称，不解析导出内容
 // TODO 后续可以优化检测导出的是否符合要求
 export function parseExports(astTree) {
-  const nodes = astTree.program.body
+  const nodes = astTree.program.body;
 
   const exportNames = nodes
     .reduce((result, node) => {
       switch (node.type) {
-        case 'ExportNamedDeclaration':
-          return result.concat(parseExportNamedDeclaration(node))
-        case 'ExportDefaultDeclaration':
-          result.push('default')
-          break
+        case "ExportNamedDeclaration":
+          return result.concat(parseExportNamedDeclaration(node));
+        case "ExportDefaultDeclaration":
+          result.push("default");
+          break;
       }
 
-      return result
+      return result;
     }, [])
-    .filter(Boolean)
+    .filter(Boolean);
 
   return exportNames.reduce((result, name) => {
-    result[name] = true
-    return result
-  }, {})
+    result[name] = true;
+    return result;
+  }, {});
 }

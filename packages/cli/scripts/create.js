@@ -1,147 +1,147 @@
-import { createRequire } from 'node:module'
-import path from 'node:path'
-import inquirer from 'inquirer'
-import chalk from 'chalk'
-import download from 'download-git-repo'
-import ora from 'ora'
-import ejs from 'ejs'
-import trace from '@wisdesign/utils/trace.js'
-import * as is from '@wisdesign/utils/is.js'
-import * as file from '@wisdesign/utils/file.js'
-import * as shell from '@wisdesign/utils/shell.js'
+import { createRequire } from "node:module";
+import path from "node:path";
+import * as file from "@wisdesign/utils/file.js";
+import * as is from "@wisdesign/utils/is.js";
+import * as shell from "@wisdesign/utils/shell.js";
+import trace from "@wisdesign/utils/trace.js";
+import chalk from "chalk";
+import download from "download-git-repo";
+import ejs from "ejs";
+import inquirer from "inquirer";
+import ora from "ora";
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 
 function downloadTemplate(source, target) {
   return new Promise((resolve, reject) => {
     download(source, target, (error) => {
       if (error) {
-        reject(error)
+        reject(error);
       } else {
-        resolve()
+        resolve();
       }
-    })
-  })
+    });
+  });
 }
 
 export function validateName(value) {
   if (!/^[a-zA-Z]{1}[A-Za-z0-9_-]+$/.test(value)) {
-    return '应用名称只能由字母、数字、下划线、中横线组成，且首字符为字母！'
+    return "应用名称只能由字母、数字、下划线、中横线组成，且首字符为字母！";
   }
 
-  return true
+  return true;
 }
 
 async function answers(options) {
-  const data = []
+  const data = [];
 
   if (is.isUndefined(options.name)) {
     data.push({
-      type: 'input',
-      name: 'name',
-      message: '项目或者库名称',
+      type: "input",
+      name: "name",
+      message: "项目或者库名称",
       validate: validateName,
-    })
+    });
   }
 
   if (is.isUndefined(options.type)) {
     data.push({
-      type: 'list',
-      name: 'mode',
-      message: '创建哪种项目?',
-      default: 'project',
-      choices: ['project', 'library'],
-    })
+      type: "list",
+      name: "mode",
+      message: "创建哪种项目?",
+      default: "project",
+      choices: ["project", "library"],
+    });
   }
 
   if (is.isUndefined(options.style)) {
     data.push({
-      type: 'list',
-      name: 'style',
-      message: '使用哪种样式处理器?',
-      default: 'css',
-      choices: ['css', 'less'],
-    })
+      type: "list",
+      name: "style",
+      message: "使用哪种样式处理器?",
+      default: "css",
+      choices: ["css", "less"],
+    });
   }
 
   if (!options.typescript) {
     data.push({
-      type: 'confirm',
-      name: 'typescript',
-      message: '是否使用typescript?',
+      type: "confirm",
+      name: "typescript",
+      message: "是否使用typescript?",
       default: false,
-    })
+    });
   }
 
   if (data.length) {
-    const result = await inquirer.prompt(data)
-    return { ...options, ...result }
+    const result = await inquirer.prompt(data);
+    return { ...options, ...result };
   }
 
-  return Promise.resolve(options)
+  return Promise.resolve(options);
 }
 
 export default async function create(options) {
-  const config = await answers(options)
+  const config = await answers(options);
   const template = config.typescript
-    ? 'wisdesignsystem/template-typescript#main'
-    : 'wisdesignsystem/template-javascript#main'
+    ? "wisdesignsystem/template-typescript#main"
+    : "wisdesignsystem/template-javascript#main";
 
-  console.info()
-  const spin = ora('下载项目模版').start()
-  const projectPath = `./${config.name}`
+  console.info();
+  const spin = ora("下载项目模版").start();
+  const projectPath = `./${config.name}`;
   await downloadTemplate(template, projectPath).catch((error) => {
-    spin.clear()
-    spin.stop()
-    trace.error('下载项目模版失败')
-    console.info()
-    throw error
-  })
-  spin.clear()
-  spin.stop()
-  trace.success('下载项目模版成功')
-  console.info()
+    spin.clear();
+    spin.stop();
+    trace.error("下载项目模版失败");
+    console.info();
+    throw error;
+  });
+  spin.clear();
+  spin.stop();
+  trace.success("下载项目模版成功");
+  console.info();
 
   const templateFiles = file.readdirDeep(projectPath).filter((filePath) => {
-    const ext = path.extname(filePath)
-    return ext === '.ejs'
-  })
+    const ext = path.extname(filePath);
+    return ext === ".ejs";
+  });
 
   const renderContext = {
     config,
-    packages: require('../versionInfo.json'),
-  }
+    packages: require("../versionInfo.json"),
+  };
 
   for (let i = 0; i < templateFiles.length; i++) {
-    trace.note(`[%d/${templateFiles.length}] - 模版应用中...`, i + 1)
-    const templateFilePath = templateFiles[i]
-    const templateContent = file.readFile(templateFilePath)
-    const { dir, name } = path.parse(templateFilePath)
-    const nextPath = path.resolve(dir, name)
-    const content = ejs.render(templateContent, renderContext)
-    file.writeFile(nextPath, content)
-    shell.execSync(`rm ${templateFilePath}`)
+    trace.note(`[%d/${templateFiles.length}] - 模版应用中...`, i + 1);
+    const templateFilePath = templateFiles[i];
+    const templateContent = file.readFile(templateFilePath);
+    const { dir, name } = path.parse(templateFilePath);
+    const nextPath = path.resolve(dir, name);
+    const content = ejs.render(templateContent, renderContext);
+    file.writeFile(nextPath, content);
+    shell.execSync(`rm ${templateFilePath}`);
   }
 
-  console.info()
+  console.info();
 
-  shell.execSync(`cd ${projectPath} && git init`)
+  shell.execSync(`cd ${projectPath} && git init`);
 
-  trace.note('应用创建成功，感谢使用Wis')
-  trace.note('你可以执行如下命令来启动程序')
-  console.info()
-  trace.note('进入目录')
-  trace.note(chalk.yellowBright(`cd ${config.name}`))
-  console.info()
-  trace.note('安装依赖')
-  trace.note(chalk.yellowBright('npm install'))
-  console.info()
-  trace.note('启动开发环境')
-  trace.note(chalk.yellowBright('npm run dev'))
-  console.info()
-  trace.note('打包生产环境')
-  trace.note(chalk.yellowBright('npm run build'))
-  console.info()
-  trace.note('开始你的欢乐代码之旅吧!!!')
-  console.info()
+  trace.note("应用创建成功，感谢使用Wis");
+  trace.note("你可以执行如下命令来启动程序");
+  console.info();
+  trace.note("进入目录");
+  trace.note(chalk.yellowBright(`cd ${config.name}`));
+  console.info();
+  trace.note("安装依赖");
+  trace.note(chalk.yellowBright("npm install"));
+  console.info();
+  trace.note("启动开发环境");
+  trace.note(chalk.yellowBright("npm run dev"));
+  console.info();
+  trace.note("打包生产环境");
+  trace.note(chalk.yellowBright("npm run build"));
+  console.info();
+  trace.note("开始你的欢乐代码之旅吧!!!");
+  console.info();
 }

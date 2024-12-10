@@ -1,10 +1,10 @@
 import path from "node:path";
 import url from "node:url";
-import ejs from "ejs";
 import babelParser from "@babel/parser";
 import * as file from "@wisdesign/utils/file.js";
 import * as shell from "@wisdesign/utils/shell.js";
 import * as tool from "@wisdesign/utils/tool.js";
+import ejs from "ejs";
 
 import * as ast from "./ast.js";
 
@@ -12,18 +12,18 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 // 读取模版内容
 const templates = [
-	"app.ejs",
-	"config.ejs",
-	"publicPath.ejs",
-	"loader.ejs",
-	"helper.ejs",
-	"index.ejs",
-	"expose.ejs",
+  "app.ejs",
+  "config.ejs",
+  "publicPath.ejs",
+  "loader.ejs",
+  "helper.ejs",
+  "index.ejs",
+  "expose.ejs",
 ].reduce((result, template) => {
-	result[template] = file.readFile(
-		path.resolve(__dirname, `./templates/${template}`),
-	);
-	return result;
+  result[template] = file.readFile(
+    path.resolve(__dirname, `./templates/${template}`),
+  );
+  return result;
 }, {});
 
 /**
@@ -37,45 +37,45 @@ const templates = [
  * }
  */
 function resolvePage(pageFile, options) {
-	const relativePageFile = pageFile.replace(options.srcPath, "");
-	const pagePath = path.dirname(relativePageFile);
-	const routeParts = pagePath
-		.split("/")
-		.filter(Boolean)
-		.slice(1)
-		.map((name) => name.toLocaleLowerCase());
+  const relativePageFile = pageFile.replace(options.srcPath, "");
+  const pagePath = path.dirname(relativePageFile);
+  const routeParts = pagePath
+    .split("/")
+    .filter(Boolean)
+    .slice(1)
+    .map((name) => name.toLocaleLowerCase());
 
-	// 根据目录文件名解析路由地址
-	const routePath = routeParts
-		.reduce((result, name, index) => {
-			// 最后一个名称为index时，省略
-			if (index === routeParts.length - 1 && name === "index") {
-				return result;
-			}
+  // 根据目录文件名解析路由地址
+  const routePath = routeParts
+    .reduce((result, name, index) => {
+      // 最后一个名称为index时，省略
+      if (index === routeParts.length - 1 && name === "index") {
+        return result;
+      }
 
-			result.push(name);
+      result.push(name);
 
-			return result;
-		}, [])
-		.join("/");
+      return result;
+    }, [])
+    .join("/");
 
-	const name = routeParts
-		.map((name) => {
-			return tool.toFirstUpperCase(name);
-		})
-		.join("");
-	const pageName = `P${name}`;
+  const name = routeParts
+    .map((name) => {
+      return tool.toFirstUpperCase(name);
+    })
+    .join("");
+  const pageName = `P${name}`;
 
-	return {
-		routePath: routePath || "/",
-		pageName,
-		isEmpty: file.isEmpty(pageFile),
-		dynamicPageFilePath: path.resolve(
-			options.outputPath,
-			`pages/${pageName}.js`,
-		),
-		rawPageFilePath: pageFile,
-	};
+  return {
+    routePath: routePath || "/",
+    pageName,
+    isEmpty: file.isEmpty(pageFile),
+    dynamicPageFilePath: path.resolve(
+      options.outputPath,
+      `pages/${pageName}.js`,
+    ),
+    rawPageFilePath: pageFile,
+  };
 }
 
 /**
@@ -87,299 +87,299 @@ function resolvePage(pageFile, options) {
  * }
  */
 function resolveLayout(layoutFile, options) {
-	const layoutPath = path.dirname(layoutFile);
-	const basename = path.basename(layoutPath).toLocaleLowerCase();
+  const layoutPath = path.dirname(layoutFile);
+  const basename = path.basename(layoutPath).toLocaleLowerCase();
 
-	const layoutName = `L${tool.toFirstUpperCase(basename)}`;
-	return {
-		layoutName,
-		isEmpty: file.isEmpty(layoutFile),
-		dynamicLayoutFilePath: path.resolve(
-			options.outputPath,
-			`layouts/${layoutName}.js`,
-		),
-		rawLayoutFilePath: layoutFile,
-	};
+  const layoutName = `L${tool.toFirstUpperCase(basename)}`;
+  return {
+    layoutName,
+    isEmpty: file.isEmpty(layoutFile),
+    dynamicLayoutFilePath: path.resolve(
+      options.outputPath,
+      `layouts/${layoutName}.js`,
+    ),
+    rawLayoutFilePath: layoutFile,
+  };
 }
 
 class Router {
-	constructor(options) {
-		this.options = options;
-		// 存储页面
-		this.pages = [];
-		// 存储布局
-		this.layouts = [];
-	}
+  constructor(options) {
+    this.options = options;
+    // 存储页面
+    this.pages = [];
+    // 存储布局
+    this.layouts = [];
+  }
 
-	// 检测是否是页面
-	isPage(filePath) {
-		const basename = path.basename(filePath);
-		const pageRegex = new RegExp(
-			`.page.(${this.options.extensions.map((ext) => ext.slice(1)).join("|")})`,
-		);
-		return pageRegex.test(basename);
-	}
+  // 检测是否是页面
+  isPage(filePath) {
+    const basename = path.basename(filePath);
+    const pageRegex = new RegExp(
+      `.page.(${this.options.extensions.map((ext) => ext.slice(1)).join("|")})`,
+    );
+    return pageRegex.test(basename);
+  }
 
-	// 检测是否是布局
-	isLayout(filePath) {
-		const basename = path.basename(filePath);
-		const layoutRegex = new RegExp(
-			`.layout.(${this.options.extensions.map((ext) => ext.slice(1)).join("|")})`,
-		);
-		return layoutRegex.test(basename);
-	}
+  // 检测是否是布局
+  isLayout(filePath) {
+    const basename = path.basename(filePath);
+    const layoutRegex = new RegExp(
+      `.layout.(${this.options.extensions.map((ext) => ext.slice(1)).join("|")})`,
+    );
+    return layoutRegex.test(basename);
+  }
 
-	isGlobalPath(filePath, name) {
-		const globalScriptPath = path.resolve(this.options.srcPath, name);
-		return this.options.extensions.some((ext) => {
-			return filePath === globalScriptPath + ext;
-		});
-	}
+  isGlobalPath(filePath, name) {
+    const globalScriptPath = path.resolve(this.options.srcPath, name);
+    return this.options.extensions.some((ext) => {
+      return filePath === globalScriptPath + ext;
+    });
+  }
 
-	// 获取相对文件路径的webpack导入路径
-	relativePath(basePath, filePath) {
-		return tool.toPosixPath(path.relative(path.dirname(basePath), filePath));
-	}
+  // 获取相对文件路径的webpack导入路径
+  relativePath(basePath, filePath) {
+    return tool.toPosixPath(path.relative(path.dirname(basePath), filePath));
+  }
 
-	// 解析页面
-	parsePage(filePath) {
-		return resolvePage(filePath, this.options);
-	}
+  // 解析页面
+  parsePage(filePath) {
+    return resolvePage(filePath, this.options);
+  }
 
-	// 解析布局
-	parseLayout(filePath) {
-		return resolveLayout(filePath, this.options);
-	}
+  // 解析布局
+  parseLayout(filePath) {
+    return resolveLayout(filePath, this.options);
+  }
 
-	// 文件路径解析
-	parseFile(filePath) {
-		if (this.isPage(filePath)) {
-			this.pages.push(this.parsePage(filePath));
-		}
+  // 文件路径解析
+  parseFile(filePath) {
+    if (this.isPage(filePath)) {
+      this.pages.push(this.parsePage(filePath));
+    }
 
-		if (this.isLayout(filePath)) {
-			this.layouts.push(this.parseLayout(filePath));
-		}
-	}
+    if (this.isLayout(filePath)) {
+      this.layouts.push(this.parseLayout(filePath));
+    }
+  }
 
-	getGlobalPath(name) {
-		const appConfigPath = path.resolve(this.options.srcPath, name);
-		let ext = this.options.extensions.find((ext) => {
-			return file.isExist(appConfigPath + ext);
-		});
-		if (!ext) {
-			ext = ".js";
-		}
-		return appConfigPath + ext;
-	}
+  getGlobalPath(name) {
+    const appConfigPath = path.resolve(this.options.srcPath, name);
+    let ext = this.options.extensions.find((ext) => {
+      return file.isExist(appConfigPath + ext);
+    });
+    if (!ext) {
+      ext = ".js";
+    }
+    return appConfigPath + ext;
+  }
 
-	writeConfig() {
-		const configFileName = "config.js";
+  writeConfig() {
+    const configFileName = "config.js";
 
-		const configPath = this.getGlobalPath("config");
+    const configPath = this.getGlobalPath("config");
 
-		const isExist = file.isExist(configPath);
-		const configData = {
-			relativeConfigPath: isExist
-				? this.relativePath(
-						path.resolve(this.options.outputPath, configFileName),
-						configPath,
-					)
-				: "",
-			exports: {},
-		};
+    const isExist = file.isExist(configPath);
+    const configData = {
+      relativeConfigPath: isExist
+        ? this.relativePath(
+            path.resolve(this.options.outputPath, configFileName),
+            configPath,
+          )
+        : "",
+      exports: {},
+    };
 
-		if (isExist) {
-			// 解析文件内容，收集用户自定义的勾子函数
-			const code = file.readFile(configPath);
-			const astTree = babelParser.parse(code, {
-				sourceType: "module",
-				plugins: ["jsx", "typescript"],
-			});
-			configData.exports = ast.parseExports(astTree);
-		}
-		this.writeTemplate(configFileName, templates["config.ejs"], configData);
-	}
+    if (isExist) {
+      // 解析文件内容，收集用户自定义的勾子函数
+      const code = file.readFile(configPath);
+      const astTree = babelParser.parse(code, {
+        sourceType: "module",
+        plugins: ["jsx", "typescript"],
+      });
+      configData.exports = ast.parseExports(astTree);
+    }
+    this.writeTemplate(configFileName, templates["config.ejs"], configData);
+  }
 
-	writeAppEntry() {
-		const appFileName = "app.js";
+  writeAppEntry() {
+    const appFileName = "app.js";
 
-		const appEntryPath = this.getGlobalPath("app");
+    const appEntryPath = this.getGlobalPath("app");
 
-		const isExist = file.isExist(appEntryPath);
-		const appData = {
-			relativeAppEntryPath: isExist
-				? this.relativePath(
-						path.resolve(this.options.outputPath, appFileName),
-						appEntryPath,
-					)
-				: "",
-			exports: {},
-		};
+    const isExist = file.isExist(appEntryPath);
+    const appData = {
+      relativeAppEntryPath: isExist
+        ? this.relativePath(
+            path.resolve(this.options.outputPath, appFileName),
+            appEntryPath,
+          )
+        : "",
+      exports: {},
+    };
 
-		if (isExist) {
-			// 解析文件内容，收集用户自定义的勾子函数
-			const code = file.readFile(appEntryPath);
-			const astTree = babelParser.parse(code, {
-				sourceType: "module",
-				plugins: ["jsx", "typescript"],
-			});
-			appData.exports = ast.parseExports(astTree);
-		}
-		this.writeTemplate(appFileName, templates["app.ejs"], appData);
-	}
+    if (isExist) {
+      // 解析文件内容，收集用户自定义的勾子函数
+      const code = file.readFile(appEntryPath);
+      const astTree = babelParser.parse(code, {
+        sourceType: "module",
+        plugins: ["jsx", "typescript"],
+      });
+      appData.exports = ast.parseExports(astTree);
+    }
+    this.writeTemplate(appFileName, templates["app.ejs"], appData);
+  }
 
-	writePublicPath() {
-		this.writeTemplate("publicPath.js", templates["publicPath.ejs"], {
-			publicPath: this.options.publicPath,
-		});
-	}
+  writePublicPath() {
+    this.writeTemplate("publicPath.js", templates["publicPath.ejs"], {
+      publicPath: this.options.publicPath,
+    });
+  }
 
-	writeLoader() {
-		this.writeTemplate("loader.js", templates["loader.ejs"], {
-			remoteFileName: this.options.remoteFileName,
-		});
-	}
+  writeLoader() {
+    this.writeTemplate("loader.js", templates["loader.ejs"], {
+      remoteFileName: this.options.remoteFileName,
+    });
+  }
 
-	writeHelper() {
-		this.writeTemplate("helper.js", templates["helper.ejs"], {
-			browserHistory: this.options.appConfig.browserHistory,
-		});
-	}
+  writeHelper() {
+    this.writeTemplate("helper.js", templates["helper.ejs"], {
+      browserHistory: this.options.appConfig.browserHistory,
+    });
+  }
 
-	writeExpose() {
-		this.writeTemplate("expose.js", templates["expose.ejs"]);
-	}
+  writeExpose() {
+    this.writeTemplate("expose.js", templates["expose.ejs"]);
+  }
 
-	writeIndex() {
-		this.writeTemplate("index.js", templates["index.ejs"], {
-			appName: this.options.appPackage.name,
-		});
-	}
+  writeIndex() {
+    this.writeTemplate("index.js", templates["index.ejs"], {
+      appName: this.options.appPackage.name,
+    });
+  }
 
-	// 启动
-	bootstrap() {
-		shell.execSync(`rm -rf ${this.options.outputPath}`);
-		shell.execSync(`mkdir ${this.options.outputPath}`);
+  // 启动
+  bootstrap() {
+    shell.execSync(`rm -rf ${this.options.outputPath}`);
+    shell.execSync(`mkdir ${this.options.outputPath}`);
 
-		this.writeConfig();
-		this.writeIndex();
-		this.writeAppEntry();
-		this.writePublicPath();
-		this.writeLoader();
-		this.writeHelper();
-		this.writeExpose();
-	}
+    this.writeConfig();
+    this.writeIndex();
+    this.writeAppEntry();
+    this.writePublicPath();
+    this.writeLoader();
+    this.writeHelper();
+    this.writeExpose();
+  }
 
-	writeTemplate(fileName, content, data = {}) {
-		const code = ejs.render(content, data);
-		const filePath = path.resolve(this.options.outputPath, fileName);
-		file.writeFile(filePath, code);
-	}
+  writeTemplate(fileName, content, data = {}) {
+    const code = ejs.render(content, data);
+    const filePath = path.resolve(this.options.outputPath, fileName);
+    file.writeFile(filePath, code);
+  }
 
-	removeTemplate(fileName) {
-		const filePath = path.resolve(this.options.outputPath, fileName);
-		file.removeFile(filePath);
-	}
+  removeTemplate(fileName) {
+    const filePath = path.resolve(this.options.outputPath, fileName);
+    file.removeFile(filePath);
+  }
 
-	createPage(filePath) {
-		const page = this.parsePage(filePath);
-		this.pages.push(page);
-	}
+  createPage(filePath) {
+    const page = this.parsePage(filePath);
+    this.pages.push(page);
+  }
 
-	createLayout(filePath) {
-		const layout = this.parseLayout(filePath);
-		this.layouts.push(layout);
-	}
+  createLayout(filePath) {
+    const layout = this.parseLayout(filePath);
+    this.layouts.push(layout);
+  }
 
-	// 文件监听添加
-	create(filePath) {
-		if (this.isPage(filePath)) {
-			this.createPage(filePath);
-		}
+  // 文件监听添加
+  create(filePath) {
+    if (this.isPage(filePath)) {
+      this.createPage(filePath);
+    }
 
-		if (this.isLayout(filePath)) {
-			this.createLayout(filePath);
-		}
+    if (this.isLayout(filePath)) {
+      this.createLayout(filePath);
+    }
 
-		if (this.isGlobalPath(filePath, "app")) {
-			this.writeAppEntry();
-		}
+    if (this.isGlobalPath(filePath, "app")) {
+      this.writeAppEntry();
+    }
 
-		if (this.isGlobalPath(filePath, "config")) {
-			this.writeConfig();
-		}
-	}
+    if (this.isGlobalPath(filePath, "config")) {
+      this.writeConfig();
+    }
+  }
 
-	removePage(filePath) {
-		const page = this.parsePage(filePath);
-		this.pages = this.pages.filter((item) => item.pageName !== page.pageName);
-	}
+  removePage(filePath) {
+    const page = this.parsePage(filePath);
+    this.pages = this.pages.filter((item) => item.pageName !== page.pageName);
+  }
 
-	removeLayout(filePath) {
-		const layout = this.parseLayout(filePath);
-		this.layouts = this.layouts.filter(
-			(item) => item.layoutName !== layout.layoutName,
-		);
-	}
+  removeLayout(filePath) {
+    const layout = this.parseLayout(filePath);
+    this.layouts = this.layouts.filter(
+      (item) => item.layoutName !== layout.layoutName,
+    );
+  }
 
-	// 文件监听删除
-	remove(filePath) {
-		if (this.isPage(filePath)) {
-			this.removePage(filePath);
-		}
+  // 文件监听删除
+  remove(filePath) {
+    if (this.isPage(filePath)) {
+      this.removePage(filePath);
+    }
 
-		if (this.isLayout(filePath)) {
-			this.removeLayout(filePath);
-		}
+    if (this.isLayout(filePath)) {
+      this.removeLayout(filePath);
+    }
 
-		if (this.isGlobalPath(filePath, "app")) {
-			this.writeAppEntry();
-		}
+    if (this.isGlobalPath(filePath, "app")) {
+      this.writeAppEntry();
+    }
 
-		if (this.isGlobalPath(filePath, "config")) {
-			this.writeConfig();
-		}
-	}
+    if (this.isGlobalPath(filePath, "config")) {
+      this.writeConfig();
+    }
+  }
 
-	changePage(filePath) {
-		const page = this.parsePage(filePath);
-		this.pages = this.pages.map((item) => {
-			if (item.pageName === page.pageName) {
-				return page;
-			}
-			return item;
-		});
-	}
+  changePage(filePath) {
+    const page = this.parsePage(filePath);
+    this.pages = this.pages.map((item) => {
+      if (item.pageName === page.pageName) {
+        return page;
+      }
+      return item;
+    });
+  }
 
-	changeLayout(filePath) {
-		const layout = this.parseLayout(filePath);
-		this.layouts = this.layouts.map((item) => {
-			if (item.layoutName === layout.layoutName) {
-				return layout;
-			}
-			return item;
-		});
-	}
+  changeLayout(filePath) {
+    const layout = this.parseLayout(filePath);
+    this.layouts = this.layouts.map((item) => {
+      if (item.layoutName === layout.layoutName) {
+        return layout;
+      }
+      return item;
+    });
+  }
 
-	// 文件监听改变
-	change(filePath) {
-		if (this.isPage(filePath)) {
-			this.changePage(filePath);
-		}
+  // 文件监听改变
+  change(filePath) {
+    if (this.isPage(filePath)) {
+      this.changePage(filePath);
+    }
 
-		if (this.isLayout(filePath)) {
-			this.changeLayout(filePath);
-		}
+    if (this.isLayout(filePath)) {
+      this.changeLayout(filePath);
+    }
 
-		if (this.isGlobalPath(filePath, "app")) {
-			this.writeAppEntry();
-		}
+    if (this.isGlobalPath(filePath, "app")) {
+      this.writeAppEntry();
+    }
 
-		if (this.isGlobalPath(filePath, "config")) {
-			this.writeConfig();
-		}
-	}
+    if (this.isGlobalPath(filePath, "config")) {
+      this.writeConfig();
+    }
+  }
 }
 
 export default Router;

@@ -1,9 +1,9 @@
-import { createRequire } from 'node:module'
-import path from 'node:path'
+import { createRequire } from "node:module";
+import path from "node:path";
 
-import ReactRouter from './ReactRouter.js'
+import ReactRouter from "./ReactRouter.js";
 
-const require = createRequire(import.meta.url)
+const require = createRequire(import.meta.url);
 
 export default function (plugin, options) {
   plugin.hooks.context.tap((context) => {
@@ -15,33 +15,36 @@ export default function (plugin, options) {
       publicPath: context.path.publicUrl,
       remoteFileName: context.remoteFileName,
       extensions: options.extensions,
-    })
+    });
 
     plugin.hooks.eachFile.tap((filePath) => {
-      router.parseFile(filePath)
-    })
+      router.parseFile(filePath);
+    });
 
     plugin.hooks.eachFileEnd.tap(() => {
-      router.bootstrap()
-    })
+      router.bootstrap();
+    });
 
     plugin.hooks.watcher.tap((watcher) => {
       watcher
-        .on('add', (filePath) => {
-          router.create(filePath)
+        .on("add", (filePath) => {
+          router.create(filePath);
         })
-        .on('unlink', (filePath) => {
-          router.remove(filePath)
+        .on("unlink", (filePath) => {
+          router.remove(filePath);
         })
-        .on('change', (filePath) => {
-          router.change(filePath)
-        })
-    })
+        .on("change", (filePath) => {
+          router.change(filePath);
+        });
+    });
 
     plugin.hooks.webpackConfigure.tap((webpackConfigure) => {
-      const exposes = webpackConfigure.get('plugins.remote.exposes')
-      exposes.set('\\./$$Router', path.resolve(context.path.compiler, 'Router.jsx'))
-      exposes.set('\\./$$app', path.resolve(context.path.compiler, 'app.js'))
-    })
-  })
+      const exposes = webpackConfigure.get("plugins.remote.exposes");
+      exposes.set(
+        "\\./$$Router",
+        path.resolve(context.path.compiler, "Router.jsx"),
+      );
+      exposes.set("\\./$$app", path.resolve(context.path.compiler, "app.js"));
+    });
+  });
 }

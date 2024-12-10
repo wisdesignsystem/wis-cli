@@ -20,11 +20,11 @@
     "changeset": "npx changeset",
     "version": "pnpm changeset version && node ./scripts/version.js",
     "publish": "pnpm publish -r",
+    "format": "biome check --write",
     "clean": "rm -rf node_modules **/*/node_modules"
   },
   "lint-staged": {
-    "**/*.{ts,tsx}": ["biome check --write"],
-    "**/*.json": ["biome check --write"]
+    "**/*.{ts,tsx,json}": "biome check --write"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.5",

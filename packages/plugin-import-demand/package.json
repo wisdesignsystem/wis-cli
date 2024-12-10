@@ -1,17 +1,17 @@
 {
-	"name": "@wisdesign/plugin-import-demand",
-	"version": "0.0.2",
-	"description": "",
-	"author": "wisdesign <dev@wis.design>",
-	"license": "MIT",
-	"main": "index.js",
-	"type": "module",
-	"dependencies": {
-		"@wisdesign/container-entry-webpack-plugin": "workspace:*",
-		"@wisdesign/utils": "workspace:*",
-		"minimatch": "10.0.1"
-	},
-	"publishConfig": {
-		"access": "public"
-	}
+  "name": "@wisdesign/plugin-import-demand",
+  "version": "0.0.2",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {
+    "@wisdesign/container-entry-webpack-plugin": "workspace:*",
+    "@wisdesign/utils": "workspace:*",
+    "minimatch": "10.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

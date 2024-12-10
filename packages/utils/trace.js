@@ -1,21 +1,21 @@
-import signale from 'signale'
+import signale from "signale";
 
 export default new signale.Signale({
-  scope: 'Wis',
+  scope: "Wis",
   types: {
     note: {
-      badge: '👣',
-      color: 'cyan',
-      logLevel: 'info',
+      badge: "👣",
+      color: "cyan",
+      logLevel: "info",
     },
     success: {
-      badge: '✅',
-      color: 'green',
+      badge: "✅",
+      color: "green",
     },
     error: {
-      badge: '❌',
-      color: 'red',
-      logLevel: 'error',
+      badge: "❌",
+      color: "red",
+      logLevel: "error",
     },
   },
-})
+});

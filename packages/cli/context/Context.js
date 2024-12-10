@@ -1,41 +1,41 @@
-import Path from './Path.js'
-import Env from './Env.js'
-import Config from './Config.js'
+import Config from "./Config.js";
+import Env from "./Env.js";
+import Path from "./Path.js";
 
 class Context {
-  static instance = null
+  static instance = null;
 
   // 远程入口文件
-  remoteFileName = 'remote.js'
+  remoteFileName = "remote.js";
 
   static create() {
     if (!Context.instance) {
-      Context.instance = new Context()
+      Context.instance = new Context();
     }
 
-    return Context.instance
+    return Context.instance;
   }
 
   constructor() {
     // 路径相关
-    this.path = Path.create()
+    this.path = Path.create();
     // 环境相关
-    this.env = Env.create(this.path)
+    this.env = Env.create(this.path);
     // 配置相关
-    this.config = Config.create(this.path)
+    this.config = Config.create(this.path);
   }
 
   async init() {
-    await this.path.init()
-    await this.env.init()
-    await this.config.init()
+    await this.path.init();
+    await this.env.init();
+    await this.config.init();
   }
 
   async parse() {
-    await this.path.parse()
-    await this.env.parse()
-    await this.config.parse()
+    await this.path.parse();
+    await this.env.parse();
+    await this.config.parse();
   }
 }
 
-export default Context
+export default Context;
