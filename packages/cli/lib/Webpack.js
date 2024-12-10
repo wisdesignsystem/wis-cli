@@ -368,8 +368,6 @@ class Webpack {
       options: {
         presets: [],
         plugins: [],
-        browserslistEnv: process.env.NODE_ENV,
-        compact: this.env.isProduction,
       },
     })
 
