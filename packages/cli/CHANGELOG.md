@@ -1,5 +1,17 @@
 # @wisdesign/cli
 
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies [9a5f63b]
+  - @wisdesign/utils@0.0.5
+  - @wisdesign/configure@0.0.5
+  - @wisdesign/log-webpack-plugin@0.0.5
+  - @wisdesign/plugin-import-demand@0.0.3
+  - @wisdesign/plugin-remote-entry@0.0.4
+  - @wisdesign/plugin-router@0.0.8
+
 ## 0.0.17
 
 ### Patch Changes

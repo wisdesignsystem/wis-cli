@@ -1,5 +1,11 @@
 # @wisdesign/utils
 
+## 0.0.5
+
+### Patch Changes
+
+- 9a5f63b: [feature] add the typescript docgen tool
+
 ## 0.0.4
 
 ### Patch Changes
