@@ -331,21 +331,24 @@ importers:
 
   packages/toolkit:
     dependencies:
-      '@prettier/sync':
-        specifier: 0.5.2
-        version: 0.5.2(prettier@3.3.1)
       '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       commander:
         specifier: 12.1.0
         version: 12.1.0
-      prettier:
-        specifier: 3.3.1
-        version: 3.3.1
+      react-docgen-typescript:
+        specifier: 2.2.2
+        version: 2.2.2(typescript@5.5.3)
 
   packages/utils:
     dependencies:
+      '@prettier/sync':
+        specifier: 0.5.2
+        version: 0.5.2(prettier@3.3.1)
+      prettier:
+        specifier: 3.3.1
+        version: 3.3.1
       signale:
         specifier: 1.4.0
         version: 1.4.0
@@ -4726,6 +4729,11 @@ packages:
   raw-body@2.5.1:
     resolution: {integrity: sha512-qqJBtEyVgS0ZmPGdCFPWJ3FreoqvG4MVQln/kCgF7Olq95IbOp0/BWyMwbdtn4VTvkM8Y7khCQ2Xgk/tcrCXig==}
     engines: {node: '>= 0.8'}
+
+  react-docgen-typescript@2.2.2:
+    resolution: {integrity: sha512-tvg2ZtOpOi6QDwsb3GZhOjDkkX0h8Z2gipvTg6OVMUyoYoURhEiRNePT8NZItTVCDh39JJHnLdfCOkzoLbFnTg==}
+    peerDependencies:
+      typescript: '>= 4.3.x'
 
   react-dom@18.2.0:
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
@@ -10626,6 +10634,10 @@ snapshots:
       http-errors: 2.0.0
       iconv-lite: 0.4.24
       unpipe: 1.0.0
+
+  react-docgen-typescript@2.2.2(typescript@5.5.3):
+    dependencies:
+      typescript: 5.5.3
 
   react-dom@18.2.0(react@18.2.0):
     dependencies:

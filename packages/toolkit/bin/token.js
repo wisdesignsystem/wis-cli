@@ -3,8 +3,8 @@
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import prettier from "@prettier/sync";
 import * as file from "@wisdesign/utils/file.js";
+import * as tool from "@wisdesign/utils/tool.js";
 import { Command } from "commander";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -132,8 +132,7 @@ function groupTokens(sourceToken, themeTokens) {
 }
 
 function format(content) {
-  const config = prettier.resolveConfig();
-  return prettier.format(content, { ...config, parser: "css" });
+  return tool.formatCode(content, { parser: "css" });
 }
 
 const outputPath = resolvePath(opts.output);

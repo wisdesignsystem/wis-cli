@@ -105,7 +105,7 @@ class Webpack {
     this.config.set("watch", !this.env.isProduction);
 
     this.config.set("output", {
-      clean: true,
+      clean: false,
       path: this.context.path.dist,
       filename: this.env.isProduction
         ? "static/js/[name].[contenthash:8].js"
