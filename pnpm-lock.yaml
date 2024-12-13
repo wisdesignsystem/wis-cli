@@ -321,15 +321,6 @@ importers:
         specifier: 16.0.3
         version: 16.0.3(sass@1.80.6)(webpack@5.92.1)
 
-  packages/plugin-typescript-component-docgen:
-    dependencies:
-      '@wisdesign/utils':
-        specifier: workspace:*
-        version: link:../utils
-      react-docgen-typescript:
-        specifier: 2.2.2
-        version: 2.2.2(typescript@5.5.3)
-
   packages/remote-webpack-plugin:
     dependencies:
       webpack:
@@ -340,24 +331,24 @@ importers:
 
   packages/toolkit:
     dependencies:
-      '@prettier/sync':
-        specifier: 0.5.2
-        version: 0.5.2(prettier@3.3.1)
       '@wisdesign/utils':
         specifier: workspace:*
         version: link:../utils
       commander:
         specifier: 12.1.0
         version: 12.1.0
-      prettier:
-        specifier: 3.3.1
-        version: 3.3.1
       react-docgen-typescript:
         specifier: 2.2.2
         version: 2.2.2(typescript@5.5.3)
 
   packages/utils:
     dependencies:
+      '@prettier/sync':
+        specifier: 0.5.2
+        version: 0.5.2(prettier@3.3.1)
+      prettier:
+        specifier: 3.3.1
+        version: 3.3.1
       signale:
         specifier: 1.4.0
         version: 1.4.0

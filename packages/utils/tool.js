@@ -1,4 +1,5 @@
 import path from "node:path";
+import prettier from "@prettier/sync";
 
 /**
  * Converts a file path to a POSIX path.
@@ -37,4 +38,8 @@ export function replaceAlias(alias, filePath) {
   }
 
   return filePath;
+}
+
+export function formatCode(code, option) {
+  return prettier.format(code, option)
 }

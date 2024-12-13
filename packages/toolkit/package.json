@@ -15,9 +15,7 @@
   },
   "dependencies": {
     "@wisdesign/utils": "workspace:*",
-    "@prettier/sync": "0.5.2",
     "commander": "12.1.0",
-    "prettier": "3.3.1",
     "react-docgen-typescript": "2.2.2"
   }
 }
