@@ -1,5 +1,13 @@
 # @wisdesign/log-webpack-plugin
 
+## 0.0.6
+
+### Patch Changes
+
+- 5a1f4dd: [feature] translate the tip message to english
+- Updated dependencies [b16e4e8]
+  - @wisdesign/utils@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

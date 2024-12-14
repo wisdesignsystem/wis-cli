@@ -1,5 +1,12 @@
 # @wisdesign/plugin-remote-entry
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [b16e4e8]
+  - @wisdesign/utils@0.0.6
+
 ## 0.0.4
 
 ### Patch Changes

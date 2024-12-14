@@ -1,5 +1,20 @@
 # @wisdesign/cli
 
+## 0.0.19
+
+### Patch Changes
+
+- 5a1f4dd: [feature] translate the tip message to english
+- b16e4e8: [feature] change the create command with new wis template
+- Updated dependencies [5a1f4dd]
+- Updated dependencies [b16e4e8]
+  - @wisdesign/log-webpack-plugin@0.0.6
+  - @wisdesign/utils@0.0.6
+  - @wisdesign/configure@0.0.6
+  - @wisdesign/plugin-import-demand@0.0.4
+  - @wisdesign/plugin-remote-entry@0.0.5
+  - @wisdesign/plugin-router@0.0.9
+
 ## 0.0.18
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @wisdesign/plugin-router
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [b16e4e8]
+  - @wisdesign/utils@0.0.6
+
 ## 0.0.8
 
 ### Patch Changes

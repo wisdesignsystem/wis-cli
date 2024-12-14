@@ -1,5 +1,12 @@
 # @wisdesign/plugin-import-demand
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [b16e4e8]
+  - @wisdesign/utils@0.0.6
+
 ## 0.0.3
 
 ### Patch Changes

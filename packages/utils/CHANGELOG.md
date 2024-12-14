@@ -1,5 +1,11 @@
 # @wisdesign/utils
 
+## 0.0.6
+
+### Patch Changes
+
+- b16e4e8: [feature] change the create command with new wis template
+
 ## 0.0.5
 
 ### Patch Changes
