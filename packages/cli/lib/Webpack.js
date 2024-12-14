@@ -637,10 +637,10 @@ class Webpack {
             const appPackage = require(this.context.path.packageJson);
             clearConsole();
             console.info(figlet.textSync("Wis", "Ghost"));
-            console.info(`👣 Wis v${cliPackage.version}`);
+            console.info(`👣 CLI@${cliPackage.version}`);
             console.info();
             console.info(
-              `👣 应用名称：${chalk.blue(chalk.bold(appPackage.name))}`,
+              `👣 Application Name: ${chalk.blue(chalk.bold(appPackage.name))}`,
             );
             console.info();
           },

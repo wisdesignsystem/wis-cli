@@ -19,7 +19,7 @@ class Plugin {
         next[key] = {};
       } else if (next[key] instanceof Tap || next[key] instanceof TapStream) {
         throw new Error(
-          "存在无效的插件注册方法，请检查对应插件的plugin.register方法",
+          "Invalid plugin registration method detected. Please check the corresponding plugin's plugin.register method.",
         );
       }
       next = next[key];

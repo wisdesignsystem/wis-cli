@@ -35,7 +35,7 @@ if (isDevelopment() && cluster.isPrimary) {
   const cliPackage = require(cliPath.packagePath);
 
   console.info(figlet.textSync("Wis", "Ghost"));
-  console.info(`👣 Wis v${cliPackage.version}`);
+  console.info(`👣 CLI@${cliPackage.version}`);
   console.info();
 
   function ensureName(value) {
@@ -51,42 +51,42 @@ if (isDevelopment() && cluster.isPrimary) {
 
   cli
     .name("wis")
-    .description("一款集项目模版，研发和打包一体化的工具集合")
-    .version(cliPackage.version, "-v --version", "查看工具版本号")
-    .helpOption("-h, --help", "查看帮助信息")
+    .description("A toolset that integrates project templates, development, and packaging")
+    .version(cliPackage.version, "-v --version", "View tool version")
+    .helpOption("-h, --help", "View help information")
     .helpCommand(false);
 
   cli
     .command("create")
-    .description("创建模版项目")
-    .argument("[name]", "项目或者库名称", ensureName)
+    .description("Create a template project")
+    .argument("[name]", "Project or library name", ensureName)
     .addOption(
       new Option(
         "-t, --type <type>",
-        "创建的模版类型，project项目类型，library库类型",
+        "Type of template to create, project or library",
       ).choices(["project", "library"]),
     )
     .addOption(
-      new Option("-s, --style <style>", "使用哪种样式处理器").choices([
+      new Option("-s, --style <style>", "Which style processor to use").choices([
         "css",
         "less",
       ]),
     )
-    .option("--typescript", "是否使用typescript")
+    .option("--typescript", "Whether to use TypeScript")
     .action((name, options) => {
       create({ name, ...options });
     });
 
   cli
     .command("dev")
-    .description("启动开发环境")
+    .description("Start development server")
     .action(() => {
       dev();
     });
 
   cli
     .command("build")
-    .description("打包项目工程")
+    .description("Build the production")
     .action(() => {
       build();
     });

@@ -15,7 +15,7 @@ function createGetValue(config) {
     }
 
     if (!check(value)) {
-      trace.error(`[${name}] 无效的配置项，请检查配置文件`);
+      trace.error(`[${name}] Invalid configuration item, please check the configuration file`);
       process.exit(-1);
     }
 
@@ -163,7 +163,7 @@ class Config extends Parser {
       pageLoading = config.loading.page;
       layoutLoading = config.loading.layout;
     } else {
-      trace.error("[loading] 无效的配置项，请检查配置文件");
+      trace.error("[loading] Invalid configuration item, please check the configuration file");
       process.exit(-1);
     }
 

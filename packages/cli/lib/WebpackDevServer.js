@@ -107,8 +107,7 @@ export default class {
 
       compiler.hooks.done.tap("done", () => {
         setTimeout(() => {
-          console.info(`👣 ${chalk.cyan("服务器启动成功")}`);
-          console.info();
+          console.info(`👣 ${chalk.cyan("Server started at:")}`);
           console.info(`👣 ${chalk.cyan(url.localUrl)}`);
           console.info(`👣 ${chalk.cyan(url.realUrl)}`);
           console.info();
@@ -116,7 +115,7 @@ export default class {
           if (isFirstCompilerDone) {
             isFirstCompilerDone = false;
             clipboard.writeSync(url.localUrl);
-            console.info("👣 访问地址已经复制到剪贴板，粘贴到浏览器查看吧");
+            console.info("👣 The browser URL has been copied to the clipboard.");
           }
         }, 0);
       });
