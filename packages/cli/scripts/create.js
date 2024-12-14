@@ -26,7 +26,7 @@ function downloadTemplate(source, target) {
 
 export function validateName(value) {
   if (!/^[a-zA-Z]{1}[A-Za-z0-9_-]+$/.test(value)) {
-    return "应用名称只能由字母、数字、下划线、中横线组成，且首字符为字母！";
+    return "The application name can only consist of letters, numbers, underscores, and hyphens, and the first character must be a letter!";
   }
 
   return true;
@@ -39,37 +39,8 @@ async function answers(options) {
     data.push({
       type: "input",
       name: "name",
-      message: "项目或者库名称",
+      message: "Project Name",
       validate: validateName,
-    });
-  }
-
-  if (is.isUndefined(options.type)) {
-    data.push({
-      type: "list",
-      name: "mode",
-      message: "创建哪种项目?",
-      default: "project",
-      choices: ["project", "library"],
-    });
-  }
-
-  if (is.isUndefined(options.style)) {
-    data.push({
-      type: "list",
-      name: "style",
-      message: "使用哪种样式处理器?",
-      default: "css",
-      choices: ["css", "less"],
-    });
-  }
-
-  if (!options.typescript) {
-    data.push({
-      type: "confirm",
-      name: "typescript",
-      message: "是否使用typescript?",
-      default: false,
     });
   }
 
@@ -81,25 +52,33 @@ async function answers(options) {
   return Promise.resolve(options);
 }
 
+function getDependencies() {
+  const packageJson = require("../package.json");
+  const peerDependencies = packageJson.peerDependencies;
+
+  return Object.keys(peerDependencies).reduce((result, name) => {
+    result[name] = peerDependencies[name].replace(/\^|~/g, "");
+    return result;
+  }, {})
+}
+
 export default async function create(options) {
   const config = await answers(options);
-  const template = config.typescript
-    ? "wisdesignsystem/template-typescript#main"
-    : "wisdesignsystem/template-javascript#main";
+  const template = "wisdesignsystem/wis-basic-template#main"
 
   console.info();
-  const spin = ora("下载项目模版").start();
+  const spin = ora("Download Template...").start();
   const projectPath = `./${config.name}`;
   await downloadTemplate(template, projectPath).catch((error) => {
     spin.clear();
     spin.stop();
-    trace.error("下载项目模版失败");
+    trace.error("Download failed...");
     console.info();
     throw error;
   });
   spin.clear();
   spin.stop();
-  trace.success("下载项目模版成功");
+  trace.success("Download successful...");
   console.info();
 
   const templateFiles = file.readdirDeep(projectPath).filter((filePath) => {
@@ -110,10 +89,11 @@ export default async function create(options) {
   const renderContext = {
     config,
     packages: require("../versionInfo.json"),
+    dependencies: getDependencies(),
   };
 
   for (let i = 0; i < templateFiles.length; i++) {
-    trace.note(`[%d/${templateFiles.length}] - 模版应用中...`, i + 1);
+    trace.note(`[%d/${templateFiles.length}] - Apply template...`, i + 1);
     const templateFilePath = templateFiles[i];
     const templateContent = file.readFile(templateFilePath);
     const { dir, name } = path.parse(templateFilePath);
@@ -127,21 +107,21 @@ export default async function create(options) {
 
   shell.execSync(`cd ${projectPath} && git init`);
 
-  trace.note("应用创建成功，感谢使用Wis");
-  trace.note("你可以执行如下命令来启动程序");
+  trace.note("Application created successfully, thank you for using Wis");
+  trace.note("You can run the following command to start the program");
   console.info();
-  trace.note("进入目录");
+  trace.note("Enter the project directory");
   trace.note(chalk.yellowBright(`cd ${config.name}`));
   console.info();
-  trace.note("安装依赖");
+  trace.note("Install dependencies");
   trace.note(chalk.yellowBright("npm install"));
   console.info();
-  trace.note("启动开发环境");
+  trace.note("Start development");
   trace.note(chalk.yellowBright("npm run dev"));
   console.info();
-  trace.note("打包生产环境");
+  trace.note("Build production");
   trace.note(chalk.yellowBright("npm run build"));
   console.info();
-  trace.note("开始你的欢乐代码之旅吧!!!");
+  trace.note("Start your joyful coding journey!!!");
   console.info();
 }

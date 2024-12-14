@@ -127,7 +127,7 @@ export function readdirDeep(filePath) {
     return [];
   }
 
-  const files = [];
+  const result = [];
   function readdir(currentFilePath) {
     const files = fs.readdirSync(currentFilePath).map((fileName) => {
       return path.resolve(currentFilePath, fileName);
@@ -135,8 +135,8 @@ export function readdirDeep(filePath) {
 
     for (const item of files) {
       if (isFile(item)) {
-        files.push(item);
-        return;
+        result.push(item);
+        continue;
       }
 
       readdir(item);
@@ -145,5 +145,5 @@ export function readdirDeep(filePath) {
 
   readdir(filePath);
 
-  return files;
+  return result;
 }

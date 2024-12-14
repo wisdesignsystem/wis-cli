@@ -17,7 +17,7 @@
     "alpha": "pnpm changeset pre enter alpha",
     "rc": "pnpm changeset pre enter rc",
     "exit": "pnpm changeset pre exit",
-    "changeset": "npx changeset",
+    "changelog": "pnpm changeset",
     "version": "pnpm changeset version && node ./scripts/version.js",
     "publish": "pnpm publish -r",
     "format": "biome check --write",
