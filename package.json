@@ -13,18 +13,17 @@
   "scripts": {
     "prepare": "husky",
     "preinstall": "npx only-allow pnpm",
-    "beta": "pnpm changeset pre enter beta",
-    "alpha": "pnpm changeset pre enter alpha",
-    "rc": "pnpm changeset pre enter rc",
-    "exit": "pnpm changeset pre exit",
     "changelog": "pnpm changeset",
     "version": "pnpm changeset version && node ./scripts/version.js",
-    "publish": "pnpm publish -r",
+    "alpha": "pnpm changeset pre enter alpha && pnpm run version && pnpm changeset pre exit",
+    "beta": "pnpm changeset pre enter beta && pnpm run version && pnpm changeset pre exit",
+    "rc": "pnpm changeset pre enter rc && pnpm run version && pnpm changeset pre exit",
+    "publish": "pnpm changeset tag && git push --follow-tags && pnpm publish -r",
     "format": "biome check --write",
     "clean": "rm -rf node_modules **/*/node_modules"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,json}": "biome check --write"
+    "**/*.{js,jsx,json}": "biome check --write"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.5",
