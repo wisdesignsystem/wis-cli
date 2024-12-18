@@ -3,7 +3,7 @@
   "changelog": [
     "@changesets/changelog-github",
     {
-      "repo": "wisdesignsystem/lsicon"
+      "repo": "wisdesignsystem/wis-cli"
     }
   ],
   "commit": false,
