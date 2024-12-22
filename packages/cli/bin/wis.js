@@ -35,7 +35,7 @@ if (isDevelopment() && cluster.isPrimary) {
   const cliPackage = require(cliPath.packagePath);
 
   console.info(figlet.textSync("Wis", "Ghost"));
-  console.info(`👣 CLI@${cliPackage.version}`);
+  console.info(`CLI@${cliPackage.version}`);
   console.info();
 
   function ensureName(value) {
@@ -51,7 +51,9 @@ if (isDevelopment() && cluster.isPrimary) {
 
   cli
     .name("wis")
-    .description("A toolset that integrates project templates, development, and packaging")
+    .description(
+      "A toolset that integrates project templates, development, and packaging",
+    )
     .version(cliPackage.version, "-v --version", "View tool version")
     .helpOption("-h, --help", "View help information")
     .helpCommand(false);
@@ -67,10 +69,9 @@ if (isDevelopment() && cluster.isPrimary) {
       ).choices(["project", "library"]),
     )
     .addOption(
-      new Option("-s, --style <style>", "Which style processor to use").choices([
-        "css",
-        "less",
-      ]),
+      new Option("-s, --style <style>", "Which style processor to use").choices(
+        ["css", "less"],
+      ),
     )
     .option("--typescript", "Whether to use TypeScript")
     .action((name, options) => {
