@@ -178,7 +178,7 @@ importers:
         version: 7.3.3(postcss@8.4.31)(typescript@5.5.3)(webpack@5.97.1)
       postcss-normalize:
         specifier: 10.0.1
-        version: 10.0.1(browserslist@4.24.3)(postcss@8.4.31)
+        version: 10.0.1(browserslist@4.23.1)(postcss@8.4.31)
       postcss-preset-env:
         specifier: 9.3.0
         version: 9.3.0(postcss@8.4.31)
@@ -3840,7 +3840,7 @@ packages:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
   lodash.uniqby@4.7.0:
-    resolution: {integrity: sha1-2ZwHpmnp5tJOE2Lf4mbGdhavEwI=}
+    resolution: {integrity: sha512-e/zcLx6CSbmaEgFHCA7BnoQKyCtKMxnuWrJygbwPs/AIn+IMKl66L8/s+wBUn5LRw2pZx3bUHibiV1b6aTWIww==}
 
   lodash.upperfirst@4.3.1:
     resolution: {integrity: sha512-sReKOYJIJf74dhJONhU4e0/shzi1trVbSWDOhKYE5XV2O+H7Sb2Dihwuc7xWxVl+DgFPyTqIN3zMfT9cq5iWDg==}
@@ -4970,6 +4970,7 @@ packages:
 
   rimraf@2.7.1:
     resolution: {integrity: sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==}
+    deprecated: Rimraf versions prior to v4 are no longer supported
     hasBin: true
 
   rimraf@3.0.2:
@@ -10307,9 +10308,9 @@ snapshots:
       postcss: 8.4.31
       postcss-selector-parser: 6.1.0
 
-  postcss-browser-comments@4.0.0(browserslist@4.24.3)(postcss@8.4.31):
+  postcss-browser-comments@4.0.0(browserslist@4.23.1)(postcss@8.4.31):
     dependencies:
-      browserslist: 4.24.3
+      browserslist: 4.23.1
       postcss: 8.4.31
 
   postcss-calc@9.0.1(postcss@8.4.31):
@@ -10574,12 +10575,12 @@ snapshots:
       postcss: 8.4.31
       postcss-value-parser: 4.2.0
 
-  postcss-normalize@10.0.1(browserslist@4.24.3)(postcss@8.4.31):
+  postcss-normalize@10.0.1(browserslist@4.23.1)(postcss@8.4.31):
     dependencies:
       '@csstools/normalize.css': 12.1.1
-      browserslist: 4.24.3
+      browserslist: 4.23.1
       postcss: 8.4.31
-      postcss-browser-comments: 4.0.0(browserslist@4.24.3)(postcss@8.4.31)
+      postcss-browser-comments: 4.0.0(browserslist@4.23.1)(postcss@8.4.31)
       sanitize.css: 13.0.0
 
   postcss-opacity-percentage@2.0.0(postcss@8.4.31):

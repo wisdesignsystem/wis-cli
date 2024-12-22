@@ -28,25 +28,33 @@ function clearConsole() {
   );
 }
 
-function getProjectLocalIdent(context, localIdentName, localName, options) {
-  const { dir, name } = path.parse(context.resourcePath);
-  const res = path.parse(path.resolve(dir, name));
+function getPackageLocalIndent({ context, localName, libraryName }) {
+  const result = path.parse(context.resourcePath);
+  return `${libraryName}-${result.name.replace(/\.module$/, "")}-${localName}`;
+}
 
+function getProjectLocalIndent({ context, localName }) {
+  const result = path.parse(context.resourcePath);
   const hashKey =
     path.basename(context.rootContext) +
     path.sep +
     path.posix.relative(context.rootContext, context.resourcePath);
   const hash = loaderUtils.getHashDigest(hashKey, "md5", "base64", 5);
 
-  return `${res.name}__${localName}--${hash}`;
+  return `${result.name.replace(/\.module$/, "")}-${localName}--${hash}`;
 }
 
-function createGetLibraryLocalIndent(libraryName) {
-  return (context, localIdentName, localName, options) => {
-    const { dir, name } = path.parse(context.resourcePath);
-    const res = path.parse(path.resolve(dir, name));
-    const prefix = libraryName ? `${libraryName}-` : "";
-    return `${prefix}${res.name}-${localName}`;
+function localIndentFactory(context, libraryName) {
+  return (webpackContext, _, localName) => {
+    if (webpackContext.resourcePath.startsWith(context.config.packagePath)) {
+      return getPackageLocalIndent({
+        context: webpackContext,
+        localName,
+        libraryName,
+      });
+    }
+
+    return getProjectLocalIndent({ context: webpackContext, localName });
   };
 }
 
@@ -331,12 +339,10 @@ class Webpack {
         importLoaders: 2,
         sourceMap: false,
         modules: {
-          getLocalIdent:
-            this.context.config.mode === "library"
-              ? createGetLibraryLocalIndent(
-                  require(this.context.path.packageJson).name,
-                )
-              : getProjectLocalIdent,
+          getLocalIdent: localIndentFactory(
+            this.context,
+            require(this.context.path.packageJson).name,
+          ),
         },
       },
     });
@@ -637,11 +643,9 @@ class Webpack {
             const appPackage = require(this.context.path.packageJson);
             clearConsole();
             console.info(figlet.textSync("Wis", "Ghost"));
-            console.info(`👣 CLI@${cliPackage.version}`);
+            console.info(`CLI@${cliPackage.version}`);
             console.info();
-            console.info(
-              `👣 Application Name: ${chalk.blue(chalk.bold(appPackage.name))}`,
-            );
+            console.info(`Application: ${chalk.cyanBright(appPackage.name)}`);
             console.info();
           },
         },
@@ -706,12 +710,6 @@ class Webpack {
 
     optimization.set("splitChunks", {
       chunks: "async",
-      // minSize: 0,
-      // minRemainingSize: 0,
-      // minChunks: 1,
-      // maxAsyncRequests: Infinity,
-      // maxInitialRequests: Infinity,
-      // enforceSizeThreshold: 50000,
       cacheGroups,
     });
   }

@@ -107,15 +107,16 @@ export default class {
 
       compiler.hooks.done.tap("done", () => {
         setTimeout(() => {
-          console.info(`👣 ${chalk.cyan("Server started at:")}`);
-          console.info(`👣 ${chalk.cyan(url.localUrl)}`);
-          console.info(`👣 ${chalk.cyan(url.realUrl)}`);
+          console.info("Develop server listening at");
+          console.info();
+          console.info(`${chalk.cyanBright(url.localUrl)}`);
+          console.info(`${chalk.cyanBright(url.realUrl)}`);
           console.info();
 
           if (isFirstCompilerDone) {
             isFirstCompilerDone = false;
             clipboard.writeSync(url.localUrl);
-            console.info("👣 The browser URL has been copied to the clipboard.");
+            console.info("The browser url has been copied to the clipboard.");
           }
         }, 0);
       });

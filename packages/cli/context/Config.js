@@ -15,7 +15,9 @@ function createGetValue(config) {
     }
 
     if (!check(value)) {
-      trace.error(`[${name}] Invalid configuration item, please check the configuration file`);
+      trace.error(
+        `[${name}] Invalid configuration item, please check the configuration file`,
+      );
       process.exit(-1);
     }
 
@@ -40,11 +42,11 @@ class Config extends Parser {
 
   path = null;
 
-  // 项目模式 project项目 library组件库
-  mode = "project";
-
   // 项目别名
   alias = {};
+
+  // 包的根路径
+  packagePath = undefined;
 
   // 配置项目导出资源
   exposes = {};
@@ -125,7 +127,6 @@ class Config extends Parser {
   async parse() {
     const getValue = createGetValue(this.rawConfig);
 
-    this.mode = getValue("mode", is.isEnum(["project", "library"]), this.mode);
     this.exposes = getValue("exposes", is.isObject, this.exposes);
     this.shared = getValue("shared", is.isObject, this.shared);
     this.browserHistory = getValue(
@@ -144,9 +145,17 @@ class Config extends Parser {
       this.webpackConfig,
     );
 
+    this.parsePackagePath(this.rawConfig);
     this.parseLoading(this.rawConfig);
 
     plugin.hooks.config.call(this, this.rawConfig);
+  }
+
+  parsePackagePath(config) {
+    if (is.isString(config.packagePath)) {
+      this.packagePath = this.resolvePath(config.packagePath);
+      return;
+    }
   }
 
   parseLoading(config) {
@@ -163,7 +172,9 @@ class Config extends Parser {
       pageLoading = config.loading.page;
       layoutLoading = config.loading.layout;
     } else {
-      trace.error("[loading] Invalid configuration item, please check the configuration file");
+      trace.error(
+        "[loading] Invalid configuration item, please check the configuration file",
+      );
       process.exit(-1);
     }
 
