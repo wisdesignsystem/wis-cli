@@ -1,0 +1,15 @@
+{
+  "name": "@wisdesign/download-repo",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "main": "index.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "tar": "7.4.3"
+  }
+}

@@ -1,29 +1,17 @@
+import "zx/globals";
 import { createRequire } from "node:module";
 import path from "node:path";
-import "zx/globals";
 import { confirm, input } from "@inquirer/prompts";
+import { downloadGithubRepo } from "@wisdesign/download-repo";
 import * as file from "@wisdesign/utils/file.js";
 import * as is from "@wisdesign/utils/is.js";
 import chalk from "chalk";
-import download from "download-git-repo";
 import ejs from "ejs";
 import ora from "ora";
 
 import cliPath from "../context/cliPath.js";
 
 const require = createRequire(import.meta.url);
-
-function downloadTemplate(source, target) {
-  return new Promise((resolve, reject) => {
-    download(source, target, (error) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve();
-      }
-    });
-  });
-}
 
 export function validateName(value) {
   if (!/^[a-zA-Z]{1}[A-Za-z0-9_-]+$/.test(value)) {
@@ -68,15 +56,27 @@ function getDependencies() {
 
 export default async function create(options) {
   const config = await answers(options);
-  const template = "wisdesignsystem/wis-basic-template#main";
+  const template = "wisdesignsystem/wis-basic-template";
   const applicationPath = path.resolve(process.cwd(), `./${config.name}`);
 
+  if (file.isExist(applicationPath)) {
+    console.info();
+    console.info(
+      `Application at ${chalk.cyanBright(applicationPath)} is already exist.`,
+    );
+    console.info();
+    process.exit();
+  }
+
   console.info();
-  console.info(`Creating wis application at ${applicationPath}`);
+  console.info(
+    `Creating wis application at ${chalk.cyanBright(applicationPath)}`,
+  );
   console.info();
 
   const spin = ora().start();
-  await downloadTemplate(template, applicationPath);
+  await $`mkdir ${applicationPath}`;
+  await downloadGithubRepo(template, applicationPath);
 
   const templateFiles = file.readdirDeep(applicationPath).filter((filePath) => {
     const ext = path.extname(filePath);
