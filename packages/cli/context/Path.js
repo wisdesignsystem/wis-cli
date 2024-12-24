@@ -27,7 +27,7 @@ class Path extends Parser {
     // 环境变量配置文件路径
     this.env = path.resolve(runtimePath, "./.env");
     // 配置文件路径
-    this.config = path.resolve(runtimePath, ".wisrc.js");
+    this.config = path.resolve(runtimePath, ".wisrc.ts");
     // 网站public path
     this.public = publicPath;
     // 网站路口index.html路径

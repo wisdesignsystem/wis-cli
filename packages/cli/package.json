@@ -9,6 +9,7 @@
   "bin": {
     "wis": "bin/wis.js"
   },
+  "types": "index.d.ts",
   "dependencies": {
     "@babel/core": "7.26.0",
     "@babel/plugin-transform-runtime": "7.25.9",
@@ -61,6 +62,7 @@
     "source-map-loader": "5.0.0",
     "style-loader": "3.3.3",
     "terser-webpack-plugin": "5.3.11",
+    "ts-import": "5.0.0-beta.0",
     "webpack": "5.97.1",
     "webpack-bundle-analyzer": "4.9.1",
     "webpack-dev-server": "5.2.0",

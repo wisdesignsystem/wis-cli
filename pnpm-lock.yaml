@@ -19,7 +19,7 @@ importers:
         version: 2.27.5
       '@commitlint/cli':
         specifier: 18.6.1
-        version: 18.6.1(@types/node@20.14.10)(typescript@5.5.3)
+        version: 18.6.1(@types/node@20.14.10)(typescript@5.7.2)
       '@commitlint/config-conventional':
         specifier: 18.6.3
         version: 18.6.3
@@ -61,7 +61,7 @@ importers:
         version: 0.5.15(react-refresh@0.14.2)(type-fest@0.21.3)(webpack-dev-server@5.2.0(webpack@5.97.1))(webpack@5.97.1)
       '@svgr/webpack':
         specifier: 8.1.0
-        version: 8.1.0(typescript@5.5.3)
+        version: 8.1.0(typescript@5.7.2)
       '@types/react':
         specifier: ~18.3.16
         version: 18.3.16
@@ -175,7 +175,7 @@ importers:
         version: 5.0.2(postcss@8.4.31)
       postcss-loader:
         specifier: 7.3.3
-        version: 7.3.3(postcss@8.4.31)(typescript@5.5.3)(webpack@5.97.1)
+        version: 7.3.3(postcss@8.4.31)(typescript@5.7.2)(webpack@5.97.1)
       postcss-normalize:
         specifier: 10.0.1
         version: 10.0.1(browserslist@4.24.3)(postcss@8.4.31)
@@ -206,6 +206,9 @@ importers:
       terser-webpack-plugin:
         specifier: 5.3.11
         version: 5.3.11(webpack@5.97.1)
+      ts-import:
+        specifier: 5.0.0-beta.0
+        version: 5.0.0-beta.0(typescript@5.7.2)
       webpack:
         specifier: 5.97.1
         version: 5.97.1
@@ -354,7 +357,7 @@ importers:
         version: 12.1.0
       react-docgen-typescript:
         specifier: 2.2.2
-        version: 2.2.2(typescript@5.5.3)
+        version: 2.2.2(typescript@5.7.2)
 
   packages/utils:
     dependencies:
@@ -2368,6 +2371,10 @@ packages:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
     engines: {node: '>= 12'}
 
+  comment-parser@1.3.1:
+    resolution: {integrity: sha512-B52sN2VNghyq5ofvUsqZjmk6YkihBX5vMSChmSK9v4ShjKf3Vk5Xcmgpw4o+iIgtrnM/u5FiMpz9VKb8lpBveA==}
+    engines: {node: '>= 12.0.0'}
+
   common-path-prefix@3.0.0:
     resolution: {integrity: sha512-QE33hToZseCH3jS0qN96O/bSh3kaw/h+Tq7ngyY9eWDUnTlTNUyqfqvCXioLe5Na5jFsL78ra/wuBU4iuEgd4w==}
 
@@ -3992,6 +3999,9 @@ packages:
     resolution: {integrity: sha512-ur5UIdyw5Y7yEj9wLzhqXiy6GZ3Mwx0yGI+5sMn2r0N0v3cKJvUmFH5yPP+WXh9e0xfyzyJX95D8l088DNFj7A==}
     hasBin: true
 
+  options-defaults@2.0.40:
+    resolution: {integrity: sha512-a0oW0AMaP/Uqk1gU7s3unE83wzs/MACy3wsCnNREn4wqp4KCcxRdulRjf0d2FeIxENbGJ4EBGtHTQ6J30XB6Cw==}
+
   ora@8.0.1:
     resolution: {integrity: sha512-ANIvzobt1rls2BDny5fWZ3ZVKyD6nscLvfFRpQgfWsythlcsVUC9kL0zq6j2Z5z9wwp1kd7wpsD/T9qNPVLCaQ==}
     engines: {node: '>=18'}
@@ -5245,6 +5255,15 @@ packages:
     resolution: {integrity: sha512-c1PTsA3tYrIsLGkJkzHF+w9F2EyxfXGo4UyJc4pFL++FMjnq0HJS69T3M7d//gKrFKwy429bouPescbjecU+Zw==}
     engines: {node: '>=8'}
 
+  ts-import@5.0.0-beta.0:
+    resolution: {integrity: sha512-YOe/xCmwDWughfeaAaGJ4UWzlCKNnt9e+oda3St6mUMkRJCTBhBso+7XApIijw7Mr9SS6NLOdav8i5EJrx7UVQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      typescript: '5'
+
+  tslib@2.5.0:
+    resolution: {integrity: sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==}
+
   tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
 
@@ -5293,8 +5312,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typescript@5.5.3:
-    resolution: {integrity: sha512-/hreyEujaB0w76zKo6717l3L0o/qEUtRgdvUBvlkhoWeOVMjMuHNHk0BRBzikzuGDqNmPQbg5ifMEqsHLiIUcQ==}
+  typescript@5.7.2:
+    resolution: {integrity: sha512-i5t66RHxDvVN40HfDd1PsEThGNnlMCMT3jMUuoh9/0TaqWevNontacunWyN02LA9/fIbEWlcHZcgTKb9QoaLfg==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -6638,11 +6657,11 @@ snapshots:
       human-id: 1.0.2
       prettier: 2.8.8
 
-  '@commitlint/cli@18.6.1(@types/node@20.14.10)(typescript@5.5.3)':
+  '@commitlint/cli@18.6.1(@types/node@20.14.10)(typescript@5.7.2)':
     dependencies:
       '@commitlint/format': 18.6.1
       '@commitlint/lint': 18.6.1
-      '@commitlint/load': 18.6.1(@types/node@20.14.10)(typescript@5.5.3)
+      '@commitlint/load': 18.6.1(@types/node@20.14.10)(typescript@5.7.2)
       '@commitlint/read': 18.6.1
       '@commitlint/types': 18.6.1
       execa: 5.1.1
@@ -6692,15 +6711,15 @@ snapshots:
       '@commitlint/rules': 18.6.1
       '@commitlint/types': 18.6.1
 
-  '@commitlint/load@18.6.1(@types/node@20.14.10)(typescript@5.5.3)':
+  '@commitlint/load@18.6.1(@types/node@20.14.10)(typescript@5.7.2)':
     dependencies:
       '@commitlint/config-validator': 18.6.1
       '@commitlint/execute-rule': 18.6.1
       '@commitlint/resolve-extends': 18.6.1
       '@commitlint/types': 18.6.1
       chalk: 4.1.2
-      cosmiconfig: 8.3.6(typescript@5.5.3)
-      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.10)(cosmiconfig@8.3.6(typescript@5.5.3))(typescript@5.5.3)
+      cosmiconfig: 8.3.6(typescript@5.7.2)
+      cosmiconfig-typescript-loader: 5.0.0(@types/node@20.14.10)(cosmiconfig@8.3.6(typescript@5.7.2))(typescript@5.7.2)
       lodash.isplainobject: 4.0.6
       lodash.merge: 4.6.2
       lodash.uniq: 4.5.0
@@ -7311,12 +7330,12 @@ snapshots:
       '@svgr/babel-plugin-transform-react-native-svg': 8.1.0(@babel/core@7.26.0)
       '@svgr/babel-plugin-transform-svg-component': 8.0.0(@babel/core@7.26.0)
 
-  '@svgr/core@8.1.0(typescript@5.5.3)':
+  '@svgr/core@8.1.0(typescript@5.7.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@svgr/babel-preset': 8.1.0(@babel/core@7.26.0)
       camelcase: 6.3.0
-      cosmiconfig: 8.3.6(typescript@5.5.3)
+      cosmiconfig: 8.3.6(typescript@5.7.2)
       snake-case: 3.0.4
     transitivePeerDependencies:
       - supports-color
@@ -7327,35 +7346,35 @@ snapshots:
       '@babel/types': 7.24.7
       entities: 4.5.0
 
-  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.5.3))':
+  '@svgr/plugin-jsx@8.1.0(@svgr/core@8.1.0(typescript@5.7.2))':
     dependencies:
       '@babel/core': 7.26.0
       '@svgr/babel-preset': 8.1.0(@babel/core@7.26.0)
-      '@svgr/core': 8.1.0(typescript@5.5.3)
+      '@svgr/core': 8.1.0(typescript@5.7.2)
       '@svgr/hast-util-to-babel-ast': 8.0.0
       svg-parser: 2.0.4
     transitivePeerDependencies:
       - supports-color
 
-  '@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0(typescript@5.5.3))(typescript@5.5.3)':
+  '@svgr/plugin-svgo@8.1.0(@svgr/core@8.1.0(typescript@5.7.2))(typescript@5.7.2)':
     dependencies:
-      '@svgr/core': 8.1.0(typescript@5.5.3)
-      cosmiconfig: 8.3.6(typescript@5.5.3)
+      '@svgr/core': 8.1.0(typescript@5.7.2)
+      cosmiconfig: 8.3.6(typescript@5.7.2)
       deepmerge: 4.3.1
       svgo: 3.3.2
     transitivePeerDependencies:
       - typescript
 
-  '@svgr/webpack@8.1.0(typescript@5.5.3)':
+  '@svgr/webpack@8.1.0(typescript@5.7.2)':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/plugin-transform-react-constant-elements': 7.24.7(@babel/core@7.26.0)
       '@babel/preset-env': 7.26.0(@babel/core@7.26.0)
       '@babel/preset-react': 7.26.3(@babel/core@7.26.0)
       '@babel/preset-typescript': 7.26.0(@babel/core@7.26.0)
-      '@svgr/core': 8.1.0(typescript@5.5.3)
-      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.5.3))
-      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.5.3))(typescript@5.5.3)
+      '@svgr/core': 8.1.0(typescript@5.7.2)
+      '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.7.2))
+      '@svgr/plugin-svgo': 8.1.0(@svgr/core@8.1.0(typescript@5.7.2))(typescript@5.7.2)
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8001,6 +8020,8 @@ snapshots:
 
   commander@8.3.0: {}
 
+  comment-parser@1.3.1: {}
+
   common-path-prefix@3.0.0: {}
 
   compare-func@2.0.0:
@@ -8082,21 +8103,21 @@ snapshots:
       object-assign: 4.1.1
       vary: 1.1.2
 
-  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.10)(cosmiconfig@8.3.6(typescript@5.5.3))(typescript@5.5.3):
+  cosmiconfig-typescript-loader@5.0.0(@types/node@20.14.10)(cosmiconfig@8.3.6(typescript@5.7.2))(typescript@5.7.2):
     dependencies:
       '@types/node': 20.14.10
-      cosmiconfig: 8.3.6(typescript@5.5.3)
+      cosmiconfig: 8.3.6(typescript@5.7.2)
       jiti: 1.21.6
-      typescript: 5.5.3
+      typescript: 5.7.2
 
-  cosmiconfig@8.3.6(typescript@5.5.3):
+  cosmiconfig@8.3.6(typescript@5.7.2):
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
     optionalDependencies:
-      typescript: 5.5.3
+      typescript: 5.7.2
 
   cross-spawn@5.1.0:
     dependencies:
@@ -9695,6 +9716,8 @@ snapshots:
 
   opener@1.5.2: {}
 
+  options-defaults@2.0.40: {}
+
   ora@8.0.1:
     dependencies:
       chalk: 5.3.0
@@ -9999,9 +10022,9 @@ snapshots:
       '@csstools/utilities': 1.0.0(postcss@8.4.31)
       postcss: 8.4.31
 
-  postcss-loader@7.3.3(postcss@8.4.31)(typescript@5.5.3)(webpack@5.97.1):
+  postcss-loader@7.3.3(postcss@8.4.31)(typescript@5.7.2)(webpack@5.97.1):
     dependencies:
-      cosmiconfig: 8.3.6(typescript@5.5.3)
+      cosmiconfig: 8.3.6(typescript@5.7.2)
       jiti: 1.21.6
       postcss: 8.4.31
       semver: 7.5.4
@@ -10339,9 +10362,9 @@ snapshots:
       iconv-lite: 0.4.24
       unpipe: 1.0.0
 
-  react-docgen-typescript@2.2.2(typescript@5.5.3):
+  react-docgen-typescript@2.2.2(typescript@5.7.2):
     dependencies:
-      typescript: 5.5.3
+      typescript: 5.7.2
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
@@ -11014,6 +11037,15 @@ snapshots:
 
   trim-newlines@3.0.1: {}
 
+  ts-import@5.0.0-beta.0(typescript@5.7.2):
+    dependencies:
+      comment-parser: 1.3.1
+      options-defaults: 2.0.40
+      tslib: 2.5.0
+      typescript: 5.7.2
+
+  tslib@2.5.0: {}
+
   tslib@2.6.3: {}
 
   tty-table@4.2.3:
@@ -11073,7 +11105,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typescript@5.5.3: {}
+  typescript@5.7.2: {}
 
   unbox-primitive@1.0.2:
     dependencies:

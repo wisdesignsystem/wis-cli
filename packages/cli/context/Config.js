@@ -1,7 +1,9 @@
+import "zx/globals";
 import path from "node:path";
 import * as file from "@wisdesign/utils/file.js";
 import * as is from "@wisdesign/utils/is.js";
 import trace from "@wisdesign/utils/trace.js";
+import * as tsImport from "ts-import";
 
 import plugin from "../lib/plugin.js";
 import Parser from "./Parser.js";
@@ -115,16 +117,16 @@ class Config extends Parser {
     if (!file.isExist(this.path.config)) {
       return;
     }
-    this.rawConfig = await import(this.path.config).then(
-      (module) => module.default,
-    );
-
+    this.rawConfig = await tsImport.load(this.path.config).then((module) => {
+      return module.default;
+    });
+    await $`rm -rf ${path.resolve(this.path.runtime, ".cache")}`;
     const getValue = createGetValue(this.rawConfig);
     this.alias = getValue("alias", is.isObject, this.alias);
     this.parsePlugins(this.rawConfig);
   }
 
-  async parse() {
+  parse() {
     const getValue = createGetValue(this.rawConfig);
 
     this.exposes = getValue("exposes", is.isObject, this.exposes);
