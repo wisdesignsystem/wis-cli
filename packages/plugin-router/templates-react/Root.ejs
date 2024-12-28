@@ -18,7 +18,7 @@ import Router from './Router'
 import Suspense from './Suspense'
 import Debug from './Debug'
 
-window.$__router_type__ = <% if (browserHistory) { %>'browserRouter'<% } else { %>'hashRouter'<% } %>
+window.$__wis_router_type__ = <% if (browserHistory) { %>'browserRouter'<% } else { %>'hashRouter'<% } %>
 
 function isDebug() {
   return new URLSearchParams(window.location.search).get('debug') !== null

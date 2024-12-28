@@ -3,7 +3,7 @@ import <%= layout.layoutName %> from './layouts/<%= layout.layoutName %>'
 <% }) %>
 import { firstCharToUpperCase, getRouterPath } from './helper'
 
-window.$__layouts__ = [
+window.$__wis_layouts__ = [
   <% layouts.forEach(function(layout) { %>
     '<%= layout.rawLayoutName %>',
   <% }) %>

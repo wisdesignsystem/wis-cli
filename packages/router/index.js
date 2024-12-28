@@ -2,11 +2,11 @@ import { useEffect, useRef } from "react";
 import * as ReactRouter from "react-router";
 
 function isBrowserRouter() {
-  return window.$__router_type__ === "browserRouter";
+  return window.$__wis_router_type__ === "browserRouter";
 }
 
 function getLayouts() {
-  return window.$__layouts__ || [];
+  return window.$__wis_layouts__ || [];
 }
 
 function isLayout(item) {

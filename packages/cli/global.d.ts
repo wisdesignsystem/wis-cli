@@ -26,15 +26,15 @@ interface Window {
   /**
    * Stores the remote address of the application
    */
-  $__wis__remotes__: Record<string, string>;
+  $__wis_remotes__: Record<string, string>;
 
   /**
    * Stores the list of layouts supported by the current application
    */
-  $__layouts__: string[];
+  $__wis_layouts__: string[];
 
   /**
    * Stores the current application route type
    */
-  $__router_type__: "browserRouter" | "hashRouter";
+  $__wis_router_type__: "browserRouter" | "hashRouter";
 }
