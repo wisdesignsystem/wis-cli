@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   <% if (browserHistory) { %>
   BrowserRouter,
   <% } else { %>
   HashRouter,
   <% } %>
-} from 'react-router-dom'
+  useRouteChange,
+} from '@wiscore/router'
 
-import { useHistoryChange } from './history'
 import { loadScopeModule } from './loader'
 import { loadScopeComponent } from './loaderComponent'
-import { isFunction, isString, isUndefined, isObject, isDebug, isEnableEditDebug, getRouterPath } from './helper'
+import { isFunction, isString, isUndefined, isObject, getRouterPath } from './helper'
 import { enter, leave } from './app'
 
 import Layout, { getLayoutName } from './Layout'
@@ -18,12 +18,18 @@ import Router from './Router'
 import Suspense from './Suspense'
 import Debug from './Debug'
 
+window.$__router_type__ = <% if (browserHistory) { %>'browserRouter'<% } else { %>'hashRouter'<% } %>
+
+function isDebug() {
+  return new URLSearchParams(window.location.search).get('debug') !== null
+}
+
 export function getAppName(hasLayout) {
   const routerPath = getRouterPath()
   const [layoutName = '', appName = ''] = routerPath.split('/').filter(item => item)
   const name = hasLayout ? appName : layoutName
 
-  if (window.$__wis_uncheck_remote(name)) {
+  if (window.$__wis_uncheck_remote__(name)) {
     return name
   }
 }
@@ -103,20 +109,26 @@ export default function Root({ location }) {
     enter()
   }, [])
 
-  useHistoryChange(() => {
+  <% if (!browserHistory) { %>
+  useRouteChange(() => {
     load()
   })
+  <% } %>
+
+  function renderAppRouter() {
+    if (!AppRouter) {
+      return <Router basename={basename} />
+    }
+
+    return <AppRouter basename={basename} />
+  }
 
   return (
     <Suspense>
-      {(isEnableEditDebug() || isDebug()) && <Debug />}
+      {(isDebug()) && <Debug />}
       <Layout>
         <Suspense mode="page">
-          {status === 'loading' ? AppRouter && <AppRouter /> : (
-            <<% if (browserHistory) { %>BrowserRouter<% } else { %>HashRouter<% } %> basename={basename}>
-              {status === 'succeed' && AppRouter ? <AppRouter /> : <Router />}
-            </<% if (browserHistory) { %>BrowserRouter<% } else { %>HashRouter<% } %>>
-          )}
+          {renderAppRouter()}
         </Suspense>
       </Layout>
     </Suspense>

@@ -19,7 +19,7 @@ class LogWebpackPlugin {
           `[${chalk.redBright("ERROR")}] ${chalk.redBright(error.moduleName)}`,
         );
       }
-      console.info(chalk.redBright(error.stack));
+      console.info(error.stack);
     }
   }
 
@@ -30,7 +30,7 @@ class LogWebpackPlugin {
           `[${chalk.yellowBright("WARNING")}] ${chalk.yellowBright(error.moduleName)}`,
         );
       }
-      console.info(chalk.yellowBright(warn.stack));
+      console.info(warn.stack);
     }
   }
 }

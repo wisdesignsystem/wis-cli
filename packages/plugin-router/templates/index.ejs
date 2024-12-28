@@ -1,12 +1,7 @@
 import { remotes } from './config'
 
-function debug() {
-  return new URLSearchParams(window.location.search).get('debug')
-}
-
-// 此模式下可编辑且生效
 function isDebug() {
-  return debug() === 'true' && process.env.NODE_ENV === 'development'
+  return new URLSearchParams(window.location.search).get('debug') !== null
 }
 
 (async () => {
@@ -16,7 +11,7 @@ function isDebug() {
 
   const appName = '<%= appName %>'
 
-  if (urls[appName] === undefined) {
+  if (!urls[appName]) {
     urls[appName] = process.env.PUBLIC_URL.slice(0, process.env.PUBLIC_URL.length - 1)
   }
 
@@ -27,14 +22,14 @@ function isDebug() {
     } catch (e) {}
   }
 
-  if (Proxy !== undefined) {
+  if (!Proxy) {
     window.$__wis_remotes__ = new Proxy({}, {
       get(_, prop) {
         if (!prop) {
           return
         }
 
-        if (urls[prop] === undefined) {
+        if (!urls[prop]) {
           throw new Error(`Remote url not found for ${prop}`)
         }
 
@@ -45,7 +40,7 @@ function isDebug() {
     window.$__wis_remotes__ = urls
   }
 
-  window.$__wis_uncheck_remote = function (name) {
+  window.$__wis_uncheck_remote__ = function (name) {
     return urls[name]
   }
 

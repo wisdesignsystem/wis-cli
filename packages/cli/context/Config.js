@@ -48,7 +48,7 @@ class Config extends Parser {
   alias = {};
 
   // 包的根路径
-  packagePath = undefined;
+  packageRootPath = undefined;
 
   // 配置项目导出资源
   exposes = {};
@@ -147,15 +147,15 @@ class Config extends Parser {
       this.webpackConfig,
     );
 
-    this.parsePackagePath(this.rawConfig);
+    this.parsePackageRootPath(this.rawConfig);
     this.parseLoading(this.rawConfig);
 
     plugin.hooks.config.call(this, this.rawConfig);
   }
 
-  parsePackagePath(config) {
-    if (is.isString(config.packagePath)) {
-      this.packagePath = this.resolvePath(config.packagePath);
+  parsePackageRootPath(config) {
+    if (is.isString(config.packageRootPath)) {
+      this.packageRootPath = this.resolvePath(config.packageRootPath);
       return;
     }
   }

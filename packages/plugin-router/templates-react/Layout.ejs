@@ -1,8 +1,13 @@
-import React, { useMemo } from 'react'
 <% layouts.forEach(function(layout) { %>
 import <%= layout.layoutName %> from './layouts/<%= layout.layoutName %>'
 <% }) %>
 import { firstCharToUpperCase, getRouterPath } from './helper'
+
+window.$__layouts__ = [
+  <% layouts.forEach(function(layout) { %>
+    '<%= layout.rawLayoutName %>',
+  <% }) %>
+]
 
 const LayoutComponents = {
   <% layouts.forEach(function(layout) { %>
@@ -30,14 +35,8 @@ export function hasLayout(layoutName) {
   return !!LayoutComponents
 }
 
-function useLayoutName() {
-  return useMemo(() => {
-    return getLayoutName()
-  }, [getRouterPath()])
-}
-
 export default function Layout({ children }) {
-  const layoutName = useLayoutName()
+  const layoutName = getLayoutName()
 
   const LayoutComponent = getLayoutComponent(layoutName)
 

@@ -2,8 +2,6 @@ import { createRoot } from 'react-dom/client'
 
 import Root from './Root'
 
-import { isFunction } from './helper'
-
 const rootElement = document.getElementById(process.env.ROOT_ELEMENT_ID || 'root')
 if (!rootElement.hasAttribute('data-root')) {
   rootElement.setAttribute('data-root', '')

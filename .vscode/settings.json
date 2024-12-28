@@ -28,10 +28,13 @@
     "clipboardy",
     "middlewares",
     "outputters",
+    "routechange",
     "signale",
     "webpackbar",
+    "wiscore",
     "wisdesign",
     "wisdesignsystem",
+    "wisjs",
     "wisrc"
   ]
 }
