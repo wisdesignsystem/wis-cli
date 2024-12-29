@@ -1,5 +1,14 @@
 # @wisdesign/cli
 
+## 0.0.22
+
+### Patch Changes
+
+- [#20](https://github.com/wisdesignsystem/wis-cli/pull/20) [`0b89732`](https://github.com/wisdesignsystem/wis-cli/commit/0b897329dfae6ab57afeeb0ce6c1e08163c583cd) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Rename download-repo to expose-repo, because of npm not allow download keyword
+
+- Updated dependencies [[`0b89732`](https://github.com/wisdesignsystem/wis-cli/commit/0b897329dfae6ab57afeeb0ce6c1e08163c583cd)]:
+  - @wisdesign/expose-repo@0.0.2
+
 ## 0.0.21
 
 ### Patch Changes
