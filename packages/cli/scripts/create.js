@@ -2,7 +2,7 @@ import "zx/globals";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { confirm, input } from "@inquirer/prompts";
-import { downloadGithubRepo } from "@wisdesign/download-repo";
+import { downloadGithubRepo } from "@wisdesign/expose-repo";
 import * as file from "@wisdesign/utils/file.js";
 import * as is from "@wisdesign/utils/is.js";
 import chalk from "chalk";
