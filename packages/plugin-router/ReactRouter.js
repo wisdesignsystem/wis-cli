@@ -141,7 +141,11 @@ class ReactRouter extends Router {
 
         return result;
       },
-      { pages: [], notFoundPage: null },
+      {
+        pages: [],
+        notFoundPage: null,
+        browserHistory: this.options.appConfig.browserHistory,
+      },
     );
     this.writeTemplate("Router.jsx", templates["Router.ejs"], routerData);
   }

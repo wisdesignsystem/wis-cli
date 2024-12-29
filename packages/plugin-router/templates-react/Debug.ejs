@@ -1,7 +1,7 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
-import { noop, isEnableEditDebug } from './helper'
+import { noop } from './helper'
 
 import styles from './Debug.module.css'
 
@@ -85,7 +85,7 @@ function DebugContent({ onClose = noop }) {
     <Container>
       <div className={styles.content}>
         <div className={styles.header}>
-          <span className={styles.title}>调试模式{isEnableEditDebug() ? '(当前未生效)' : ''}</span>
+          <span className={styles.title}>调试模式</span>
           <button className={styles.button} onClick={onClose}>关闭</button>
         </div>
         <div className={styles.search}>
@@ -109,9 +109,6 @@ function DebugContent({ onClose = noop }) {
           })}
         </div>
         <div className={styles.footer}>
-          <div className={styles.toolbar}>
-            debug模式：debug='true'(生效) debug=''(仅编辑，暂不生效)
-          </div>
           <div className={styles.actions}>
             <button className={styles.button} onClick={handleReset}>重置</button>
             <button className={styles.button} onClick={handleConfirm}>确认</button>
@@ -143,7 +140,7 @@ export default function Debug() {
 
   return (
     <div className={styles.debug}>
-      <button className={styles.trigger} onClick={handleTriggerClick}>调试模式{isEnableEditDebug() ? '(未生效)' : ''}</button>
+      <button className={styles.trigger} onClick={handleTriggerClick}>调试模式</button>
       <Portal visible={visible}>
         <DebugContent onClose={handleClose} />
       </Portal>

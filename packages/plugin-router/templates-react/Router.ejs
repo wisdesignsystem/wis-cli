@@ -1,5 +1,13 @@
-import React, { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import {
+  <% if (browserHistory) { %>
+  BrowserRouter,
+  <% } else { %>
+  HashRouter,
+  <% } %>
+  Routes,
+  Route,
+} from '@wiscore/router'
+
 <% pages.forEach(function(page) { %>
 import <%= page.pageName %> from './pages/<%= page.pageName %>'
 <% }) %>
@@ -9,13 +17,17 @@ import NotFound from './pages/<%= notFoundPage.pageName %>'
 import NotFound from './pages/NotFound'
 <% } %>
 
-export default function Router() {
+export default function Router({ basename = '/' }) {
   return (
-    <Routes>
-      <% pages.forEach(function(page) { %>
-      <Route path="<%= page.routePath %>" element={<<%= page.pageName %> />} />
-      <% }) %>
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <<% if (browserHistory) { %>BrowserRouter<% } else { %>HashRouter<% } %>>
+      <Routes>
+        <Route path={basename}>
+          <% pages.forEach(function(page) { %>
+          <Route path="<%= page.routePath %>" element={<<%= page.pageName %> />} />
+          <% }) %>
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </<% if (browserHistory) { %>BrowserRouter<% } else { %>HashRouter<% } %>>
   )
 }

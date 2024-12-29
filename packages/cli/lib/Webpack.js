@@ -46,7 +46,9 @@ function getProjectLocalIndent({ context, localName }) {
 
 function localIndentFactory(context, libraryName) {
   return (webpackContext, _, localName) => {
-    if (webpackContext.resourcePath.startsWith(context.config.packagePath)) {
+    if (
+      webpackContext.resourcePath.startsWith(context.config.packageRootPath)
+    ) {
       return getPackageLocalIndent({
         context: webpackContext,
         localName,
@@ -415,12 +417,10 @@ class Webpack {
     babelPresets.set("presetEnv.1", {
       useBuiltIns: false,
       loose: false,
-      debug: false,
     });
     babelPresets.set("presetReact", []);
     babelPresets.set("presetReact.0", require.resolve("@babel/preset-react"));
     babelPresets.set("presetReact.1", {
-      development: !this.env.isProduction,
       runtime: "automatic",
     });
     babelPresets.set(
@@ -435,9 +435,17 @@ class Webpack {
       require.resolve("@babel/plugin-transform-runtime"),
     );
     babelPlugins.set("transformRuntime.1", {
-      corejs: 3,
-      helpers: true,
-      regenerator: true,
+      absoluteRuntime: true,
+    });
+
+    babelPlugins.set("polyfill", []);
+    babelPlugins.set(
+      "polyfill.0",
+      require.resolve("babel-plugin-polyfill-corejs3"),
+    );
+    babelPlugins.set("polyfill.1", {
+      method: "usage-global",
+      absoluteImports: true,
     });
   }
 
@@ -491,6 +499,7 @@ class Webpack {
       require.resolve("@babel/plugin-transform-runtime"),
     );
     babelPlugins.set("transformRuntime.1", {
+      absoluteRuntime: true,
       corejs: 3,
       helpers: true,
       regenerator: true,
@@ -500,12 +509,6 @@ class Webpack {
   alias() {
     const alias = this.config.get("resolve.alias");
 
-    // 设置脚手架对外暴露的API方法别名
-    // 使用方法
-    // import {} from 'wis'
-    alias.set("wis", path.resolve(this.context.path.compiler, "expose.js"));
-
-    // 设置用户自定义的别名
     for (const name of Object.keys(this.context.config.alias)) {
       alias.set(
         name,
@@ -522,19 +525,16 @@ class Webpack {
       ...this.context.config.shared,
       react: {
         eager: true,
-        requiredVersion: "^18.2.0",
+        requiredVersion: "^18.3.1",
         singleton: true,
       },
       "react-dom": {
         eager: true,
-        requiredVersion: "^18.2.0",
+        requiredVersion: "^18.3.1",
         singleton: true,
       },
       "react-router-dom": {
-        requiredVersion: "^6.18.0",
-      },
-      history: {
-        requiredVersion: "^5.3.0",
+        requiredVersion: "^7.1.1",
       },
     };
   }

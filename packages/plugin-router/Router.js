@@ -18,7 +18,6 @@ const templates = [
   "loader.ejs",
   "helper.ejs",
   "index.ejs",
-  "expose.ejs",
 ].reduce((result, template) => {
   result[template] = file.readFile(
     path.resolve(__dirname, `./templates/${template}`),
@@ -67,7 +66,7 @@ function resolvePage(pageFile, options) {
   const pageName = `P${name}`;
 
   return {
-    routePath: routePath || "/",
+    routePath: routePath || "",
     pageName,
     isEmpty: file.isEmpty(pageFile),
     dynamicPageFilePath: path.resolve(
@@ -92,6 +91,7 @@ function resolveLayout(layoutFile, options) {
 
   const layoutName = `L${tool.toFirstUpperCase(basename)}`;
   return {
+    rawLayoutName: basename,
     layoutName,
     isEmpty: file.isEmpty(layoutFile),
     dynamicLayoutFilePath: path.resolve(
@@ -247,10 +247,6 @@ class Router {
     });
   }
 
-  writeExpose() {
-    this.writeTemplate("expose.js", templates["expose.ejs"]);
-  }
-
   writeIndex() {
     this.writeTemplate("index.js", templates["index.ejs"], {
       appName: this.options.appPackage.name,
@@ -268,7 +264,6 @@ class Router {
     this.writePublicPath();
     this.writeLoader();
     this.writeHelper();
-    this.writeExpose();
   }
 
   writeTemplate(fileName, content, data = {}) {
