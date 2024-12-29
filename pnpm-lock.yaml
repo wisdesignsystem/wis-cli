@@ -249,7 +249,7 @@ importers:
         specifier: 7.23.0
         version: 7.23.0
       webpack:
-        specifier: 5.97.1
+        specifier: ^5.97.1
         version: 5.97.1
       webpack-sources:
         specifier: 3.2.3
@@ -345,7 +345,7 @@ importers:
   packages/remote-webpack-plugin:
     dependencies:
       webpack:
-        specifier: 5.97.1
+        specifier: ^5.97.1
         version: 5.97.1
 
   packages/router:
