@@ -13,7 +13,7 @@
     "webpack-sources": "3.2.3"
   },
   "peerDependencies": {
-    "webpack": "5.97.1"
+    "webpack": "^5.97.1"
   },
   "publishConfig": {
     "access": "public"
