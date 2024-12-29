@@ -27,7 +27,7 @@
     "@wisdesign/plugin-sass": "workspace:*",
     "@wisdesign/remote-webpack-plugin": "workspace:*",
     "@wisdesign/setup-html-webpack-plugin": "workspace:*",
-    "@wisdesign/download-repo": "workspace:*",
+    "@wisdesign/expose-repo": "workspace:*",
     "@wisdesign/utils": "workspace:*",
     "@babel/preset-typescript": "7.26.0",
     "@inquirer/prompts": "7.2.1",

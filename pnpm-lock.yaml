@@ -74,9 +74,9 @@ importers:
       '@wisdesign/configure':
         specifier: workspace:*
         version: link:../configure
-      '@wisdesign/download-repo':
+      '@wisdesign/expose-repo':
         specifier: workspace:*
-        version: link:../download-repo
+        version: link:../expose-repo
       '@wisdesign/log-webpack-plugin':
         specifier: workspace:*
         version: link:../log-webpack-plugin
@@ -255,7 +255,7 @@ importers:
         specifier: 3.2.3
         version: 3.2.3
 
-  packages/download-repo:
+  packages/expose-repo:
     dependencies:
       tar:
         specifier: 7.4.3
