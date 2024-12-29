@@ -1,5 +1,21 @@
 # @wisdesign/cli
 
+## 0.0.21
+
+### Patch Changes
+
+- [#16](https://github.com/wisdesignsystem/wis-cli/pull/16) [`4fa0d11`](https://github.com/wisdesignsystem/wis-cli/commit/4fa0d11c562b6f5cba05526d6c9a1324c507ebed) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Change the download github to @wisdesign/download-repo
+
+- [#19](https://github.com/wisdesignsystem/wis-cli/pull/19) [`5793b8b`](https://github.com/wisdesignsystem/wis-cli/commit/5793b8b62fe04065ce683f4f14479155cb4b7197) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Add the typescript definition of config
+
+- [#19](https://github.com/wisdesignsystem/wis-cli/pull/19) [`471c88b`](https://github.com/wisdesignsystem/wis-cli/commit/471c88b989c86e2c451656f26553a8cb1f020b7c) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Unified management routing by @wiscore/router
+
+- Updated dependencies [[`471c88b`](https://github.com/wisdesignsystem/wis-cli/commit/471c88b989c86e2c451656f26553a8cb1f020b7c), [`4fa0d11`](https://github.com/wisdesignsystem/wis-cli/commit/4fa0d11c562b6f5cba05526d6c9a1324c507ebed), [`471c88b`](https://github.com/wisdesignsystem/wis-cli/commit/471c88b989c86e2c451656f26553a8cb1f020b7c)]:
+  - @wisdesign/log-webpack-plugin@0.0.7
+  - @wisdesign/download-repo@0.0.1
+  - @wisdesign/plugin-router@0.0.10
+  - @wiscore/router@0.0.1
+
 ## 0.0.19
 
 ### Patch Changes
