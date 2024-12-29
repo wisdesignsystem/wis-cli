@@ -1,5 +1,16 @@
 # @wisdesign/cli
 
+## 0.0.23
+
+### Patch Changes
+
+- [#22](https://github.com/wisdesignsystem/wis-cli/pull/22) [`4efafce`](https://github.com/wisdesignsystem/wis-cli/commit/4efafceddf27c3d88682881bea2a8c0b5acc1af3) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Change the import download-repo to expose-repo
+
+- Updated dependencies [[`4efafce`](https://github.com/wisdesignsystem/wis-cli/commit/4efafceddf27c3d88682881bea2a8c0b5acc1af3)]:
+  - @wisdesign/remote-webpack-plugin@0.0.3
+  - @wisdesign/plugin-import-demand@0.0.5
+  - @wisdesign/plugin-remote-entry@0.0.6
+
 ## 0.0.22
 
 ### Patch Changes

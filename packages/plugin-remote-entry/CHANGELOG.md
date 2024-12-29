@@ -1,5 +1,12 @@
 # @wisdesign/plugin-remote-entry
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`4efafce`](https://github.com/wisdesignsystem/wis-cli/commit/4efafceddf27c3d88682881bea2a8c0b5acc1af3)]:
+  - @wisdesign/container-entry-webpack-plugin@0.0.3
+
 ## 0.0.5
 
 ### Patch Changes
