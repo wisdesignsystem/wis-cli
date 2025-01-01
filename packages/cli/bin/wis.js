@@ -10,6 +10,7 @@ import cliPath from "../context/cliPath.js";
 import build from "../scripts/build.js";
 import create, { validateName } from "../scripts/create.js";
 import dev from "../scripts/dev.js";
+import upgrade from "../scripts/upgrade.js";
 
 const require = createRequire(import.meta.url);
 
@@ -90,6 +91,13 @@ if (isDevelopment() && cluster.isPrimary) {
     .description("Build the production")
     .action(() => {
       build();
+    });
+
+  cli
+    .command("upgrade")
+    .description("Automatic upgrade cli tool")
+    .action(() => {
+      upgrade();
     });
 
   cli.parse();

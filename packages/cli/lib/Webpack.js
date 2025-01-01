@@ -524,17 +524,15 @@ class Webpack {
     return {
       ...this.context.config.shared,
       react: {
-        eager: true,
-        requiredVersion: "^18.3.1",
+        requiredVersion: "^18",
         singleton: true,
       },
       "react-dom": {
-        eager: true,
-        requiredVersion: "^18.3.1",
+        requiredVersion: "^18",
         singleton: true,
       },
       "react-router-dom": {
-        requiredVersion: "^7.1.1",
+        requiredVersion: "^7",
       },
     };
   }
