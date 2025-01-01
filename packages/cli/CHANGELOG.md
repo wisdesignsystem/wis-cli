@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.24
+
+### Patch Changes
+
+- [#25](https://github.com/wisdesignsystem/wis-cli/pull/25) [`411d9d0`](https://github.com/wisdesignsystem/wis-cli/commit/411d9d03c3bef4931a26322e6854fff39676a5cb) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] Add the upgrade tool for wis cli
+
 ## 0.0.23
 
 ### Patch Changes
