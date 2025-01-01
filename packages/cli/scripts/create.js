@@ -98,9 +98,16 @@ export default async function create(options) {
     file.writeFile(nextPath, content);
     await $`rm ${templateFilePath}`;
   }
-  spin.stop();
 
   const packageJson = require(path.resolve(applicationPath, "package.json"));
+  if (config.biome) {
+    await $`cd ${applicationPath} && npx husky@${packageJson.devDependencies.husky} init`;
+    await $`echo '#!\/usr\/bin\/env sh\n\. "$(dirname "$0")\/\_\/husky.sh"\n\nnpx lint-staged' > ${path.resolve(applicationPath, "./.husky/pre-commit")}`;
+  } else {
+    await $`rm ${path.resolve(applicationPath, "biome.json")}`;
+  }
+
+  spin.stop();
 
   console.info(`Using ${chalk.cyanBright("npm")} install dependency package.`);
   console.info();
@@ -120,13 +127,6 @@ export default async function create(options) {
   spin.start();
   await $`cd ${applicationPath} && git init && npm install`;
   spin.stop();
-
-  if (config.biome) {
-    await $`cd ${applicationPath} && npx husky@${packageJson.devDependencies.husky} init`;
-    await $`echo '#!\/usr\/bin\/env sh\n\. "$(dirname "$0")\/\_\/husky.sh"\n\nnpx lint-staged' > ${path.resolve(applicationPath, "./.husky/pre-commit")}`;
-  } else {
-    await $`rm ${path.resolve(applicationPath, "biome.json")}`;
-  }
 
   console.info();
   console.info(
