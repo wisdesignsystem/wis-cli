@@ -1,5 +1,14 @@
 # @wisdesign/cli
 
+## 0.0.25
+
+### Patch Changes
+
+- [#28](https://github.com/wisdesignsystem/wis-cli/pull/28) [`87cdca3`](https://github.com/wisdesignsystem/wis-cli/commit/87cdca315824b42b1f58cb542bff4ae77bd186bc) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] make the debug ui look nice.
+
+- Updated dependencies [[`87cdca3`](https://github.com/wisdesignsystem/wis-cli/commit/87cdca315824b42b1f58cb542bff4ae77bd186bc)]:
+  - @wisdesign/plugin-router@0.0.11
+
 ## 0.0.24
 
 ### Patch Changes
