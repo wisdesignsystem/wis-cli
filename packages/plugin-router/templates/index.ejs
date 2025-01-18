@@ -5,8 +5,6 @@ function isDebug() {
 }
 
 (async () => {
-  window.$__wis_remotes__ = {}
-
   let urls = await remotes()
 
   const appName = '<%= appName %>'
@@ -15,31 +13,14 @@ function isDebug() {
     urls[appName] = process.env.PUBLIC_URL.slice(0, process.env.PUBLIC_URL.length - 1)
   }
 
+  window.$__wis_raw_remotes__ = { ...urls }
   if (isDebug()) {
     try {
       const localUrls = window.sessionStorage.getItem(`${appName}__wis_remotes__`)
       urls = localUrls ? Object.assign(urls, JSON.parse(localUrls)) : urls
     } catch (e) {}
   }
-
-  if (!Proxy) {
-    window.$__wis_remotes__ = new Proxy({}, {
-      get(_, prop) {
-        if (!prop) {
-          return
-        }
-
-        if (!urls[prop]) {
-          throw new Error(`Remote url not found for ${prop}`)
-        }
-
-        return urls[prop]
-      },
-    })
-  } else {
-    window.$__wis_remotes__ = urls
-  }
-
+  window.$__wis_remotes__ = { ...urls }
   window.$__wis_uncheck_remote__ = function (name) {
     return urls[name]
   }

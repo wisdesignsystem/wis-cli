@@ -15,7 +15,6 @@ declare module "*.jpg";
 declare module "*.jpeg";
 declare module "*.json";
 declare module "*.txt";
-declare module "@wisdesign/lsicon";
 
 interface Window {
   /**
@@ -27,6 +26,11 @@ interface Window {
    * Stores the remote address of the application
    */
   $__wis_remotes__: Record<string, string>;
+
+  /**
+   * Stores the raw remote address of the application
+   */
+  $__wis_raw_remotes__: Record<string, string>;
 
   /**
    * Stores the list of layouts supported by the current application
