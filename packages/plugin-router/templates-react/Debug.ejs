@@ -5,6 +5,74 @@ import { noop } from './helper'
 
 import styles from './Debug.module.css'
 
+function DebugIcon(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 66 66" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <g filter="url(#filter0_ddi_58_4294)">
+        <rect x="8" y="8" width="50" height="50" rx="25" fill="currentColor" />
+        <path
+          transform="translate(0,4)"
+          d="M46.99 34L47.33 32L42.16 31.15V27C42.16 26.92 42.16 26.85 42.16 26.77L47.22 25.41L46.71 23.48L41.88 24.77C41.5511 23.5269 40.9597 22.3686 40.1455 21.3733C39.3313 20.378 38.3133 19.5687 37.16 19V16H35.16V18.23C33.8443 17.9233 32.4757 17.9233 31.16 18.23V16H29.16V19C28.0032 19.5752 26.9838 20.3927 26.1711 21.397C25.3584 22.4012 24.7714 23.5687 24.45 24.82L19.62 23.48L19.16 25.41L24.16 26.77C24.16 26.85 24.16 26.92 24.16 27V31.15L19 32L19.32 34L24.16 33.18C24.1828 34.414 24.4621 35.6297 24.98 36.75L20.45 41.29L21.87 42.71L26.06 38.51C26.9015 39.5903 27.9785 40.4643 29.2089 41.0655C30.4393 41.6667 31.7906 41.9792 33.16 41.9792C34.5294 41.9792 35.8807 41.6667 37.1111 41.0655C38.3415 40.4643 39.4185 39.5903 40.26 38.51L44.45 42.71L45.87 41.29L41.33 36.75C41.8514 35.6305 42.134 34.4147 42.16 33.18L46.99 34ZM32.16 39.92C30.4954 39.6797 28.973 38.8482 27.8712 37.5775C26.7694 36.3068 26.162 34.6818 26.16 33V27H32.16V39.92ZM26.45 25C26.8797 23.554 27.7651 22.2854 28.9742 21.3834C30.1833 20.4813 31.6515 19.994 33.16 19.994C34.6685 19.994 36.1367 20.4813 37.3458 21.3834C38.5549 22.2854 39.4403 23.554 39.87 25H26.45ZM40.16 33C40.158 34.6818 39.5506 36.3068 38.4488 37.5775C37.347 38.8482 35.8246 39.6797 34.16 39.92V27H40.16V33Z"
+          fill="url(#paint0_linear_58_4294)" />
+      </g>
+      <defs>
+        <filter id="filter0_ddi_58_4294" x="0" y="0" width="66" height="66" filterUnits="userSpaceOnUse"
+          colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha" />
+          <feOffset dy="4" />
+          <feGaussianBlur stdDeviation="4" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+          <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_58_4294" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha" />
+          <feOffset dy="1" />
+          <feGaussianBlur stdDeviation="1" />
+          <feComposite in2="hardAlpha" operator="out" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.08 0" />
+          <feBlend mode="normal" in2="effect1_dropShadow_58_4294" result="effect2_dropShadow_58_4294" />
+          <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_58_4294" result="shape" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            result="hardAlpha" />
+          <feOffset dy="1" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.2 0" />
+          <feBlend mode="normal" in2="shape" result="effect3_innerShadow_58_4294" />
+        </filter>
+        <linearGradient id="paint0_linear_58_4294" x1="33.165" y1="16" x2="33.165" y2="42.71"
+          gradientUnits="userSpaceOnUse">
+          <stop stopColor="white" />
+          <stop offset="1" stopColor="white" stopOpacity="0.8" />
+        </linearGradient>
+      </defs>
+    </svg>
+  )
+}
+
+function SearchIcon(props) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+      <path fillRule="evenodd" clipRule="evenodd"
+        d="M2.75 9.75C2.75 5.88401 5.88401 2.75 9.75 2.75C13.616 2.75 16.75 5.88401 16.75 9.75C16.75 13.616 13.616 16.75 9.75 16.75C5.88401 16.75 2.75 13.616 2.75 9.75ZM9.75 1.75C5.33172 1.75 1.75 5.33172 1.75 9.75C1.75 14.1683 5.33172 17.75 9.75 17.75C11.7792 17.75 13.632 16.9945 15.0423 15.7494L19.8964 20.6036L20.6036 19.8964L15.7494 15.0423C16.9945 13.632 17.75 11.7792 17.75 9.75C17.75 5.33172 14.1683 1.75 9.75 1.75Z"
+        fill="currentColor" />
+    </svg>
+  )
+}
+
+function UndoIcon(props) {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 16 16" {...props}>
+      <g id="theme=outline">
+        <path id="Vector" stroke="currentColor"
+          d="M2.48877 3.01126L2.48877 5.98874L5.48877 5.98874M3.66447 11.3846C4.67112 12.6723 6.23891 13.5 8.00003 13.5C11.0376 13.5 13.5 11.0376 13.5 8C13.5 4.96243 11.0376 2.5 8.00003 2.5C6.05285 2.5 4.34201 3.51187 3.36465 5.03846C3.13715 5.39381 2.94939 5.77704 2.80764 6.18189">
+        </path>
+      </g>
+    </svg>
+  )
+}
+
 function createContainerElement() {
   const containerElement = document.createElement('div')
   document.body.appendChild(containerElement)
@@ -53,8 +121,25 @@ function DebugContent({ onClose = noop }) {
   const remotes = useRef(getRemotes())
   const [searchText, setSearchText] = useState('')
 
-  function handleChange(event, name) {
-    remotes.current[name] = event.target.value
+  useEffect(() => {
+    function run(event) {
+      if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) {
+        return;
+      }
+
+      if (event.code === 'Escape') {
+        onClose()
+      }
+    }
+
+    document.addEventListener("keydown", run);
+    return () => {
+      document.removeEventListener("keydown", run);
+    }
+  }, [])
+
+  function handleChange(value, name) {
+    remotes.current[name] = value
   }
 
   function handleReset() {
@@ -76,7 +161,7 @@ function DebugContent({ onClose = noop }) {
 
   const remoteOptions = Object.keys(remotes.current).reduce((result, name) => {
     if (!searchText || name.includes(searchText)) {
-      result.push({ label: name, value: remotes.current[name] })
+      result.push({ label: name, value: remotes.current[name] || window.location.origin })
     }
     return result
   }, [])
@@ -85,33 +170,40 @@ function DebugContent({ onClose = noop }) {
     <Container>
       <div className={styles.content}>
         <div className={styles.header}>
-          <span className={styles.title}>调试模式</span>
-          <button className={styles.button} onClick={onClose}>关闭</button>
-        </div>
-        <div className={styles.search}>
-          <input placeholder="请输入应用名称搜索" onChange={handleSearch} />
+          <div className={styles.search}>
+            <SearchIcon className={styles.icon} />
+            <input className={styles.input} placeholder="Search application name" onChange={handleSearch} />
+          </div>
+          <button className={styles.esc} onClick={onClose}>esc</button>
         </div>
         <div className={styles.remotes}>
-          {!remoteOptions.length && <div className={styles.empty}>暂无其他应用</div>}
+          {!remoteOptions.length && <div className={styles.empty}>No Application Data</div>}
           {remoteOptions.map(option => {
 
-            function handleInputChange(event) {
-              handleChange(event, option.label)
+            function handleInputChange({ target: { value } }) {
+              handleChange(value, option.label)
+            }
+
+            function handleUndo({ target }) {
+              const input = document.getElementById(option.label)
+              input.value = window.$__wis_raw_remotes__[option.label] || window.location.origin
+              handleChange(window.$__wis_raw_remotes__[option.label], option.label)
             }
 
             return (
               <div className={styles.remote} key={option.label}>
-                <div className={styles.label}>{option.label}:</div>
-                <input className={styles.value} defaultValue={option.value} onChange={handleInputChange} />
-                <div className={styles.tip}>{window.$__wis_remotes__[option.label]}(默认值)</div>
+                <div className={styles.name}>{option.label}</div>
+                <input id={option.label} className={styles.url} placeholder="Please input the application url." defaultValue={option.value} onChange={handleInputChange} />
+                <button className={styles.undo} onClick={handleUndo}><UndoIcon /></button>
               </div>
             )
           })}
         </div>
         <div className={styles.footer}>
+          <div className={styles.helper}>Wis Cli Debug</div>
           <div className={styles.actions}>
-            <button className={styles.button} onClick={handleReset}>重置</button>
-            <button className={styles.button} onClick={handleConfirm}>确认</button>
+            <button className={styles.reset} onClick={handleReset}>Reset</button>
+            <button className={styles.confirm} onClick={handleConfirm}>Confirm</button>
           </div>
         </div>
       </div>
@@ -140,7 +232,9 @@ export default function Debug() {
 
   return (
     <div className={styles.debug}>
-      <button className={styles.trigger} onClick={handleTriggerClick}>调试模式</button>
+      <button className={styles.trigger} data-open={visible} onClick={handleTriggerClick}>
+        <DebugIcon />
+      </button>
       <Portal visible={visible}>
         <DebugContent onClose={handleClose} />
       </Portal>
