@@ -11,7 +11,6 @@ const templates = [
   "bootstrap.ejs",
   "Error.ejs",
   "Suspense.ejs",
-  "history.ejs",
   "Debug.ejs",
   "Debug.module.ejs",
   "dynamicLayout.ejs",
@@ -58,12 +57,6 @@ class ReactRouter extends Router {
 
   writeBootstrap() {
     this.writeTemplate("bootstrap.js", templates["bootstrap.ejs"]);
-  }
-
-  writeHistory() {
-    this.writeTemplate("history.js", templates["history.ejs"], {
-      browserHistory: this.options.appConfig.browserHistory,
-    });
   }
 
   writeDebug() {
@@ -157,7 +150,6 @@ class ReactRouter extends Router {
     this.writeLoaderComponent();
     this.writeSuspense();
     this.writeBootstrap();
-    this.writeHistory();
     this.writeDebug();
     this.writeLayouts();
     this.writeLayoutContainer();

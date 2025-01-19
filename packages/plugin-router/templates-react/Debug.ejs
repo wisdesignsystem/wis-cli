@@ -160,8 +160,13 @@ function DebugContent({ onClose = noop }) {
   }
 
   const remoteOptions = Object.keys(remotes.current).reduce((result, name) => {
+    const value = remotes.current[name]
+    if (!value) {
+      return result
+    }
+
     if (!searchText || name.includes(searchText)) {
-      result.push({ label: name, value: remotes.current[name] || window.location.origin })
+      result.push({ label: name, value: remotes.current[name] })
     }
     return result
   }, [])

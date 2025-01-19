@@ -1,19 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
-import {
-  <% if (browserHistory) { %>
-  BrowserRouter,
-  <% } else { %>
-  HashRouter,
-  <% } %>
-  useRouteChange,
-} from '@wiscore/router'
+import { useState, useEffect } from 'react'
+import { useRouteChange } from '@wiscore/router'
 
-import { loadScopeModule } from './loader'
 import { loadScopeComponent } from './loaderComponent'
-import { isFunction, isString, isUndefined, isObject, getRouterPath } from './helper'
-import { enter, leave } from './app'
+import { getRouterPath } from './helper'
 
-import Layout, { getLayoutName } from './Layout'
+import Layout, { getLayout } from './Layout'
 import Router from './Router'
 import Suspense from './Suspense'
 import Debug from './Debug'
@@ -24,10 +15,10 @@ function isDebug() {
   return new URLSearchParams(window.location.search).get('debug') !== null
 }
 
-export function getAppName(hasLayout) {
+export function getAppName(currentLayout) {
   const routerPath = getRouterPath()
   const [layoutName = '', appName = ''] = routerPath.split('/').filter(item => item)
-  const name = hasLayout ? appName : layoutName
+  const name = currentLayout ? appName : layoutName
 
   if (window.$__wis_uncheck_remote__(name)) {
     return name
@@ -36,86 +27,62 @@ export function getAppName(hasLayout) {
 
 async function loadAppRouter(appName) {
   if (!appName) {
-    return Router
+    return
   }
 
-  const AppRouter = await loadScopeComponent(appName, './$$Router')
-  return AppRouter
+  const router = await loadScopeComponent(appName, './$$Router')
+  return router
 }
 
-async function loadAppLifeCycle(appName) {
-  if (!appName) {
-    return { enter, leave }
-  }
-
-  const lifeCycle = await loadScopeModule(appName, './$$app')
-  return lifeCycle
-}
-
-async function callLifeCycle(appName, name, params) {
-  const lifeCycle = await loadAppLifeCycle(appName)
-  if (!isFunction(lifeCycle[name])) return
-  lifeCycle[name](params)
-}
-
-let preAppName
 function useAppRouter() {
-  const [state, setState] = useState({ basename: '', status: 'loading', AppRouter: null })
+  const [loaded, setLoaded] = useState(false)
+  const [basename, setBasename] = useState(undefined)
+  const [AppRouter, setAppRouter] = useState(undefined)
 
-  async function load() {
-    const layoutName = getLayoutName()
-    const appName = getAppName(!!layoutName)
+  function resetApplication() {
+    setLoaded(false)
+    setBasename(undefined)
+    setAppRouter(undefined)
+  }
 
-    const currState = {
-      status: 'loading',
-      basename: '',
-      AppRouter: null,
-    }
-    setState({ ...currState })
+  async function installApplication() {
+    const layoutName = getLayout()
+    const appName = getAppName(layoutName)
+
+    const nextBasename = [layoutName, appName].filter(item => item).join('/')
+    setBasename(nextBasename ? `/${nextBasename}` : nextBasename)
 
     try {
-      const AppRouter = await loadAppRouter(appName)
-      currState.AppRouter = AppRouter
-      currState.status = 'succeed'
-
-      if (preAppName !== appName) {
-        await callLifeCycle(preAppName, 'leave')
-        await callLifeCycle(appName, 'enter')
-      }
-
-      preAppName = appName
+      const ActiveRouter = await loadAppRouter(appName)
+      setLoaded(true)
+      setAppRouter(ActiveRouter)
     } catch (error) {
-      currState.AppRouter = null
-      currState.status = 'failed'
+      setLoaded(true)
       console.error(error)
     }
-
-    currState.basename = [layoutName, appName].filter(Boolean).join('/')
-
-    setState(currState)
   }
 
   useEffect(() => {
-    load()
-  }, [])
+    if (!loaded) {
+      installApplication()
+    }
+  }, [loaded])
+  
+  useRouteChange(() => {
+    resetApplication()
+  })
 
-  return [state, load]
+  return { loaded, basename, AppRouter }
 }
 
-export default function Root({ location }) {
-  const [{ basename, status, AppRouter }, load] = useAppRouter()
-
-  useEffect(() => {
-    enter()
-  }, [])
-
-  <% if (!browserHistory) { %>
-  useRouteChange(() => {
-    load()
-  })
-  <% } %>
+export default function Root() {
+  const { basename, loaded, AppRouter } = useAppRouter()
 
   function renderAppRouter() {
+    if (!loaded) {
+      return null
+    }
+
     if (!AppRouter) {
       return <Router basename={basename} />
     }

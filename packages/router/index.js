@@ -48,44 +48,24 @@ function isDelta(to) {
 }
 
 function resolveRoutePath(to) {
-  const [layout, app, ...parts] = to.split("/").filter(Boolean);
+  if (to.startsWith("/")) {
+    return to;
+  }
+
+  const [path] = to.split("/").filter(Boolean);
+
   const currentLayout = getLayout();
   const currentApp = getApp();
 
-  if (isLayout(layout)) {
-    if (app) {
-      parts.unshift(app);
-    }
-
-    if (!isApp(app)) {
-      if (currentApp) {
-        parts.unshift(currentApp);
-      }
-    }
-
-    if (layout) {
-      parts.unshift(layout);
-    }
-  } else {
-    if (app) {
-      parts.unshift(app);
-    }
-    if (!isApp(layout)) {
-      if (currentApp) {
-        parts.unshift(currentApp);
-      }
-    }
-
-    if (layout) {
-      parts.unshift(layout);
-    }
-
-    if (currentLayout) {
-      parts.unshift(currentLayout);
-    }
+  if (isApp(path)) {
+    return `/${[currentLayout, to].filter(Boolean).join("/")}`;
   }
 
-  return `/${parts.join("/")}`;
+  if (isLayout(path)) {
+    return `/${to}`;
+  }
+
+  return `/${[currentLayout, currentApp, to].filter(Boolean).join("/")}`;
 }
 
 export function getRoute() {
@@ -157,16 +137,14 @@ export function useRouteChange(handle) {
       }
     }
 
-    if (isBrowserRouter()) {
-      window.addEventListener("routechange", callback);
-    } else {
+    if (!isBrowserRouter()) {
       window.addEventListener("hashchange", callback);
     }
 
+    window.addEventListener("routechange", callback);
     return () => {
-      if (isBrowserRouter()) {
-        window.removeEventListener("routechange", callback);
-      } else {
+      window.removeEventListener("routechange", callback);
+      if (!isBrowserRouter()) {
         window.removeEventListener("hashchange", callback);
       }
     };
