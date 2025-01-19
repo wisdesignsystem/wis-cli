@@ -1,5 +1,17 @@
 # @wisdesign/cli
 
+## 0.0.26
+
+### Patch Changes
+
+- [#30](https://github.com/wisdesignsystem/wis-cli/pull/30) [`7bcb91b`](https://github.com/wisdesignsystem/wis-cli/commit/7bcb91b42d8e875e1987ec0fa62efd1ebbb377b1) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] make enviroment to suit more like test/beta/rc.
+
+- [#30](https://github.com/wisdesignsystem/wis-cli/pull/30) [`7bcb91b`](https://github.com/wisdesignsystem/wis-cli/commit/7bcb91b42d8e875e1987ec0fa62efd1ebbb377b1) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] make the router to suit multiple remote applcation.
+
+- Updated dependencies [[`7bcb91b`](https://github.com/wisdesignsystem/wis-cli/commit/7bcb91b42d8e875e1987ec0fa62efd1ebbb377b1)]:
+  - @wisdesign/plugin-router@0.0.12
+  - @wiscore/router@0.0.2
+
 ## 0.0.25
 
 ### Patch Changes

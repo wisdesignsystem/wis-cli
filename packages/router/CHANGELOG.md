@@ -1,5 +1,11 @@
 # @wiscore/router
 
+## 0.0.2
+
+### Patch Changes
+
+- [#30](https://github.com/wisdesignsystem/wis-cli/pull/30) [`7bcb91b`](https://github.com/wisdesignsystem/wis-cli/commit/7bcb91b42d8e875e1987ec0fa62efd1ebbb377b1) Thanks [@FaureWu](https://github.com/FaureWu)! - [feature] make the router to suit multiple remote applcation.
+
 ## 0.0.1
 
 ### Patch Changes
