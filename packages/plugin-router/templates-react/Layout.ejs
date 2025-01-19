@@ -16,27 +16,21 @@ const LayoutComponents = {
 }
 
 function getLayoutComponent(layoutName = '') {
-  const LayoutComponent = LayoutComponents['L' + firstCharToUpperCase(layoutName)]
-
-  return LayoutComponent || null
+  const LayoutComponent = LayoutComponents[`L${firstCharToUpperCase(layoutName)}`] || LayoutComponents.LIndex
+  return LayoutComponent
 }
 
-export function getLayoutName() {
+export function getLayout() {
   const routerPath = getRouterPath()
   const [layoutName = ''] = routerPath.split('/').filter(Boolean)
 
-  const LayoutComponent = getLayoutComponent(layoutName)
-
-  return LayoutComponent ? layoutName : ''
-}
-
-export function hasLayout(layoutName) {
-  const LayoutComponent = getLayoutComponent(layoutName)
-  return !!LayoutComponents
+  if (LayoutComponents[`L${firstCharToUpperCase(layoutName)}`]) {
+    return layoutName
+  }
 }
 
 export default function Layout({ children }) {
-  const layoutName = getLayoutName()
+  const layoutName = getLayout()
 
   const LayoutComponent = getLayoutComponent(layoutName)
 

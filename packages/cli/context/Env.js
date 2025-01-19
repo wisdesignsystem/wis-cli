@@ -15,9 +15,13 @@ class Env extends Parser {
     // 整体解析逻辑不做覆盖处理
     // 意味着最先解析的同名环境变量优先生效
     const envPaths = [
-      `${pathInstance.env}.${process.env.ENV}.local`,
-      `${pathInstance.env}.${process.env.ENV}`,
+      process.env.ENV
+        ? `${pathInstance.env}.${process.env.ENV}.local`
+        : undefined,
+      `${pathInstance.env}.${process.env.NODE_ENV}.local`,
       `${pathInstance.env}.local`,
+      process.env.ENV ? `${pathInstance.env}.${process.env.ENV}` : undefined,
+      `${pathInstance.env}.${process.env.NODE_ENV}`,
       pathInstance.env,
     ].filter(file.isExist);
     // 支持环境变量的模版字符串语法
