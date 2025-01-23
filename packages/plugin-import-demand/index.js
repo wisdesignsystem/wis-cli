@@ -59,9 +59,15 @@ export default function (plugin, options = []) {
       var result;
       ${code}
       var scope = scopes.filter(Boolean).find(function (scope) {
-        return moduleMap[module + '/' + scope];
+        if (scope === '$$none') {
+          return true;
+        }
+
+        return !!moduleMap[module + '/' + scope];
       });
-      if (scope) {
+      if (scope === '$$none') {
+        module = './$$none'
+      } else if (scope) {
         module = module + '/' + scope;
       }
     `;

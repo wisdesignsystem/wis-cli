@@ -13,6 +13,7 @@ const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 // 读取模版内容
 const templates = [
   "app.ejs",
+  "none.ejs",
   "config.ejs",
   "publicPath.ejs",
   "loader.ejs",
@@ -229,6 +230,10 @@ class Router {
     this.writeTemplate(appFileName, templates["app.ejs"], appData);
   }
 
+  writeNone() {
+    this.writeTemplate("none.js", templates["none.ejs"]);
+  }
+
   writePublicPath() {
     this.writeTemplate("publicPath.js", templates["publicPath.ejs"], {
       publicPath: this.options.publicPath,
@@ -261,6 +266,7 @@ class Router {
     this.writeConfig();
     this.writeIndex();
     this.writeAppEntry();
+    this.writeNone();
     this.writePublicPath();
     this.writeLoader();
     this.writeHelper();
