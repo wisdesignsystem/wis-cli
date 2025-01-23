@@ -44,6 +44,10 @@ export default [
           const scopes = ["default"];
           // biome-ignore lint/style/noVar: <explanation>
           var theme = document.documentElement.getAttribute("data-theme");
+          if (theme === "none") {
+            return ["$$none"];
+          }
+
           if (!theme) {
             return scopes;
           }

@@ -616,6 +616,7 @@ class Webpack {
         scopeName: "remote",
         windowScopeName: "$__wis_remotes__",
         exposes: {
+          "./$$none": path.resolve(this.context.path.compiler, "none.js"),
           ...this.context.config.exposes,
         },
         shared: this.shared(),
