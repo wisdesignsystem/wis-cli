@@ -1,0 +1,31 @@
+{
+  "name": "@wisdesign/wis-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./rsbuild": {
+      "types": "./dist/rsbuild.d.ts",
+      "import": "./dist/rsbuild.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@rsbuild/core": "1.2.4",
+    "@wisdesign/remote-plugin": "workspace:*",
+    "@wisdesign/cross-plugin": "workspace:*",
+    "@wisdesign/context": "workspace:*"
+  }
+}

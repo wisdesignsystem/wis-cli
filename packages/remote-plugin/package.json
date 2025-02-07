@@ -1,0 +1,26 @@
+{
+  "name": "@wisdesign/remote-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "exports": {
+    "./rsbuild": {
+      "types": "./dist/rsbuild.d.ts",
+      "import": "./dist/rsbuild.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@rsbuild/core": "1.2.4",
+    "@wisdesign/context": "workspace:*",
+    "@module-federation/rsbuild-plugin": "0.8.10"
+  }
+}
