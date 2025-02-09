@@ -1,17 +1,33 @@
 import { Context } from "./Context.js";
-import type { WisConfig, Exposes } from "./Config.js";
+import type {
+  WisConfig,
+  Exposes,
+  NormalExpose,
+  ClassifyExpose,
+  PlatformExpose,
+  PlatformClassifyExpose,
+} from "./Config.js";
 import {
+  Platform,
   isNormalExpose,
   isPlatformExpose,
-  isThemeExpose,
-  isPlatformThemeExpose,
+  isClassifyExpose,
+  isPlatformClassifyExpose,
 } from "./Config.js";
 
 export {
   Context,
+  Platform,
   isNormalExpose,
   isPlatformExpose,
-  isThemeExpose,
-  isPlatformThemeExpose,
+  isClassifyExpose,
+  isPlatformClassifyExpose,
 };
-export type { WisConfig, Exposes };
+export type {
+  WisConfig,
+  Exposes,
+  NormalExpose,
+  ClassifyExpose,
+  PlatformExpose,
+  PlatformClassifyExpose,
+};

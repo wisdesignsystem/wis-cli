@@ -9,6 +9,7 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
+  "files": ["dist"],
   "exports": {
     "./rsbuild": {
       "types": "./dist/rsbuild.d.ts",

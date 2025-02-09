@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import { remotePlugin } from "@wisdesign/remote-plugin/rsbuild";
 import { crossPlugin } from "@wisdesign/cross-plugin/rsbuild";
@@ -10,6 +11,9 @@ export function wisPlugin(): RsbuildPlugin[] {
   const plugin: RsbuildPlugin = {
     name: "wisRsbuildPlugin",
     setup(api) {
+      fs.rmSync(context.compilerPath, { recursive: true, force: true });
+      fs.mkdirSync(context.compilerPath, { recursive: true });
+
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         const newConfig = mergeRsbuildConfig(config, {
           dev: {

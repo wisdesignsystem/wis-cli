@@ -12,7 +12,7 @@
     "rc": "pnpm changeset pre enter rc && pnpm run version && pnpm changeset pre exit",
     "release": "pnpm changeset tag && git push --follow-tags && pnpm publish -r",
     "format": "biome check --write",
-    "build": "pnpm run clean:dist && pnpm -r --parallel build",
+    "build": "pnpm run clean:dist && pnpm -r build",
     "dev": "pnpm -r --parallel dev",
     "clean": "rm -rf node_modules **/*/node_modules **/*/dist",
     "clean:dist": "rm -rf **/*/dist"
@@ -30,7 +30,6 @@
     "@types/node": "22.13.1",
     "husky": "9.0.11",
     "lint-staged": "15.2.7",
-    "typescript": "5.7.3",
-    "ts-node": "10.9.2"
+    "typescript": "5.7.3"
   }
 }

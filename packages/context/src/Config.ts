@@ -2,46 +2,57 @@ import path from "node:path";
 
 import { loadTSConfigFile, loadPackageJSON } from "./loaderFile.js";
 
-type NormalExpose = string;
+export enum Platform {
+  PC = "pc",
+  Mobile = "mobile",
+  Pad = "pad",
+}
 
-type ThemeExpose = Record<string, string>;
+export type NormalExpose = string;
 
-type Platform = "pc" | "mobile" | "pad";
-type PlatformExpose = {
-  [platform in Platform]: string;
-};
+interface ClassifyRequired {
+  default: string;
+}
+interface ClassifyOther {
+  [key: string]: string;
+}
+export type ClassifyExpose = Required<ClassifyRequired> & Omit<ClassifyOther, Platform>;
 
-type PlatformThemeExpose = {
-  [platform in Platform]: ThemeExpose;
+export interface PlatformExpose {
+  [Platform.PC]: string;
+  [Platform.Mobile]?: string;
+  [Platform.Pad]?: string;
+}
+
+export interface PlatformClassifyExpose {
+  [Platform.PC]: ClassifyExpose;
+  [Platform.Mobile]?: ClassifyExpose;
+  [Platform.Pad]?: ClassifyExpose;
 };
 
 export type Exposes = {
   [key: string]:
     | NormalExpose
     | PlatformExpose
-    | ThemeExpose
-    | PlatformThemeExpose;
+    | ClassifyExpose
+    | PlatformClassifyExpose
 };
 
 interface ShareConfig {
   singleton?: boolean;
   requiredVersion?: string;
-  eager?: boolean;
-  shareScope?: string;
 }
 
 type Shared = string[] | Record<string, ShareConfig>;
 
 type Remotes = Record<string, string>;
 
-const platforms = ["pc", "pad", "mobile"];
-
-function isObject(data: unknown): data is object {
+function isObject(data: unknown): data is Record<string, unknown> {
   return typeof data === "object" && data !== null;
 }
 
-export function isNormalExpose(data: unknown): data is NormalExpose {
-  return typeof data === "string";
+function isExposeValue(data: Record<string, unknown>) {
+  return Object.keys(data).every((key) => typeof data[key] === "string");
 }
 
 function isPlatform(data: unknown) {
@@ -49,17 +60,23 @@ function isPlatform(data: unknown) {
     return false;
   }
 
-  return (
-    Object.keys(data).every((key) => platforms.includes(key)) && "pc" in data
-  );
+  const hasOnlyPlatformKey = Object.keys(data).every((key) => Object.values(Platform).some(data => key === data));
+
+  return data.pc !== undefined && hasOnlyPlatformKey;
 }
 
-function isLikePlatform(data: unknown) {
+function isClassify(data: unknown) {
   if (!isObject(data)) {
     return false;
   }
 
-  return Object.keys(data).some((key) => platforms.includes(key));
+  const hasNonePlatformKey = !Object.keys(data).some((key) => Object.values(Platform).some(data => key === data))
+
+  return data.default !== undefined && hasNonePlatformKey;
+}
+
+export function isNormalExpose(data: unknown): data is NormalExpose {
+  return typeof data === "string";
 }
 
 export function isPlatformExpose(data: unknown): data is PlatformExpose {
@@ -67,10 +84,10 @@ export function isPlatformExpose(data: unknown): data is PlatformExpose {
     return false;
   }
 
-  return isPlatform(data);
+  return isPlatform(data) && isExposeValue(data);
 }
 
-export function isThemeExpose(data: unknown): data is ThemeExpose {
+export function isClassifyExpose(data: unknown): data is ClassifyExpose {
   if (!isObject(data)) {
     return false;
   }
@@ -79,27 +96,22 @@ export function isThemeExpose(data: unknown): data is ThemeExpose {
     return false;
   }
 
-  if (isLikePlatform(data)) {
-    return false;
-  }
-
-  return (
-    Object.keys(data).length !== 0 &&
-    Object.keys(data as Record<string, unknown>).every(
-      (key) => typeof (data as Record<string, unknown>)[key] === "string"
-    )
-  );
+  return isClassify(data) && isExposeValue(data);
 }
 
-export function isPlatformThemeExpose(
+export function isPlatformClassifyExpose(
   data: unknown
-): data is PlatformThemeExpose {
-  if (!isPlatformExpose(data)) {
+): data is PlatformClassifyExpose {
+  if (!isObject(data)) {
     return false;
   }
 
-  return Object.keys(data as Record<string, unknown>).every((platform) => {
-    return isThemeExpose((data as Record<string, unknown>)[platform]);
+  if (!isPlatform(data)) {
+    return false;
+  }
+
+  return Object.keys(data).every((platform) => {
+    return isClassifyExpose(data[platform]);
   });
 }
 
@@ -115,6 +127,8 @@ export interface WisConfig {
   exposes?: Exposes;
 
   shared?: Shared;
+
+  runtimePlugins?: string[];
 }
 
 export class Config {
@@ -134,6 +148,8 @@ export class Config {
 
   shared: Shared = [];
 
+  runtimePlugins: string[] = [];
+
   setup() {
     const config = loadTSConfigFile(this.configFile);
     if (config) {
@@ -148,5 +164,6 @@ export class Config {
     this.exposes = this.rawConfig.exposes || this.exposes;
     this.shared = this.rawConfig.shared || this.shared;
     this.remotes = this.rawConfig.remotes || this.remotes;
+    this.runtimePlugins = this.rawConfig.runtimePlugins || this.runtimePlugins;
   }
 }
