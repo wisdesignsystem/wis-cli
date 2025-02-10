@@ -48,20 +48,23 @@ importers:
   packages/cross-plugin:
     devDependencies:
       '@rsbuild/core':
-        specifier: 1.2.4
-        version: 1.2.4
+        specifier: 1.2.5
+        version: 1.2.5
       '@wisdesign/context':
         specifier: workspace:*
         version: link:../context
 
   packages/remote-plugin:
     dependencies:
+      '@module-federation/enhanced':
+        specifier: 0.8.10
+        version: 0.8.10(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       '@module-federation/rsbuild-plugin':
         specifier: 0.8.10
-        version: 0.8.10(@rsbuild/core@1.2.4)(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
+        version: 0.8.10(@rsbuild/core@1.2.5)(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       '@rsbuild/core':
-        specifier: 1.2.4
-        version: 1.2.4
+        specifier: 1.2.5
+        version: 1.2.5
       '@wisdesign/context':
         specifier: workspace:*
         version: link:../context
@@ -69,8 +72,8 @@ importers:
   packages/wis-plugin:
     dependencies:
       '@rsbuild/core':
-        specifier: 1.2.4
-        version: 1.2.4
+        specifier: 1.2.5
+        version: 1.2.5
       '@wisdesign/context':
         specifier: workspace:*
         version: link:../context
@@ -410,8 +413,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@rsbuild/core@1.2.4':
-    resolution: {integrity: sha512-GPn4TLW9nv7OgmbSBs9Col3dNr55CEDoeoGLl1B0pszyj9yI3s4ArVWVo/R5oXrRa9sDmA/T54rsb2r3trnttw==}
+  '@rsbuild/core@1.2.5':
+    resolution: {integrity: sha512-k9JFE613b0X0WUaqfp6CIh2sS+jpzx30cCqe8wPIaQ/tVfUc1kr7gfR3dwcdiE68+WVnFHGm1JqMdeOZogjsJQ==}
     engines: {node: '>=16.7.0'}
     hasBin: true
 
@@ -2803,12 +2806,12 @@ snapshots:
       - utf-8-validate
       - vue-tsc
 
-  '@module-federation/rsbuild-plugin@0.8.10(@rsbuild/core@1.2.4)(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)':
+  '@module-federation/rsbuild-plugin@0.8.10(@rsbuild/core@1.2.5)(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)':
     dependencies:
       '@module-federation/enhanced': 0.8.10(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
       '@module-federation/sdk': 0.8.10
     optionalDependencies:
-      '@rsbuild/core': 1.2.4
+      '@rsbuild/core': 1.2.5
     transitivePeerDependencies:
       - '@rspack/core'
       - bufferutil
@@ -2901,7 +2904,7 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.0
 
-  '@rsbuild/core@1.2.4':
+  '@rsbuild/core@1.2.5':
     dependencies:
       '@rspack/core': 1.2.2(@swc/helpers@0.5.15)
       '@rspack/lite-tapable': 1.0.1

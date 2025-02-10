@@ -26,9 +26,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@rsbuild/core": "1.2.4",
     "@wisdesign/remote-plugin": "workspace:*",
     "@wisdesign/cross-plugin": "workspace:*",
     "@wisdesign/context": "workspace:*"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "^1.2.5"
   }
 }

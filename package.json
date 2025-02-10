@@ -13,7 +13,7 @@
     "release": "pnpm changeset tag && git push --follow-tags && pnpm publish -r",
     "format": "biome check --write",
     "build": "pnpm run clean:dist && pnpm -r build",
-    "dev": "pnpm -r --parallel dev",
+    "dev": "pnpm -r build && pnpm -r --parallel dev",
     "clean": "rm -rf node_modules **/*/node_modules **/*/dist",
     "clean:dist": "rm -rf **/*/dist"
   },

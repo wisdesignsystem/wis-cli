@@ -20,7 +20,9 @@
     "access": "public"
   },
   "devDependencies": {
-    "@rsbuild/core": "1.2.4",
     "@wisdesign/context": "workspace:*"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "^1.2.5"
   }
 }

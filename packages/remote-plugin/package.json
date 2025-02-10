@@ -20,8 +20,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@rsbuild/core": "1.2.4",
     "@wisdesign/context": "workspace:*",
-    "@module-federation/rsbuild-plugin": "0.8.10"
+    "@module-federation/rsbuild-plugin": "0.8.10",
+    "@module-federation/enhanced": "0.8.10"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "^1.2.5"
   }
 }
