@@ -8,6 +8,8 @@ export enum Platform {
   Pad = "pad",
 }
 
+type ExposeName = string;
+
 export type NormalExpose = string;
 
 interface ClassifyRequired {
@@ -31,7 +33,7 @@ export interface PlatformClassifyExpose {
 };
 
 export type Exposes = {
-  [key: string]:
+  [key: ExposeName]:
     | NormalExpose
     | PlatformExpose
     | ClassifyExpose
@@ -120,7 +122,7 @@ export interface WisConfig {
 
   libraryPath?: string;
 
-  remoteEntries?: string[];
+  entry?: ExposeName;
 
   remotes?: Remotes;
 
@@ -140,7 +142,7 @@ export class Config {
 
   libraryPath = "";
 
-  remoteEntries: string[] = [];
+  entry = "";
 
   remotes: Remotes = {};
 
@@ -160,10 +162,10 @@ export class Config {
 
     this.name = this.rawConfig.name || packageJson.name;
     this.libraryPath = this.rawConfig.libraryPath || this.libraryPath;
-    this.remoteEntries = this.rawConfig.remoteEntries || this.remoteEntries;
     this.exposes = this.rawConfig.exposes || this.exposes;
     this.shared = this.rawConfig.shared || this.shared;
     this.remotes = this.rawConfig.remotes || this.remotes;
     this.runtimePlugins = this.rawConfig.runtimePlugins || this.runtimePlugins;
+    this.entry = this.rawConfig.entry || this.entry;
   }
 }

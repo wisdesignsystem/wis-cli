@@ -8,23 +8,36 @@ const remoteEntryPlugin: RuntimePlugin = () => {
   return {
     name: "remote-entry-plugin",
     init(data) {
+      if (isInjectRemoteEntry) {
+        return data;
+      }
+
       // @ts-ignore
-      if (!isInjectRemoteEntry && window[data.options.name]) {
-        // @ts-ignore TODO
-        window[data.options.name].get("./core").then((factory) => factory());
-        isInjectRemoteEntry = true;
+      if (window[data.options.name] === undefined) {
+        return data;
       }
+
+      isInjectRemoteEntry = true;
+      // @ts-ignore
+      window[data.options.name]
+        // @ts-ignore
+        .get("./core")
+        // @ts-ignore
+        .then((factory) => factory())
+        .catch(() => {
+          // no action
+        })
 
       return data;
     },
-    afterResolve(data) {
-      // TODO
-      if (data.id.includes("button")) {
-        data.expose = "./button/mobile"
-      }
+    // afterResolve(data) {
+    //   // TODO
+    //   if (data.id.includes("button")) {
+    //     data.expose = "./button/mobile";
+    //   }
 
-      return data;
-    },
+    //   return data;
+    // },
   };
 };
 

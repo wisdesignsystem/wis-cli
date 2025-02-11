@@ -11,6 +11,8 @@ export function wisPlugin(): RsbuildPlugin[] {
   const plugin: RsbuildPlugin = {
     name: "wisRsbuildPlugin",
     setup(api) {
+      context.setup();
+
       fs.rmSync(context.compilerPath, { recursive: true, force: true });
       fs.mkdirSync(context.compilerPath, { recursive: true });
 
@@ -19,7 +21,7 @@ export function wisPlugin(): RsbuildPlugin[] {
           dev: {
             watchFiles: [{
               paths: context.config.configFile,
-              type: 'reload-server',
+              type: 'reload-page',
             }],
           },
         })
