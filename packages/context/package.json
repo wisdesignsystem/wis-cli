@@ -17,6 +17,6 @@
     "access": "public"
   },
   "dependencies": {
-    "ts-node": "10.9.2"
+    "@swc-node/register": "1.10.9"
   }
 }

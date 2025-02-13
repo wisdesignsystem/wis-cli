@@ -8,6 +8,7 @@ import type {
   PlatformClassifyExpose,
 } from "./Config.js";
 import {
+  configFile,
   Platform,
   isNormalExpose,
   isPlatformExpose,
@@ -16,6 +17,7 @@ import {
 } from "./Config.js";
 
 export {
+  configFile,
   Context,
   Platform,
   isNormalExpose,

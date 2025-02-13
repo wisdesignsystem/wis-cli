@@ -133,9 +133,9 @@ export interface WisConfig {
   runtimePlugins?: string[];
 }
 
-export class Config {
-  configFile = path.resolve(process.cwd(), "wis.config.ts");
+export const configFile = path.resolve(process.cwd(), "wis.config.ts");
 
+export class Config {
   rawConfig: WisConfig = {};
 
   name = "";
@@ -153,7 +153,7 @@ export class Config {
   runtimePlugins: string[] = [];
 
   setup() {
-    const config = loadTSConfigFile(this.configFile);
+    const config = loadTSConfigFile(configFile);
     if (config) {
       this.rawConfig = config;
     }

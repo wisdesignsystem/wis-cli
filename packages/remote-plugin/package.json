@@ -11,9 +11,9 @@
   },
   "files": ["dist", "templates"],
   "exports": {
-    "./rsbuild": {
-      "types": "./dist/rsbuild.d.ts",
-      "import": "./dist/rsbuild.js"
+    "./rspack": {
+      "types": "./dist/rspack.d.ts",
+      "import": "./dist/rspack.js"
     }
   },
   "publishConfig": {

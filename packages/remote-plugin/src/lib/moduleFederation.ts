@@ -6,7 +6,6 @@ import type { ModuleFederationOptions } from "@module-federation/rsbuild-plugin"
 import { remotes } from "./remotes.js";
 import { exposes } from "./exposes.js";
 import { shared } from "./shared.js";
-import { publicPath } from "./publicPath.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -17,7 +16,7 @@ export function moduleFederation(context: Context): ModuleFederationOptions {
     remotes: remotes(context),
     exposes: exposes(context),
     shared: shared(context),
-    getPublicPath: publicPath(),
+    getPublicPath: `return "${process.env.PUBLIC_PATH}"`,
     manifest: {
       fileName: "manifest.json",
     },

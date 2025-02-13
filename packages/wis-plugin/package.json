@@ -18,8 +18,8 @@
       "import": "./dist/index.js"
     },
     "./rsbuild": {
-      "types": "./dist/rsbuild.d.ts",
-      "import": "./dist/rsbuild.js"
+      "types": "./dist/rsbuild/index.d.ts",
+      "import": "./dist/rsbuild/index.js"
     }
   },
   "publishConfig": {

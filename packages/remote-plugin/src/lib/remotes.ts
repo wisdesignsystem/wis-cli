@@ -6,7 +6,7 @@ export function remotes(context: Context) {
   const result: Record<string, string> = {}
   for (const remote in remotes) {
     const url = remotes[remote];
-    result[remote] = url.endsWith("/") ? `${context.config.name}@${url}manifest.json` : `${context.config.name}@${url}/manifest.json`;
+    result[remote] = url.endsWith("/") ? `${remote}@${url}manifest.json` : `${remote}@${url}/manifest.json`;
   }
 
   return result
