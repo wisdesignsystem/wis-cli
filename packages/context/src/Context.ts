@@ -9,9 +9,10 @@ export class Context {
 
   constructor() {
     this.config = new Config();
+    this.config.load();
   }
 
-  setup() {
-    this.config.setup();
+  reset() {
+    this.config.load();
   }
 }

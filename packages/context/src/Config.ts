@@ -1,6 +1,4 @@
-import path from "node:path";
-
-import { loadTSConfigFile, loadPackageJSON } from "./loaderFile.js";
+import { loadConfig, loadPackageJSON } from "./loaderFile.js";
 
 export enum Platform {
   PC = "pc",
@@ -120,7 +118,7 @@ export function isPlatformClassifyExpose(
 export interface WisConfig {
   name?: string;
 
-  libraryPath?: string;
+  libraryRegExp?: RegExp;
 
   entry?: ExposeName;
 
@@ -131,18 +129,16 @@ export interface WisConfig {
   shared?: Shared;
 
   runtimePlugins?: string[];
-}
 
-export const configFile = path.resolve(process.cwd(), "wis.config.ts");
+  designWidth?: number;
+}
 
 export class Config {
   rawConfig: WisConfig = {};
 
+  libraryRegExp?: RegExp = undefined;
+
   name = "";
-
-  libraryPath = "";
-
-  entry = "";
 
   remotes: Remotes = {};
 
@@ -152,8 +148,10 @@ export class Config {
 
   runtimePlugins: string[] = [];
 
-  setup() {
-    const config = loadTSConfigFile(configFile);
+  designWidth = 320;
+
+  load() {
+    const config = loadConfig();
     if (config) {
       this.rawConfig = config;
     }
@@ -161,11 +159,15 @@ export class Config {
     const packageJson = loadPackageJSON();
 
     this.name = this.rawConfig.name || packageJson.name;
-    this.libraryPath = this.rawConfig.libraryPath || this.libraryPath;
+    this.libraryRegExp = this.rawConfig.libraryRegExp || this.libraryRegExp;
     this.exposes = this.rawConfig.exposes || this.exposes;
     this.shared = this.rawConfig.shared || this.shared;
     this.remotes = this.rawConfig.remotes || this.remotes;
     this.runtimePlugins = this.rawConfig.runtimePlugins || this.runtimePlugins;
-    this.entry = this.rawConfig.entry || this.entry;
+    this.designWidth = this.rawConfig.designWidth || this.designWidth;
+  }
+
+  addRuntimePlugin(plugin: string) {
+    this.runtimePlugins.push(plugin)
   }
 }

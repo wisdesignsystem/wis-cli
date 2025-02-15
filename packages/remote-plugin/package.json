@@ -11,9 +11,13 @@
   },
   "files": ["dist", "templates"],
   "exports": {
-    "./rspack": {
-      "types": "./dist/rspack.d.ts",
-      "import": "./dist/rspack.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./rsbuild": {
+      "types": "./dist/rsbuild/index.d.ts",
+      "import": "./dist/rsbuild/index.js"
     }
   },
   "publishConfig": {
@@ -21,10 +25,14 @@
   },
   "dependencies": {
     "@wisdesign/context": "workspace:*",
-    "@module-federation/rsbuild-plugin": "0.8.10",
-    "@module-federation/enhanced": "0.8.10"
+    "@module-federation/enhanced": "0.8.11"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.2.5"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
   }
 }

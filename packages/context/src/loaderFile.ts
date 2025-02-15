@@ -12,12 +12,17 @@ export function loadPackageJSON() {
   return data;
 }
 
-export function loadTSConfigFile(file: string) {
-  if (!fs.existsSync(file)) {
-    return;
-  }
-
-  delete require.cache[require.resolve(file)];
+function loadConfigFile(file: string) {
+  delete require.cache[file];
   const { default: config } = require(file);
   return config;
+}
+
+export function loadConfig() {
+  const TSConfigFile = path.resolve(process.cwd(), "wis.config.ts");
+  if (fs.existsSync(TSConfigFile)) {
+    return loadConfigFile(TSConfigFile);
+  }
+
+  return;
 }

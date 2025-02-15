@@ -13,7 +13,7 @@ const remoteEntryPlugin: RuntimePlugin = () => {
       }
 
       // @ts-ignore
-      if (window[data.options.name] === undefined) {
+      if (!window || window[data.options.name] === undefined) {
         return data;
       }
 
@@ -26,7 +26,7 @@ const remoteEntryPlugin: RuntimePlugin = () => {
         .then((factory) => factory())
         .catch(() => {
           // no action
-        })
+        });
 
       return data;
     },

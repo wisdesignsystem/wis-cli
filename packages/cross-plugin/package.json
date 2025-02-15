@@ -11,18 +11,28 @@
   },
   "files": ["dist"],
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
     "./rsbuild": {
-      "types": "./dist/rsbuild.d.ts",
-      "import": "./dist/rsbuild.js"
+      "types": "./dist/rsbuild/index.d.ts",
+      "import": "./dist/rsbuild/index.js"
     }
   },
   "publishConfig": {
     "access": "public"
   },
-  "devDependencies": {
+  "dependencies": {
+    "postcss-px-conversion": "0.1.4",
     "@wisdesign/context": "workspace:*"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.2.5"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
   }
 }
