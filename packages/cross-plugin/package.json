@@ -25,7 +25,8 @@
   },
   "dependencies": {
     "postcss-px-conversion": "0.1.4",
-    "@wisdesign/context": "workspace:*"
+    "@wisdesign/context": "workspace:*",
+    "@module-federation/enhanced": "0.8.11"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.2.5"

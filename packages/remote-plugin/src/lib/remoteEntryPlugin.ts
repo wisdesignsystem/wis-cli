@@ -30,14 +30,6 @@ const remoteEntryPlugin: RuntimePlugin = () => {
 
       return data;
     },
-    // afterResolve(data) {
-    //   // TODO
-    //   if (data.id.includes("button")) {
-    //     data.expose = "./button/mobile";
-    //   }
-
-    //   return data;
-    // },
   };
 };
 

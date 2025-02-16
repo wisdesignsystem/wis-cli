@@ -19,24 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-
-import vm from "node:vm";
-import * as ts from "typescript";
-
-export function loadTSFileSync(file: string) {
-  if (!fs.existsSync(file)) return;
-  const source = fs.readFileSync(file, "utf8");
-  const { outputText } = ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS }
-  });
-  const sandbox = {
-    module: { exports: {} },
-    exports: {},
-    require,
-    __dirname: path.dirname(file),
-    __filename: file
-  };
-  vm.runInNewContext(outputText, sandbox);
-  return sandbox.module.exports;
-}

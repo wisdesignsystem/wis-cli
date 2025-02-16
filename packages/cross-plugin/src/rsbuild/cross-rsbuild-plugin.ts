@@ -1,15 +1,20 @@
+import path from "node:path";
 import { createRequire } from "node:module";
+import { fileURLToPath } from "node:url";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import type { Context } from "@wisdesign/context";
 
 import { getPXToVWConfig } from "../lib/config.js";
 
 const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export function crossRsbuildPlugin(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "crossRsbuildPlugin",
     setup(api) {
+      context.config.addRuntimePlugin(path.resolve(__dirname, '../lib/crossPlugin.js'));
+
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         const newConfig = mergeRsbuildConfig(config, {
           tools: {

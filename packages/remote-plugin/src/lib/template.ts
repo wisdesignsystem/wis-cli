@@ -1,8 +1,7 @@
 import path from "node:path";
 import fs from "node:fs";
-import type { Context } from "@wisdesign/context";
-
 import { fileURLToPath } from "node:url";
+import type { Context } from "@wisdesign/context";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const templateRootPath = path.resolve(__dirname, "../../templates");
