@@ -60,6 +60,18 @@ importers:
         specifier: 0.1.4
         version: 0.1.4(postcss@8.5.2)
 
+  packages/kind-plugin:
+    dependencies:
+      '@module-federation/enhanced':
+        specifier: 0.8.11
+        version: 0.8.11(@rspack/core@1.2.2(@swc/helpers@0.5.15))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.7.3)
+      '@rsbuild/core':
+        specifier: ^1.2.5
+        version: 1.2.5
+      '@wisdesign/context':
+        specifier: workspace:*
+        version: link:../context
+
   packages/remote-plugin:
     dependencies:
       '@module-federation/enhanced':
@@ -83,6 +95,9 @@ importers:
       '@wisdesign/cross-plugin':
         specifier: workspace:*
         version: link:../cross-plugin
+      '@wisdesign/kind-plugin':
+        specifier: workspace:*
+        version: link:../kind-plugin
       '@wisdesign/remote-plugin':
         specifier: workspace:*
         version: link:../remote-plugin

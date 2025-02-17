@@ -22,8 +22,6 @@ function flattenPlatformExposes(mfExposes: Record<string, string>, key: string, 
 }
 
 function flattenClassifyExposes(mfExposes: Record<string, string>, key: string, value: ClassifyExpose) {
-  mfExposes[key] = value.default;
-
   for (const k in value) {
     if (k === 'default') {
       mfExposes[key] = value[k]
@@ -31,6 +29,8 @@ function flattenClassifyExposes(mfExposes: Record<string, string>, key: string, 
       mfExposes[`${key}/${k}`] = value[k]
     }
   }
+
+  return mfExposes;
 }
 
 function flattenPlatformClassifyExposes(mfExposes: Record<string, string>, key: string, value: PlatformClassifyExpose) {

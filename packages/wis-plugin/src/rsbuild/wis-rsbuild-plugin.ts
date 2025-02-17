@@ -4,6 +4,7 @@ import crypto from "node:crypto";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import { Context } from "@wisdesign/context";
 import { remoteRsbuildPlugin } from "@wisdesign/remote-plugin/rsbuild";
+import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild"
 import { crossRsbuildPlugin } from "@wisdesign/cross-plugin/rsbuild";
 
 import { injectRemotePublicPath } from "./publicPath.js";
@@ -72,5 +73,5 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
     },
   };
 
-  return [plugin, remoteRsbuildPlugin(context), crossRsbuildPlugin(context)];
+  return [plugin, remoteRsbuildPlugin(context), crossRsbuildPlugin(context), kindRsbuildPlugin(context)];
 }
