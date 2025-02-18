@@ -1,5 +1,5 @@
 {
-  "name": "@wisdesign/cross-plugin",
+  "name": "wiscore",
   "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
@@ -18,18 +18,22 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
-    "./rsbuild": {
-      "types": "./dist/rsbuild/index.d.ts",
-      "import": "./dist/rsbuild/index.js"
+    "./runtime": {
+      "types": "./dist/runtime/index.d.ts",
+      "import": "./dist/runtime/index.js"
+    },
+    "./router": {
+      "types": "./dist/router/index.d.ts",
+      "import": "./dist/router/index.js"
     }
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "postcss-px-conversion": "0.1.4",
     "@wisdesign/context": "workspace:*",
-    "@module-federation/enhanced": "0.8.11"
+    "chokidar": "4.0.3",
+    "react-router": "7.1.1"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.2.5"

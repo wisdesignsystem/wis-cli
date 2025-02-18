@@ -23,7 +23,7 @@ export function remoteRsbuildPlugin(context: Context): RsbuildPlugin {
       api.modifyRsbuildConfig((config) => {
         config.source ||= {};
         config.source.entry = {
-          index: path.resolve(context.compilerPath, "index.ts"),
+          index: path.resolve(context.path.compiler, "index.ts"),
         };
         return config;
       });

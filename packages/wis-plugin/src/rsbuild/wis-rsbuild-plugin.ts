@@ -3,8 +3,9 @@ import fs from "node:fs";
 import crypto from "node:crypto";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import { Context } from "@wisdesign/context";
+import { shellRsbuildPlugin } from "@wisdesign/shell-plugin/rsbuild";
 import { remoteRsbuildPlugin } from "@wisdesign/remote-plugin/rsbuild";
-import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild"
+import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild";
 import { crossRsbuildPlugin } from "@wisdesign/cross-plugin/rsbuild";
 
 import { injectRemotePublicPath } from "./publicPath.js";
@@ -17,8 +18,7 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
     setup(api) {
       context.reset();
 
-      fs.rmSync(context.compilerPath, { recursive: true, force: true });
-      fs.mkdirSync(context.compilerPath, { recursive: true });
+      fs.rmSync(context.path.compiler, { recursive: true, force: true });
 
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         injectRemotePublicPath({
@@ -27,6 +27,8 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
           host: config.server?.host || "0.0.0.0",
           homepage: process.env.BASE_URL || "/",
         });
+
+        process.env.MOUNT_ID = config.html?.mountId || "root";
 
         const newConfig = mergeRsbuildConfig(config, {
           dev: {
@@ -73,5 +75,11 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
     },
   };
 
-  return [plugin, remoteRsbuildPlugin(context), crossRsbuildPlugin(context), kindRsbuildPlugin(context)];
+  return [
+    plugin,
+    shellRsbuildPlugin(context),
+    remoteRsbuildPlugin(context),
+    crossRsbuildPlugin(context),
+    kindRsbuildPlugin(context),
+  ];
 }

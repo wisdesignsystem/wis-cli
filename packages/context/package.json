@@ -17,6 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@swc-node/register": "1.10.9"
+    "@swc-node/register": "1.10.9",
+    "handlebars": "4.7.8"
   }
 }

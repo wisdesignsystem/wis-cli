@@ -1,5 +1,5 @@
 {
-  "name": "@wisdesign/cross-plugin",
+  "name": "@wisdesign/shell-plugin",
   "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
@@ -9,7 +9,7 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
-  "files": ["dist"],
+  "files": ["dist", "templates"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -27,9 +27,8 @@
     "access": "public"
   },
   "dependencies": {
-    "postcss-px-conversion": "0.1.4",
     "@wisdesign/context": "workspace:*",
-    "@module-federation/enhanced": "0.8.11"
+    "chokidar": "4.0.3"
   },
   "peerDependencies": {
     "@rsbuild/core": "^1.2.5"

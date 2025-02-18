@@ -34,7 +34,7 @@ export function copyTemplates(context: Context) {
     const fileOutputContent = fs.readFileSync(filePath, "utf-8").toString();
     const fileOutputPath = filePath.replace(
       templateRootPath,
-      context.compilerPath
+      context.path.compiler
     );
 
     const fileOutputDirectory = path.dirname(fileOutputPath);

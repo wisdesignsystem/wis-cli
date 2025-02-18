@@ -29,6 +29,7 @@
     "@wisdesign/remote-plugin": "workspace:*",
     "@wisdesign/cross-plugin": "workspace:*",
     "@wisdesign/kind-plugin": "workspace:*",
+    "@wisdesign/shell-plugin": "workspace:*",
     "@wisdesign/context": "workspace:*"
   },
   "peerDependencies": {
