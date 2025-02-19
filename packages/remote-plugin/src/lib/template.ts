@@ -1,10 +1,10 @@
-import path from "node:path";
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import path from "node:path";
 import type { Context } from "@wisdesign/context";
+import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const templateRootPath = path.resolve(__dirname, "../../templates");
+const templatesPath = path.resolve(__dirname, "../../templates");
 
 function readdir(filePath: string, fn: (filePath: string) => void) {
   if (!fs.existsSync(filePath)) {
@@ -25,23 +25,11 @@ function readdir(filePath: string, fn: (filePath: string) => void) {
   }
 }
 
-export function copyTemplates(context: Context) {
-  if (!fs.existsSync(templateRootPath)) {
-    return;
-  }
-
-  readdir(templateRootPath, (filePath) => {
-    const fileOutputContent = fs.readFileSync(filePath, "utf-8").toString();
-    const fileOutputPath = filePath.replace(
-      templateRootPath,
-      context.path.compiler
-    );
-
-    const fileOutputDirectory = path.dirname(fileOutputPath);
-    if (!fs.existsSync(fileOutputDirectory)) {
-      fs.mkdirSync(fileOutputDirectory, { recursive: true });
-    }
-
-    fs.writeFileSync(fileOutputPath, fileOutputContent);
-  });
+export function createTemplates(context: Context) {
+  readdir(templatesPath, (templateFilePath) => {
+    const name = path.basename(templateFilePath, ".hbr");
+    const filePath = path.resolve(context.path.compiler, name)
+    const fileContent = fs.readFileSync(templateFilePath, "utf-8").toString();
+    context.template.addTemplate(name, filePath, fileContent);
+  })
 }

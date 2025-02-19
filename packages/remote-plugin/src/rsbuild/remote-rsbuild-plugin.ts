@@ -2,14 +2,14 @@ import path from "node:path";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import type { Context } from "@wisdesign/context";
 
-import { copyTemplates } from "../lib/template.js";
+import { createTemplates } from "../lib/template.js";
 import { RemoteRspackPlugin } from "./remote-rspack-plugin.js";
 
 export function remoteRsbuildPlugin(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "remoteRsbuildPlugin",
     setup(api) {
-      copyTemplates(context);
+      createTemplates(context);
 
       api.modifyRspackConfig((config) => {
         config.output ||= {};

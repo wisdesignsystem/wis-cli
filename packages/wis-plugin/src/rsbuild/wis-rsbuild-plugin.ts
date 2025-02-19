@@ -20,6 +20,10 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
 
       fs.rmSync(context.path.compiler, { recursive: true, force: true });
 
+      api.onBeforeCreateCompiler(() => {
+        context.template.render();
+      })
+
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         injectRemotePublicPath({
           https: !!config.server?.https,
@@ -67,6 +71,11 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
                   .slice(0, 5);
                 return `${localName}--${hash}`;
               };
+            },
+          },
+          source: {
+            define: {
+              'process.env.MOUNT_ID': JSON.stringify(process.env.MOUNT_ID),
             },
           },
         });

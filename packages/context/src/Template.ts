@@ -52,19 +52,26 @@ export class Template {
     template.fileContent = fileContent;
   }
 
-  renderTemplate(template: TemplateFile) {
-    const content = handlebars.compile(template.fileContent)(this.data);
-    const fileDirectory = path.dirname(template.filePath);
+  renderTemplate(name: string) {
+    const template = this.getTemplate(name);
+    if (!template) {
+      return;
+    }
+
+    const filePath = template.filePath
+    const fileContent = handlebars.compile(template.fileContent)(this.data);
+    const fileDirectory = path.dirname(filePath);
+
     if (!fs.existsSync(fileDirectory)) {
       fs.mkdirSync(fileDirectory, { recursive: true });
     }
 
-    fs.writeFileSync(template.filePath, content);
+    fs.writeFileSync(filePath, fileContent);
   }
 
   render() {
     for (const templateFile of this.templateFiles) {
-      this.renderTemplate(templateFile);
+      this.renderTemplate(templateFile.name);
     }
   }
 }
