@@ -1,5 +1,10 @@
 import path from "node:path";
 
+const srcPath = path.resolve(process.cwd(), "src");
+const compilerPath = path.resolve(srcPath, ".wis");
+
 export class Path {
-  compiler = path.resolve(process.cwd(), "src/.wis");
+  src = srcPath;
+
+  compiler = compilerPath;
 }
