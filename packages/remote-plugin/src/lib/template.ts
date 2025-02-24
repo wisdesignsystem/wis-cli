@@ -28,8 +28,11 @@ function readdir(filePath: string, fn: (filePath: string) => void) {
 export function createTemplates(context: Context) {
   readdir(templatesPath, (templateFilePath) => {
     const name = path.basename(templateFilePath, ".hbr");
-    const filePath = path.resolve(context.path.compiler, name)
+    const filePath = path.resolve(context.path.compiler, name);
     const fileContent = fs.readFileSync(templateFilePath, "utf-8").toString();
-    context.template.addTemplate(name, filePath, fileContent);
-  })
+
+    const file = { path: filePath, content: fileContent };
+    const template = context.template.create(name, file, {});
+    context.template.add(template);
+  });
 }

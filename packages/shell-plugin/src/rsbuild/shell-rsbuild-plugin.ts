@@ -11,10 +11,10 @@ export function shellRsbuildPlugin(context: Context): RsbuildPlugin {
     setup(api) {
       const fileRouter = new FileRouter(context);
 
-      fileRouter.registerParser(new Page());
-      fileRouter.registerParser(new Layout());
+      fileRouter.registerParser(new Page(context));
+      fileRouter.registerParser(new Layout(context));
 
-      fileRouter.start(context.path.src);
+      fileRouter.start();
 
       api.onCloseDevServer(() => {
         fileRouter.stop();

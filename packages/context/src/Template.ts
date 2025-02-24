@@ -2,76 +2,139 @@ import fs from "node:fs";
 import path from "node:path";
 import handlebars from "handlebars";
 
-interface TemplateFile {
+interface File {
+  path: string;
+  content: string;
+}
+
+interface TemplateMeta {
   name: string;
-  filePath: string;
-  fileContent: string;
+  file: File;
+  data: Record<string, unknown>;
+}
+
+enum ActionType {
+  ADD = 'add',
+  UPDATE = 'update',
+  REMOVE = 'remove',
+}
+interface Action {
+  type: ActionType;
+  template: TemplateMeta;
+}
+
+function createFile(filePath: string, fileContent: string) {
+  const fileDirectory = path.dirname(filePath);
+
+  if (!fs.existsSync(fileDirectory)) {
+    fs.mkdirSync(fileDirectory, { recursive: true });
+  }
+
+  fs.writeFileSync(filePath, fileContent);
 }
 
 export class Template {
-  data: Record<string, unknown> = {};
+  templateMeta: TemplateMeta[] = [];
 
-  templateFiles: TemplateFile[] = [];
+  actions: Action[] = [];
 
-  getData() {
-    return this.data;
+  isExist(name: string) {
+    return this.templateMeta.some(item => item.name === name);
   }
 
-  setData(key: string, value: unknown) {
-    this.data[key] = value;
+  get(name: string) {
+    return this.templateMeta.find(item => item.name === name);
   }
 
-  hasTemplate(name: string) {
-    return this.templateFiles.some(item => item.name === name);
+  create(name: string, file: File, data: Record<string, unknown>) {
+    return {
+      name,
+      file,
+      data,
+    }
   }
 
-  getTemplate(name: string) {
-    return this.templateFiles.find(item => item.name === name);
+  add(template: TemplateMeta) {
+    if (this.isExist(template.name)) {
+      return;
+    }
+    this.templateMeta.push(template);
+
+    this.actions.push({
+      type: ActionType.ADD,
+      template,
+    })
   }
 
-  addTemplate(name: string, filePath: string, fileContent: string) {
-    if (this.hasTemplate(name)) {
-      this.updateTemplate(name, filePath, fileContent);
+  update(template: TemplateMeta) {
+    if (!this.isExist(template.name)) {
       return;
     }
 
-    this.templateFiles.push({
-      name,
-      filePath,
-      fileContent,
+    this.templateMeta = this.templateMeta.map(item => {
+      if (item.name === template.name) {
+        return template;
+      }
+
+      return item;
+    })
+
+    this.actions.push({
+      type: ActionType.UPDATE,
+      template,
+    })
+  }
+
+  remove(name: string) {
+    let template: TemplateMeta | undefined;
+    this.templateMeta = this.templateMeta.filter(item => {
+      if (item.name === name) {
+        template = item;
+        return true;
+      }
+
+      return false;
+    });
+
+    if (!template) {
+      return;
+    }
+
+    this.actions.push({
+      type: ActionType.REMOVE,
+      template,
     });
   }
 
-  updateTemplate(name: string, filePath: string, fileContent: string) {
-    const template = this.getTemplate(name);
-    if (!template) {
-      return;
+  refresh() {
+    for (const action of this.actions) {
+      const template = action.template;
+      switch (action.type) {
+        case ActionType.ADD:
+        case ActionType.UPDATE: {
+          const filePath = template.file.path;
+          const fileContent = handlebars.compile(template.file.content)(template.data);
+          createFile(filePath, fileContent);
+          break;
+        }
+        case ActionType.REMOVE:
+          fs.rmSync(template.file.path);
+          break;
+        default:
+          break;
+      }
     }
 
-    template.filePath = filePath;
-    template.fileContent = fileContent;
-  }
-
-  renderTemplate(name: string) {
-    const template = this.getTemplate(name);
-    if (!template) {
-      return;
-    }
-
-    const filePath = template.filePath
-    const fileContent = handlebars.compile(template.fileContent)(this.data);
-    const fileDirectory = path.dirname(filePath);
-
-    if (!fs.existsSync(fileDirectory)) {
-      fs.mkdirSync(fileDirectory, { recursive: true });
-    }
-
-    fs.writeFileSync(filePath, fileContent);
+    this.actions = [];
   }
 
   render() {
-    for (const templateFile of this.templateFiles) {
-      this.renderTemplate(templateFile.name);
+    for (const template of this.templateMeta) {
+      const filePath = template.file.path;
+      const fileContent = handlebars.compile(template.file.content)(template.data);
+      createFile(filePath, fileContent);
     }
+
+    this.actions = [];
   }
 }
