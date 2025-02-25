@@ -47,6 +47,7 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
+    parser.add(fileMeta);
     const templateMeta = parser.generate(fileMeta);
 
     const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);
@@ -67,6 +68,7 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
+    parser.remove(fileMeta);
     this.context.template.remove(fileMeta.name);
 
     const rootTemplateMeta = parser.generateRoot();
@@ -84,6 +86,7 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
+    parser.update(fileMeta);
     const templateMeta = parser.generate(fileMeta);
 
     const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);

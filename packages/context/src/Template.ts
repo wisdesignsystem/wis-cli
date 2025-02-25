@@ -56,6 +56,7 @@ export class Template {
 
   add(template: TemplateMeta) {
     if (this.isExist(template.name)) {
+      this.update(template);
       return;
     }
     this.templateMeta.push(template);

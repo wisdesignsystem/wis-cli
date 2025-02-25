@@ -131,6 +131,8 @@ export interface WisConfig {
   runtimePlugins?: string[];
 
   designWidth?: number;
+
+  browserRouter?: boolean;
 }
 
 export class Config {
@@ -150,6 +152,8 @@ export class Config {
 
   designWidth = 320;
 
+  browserRouter = false;
+
   load() {
     const config = loadConfig();
     if (config) {
@@ -165,6 +169,7 @@ export class Config {
     this.remotes = this.rawConfig.remotes || this.remotes;
     this.runtimePlugins = this.rawConfig.runtimePlugins || this.runtimePlugins;
     this.designWidth = this.rawConfig.designWidth || this.designWidth;
+    this.browserRouter = this.rawConfig.browserRouter || this.browserRouter;
   }
 
   addRuntimePlugin(plugin: string) {

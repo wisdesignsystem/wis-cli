@@ -1,0 +1,32 @@
+
+import {
+{{#if browserRouter }}
+  BrowserRouter as Router,
+{{else}}
+  HashRouter as Router,
+{{/if}}
+  Routes,
+  Route,
+} from "wiscore/router";
+
+{{#each pages}}
+import {{component.name}} from "{{component.exportPath}}";
+{{/each}}
+
+export default function ({ basename }: { basename: string }) {
+  return (
+    <Router>
+      <Routes>
+        <Route basename={basename}>
+        {{#each pages}}
+          {{#if routePath}}
+          <Route path="{{routePath}}" element={<{{component.name}} />} />
+          {{else}}
+          <Route index element={<{{component.name}} />} />
+          {{/if}}
+        {{/each}}
+        <Route>
+      <Routes>
+    </Router>
+  )
+}
