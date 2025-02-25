@@ -14,6 +14,7 @@ import {
   isClassifyExpose,
   isPlatformClassifyExpose,
 } from "./Config.js";
+import type { TemplateMeta } from "./Template.js"
 
 export {
   Context,
@@ -30,4 +31,5 @@ export type {
   ClassifyExpose,
   PlatformExpose,
   PlatformClassifyExpose,
+  TemplateMeta,
 };

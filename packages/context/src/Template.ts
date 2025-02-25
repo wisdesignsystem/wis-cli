@@ -7,7 +7,7 @@ interface File {
   content: string;
 }
 
-interface TemplateMeta {
+export interface TemplateMeta {
   name: string;
   file: File;
   data: Record<string, unknown>;
@@ -46,7 +46,7 @@ export class Template {
     return this.templateMeta.find(item => item.name === name);
   }
 
-  create(name: string, file: File, data: Record<string, unknown>) {
+  create(name: string, file: File, data: Record<string, unknown>): TemplateMeta {
     return {
       name,
       file,
@@ -106,7 +106,7 @@ export class Template {
     });
   }
 
-  refresh() {
+  render() {
     for (const action of this.actions) {
       const template = action.template;
       switch (action.type) {
@@ -123,16 +123,6 @@ export class Template {
         default:
           break;
       }
-    }
-
-    this.actions = [];
-  }
-
-  render() {
-    for (const template of this.templateMeta) {
-      const filePath = template.file.path;
-      const fileContent = handlebars.compile(template.file.content)(template.data);
-      createFile(filePath, fileContent);
     }
 
     this.actions = [];

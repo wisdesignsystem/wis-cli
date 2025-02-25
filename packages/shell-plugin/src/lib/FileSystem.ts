@@ -1,58 +1,7 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Context } from "@wisdesign/context";
 import chokidar, { type FSWatcher } from "chokidar";
 
-interface Component {
-  name: string;
-  sourcePath: string;
-  targetPath: string;
-}
-
-interface Route {
-  index: boolean;
-  path: string;
-}
-
-export interface FileMeta {
-  type: string;
-  route: Route;
-  component: Component;
-  children: FileMeta[];
-}
-
-interface File {
-  path: string;
-  content: string;
-}
-
-export abstract class FileParser {
-  context: Context;
-
-  meta: FileMeta[] = [];
-
-  constructor(context: Context) {
-    this.context = context;
-  }
-
-  abstract check(filePath: string): boolean;
-
-  abstract parse(filePath: string): FileMeta;
-
-  abstract generate(fileMeta: FileMeta): File;
-
-  abstract generateRoot(): undefined | File;
-}
-
-function writeFile(filePath: string, fileContent: string) {
-  const fileDirectory = path.dirname(filePath);
-
-  if (!fs.existsSync(fileDirectory)) {
-    fs.mkdirSync(fileDirectory, { recursive: true });
-  }
-
-  fs.writeFileSync(filePath, fileContent);
-}
+import type { FileParser } from "./FileParser.js";
 
 export class FileSystem {
   parsers: FileParser[] = [];
@@ -98,13 +47,17 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
-    const file = parser.generate(fileMeta);
-    writeFile(file.path, file.content);
+    const templateMeta = parser.generate(fileMeta);
 
-    const rootFile = parser.generateRoot();
-    if (rootFile) {
-      writeFile(rootFile.path, rootFile.content);
+    const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);
+    this.context.template.add(template);
+
+    const rootTemplateMeta = parser.generateRoot();
+    if (rootTemplateMeta) {
+      this.context.template.add(rootTemplateMeta);
     }
+
+    this.context.template.render();
   }
 
   remove(filePath: string) {
@@ -114,12 +67,14 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
-    fs.rmSync(fileMeta.component.targetPath);
+    this.context.template.remove(fileMeta.name);
 
-    const rootFile = parser.generateRoot();
-    if (rootFile) {
-      writeFile(rootFile.path, rootFile.content);
+    const rootTemplateMeta = parser.generateRoot();
+    if (rootTemplateMeta) {
+      this.context.template.update(rootTemplateMeta);
     }
+
+    this.context.template.render();
   }
 
   change(filePath: string) {
@@ -129,7 +84,11 @@ export class FileSystem {
     }
 
     const fileMeta = parser.parse(filePath);
-    const file = parser.generate(fileMeta);
-    writeFile(file.path, file.content);
+    const templateMeta = parser.generate(fileMeta);
+
+    const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);
+    this.context.template.update(template);
+
+    this.context.template.render();
   }
 }
