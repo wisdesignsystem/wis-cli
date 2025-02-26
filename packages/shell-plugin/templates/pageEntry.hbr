@@ -13,6 +13,14 @@ import {
 import {{component.name}} from "{{component.exportPath}}";
 {{/each}}
 
+{{#if browserRouter }}
+// @ts-ignore
+window.$__wis_router__ = "browserRouter"
+{{else}}
+// @ts-ignore
+window.$__wis_router__ = "hashRouter"
+{{/if}}
+
 export default function ({ basename }: { basename: string }) {
   return (
     <Router>

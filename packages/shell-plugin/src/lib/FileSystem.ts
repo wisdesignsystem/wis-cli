@@ -79,19 +79,7 @@ export class FileSystem {
     this.context.template.render();
   }
 
-  change(filePath: string) {
-    const parser = this.matchParser(filePath);
-    if (!parser) {
-      return;
-    }
-
-    const fileMeta = parser.parse(filePath);
-    parser.update(fileMeta);
-    const templateMeta = parser.generate(fileMeta);
-
-    const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);
-    this.context.template.update(template);
-
-    this.context.template.render();
+  change() {
+    // no action
   }
 }

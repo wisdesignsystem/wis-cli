@@ -42,7 +42,7 @@ export abstract class FileParser {
   }
 
   remove(meta: FileMeta) {
-    this.fileMeta = this.fileMeta.filter((item) => this.isMatch(item, meta));
+    this.fileMeta = this.fileMeta.filter((item) => !this.isMatch(item, meta));
   }
 
   update(meta: FileMeta) {

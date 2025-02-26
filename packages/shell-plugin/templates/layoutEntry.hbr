@@ -1,0 +1,35 @@
+import React from "react";
+import type { ReactNode, ComponentType } from "react";
+
+{{#each layouts}}
+import {{component.name}} from "{{component.exportPath}}";
+{{/each}}
+
+// @ts-ignore
+window.$__wis_layouts__ = {
+  {{#each layouts}}
+  "{{routePath}}": {{component.name}},
+  {{/each}}
+}
+
+function getLayout(): undefined | ComponentType<any> {
+  {{#if browserRouter}}
+  const pathname = window.location.pathname;
+  {{else}}
+  const pathname = window.location.hash.replace("#", "").split('?')[0]
+  {{/if}}
+  const [layoutName] = pathname.split("/").filter(Boolean);
+
+  // @ts-ignore
+  return window.__wis_layouts__[layoutName];
+}
+
+export default function ({ children }: { children: ReactNode }) {
+  const Layout = getLayout();
+
+  if (!Layout) {
+    return children;
+  }
+
+  return <Layout>{children}</Layout>;
+}

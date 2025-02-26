@@ -21,7 +21,7 @@ function getRouteParts(context: Context, filePath: string) {
 
 export class PageFileParser extends FileParser {
   getRootPath() {
-    return path.resolve(this.context.path.compiler, "pages/index.tsx");
+    return path.resolve(this.context.path.compiler, "pages/Index.tsx");
   }
 
   getName(filePath: string) {
@@ -29,11 +29,16 @@ export class PageFileParser extends FileParser {
 
     return routeParts
       .map((item, index) => {
-        if (index === 0) {
-          return item;
+        let data = item
+        if (data.startsWith("[") && data.endsWith("]")) {
+          data = item.slice(1, -1)
         }
 
-        return capitalize(item);
+        if (index === 0) {
+          return data;
+        }
+
+        return capitalize(data);
       })
       .join("");
   }
@@ -49,9 +54,22 @@ export class PageFileParser extends FileParser {
       return "";
     }
 
-    const routePath = routeParts.filter((item) => item !== "index").join("/");
+    const routePath = routeParts
+      .filter((item) => item !== "index")
+      .map((item) => {
+        if (item.startsWith("[") && item.endsWith("]")) {
+          return `:${item.slice(1, -1)}`;
+        }
 
-    return routePath;
+        return item;
+      })
+      .join("/");
+
+    const routeMapper: Record<string, string> = {
+      "404": "*",
+    };
+
+    return routeMapper[routePath] || routePath;
   }
 
   check(filePath: string): boolean {
@@ -67,7 +85,7 @@ export class PageFileParser extends FileParser {
     const name = this.getName(filePath);
 
     const sourcePath = filePath;
-    const targetName = `p${capitalize(name)}`
+    const targetName = `p${capitalize(name)}`;
     const targetPath = path.resolve(
       this.context.path.compiler,
       `pages/${targetName}.ts`
@@ -96,26 +114,52 @@ export class PageFileParser extends FileParser {
       name: fileMeta.name,
       file: {
         path: fileMeta.component.targetPath,
-        content: fs.readFileSync(path.resolve(templatesPath, "page.hbr"), "utf-8").toString(),
+        content: fs
+          .readFileSync(path.resolve(templatesPath, "page.hbr"), "utf-8")
+          .toString(),
       },
       data: {
         importName: fileMeta.component.importName,
         importPath: fileMeta.component.importPath,
       },
-    }
+    };
   }
 
   generateRoot(): TemplateMeta {
+    let indexRoute: undefined | FileMeta;
+    let notFoundRoute: undefined | FileMeta;
+    const pages = this.fileMeta.reduce((result, meta) => {
+      if (!meta.routePath) {
+        indexRoute = meta;
+      } else if (meta.routePath === "*") {
+        notFoundRoute = meta;
+      } else {
+        result.push(meta);
+      }
+
+      return result;
+    }, [] as FileMeta[]);
+
+    if (indexRoute) {
+      pages.unshift(indexRoute);
+    }
+
+    if (notFoundRoute) {
+      pages.push(notFoundRoute);
+    }
+
     return {
-      name: "router",
+      name: "pageEntry",
       file: {
         path: this.getRootPath(),
-        content: fs.readFileSync(path.resolve(templatesPath, "router.hbr"), "utf-8").toString(),
+        content: fs
+          .readFileSync(path.resolve(templatesPath, "pageEntry.hbr"), "utf-8")
+          .toString(),
       },
       data: {
         browserRouter: this.context.config.browserRouter,
-        pages: this.fileMeta,
+        pages,
       },
-    }
+    };
   }
 }
