@@ -1,0 +1,88 @@
+import React from "react";
+import type { ComponentType } from "react";
+import { useState, useEffect } from "react";
+import { useRouterChange } from "wiscore/router";
+
+import { hasLayout } from "./layouts/Index";
+import { Router } from "./pages/Index";
+
+// @ts-ignore
+window.$__wis_app__ = [
+  {{#each remotes}}
+  "{{this}}",
+  {{/each}}
+]
+
+export function hasApplication(name: string) {
+  // @ts-ignore
+  return name in window.$__wis_app__;
+}
+
+function getRouteParts(): string[] {
+  const pathname = window.location.hash.replace("#", "").split('?')[0]
+  return pathname.split("/").filter(Boolean);
+}
+
+function useApplication() {
+  const [Application, setApplication] = useState<ComponentType<any>>();
+  const [ready, setReady] = useState(false);
+  const [basename, setBasename] = useState("/");
+
+  function install() {
+    let [maybeLayout, maybeApp] = getRouteParts();
+
+    let layout;
+    if (hasLayout(maybeLayout)) {
+      layout = maybeLayout;
+    } else {
+      maybeApp = maybeLayout;
+    }
+
+    let app;
+    if (hasApplication(maybeApp)) {
+      app = maybeApp;
+    }
+
+    const basename = [layout, app].filter(Boolean).join("/");
+    if (basename) {
+      setBasename(basename);
+    }
+
+    if (app) {
+      import(`remote ${app}/$$Router`).then(mod => {
+        setApplication(mod.Router);
+        setReady(true);
+      })
+    } else {
+      setApplication(Router);
+      setReady(true);
+    }
+  }
+
+  function reset() {
+    setApplication(undefined);
+    setReady(false);
+    setBasename("/");
+  }
+
+  useRouterChange(() => {
+    reset();
+  });
+  useEffect(() => {
+    if (!ready) {
+      install();
+    }
+  }, [ready]);
+
+  return { Application, basename, ready };
+}
+
+export function App() {
+  const { Application, basename } = useApplication()
+
+  if (!Application) {
+    return null;
+  }
+
+  return <Application basename={basename} />
+}

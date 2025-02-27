@@ -42,7 +42,7 @@ export class Template {
     return this.templateMeta.some(item => item.name === name);
   }
 
-  get(name: string) {
+  get(name: string): undefined | TemplateMeta {
     return this.templateMeta.find(item => item.name === name);
   }
 

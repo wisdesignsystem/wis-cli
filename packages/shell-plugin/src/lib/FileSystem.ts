@@ -2,6 +2,7 @@ import type { Context } from "@wisdesign/context";
 import chokidar, { type FSWatcher } from "chokidar";
 
 import type { FileParser } from "./FileParser.js";
+import { addTemplate } from "./template.js";
 
 export class FileSystem {
   parsers: FileParser[] = [];
@@ -19,11 +20,30 @@ export class FileSystem {
   }
 
   matchParser(filePath: string) {
-    return this.parsers.find(parser => parser.check(filePath))
+    return this.parsers.find((parser) => parser.check(filePath));
   }
 
   start() {
     this.stop();
+
+    addTemplate(this.context, "App.tsx.hbr", {
+      browserRouter: this.context.config.browserRouter,
+      remotes: Object.keys(this.context.config.remotes),
+    });
+
+    addTemplate(this.context, "Root.tsx.hbr", {});
+
+    const bootstrapTemplate = this.context.template.get("bootstrap.tsx");
+    if (bootstrapTemplate) {
+      this.context.template.update({
+        ...bootstrapTemplate,
+        data: {
+          ...bootstrapTemplate.data,
+          appName: "Root",
+          appPath: "./Root",
+        },
+      });
+    }
 
     this.watcher = chokidar.watch(this.context.path.src, {
       ignored: this.context.path.compiler,
@@ -32,6 +52,8 @@ export class FileSystem {
       .on("add", this.create.bind(this))
       .on("unlink", this.remove.bind(this))
       .on("change", this.change.bind(this));
+
+    this.context.template.render();
   }
 
   stop() {
@@ -50,7 +72,11 @@ export class FileSystem {
     parser.add(fileMeta);
     const templateMeta = parser.generate(fileMeta);
 
-    const template = this.context.template.create(templateMeta.name, templateMeta.file, templateMeta.data);
+    const template = this.context.template.create(
+      templateMeta.name,
+      templateMeta.file,
+      templateMeta.data
+    );
     this.context.template.add(template);
 
     const rootTemplateMeta = parser.generateRoot();

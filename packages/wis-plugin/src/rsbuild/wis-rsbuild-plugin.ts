@@ -86,9 +86,9 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
 
   return [
     plugin,
-    shellRsbuildPlugin(context),
     remoteRsbuildPlugin(context),
     crossRsbuildPlugin(context),
     kindRsbuildPlugin(context),
+    shellRsbuildPlugin(context),
   ];
 }
