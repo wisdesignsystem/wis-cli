@@ -1,0 +1,44 @@
+
+import {
+{{#if browserRouter }}
+  BrowserRouter as Router,
+{{else}}
+  HashRouter as Router,
+{{/if}}
+  Routes,
+  Route,
+} from "wiscore/router";
+
+{{#each pages}}
+import {{component.name}} from "{{component.exportPath}}";
+{{/each}}
+
+{{#if browserRouter }}
+// @ts-ignore
+window.$__wis_router__ = "browserRouter";
+{{else}}
+// @ts-ignore
+window.$__wis_router__ = "hashRouter";
+{{/if}}
+
+interface ApplicationProps {
+  basename: string;
+};
+
+export function Application({ basename }: ApplicationProps) {
+  return (
+    <Router>
+      <Routes>
+        <Route path={basename}>
+        {{#each pages}}
+          {{#if routePath}}
+          <Route path="{{routePath}}" element={<{{component.name}} />} />
+          {{else}}
+          <Route index element={<{{component.name}} />} />
+          {{/if}}
+        {{/each}}
+        </Route>
+      </Routes>
+    </Router>
+  )
+}

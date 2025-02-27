@@ -1,0 +1,23 @@
+{
+  "name": "@wisdesign/context",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@swc-node/register": "1.10.9",
+    "handlebars": "4.7.8"
+  }
+}

@@ -1,0 +1,1 @@
+import(/* webpackChunkName: "bootstrap" */"./bootstrap")

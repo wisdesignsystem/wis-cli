@@ -1,0 +1,50 @@
+{
+  "name": "wiscore",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "files": ["dist"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./router": {
+      "types": "./dist/router/index.d.ts",
+      "import": "./dist/router/index.js"
+    },
+    "./runtime": {
+      "types": "./dist/runtime/index.d.ts",
+      "import": "./dist/runtime/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@wisdesign/context": "workspace:*",
+    "@module-federation/enhanced": "0.9.1",
+    "chokidar": "4.0.3",
+    "react-router": "7.1.1",
+    "history": "5.3.0"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "@types/react": ">=18",
+    "@rsbuild/core": "^1.2.5"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
+  }
+}

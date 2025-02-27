@@ -1,0 +1,41 @@
+{
+  "name": "@wisdesign/shell-plugin",
+  "version": "0.0.0",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "files": ["dist", "templates"],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./rsbuild": {
+      "types": "./dist/rsbuild/index.d.ts",
+      "import": "./dist/rsbuild/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@wisdesign/context": "workspace:*",
+    "chokidar": "4.0.3"
+  },
+  "peerDependencies": {
+    "@rsbuild/core": "^1.2.5"
+  },
+  "peerDependenciesMeta": {
+    "@rsbuild/core": {
+      "optional": true
+    }
+  }
+}
