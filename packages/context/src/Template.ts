@@ -91,10 +91,10 @@ export class Template {
     this.templateMeta = this.templateMeta.filter(item => {
       if (item.name === name) {
         template = item;
-        return true;
+        return false;
       }
 
-      return false;
+      return true;
     });
 
     if (!template) {

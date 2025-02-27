@@ -16,6 +16,11 @@ export class FileSystem {
   }
 
   registerParser(parser: FileParser) {
+    const rootTemplateMeta = parser.generateRoot();
+    if (rootTemplateMeta) {
+      this.context.template.add(rootTemplateMeta);
+    }
+
     this.parsers.push(parser);
   }
 

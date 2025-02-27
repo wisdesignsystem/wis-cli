@@ -1,10 +1,11 @@
-import React from "react";
+import { lazy } from "react";
 import type { ComponentType } from "react";
 import { useState, useEffect } from "react";
 import { useRouterChange } from "wiscore/router";
+import { remote } from "wiscore/runtime";
 
 import { hasLayout } from "./layouts/Index";
-import { Router } from "./pages/Index";
+import { Application as DefaultApplication } from "./pages/Index";
 
 // @ts-ignore
 window.$__wis_app__ = [
@@ -15,11 +16,16 @@ window.$__wis_app__ = [
 
 export function hasApplication(name: string) {
   // @ts-ignore
-  return name in window.$__wis_app__;
+  return window.$__wis_app__.includes(name);
 }
 
 function getRouteParts(): string[] {
+  {{#if browserRouter}}
+  const pathname = window.location.pathname;
+  {{else}}
   const pathname = window.location.hash.replace("#", "").split('?')[0]
+  {{/if}}
+
   return pathname.split("/").filter(Boolean);
 }
 
@@ -28,7 +34,7 @@ function useApplication() {
   const [ready, setReady] = useState(false);
   const [basename, setBasename] = useState("/");
 
-  function install() {
+  async function install() {
     let [maybeLayout, maybeApp] = getRouteParts();
 
     let layout;
@@ -49,14 +55,12 @@ function useApplication() {
     }
 
     if (app) {
-      import(`remote ${app}/$$Router`).then(mod => {
-        setApplication(mod.Router);
-        setReady(true);
-      })
-    } else {
-      setApplication(Router);
-      setReady(true);
+      setApplication(lazy(() => remote(`${app}/$application`).then(mod => {
+        return { default: mod.Application }
+      })));
     }
+
+    setReady(true);
   }
 
   function reset() {
@@ -65,9 +69,10 @@ function useApplication() {
     setBasename("/");
   }
 
-  useRouterChange(() => {
+  useRouterChange((location) => {
     reset();
   });
+
   useEffect(() => {
     if (!ready) {
       install();
@@ -78,10 +83,15 @@ function useApplication() {
 }
 
 export function App() {
-  const { Application, basename } = useApplication()
+  const { Application, basename, ready } = useApplication()
 
-  if (!Application) {
+  if (!ready) {
     return null;
+  }
+
+  console.log("Application", Application, basename);
+  if (!Application) {
+    return <DefaultApplication basename={basename} />
   }
 
   return <Application basename={basename} />

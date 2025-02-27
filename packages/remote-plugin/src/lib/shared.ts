@@ -20,6 +20,7 @@ function getDefaultShared() {
     },
     wiscore: {
       import: "wiscore",
+      singleton: true,
     },
   }
 

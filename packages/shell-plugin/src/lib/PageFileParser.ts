@@ -20,6 +20,12 @@ function getRouteParts(context: Context, filePath: string) {
 }
 
 export class PageFileParser extends FileParser {
+  constructor(context: Context) {
+    super(context);
+
+    context.config.exposes["./$application"] = this.getRootPath();
+  }
+
   getRootPath() {
     return path.resolve(this.context.path.compiler, "pages/Index.tsx");
   }

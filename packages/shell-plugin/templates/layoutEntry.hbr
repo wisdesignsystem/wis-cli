@@ -1,5 +1,6 @@
-import React from "react";
+import { useState } from "react";
 import type { ReactNode, ComponentType } from "react";
+import { useRouterChange } from "wiscore/router";
 
 {{#each layouts}}
 import {{component.name}} from "{{component.exportPath}}";
@@ -26,11 +27,21 @@ function getLayout(): undefined | ComponentType<any> {
   const [layoutName] = pathname.split("/").filter(Boolean);
 
   // @ts-ignore
-  return window.__wis_layouts__[layoutName];
+  return window.$__wis_layouts__[layoutName];
+}
+
+function useLayout() {
+  const [Layout, setLayout] = useState<ComponentType<any>>(getLayout())
+
+  useRouterChange(() => {
+    setLayout(getLayout())
+  })
+
+  return Layout;
 }
 
 export function Layout({ children }: { children: ReactNode }) {
-  const Layout = getLayout();
+  const Layout = useLayout();
 
   if (!Layout) {
     return children;

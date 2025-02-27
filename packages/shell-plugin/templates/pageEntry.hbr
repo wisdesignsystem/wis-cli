@@ -1,5 +1,4 @@
 
-import React from "react";
 import {
 {{#if browserRouter }}
   BrowserRouter as Router,
@@ -16,17 +15,21 @@ import {{component.name}} from "{{component.exportPath}}";
 
 {{#if browserRouter }}
 // @ts-ignore
-window.$__wis_router__ = "browserRouter"
+window.$__wis_router__ = "browserRouter";
 {{else}}
 // @ts-ignore
-window.$__wis_router__ = "hashRouter"
+window.$__wis_router__ = "hashRouter";
 {{/if}}
 
-export function Router({ basename }: { basename: string }) {
+interface ApplicationProps {
+  basename: string;
+};
+
+export function Application({ basename }: ApplicationProps) {
   return (
     <Router>
       <Routes>
-        <Route basename={basename}>
+        <Route path={basename}>
         {{#each pages}}
           {{#if routePath}}
           <Route path="{{routePath}}" element={<{{component.name}} />} />
@@ -34,8 +37,8 @@ export function Router({ basename }: { basename: string }) {
           <Route index element={<{{component.name}} />} />
           {{/if}}
         {{/each}}
-        <Route>
-      <Routes>
+        </Route>
+      </Routes>
     </Router>
   )
 }
