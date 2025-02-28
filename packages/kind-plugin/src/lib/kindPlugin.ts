@@ -1,6 +1,6 @@
 import type { FederationRuntimePlugin } from "@module-federation/enhanced/runtime";
 
-import { getThemeKind, getLangKind } from "./kind.js";
+import { getLangKind, getThemeKind } from "./kind.js";
 
 type RuntimePlugin = () => FederationRuntimePlugin;
 
@@ -59,11 +59,11 @@ const kindPlugin: RuntimePlugin = () => {
           modules,
           kind: langKind,
           moduleExpose: data.expose,
-        })
+        });
       }
 
       if (!moduleKindExpose) {
-        moduleKindExpose = data.expose
+        moduleKindExpose = data.expose;
       }
 
       data.expose = moduleKindExpose;

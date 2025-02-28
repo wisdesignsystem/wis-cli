@@ -18,7 +18,7 @@ export function remoteRsbuildPlugin(context: Context): RsbuildPlugin {
       api.modifyRspackConfig((config) => {
         config.output ||= {};
         config.output.uniqueName = context.config.name;
-        config.output.publicPath = process.env.PUBLIC_PATH
+        config.output.publicPath = process.env.PUBLIC_PATH;
 
         config.plugins ||= [];
         config.plugins.push(new RemoteRspackPlugin(context));

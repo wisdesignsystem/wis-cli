@@ -1,11 +1,14 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 import type { Rspack } from "@rsbuild/core";
 import type { Context } from "@wisdesign/context";
-import { ModuleFederationPlugin } from "@module-federation/enhanced/rspack";
 
-import { remotes } from "../lib/remotes.js";
 import { exposes } from "../lib/exposes.js";
+import { remotes } from "../lib/remotes.js";
 import { shared } from "../lib/shared.js";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export class RemoteRspackPlugin {
   context: Context;

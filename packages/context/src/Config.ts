@@ -16,7 +16,8 @@ interface ClassifyRequired {
 interface ClassifyOther {
   [key: string]: string;
 }
-export type ClassifyExpose = Required<ClassifyRequired> & Omit<ClassifyOther, Platform>;
+export type ClassifyExpose = Required<ClassifyRequired> &
+  Omit<ClassifyOther, Platform>;
 
 export interface PlatformExpose {
   [Platform.PC]: string;
@@ -28,14 +29,14 @@ export interface PlatformClassifyExpose {
   [Platform.PC]: ClassifyExpose;
   [Platform.Mobile]?: ClassifyExpose;
   [Platform.Pad]?: ClassifyExpose;
-};
+}
 
 export type Exposes = {
   [key: ExposeName]:
     | NormalExpose
     | PlatformExpose
     | ClassifyExpose
-    | PlatformClassifyExpose
+    | PlatformClassifyExpose;
 };
 
 interface ShareConfig {
@@ -60,7 +61,9 @@ function isPlatform(data: unknown) {
     return false;
   }
 
-  const hasOnlyPlatformKey = Object.keys(data).every((key) => Object.values(Platform).some(data => key === data));
+  const hasOnlyPlatformKey = Object.keys(data).every((key) =>
+    Object.values(Platform).some((data) => key === data),
+  );
 
   return data.pc !== undefined && hasOnlyPlatformKey;
 }
@@ -70,7 +73,9 @@ function isClassify(data: unknown) {
     return false;
   }
 
-  const hasNonePlatformKey = !Object.keys(data).some((key) => Object.values(Platform).some(data => key === data))
+  const hasNonePlatformKey = !Object.keys(data).some((key) =>
+    Object.values(Platform).some((data) => key === data),
+  );
 
   return data.default !== undefined && hasNonePlatformKey;
 }
@@ -100,7 +105,7 @@ export function isClassifyExpose(data: unknown): data is ClassifyExpose {
 }
 
 export function isPlatformClassifyExpose(
-  data: unknown
+  data: unknown,
 ): data is PlatformClassifyExpose {
   if (!isObject(data)) {
     return false;
@@ -173,6 +178,6 @@ export class Config {
   }
 
   addRuntimePlugin(plugin: string) {
-    this.runtimePlugins.push(plugin)
+    this.runtimePlugins.push(plugin);
   }
 }

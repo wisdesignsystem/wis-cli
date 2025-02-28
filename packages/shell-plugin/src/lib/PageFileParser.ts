@@ -1,11 +1,11 @@
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Context, TemplateMeta } from "@wisdesign/context";
 
 import type { FileMeta } from "./FileParser.js";
 import { FileParser } from "./FileParser.js";
-import { sourceImportPath, capitalize } from "./tool.js";
+import { capitalize, sourceImportPath } from "./tool.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const templatesPath = path.resolve(__dirname, "../../templates");
@@ -35,9 +35,9 @@ export class PageFileParser extends FileParser {
 
     return routeParts
       .map((item, index) => {
-        let data = item
+        let data = item;
         if (data.startsWith("[") && data.endsWith("]")) {
-          data = item.slice(1, -1)
+          data = item.slice(1, -1);
         }
 
         if (index === 0) {
@@ -94,7 +94,7 @@ export class PageFileParser extends FileParser {
     const targetName = `p${capitalize(name)}`;
     const targetPath = path.resolve(
       this.context.path.compiler,
-      `pages/${targetName}.ts`
+      `pages/${targetName}.ts`,
     );
     const rootPath = this.getRootPath();
 

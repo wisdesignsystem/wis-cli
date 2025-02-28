@@ -10,18 +10,18 @@ function isApplication(name: string) {
 
 export function isBrowserRouter() {
   // @ts-ignore
-  return window.$__wis_router__ === "browserRouter"
+  return window.$__wis_router__ === "browserRouter";
 }
 
 export function isHashRouter() {
   // @ts-ignore
-  return window.$__wis_router__ === "hashRouter"
+  return window.$__wis_router__ === "hashRouter";
 }
 
 function getRoute() {
   let pathname = window.location.pathname;
   if (isHashRouter()) {
-    pathname = window.location.hash.replace("#", "").split('?')[0]
+    pathname = window.location.hash.replace("#", "").split("?")[0];
   }
 
   return pathname;
@@ -31,16 +31,16 @@ function getRouteMeta(): string[] {
   const route = getRoute();
 
   let [maybeLayout, maybeApplication] = route.split("/").filter(Boolean);
-  const result: string[] = []
+  const result: string[] = [];
 
   if (isLayout(maybeLayout)) {
-    result.push(maybeLayout)
+    result.push(maybeLayout);
   } else {
-    maybeApplication = maybeLayout
+    maybeApplication = maybeLayout;
   }
 
   if (isApplication(maybeApplication)) {
-    result.push(maybeApplication)
+    result.push(maybeApplication);
   }
 
   return result;

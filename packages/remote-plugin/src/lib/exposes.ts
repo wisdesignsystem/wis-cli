@@ -1,14 +1,23 @@
-import type { Context, PlatformExpose, ClassifyExpose, PlatformClassifyExpose } from "@wisdesign/context";
+import type {
+  ClassifyExpose,
+  Context,
+  PlatformClassifyExpose,
+  PlatformExpose,
+} from "@wisdesign/context";
 import {
   Platform,
-  isNormalExpose,
   isClassifyExpose,
-  isPlatformExpose,
+  isNormalExpose,
   isPlatformClassifyExpose,
+  isPlatformExpose,
 } from "@wisdesign/context";
 
-function flattenPlatformExposes(mfExposes: Record<string, string>, key: string, value: PlatformExpose) {
-  mfExposes[key] = value[Platform.PC]
+function flattenPlatformExposes(
+  mfExposes: Record<string, string>,
+  key: string,
+  value: PlatformExpose,
+) {
+  mfExposes[key] = value[Platform.PC];
 
   if (value[Platform.Pad] !== undefined) {
     mfExposes[`${key}/${Platform.Pad}`] = value[Platform.Pad];
@@ -21,27 +30,43 @@ function flattenPlatformExposes(mfExposes: Record<string, string>, key: string, 
   return mfExposes;
 }
 
-function flattenClassifyExposes(mfExposes: Record<string, string>, key: string, value: ClassifyExpose) {
+function flattenClassifyExposes(
+  mfExposes: Record<string, string>,
+  key: string,
+  value: ClassifyExpose,
+) {
   for (const k in value) {
-    if (k === 'default') {
-      mfExposes[key] = value[k]
+    if (k === "default") {
+      mfExposes[key] = value[k];
     } else {
-      mfExposes[`${key}/${k}`] = value[k]
+      mfExposes[`${key}/${k}`] = value[k];
     }
   }
 
   return mfExposes;
 }
 
-function flattenPlatformClassifyExposes(mfExposes: Record<string, string>, key: string, value: PlatformClassifyExpose) {
-  flattenClassifyExposes(mfExposes, key, value[Platform.PC])
+function flattenPlatformClassifyExposes(
+  mfExposes: Record<string, string>,
+  key: string,
+  value: PlatformClassifyExpose,
+) {
+  flattenClassifyExposes(mfExposes, key, value[Platform.PC]);
 
   if (value[Platform.Pad] !== undefined) {
-    flattenClassifyExposes(mfExposes, `${key}/${Platform.Pad}`, value[Platform.Pad])
+    flattenClassifyExposes(
+      mfExposes,
+      `${key}/${Platform.Pad}`,
+      value[Platform.Pad],
+    );
   }
 
   if (value[Platform.Mobile] !== undefined) {
-    flattenClassifyExposes(mfExposes, `${key}/${Platform.Mobile}`, value[Platform.Mobile])
+    flattenClassifyExposes(
+      mfExposes,
+      `${key}/${Platform.Mobile}`,
+      value[Platform.Mobile],
+    );
   }
 }
 
@@ -73,9 +98,11 @@ export function exposes(context: Context) {
       continue;
     }
 
-    console.warn("Invalid 'expose' configuration option. Please check the 'wis.config.ts' configuration file.")
-    console.warn()
-    console.warn(`${key}: ${JSON.stringify(value, undefined, 2)}`)
+    console.warn(
+      "Invalid 'expose' configuration option. Please check the 'wis.config.ts' configuration file.",
+    );
+    console.warn();
+    console.warn(`${key}: ${JSON.stringify(value, undefined, 2)}`);
   }
 
   return mfExposes;

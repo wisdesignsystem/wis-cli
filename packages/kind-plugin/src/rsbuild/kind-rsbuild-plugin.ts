@@ -9,7 +9,9 @@ export function kindRsbuildPlugin(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "kindRsbuildPlugin",
     setup() {
-      context.config.addRuntimePlugin(path.resolve(__dirname, '../lib/kindPlugin.js'));
+      context.config.addRuntimePlugin(
+        path.resolve(__dirname, "../lib/kindPlugin.js"),
+      );
     },
   };
 

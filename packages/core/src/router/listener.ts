@@ -1,27 +1,27 @@
-import { useEffect, useRef } from "react";
 import { createBrowserHistory, createHashHistory } from "history";
 import type { History } from "history";
+import { useEffect, useRef } from "react";
 
-import { isBrowserRouter } from "./router.js"
+import { isBrowserRouter } from "./router.js";
 
 type Handler = () => void;
 
-let history: History
+let history: History;
 if (isBrowserRouter()) {
-  history = createBrowserHistory()
+  history = createBrowserHistory();
 } else {
-  history = createHashHistory()
+  history = createHashHistory();
 }
 
 export function useRouterChange(handler: Handler) {
-  const listener = useRef(handler)
-  listener.current = handler
+  const listener = useRef(handler);
+  listener.current = handler;
 
   useEffect(() => {
     history.listen(() => {
       if (listener.current) {
-        listener.current()
+        listener.current();
       }
-    })
-  }, [])
+    });
+  }, []);
 }

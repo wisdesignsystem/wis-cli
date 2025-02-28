@@ -1,12 +1,12 @@
-import path from "node:path";
-import fs from "node:fs";
 import crypto from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import { Context } from "@wisdesign/context";
-import { shellRsbuildPlugin } from "@wisdesign/shell-plugin/rsbuild";
-import { remoteRsbuildPlugin } from "@wisdesign/remote-plugin/rsbuild";
-import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild";
 import { crossRsbuildPlugin } from "@wisdesign/cross-plugin/rsbuild";
+import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild";
+import { remoteRsbuildPlugin } from "@wisdesign/remote-plugin/rsbuild";
+import { shellRsbuildPlugin } from "@wisdesign/shell-plugin/rsbuild";
 
 import { injectRemotePublicPath } from "./publicPath.js";
 
@@ -22,7 +22,7 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
 
       api.onBeforeCreateCompiler(() => {
         context.template.render();
-      })
+      });
 
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         injectRemotePublicPath({
@@ -53,14 +53,14 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
                 // @ts-ignore
                 _,
                 // @ts-ignore
-                localName
+                localName,
               ) => {
                 if (context.config.libraryRegExp?.test(ctx.resourcePath)) {
                   const { name } = path.parse(ctx.resourcePath);
 
                   return `${context.config.name}-${name.replace(
                     /\.module$/,
-                    ""
+                    "",
                   )}-${localName}`;
                 }
 
@@ -75,7 +75,7 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
           },
           source: {
             define: {
-              'process.env.MOUNT_ID': JSON.stringify(process.env.MOUNT_ID),
+              "process.env.MOUNT_ID": JSON.stringify(process.env.MOUNT_ID),
             },
           },
         });

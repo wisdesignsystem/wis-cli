@@ -22,9 +22,9 @@ function getDefaultShared() {
       import: "wiscore",
       singleton: true,
     },
-  }
+  };
 
-  return defaultShared
+  return defaultShared;
 }
 
 export function shared(context: Context) {
@@ -39,10 +39,10 @@ export function shared(context: Context) {
 
       shared[key] = {
         import: key,
-      }
+      };
     }
 
-    return shared
+    return shared;
   }
 
   for (const key in userShared) {
@@ -56,8 +56,8 @@ export function shared(context: Context) {
       import: key,
       singleton: userShared[key].singleton,
       requiredVersion: userShared[key].requiredVersion,
-    }
+    };
   }
 
-  return shared
+  return shared;
 }
