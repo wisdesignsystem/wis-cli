@@ -1,9 +1,11 @@
 function isMobile(ua: string) {
-  return /\b(BlackBerry|webOS|iPhone|IEMobile|Android|Windows Phone|iPod)\b/i.test(ua)
+  return /\b(BlackBerry|webOS|iPhone|IEMobile|Android|Windows Phone|iPod)\b/i.test(
+    ua,
+  );
 }
 
 function isPad(ua: string) {
-  return /\b(iPad)\b/i.test(ua)
+  return /\b(iPad)\b/i.test(ua);
 }
 
 export function getBrowserAgent() {
@@ -11,12 +13,12 @@ export function getBrowserAgent() {
   const ua = window.navigator.userAgent;
 
   if (isMobile(ua)) {
-    return 'mobile'
-  }
-  
-  if (isPad(ua)) {
-    return 'pad'
+    return "mobile";
   }
 
-  return
+  if (isPad(ua)) {
+    return "pad";
+  }
+
+  return;
 }

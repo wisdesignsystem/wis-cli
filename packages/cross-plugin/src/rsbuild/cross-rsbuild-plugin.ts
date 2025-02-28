@@ -1,5 +1,5 @@
-import path from "node:path";
 import { createRequire } from "node:module";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import type { Context } from "@wisdesign/context";
@@ -13,14 +13,16 @@ export function crossRsbuildPlugin(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "crossRsbuildPlugin",
     setup(api) {
-      context.config.addRuntimePlugin(path.resolve(__dirname, '../lib/crossPlugin.js'));
+      context.config.addRuntimePlugin(
+        path.resolve(__dirname, "../lib/crossPlugin.js"),
+      );
 
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
         const newConfig = mergeRsbuildConfig(config, {
           tools: {
             postcss(_, { addPlugins }) {
               addPlugins(
-                require("postcss-px-conversion")(getPXToVWConfig(context))
+                require("postcss-px-conversion")(getPXToVWConfig(context)),
               );
             },
           },

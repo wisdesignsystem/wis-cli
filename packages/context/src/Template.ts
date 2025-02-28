@@ -14,9 +14,9 @@ export interface TemplateMeta {
 }
 
 enum ActionType {
-  ADD = 'add',
-  UPDATE = 'update',
-  REMOVE = 'remove',
+  ADD = "add",
+  UPDATE = "update",
+  REMOVE = "remove",
 }
 interface Action {
   type: ActionType;
@@ -39,19 +39,23 @@ export class Template {
   actions: Action[] = [];
 
   isExist(name: string) {
-    return this.templateMeta.some(item => item.name === name);
+    return this.templateMeta.some((item) => item.name === name);
   }
 
   get(name: string): undefined | TemplateMeta {
-    return this.templateMeta.find(item => item.name === name);
+    return this.templateMeta.find((item) => item.name === name);
   }
 
-  create(name: string, file: File, data: Record<string, unknown>): TemplateMeta {
+  create(
+    name: string,
+    file: File,
+    data: Record<string, unknown>,
+  ): TemplateMeta {
     return {
       name,
       file,
       data,
-    }
+    };
   }
 
   add(template: TemplateMeta) {
@@ -64,7 +68,7 @@ export class Template {
     this.actions.push({
       type: ActionType.ADD,
       template,
-    })
+    });
   }
 
   update(template: TemplateMeta) {
@@ -72,23 +76,23 @@ export class Template {
       return;
     }
 
-    this.templateMeta = this.templateMeta.map(item => {
+    this.templateMeta = this.templateMeta.map((item) => {
       if (item.name === template.name) {
         return template;
       }
 
       return item;
-    })
+    });
 
     this.actions.push({
       type: ActionType.UPDATE,
       template,
-    })
+    });
   }
 
   remove(name: string) {
     let template: TemplateMeta | undefined;
-    this.templateMeta = this.templateMeta.filter(item => {
+    this.templateMeta = this.templateMeta.filter((item) => {
       if (item.name === name) {
         template = item;
         return false;
@@ -114,7 +118,9 @@ export class Template {
         case ActionType.ADD:
         case ActionType.UPDATE: {
           const filePath = template.file.path;
-          const fileContent = handlebars.compile(template.file.content)(template.data);
+          const fileContent = handlebars.compile(template.file.content)(
+            template.data,
+          );
           createFile(filePath, fileContent);
           break;
         }

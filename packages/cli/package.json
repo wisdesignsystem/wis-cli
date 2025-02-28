@@ -1,0 +1,27 @@
+{
+  "name": "@wisdesign/cli",
+  "version": "0.0.26",
+  "description": "",
+  "author": "wisdesign <dev@wis.design>",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "wis": "dist/bin/wis.js"
+  },
+  "files": ["dist", "templates"],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "7.2.1",
+    "commander": "12.1.0",
+    "ora": "8.0.1",
+    "zx": "8.2.4"
+  }
+}

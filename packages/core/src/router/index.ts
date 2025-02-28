@@ -3,7 +3,7 @@ import * as ReactRouter from "react-router";
 import { useRouterChange } from "./listener.js";
 import { useNavigate, useRedirect } from "./navigate.js";
 
-export { useRouterChange, useNavigate, useRedirect }
+export { useRouterChange, useNavigate, useRedirect };
 
 export const useParams = ReactRouter.useParams;
 export const useSearchParams = ReactRouter.useSearchParams;

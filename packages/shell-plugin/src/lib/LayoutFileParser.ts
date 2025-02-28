@@ -1,11 +1,11 @@
-import path from "node:path";
 import fs from "node:fs";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { TemplateMeta, Context } from "@wisdesign/context";
+import type { Context, TemplateMeta } from "@wisdesign/context";
 
 import { FileParser } from "./FileParser.js";
 import type { FileMeta } from "./FileParser.js";
-import { sourceImportPath, capitalize } from "./tool.js";
+import { capitalize, sourceImportPath } from "./tool.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const templatesPath = path.resolve(__dirname, "../../templates");
@@ -48,7 +48,7 @@ export class LayoutFileParser extends FileParser {
     const targetName = `l${capitalize(name)}`;
     const targetPath = path.resolve(
       this.context.path.compiler,
-      `layouts/${targetName}.ts`
+      `layouts/${targetName}.ts`,
     );
     const rootPath = this.getRootPath();
 

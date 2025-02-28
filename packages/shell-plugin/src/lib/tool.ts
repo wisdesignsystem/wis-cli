@@ -11,7 +11,7 @@ export function relativePath(basePath: string, filePath: string) {
 export function sourceImportPath(basePath: string, filePath: string) {
   const importPath = posixPath(relativePath(basePath, filePath)).replace(
     /.ts(x)?$/,
-    ""
+    "",
   );
   if (importPath.startsWith("../")) {
     return importPath;

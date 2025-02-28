@@ -1,6 +1,6 @@
-import { Path } from "./Path.js";
 import { Config } from "./Config.js";
-import { Template } from "./Template.js"
+import { Path } from "./Path.js";
+import { Template } from "./Template.js";
 
 export class Context {
   path: Path;

@@ -5,5 +5,5 @@ export function getPXToVWConfig(context: Context) {
     viewportWidth: context.config.designWidth,
     excludeFiles: [/\/node_modules\//],
     includeFiles: [/\/mobile\//],
-  }
+  };
 }

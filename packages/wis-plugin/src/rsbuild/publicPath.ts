@@ -12,7 +12,7 @@ export function injectRemotePublicPath(option: Option) {
 
     process.env.PUBLIC_PATH = `${protocol}${option.host}:${option.port}${
       url.pathname.endsWith("/") ? url.pathname : `${url.pathname}/`
-    }`
+    }`;
     return;
   }
 

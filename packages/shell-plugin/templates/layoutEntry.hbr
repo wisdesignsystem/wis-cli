@@ -22,7 +22,7 @@ function getLayout(): undefined | ComponentType<any> {
   {{#if browserRouter}}
   const pathname = window.location.pathname;
   {{else}}
-  const pathname = window.location.hash.replace("#", "").split('?')[0]
+  const pathname = window.location.hash.replace("#", "").split("?")[0]
   {{/if}}
   const [layoutName] = pathname.split("/").filter(Boolean);
 

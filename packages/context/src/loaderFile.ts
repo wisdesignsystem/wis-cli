@@ -1,11 +1,11 @@
 import fs from "node:fs";
-import path from "node:path";
 import { createRequire } from "node:module";
+import path from "node:path";
 
 const require = createRequire(import.meta.url);
 
-const { register } = require('@swc-node/register/register')
-register()
+const { register } = require("@swc-node/register/register");
+register();
 
 export function loadPackageJSON() {
   const data = require(path.resolve(process.cwd(), "package.json"));

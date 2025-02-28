@@ -23,7 +23,7 @@ function getRouteParts(): string[] {
   {{#if browserRouter}}
   const pathname = window.location.pathname;
   {{else}}
-  const pathname = window.location.hash.replace("#", "").split('?')[0]
+  const pathname = window.location.hash.replace("#", "").split("?")[0]
   {{/if}}
 
   return pathname.split("/").filter(Boolean);
@@ -89,7 +89,6 @@ export function App() {
     return null;
   }
 
-  console.log("Application", Application, basename);
   if (!Application) {
     return <DefaultApplication basename={basename} />
   }

@@ -1,20 +1,20 @@
-import { Context } from "./Context.js";
 import type {
-  WisConfig,
+  ClassifyExpose,
   Exposes,
   NormalExpose,
-  ClassifyExpose,
-  PlatformExpose,
   PlatformClassifyExpose,
+  PlatformExpose,
+  WisConfig,
 } from "./Config.js";
 import {
   Platform,
-  isNormalExpose,
-  isPlatformExpose,
   isClassifyExpose,
+  isNormalExpose,
   isPlatformClassifyExpose,
+  isPlatformExpose,
 } from "./Config.js";
-import type { TemplateMeta } from "./Template.js"
+import { Context } from "./Context.js";
+import type { TemplateMeta } from "./Template.js";
 
 export {
   Context,

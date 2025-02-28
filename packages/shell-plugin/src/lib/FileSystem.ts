@@ -80,7 +80,7 @@ export class FileSystem {
     const template = this.context.template.create(
       templateMeta.name,
       templateMeta.file,
-      templateMeta.data
+      templateMeta.data,
     );
     this.context.template.add(template);
 
