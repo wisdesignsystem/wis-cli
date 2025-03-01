@@ -1,5 +1,17 @@
 # @wisdesign/wis-plugin
 
+## 0.0.2
+
+### Patch Changes
+
+- [#38](https://github.com/wisdesignsystem/wis-cli/pull/38) [`96de1a7`](https://github.com/wisdesignsystem/wis-cli/commit/96de1a74bb0d4b6ba2d7cf12caae80d568d2cf78) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] update the dependecies
+
+- Updated dependencies [[`96de1a7`](https://github.com/wisdesignsystem/wis-cli/commit/96de1a74bb0d4b6ba2d7cf12caae80d568d2cf78), [`96de1a7`](https://github.com/wisdesignsystem/wis-cli/commit/96de1a74bb0d4b6ba2d7cf12caae80d568d2cf78)]:
+  - @wisdesign/remote-plugin@0.0.2
+  - @wisdesign/cross-plugin@0.0.2
+  - @wisdesign/shell-plugin@0.0.2
+  - @wisdesign/kind-plugin@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
