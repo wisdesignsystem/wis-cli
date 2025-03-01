@@ -31,7 +31,7 @@
     "chokidar": "4.0.3"
   },
   "peerDependencies": {
-    "@rsbuild/core": "^1.2.5"
+    "@rsbuild/core": "~1"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {

@@ -33,6 +33,23 @@ export class RemoteRspackPlugin {
         path.resolve(__dirname, "../lib/remoteEntryPlugin.js"),
         ...this.context.config.runtimePlugins,
       ],
+      dts: {
+        generateTypes: {
+          extractRemoteTypes: true,
+          extractThirdParty: true,
+          generateAPITypes: true,
+          compileInChildProcess: true,
+          abortOnError: false,
+          deleteTypesFolder: true,
+          compilerInstance: "tsc",
+        },
+        consumeTypes: {
+          consumeAPITypes: true,
+          maxRetries: 3,
+          abortOnError: false,
+          deleteTypesFolder: true,
+        },
+      },
     }).apply(compiler);
   }
 }
