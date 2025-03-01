@@ -72,6 +72,11 @@ async function writePackageJson(option: CreatorOption) {
   packageJson.dependencies ||= {};
   packageJson.devDependencies ||= {};
 
+  packageJson.dependencies.react = "18.3.1";
+  packageJson.dependencies["react-dom"] = "18.3.1";
+  packageJson.devDependencies["@types/react"] = "18.3.16";
+  packageJson.devDependencies["@types/react-dom"] = "18.3.5";
+
   const wiscoreVersion = await getLastedVersion("wiscore");
   packageJson.dependencies.wiscore = wiscoreVersion;
 
