@@ -35,6 +35,9 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
         process.env.MOUNT_ID = config.html?.mountId || "root";
 
         const newConfig = mergeRsbuildConfig(config, {
+          server: {
+            strictPort: true,
+          },
           dev: {
             watchFiles: [
               {
