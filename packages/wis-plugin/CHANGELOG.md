@@ -1,5 +1,14 @@
 # @wisdesign/wis-plugin
 
+## 0.0.3
+
+### Patch Changes
+
+- [#40](https://github.com/wisdesignsystem/wis-cli/pull/40) [`3f512b8`](https://github.com/wisdesignsystem/wis-cli/commit/3f512b84df9fec8f5bd3eaf6d205162c51248a97) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] make the dev server port strict
+
+- Updated dependencies [[`3f512b8`](https://github.com/wisdesignsystem/wis-cli/commit/3f512b84df9fec8f5bd3eaf6d205162c51248a97)]:
+  - @wisdesign/shell-plugin@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

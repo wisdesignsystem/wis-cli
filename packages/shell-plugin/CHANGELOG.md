@@ -1,5 +1,11 @@
 # @wisdesign/shell-plugin
 
+## 0.0.3
+
+### Patch Changes
+
+- [#40](https://github.com/wisdesignsystem/wis-cli/pull/40) [`3f512b8`](https://github.com/wisdesignsystem/wis-cli/commit/3f512b84df9fec8f5bd3eaf6d205162c51248a97) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] fix the application typescript template type error
+
 ## 0.0.2
 
 ### Patch Changes
