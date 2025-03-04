@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { Command } from "commander";
 
 import { create } from "../create.js";
+import { token } from "../token.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -24,5 +25,18 @@ cli
   .action(() => {
     create();
   });
+
+cli
+  .command("token")
+  .description("Generate CSS variables from theme JSON files")
+  .requiredOption("--dark <file>", "Dark theme token file")
+  .requiredOption("--light <file>", "Light theme token file")
+  .requiredOption("--component <file>", "Component theme token file")
+  .requiredOption("--palette <file>", "Palette theme token file")
+  .requiredOption("--gray <files...>", "Gray theme token file")
+  .requiredOption("-t, --themes <files...>", "Theme JSON file paths")
+  .option("-p, --prefix <prefix>", "CSS variable prefix", "wis")
+  .option("-o, --output <dir>", "Output directory", "./dist")
+  .action(token);
 
 cli.parse();
