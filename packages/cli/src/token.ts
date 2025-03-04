@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import chalk from 'chalk';
 
 interface TokenOptions {
   dark: string;
@@ -149,12 +150,23 @@ function generateCSSVariablesWithSelector(
 }
 
 // Read JSON file
-function loadTokenFile(filePath: string): TokenData {
+function loadTokenFile(filePath: string, isRequired = true): TokenData {
   try {
+    if (!fs.existsSync(filePath)) {
+      if (isRequired) {
+        console.error(chalk.red(`File not found: ${filePath}`));
+        process.exit(1);
+      }
+      return {};
+    }
+    
     const content = fs.readFileSync(filePath, 'utf-8');
     return JSON.parse(content);
   } catch (error) {
-    console.error(`Error loading token file ${filePath}:`, error);
+    console.error(chalk.red(`Error loading token file ${filePath}:`), error);
+    if (isRequired) {
+      process.exit(1);
+    }
     return {};
   }
 }
@@ -192,15 +204,34 @@ export async function token(options: TokenOptions) {
   
   // Extract theme information from theme parameters (format: themeName:filePath.json)
   const themeFiles: {name: string, file: string}[] = [];
+  const invalidParams: string[] = [];
   
   for (const themeParam of themes) {
     const result = parseThemeParam(themeParam);
     
     if (result) {
+      // Check if file exists
+      if (!fs.existsSync(result.file)) {
+        console.error(chalk.red(`Theme file not found: ${result.file}`));
+        process.exit(1);
+      }
+      
       themeFiles.push(result);
       // Add theme name to paramPrefixes for dynamic reference resolution
       paramPrefixes.push(result.name);
+    } else {
+      invalidParams.push(themeParam);
     }
+  }
+  
+  // Check if there are invalid theme parameters
+  if (invalidParams.length > 0) {
+    console.error(chalk.red('Invalid theme parameter format detected. The following parameters are invalid:'));
+    for (const param of invalidParams) {
+      console.error(chalk.red(`  - ${param}`));
+    }
+    console.error(chalk.red('The correct format is "themeName:filePath.json", for example: "blue:brand.blue.tokens.json"'));
+    process.exit(1);
   }
   
   // Process each theme
