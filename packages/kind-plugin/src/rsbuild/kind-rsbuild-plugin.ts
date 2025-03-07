@@ -9,8 +9,20 @@ export function kindRsbuildPlugin(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "kindRsbuildPlugin",
     setup() {
+      const noneFilePath = path.resolve(context.path.compiler, "none.ts");
+      const template = context.template.create(
+        "none",
+        {
+          path: noneFilePath,
+          content: "export default {}",
+        },
+        {}
+      );
+      context.template.add(template);
+      context.config.exposes["./$none"] = noneFilePath;
+
       context.config.addRuntimePlugin(
-        path.resolve(__dirname, "../lib/kindPlugin.js"),
+        path.resolve(__dirname, "../lib/kindPlugin.js")
       );
     },
   };
