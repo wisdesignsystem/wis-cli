@@ -1,35 +1,32 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import chalk from 'chalk';
+import fs from "node:fs";
+import path from "node:path";
+import chalk from "chalk";
 
-// Configuration constants
-const CONFIG = {
-  selectors: {
-    light: ':root',
-    dark: ':root[data-theme="dark"]'
-  },
-  outputFiles: {
-    palette: 'palette.css',
-    component: 'component.css',
-    gray: 'gray.css',
-    theme: 'theme.css',
-    index: 'index.css'
-  },
-  baseCategories: ['component', 'palette', 'light', 'dark', 'gray']
-};
-
-interface TokenOptions {
+interface Option {
   dark: string;
   light: string;
   component: string;
   palette: string;
   gray: string[];
   themes: string[];
-  prefix: string;
+  scope: string;
   output: string;
 }
 
-// Define more precise types
+type TokenKey = string;
+type FormattedTokenKey = string;
+
+interface CacheTokenObject {
+  key: TokenKey;
+  formattedKey?: FormattedTokenKey;
+  value?: string | CacheTokenObject;
+}
+
+interface Token {
+  selector: string;
+  data: Record<FormattedTokenKey, string | CacheTokenObject>;
+}
+
 interface TokenValue {
   $type: string;
   $value: string;
@@ -39,386 +36,367 @@ interface TokenData {
   [key: string]: TokenValue | TokenData;
 }
 
-// Unified error handling
-function handleError(message: string, exitProcess = true): void {
-  console.error(chalk.red(message));
-  if (exitProcess) {
-    process.exit(1);
+interface TokenSet {
+  name: string;
+  tokens: Token[];
+}
+
+interface ThemeToken {
+  name: string;
+  tokenSets: TokenSet[];
+}
+
+function isTokenValue(data: unknown): data is TokenValue {
+  return (
+    typeof data === "object" &&
+    data !== null &&
+    "$type" in data &&
+    data.$type === "color" &&
+    "$value" in data
+  );
+}
+
+function isTokenProtocolFile(file: string) {
+  return file.includes(":") && !file.startsWith(":") && !file.endsWith(":");
+}
+
+function isPrivateToken(key: string) {
+  return key.startsWith("_");
+}
+
+function isReferenceToken(value: string) {
+  return value.startsWith("{") && value.endsWith("}");
+}
+
+function createFile(filePath: string, fileContent: string) {
+  const fileDirectory = path.dirname(filePath);
+
+  if (!fs.existsSync(fileDirectory)) {
+    fs.mkdirSync(fileDirectory, { recursive: true });
   }
+
+  fs.writeFileSync(filePath, fileContent);
 }
 
-// Type helper function
-function isTokenValue(value: unknown): value is TokenValue {
-  return value !== null && typeof value === 'object' && '$type' in (value as object) && '$value' in (value as object);
+function resolveTokenFilePath(filePath: string) {
+  return path.resolve(process.cwd(), filePath);
 }
 
-// Type guard to confirm the value is TokenData
-function isTokenData(value: unknown): value is TokenData {
-  return value !== null && typeof value === 'object' && !('$type' in (value as object));
+function parseTokenProtocolFile(file: string) {
+  if (!isTokenProtocolFile(file)) {
+    throw new Error(
+      chalk.redBright(`Invalid token protocol file: ${file} .e.g. xxx:xxx.json`)
+    );
+  }
+
+  const [prefix, filePath] = file.split(":");
+
+  return {
+    prefix,
+    filePath,
+  };
 }
 
-// Check if the value is a reference
-function isReference(value: string): boolean {
-  return typeof value === 'string' && value.includes('{') && value.includes('}');
+function loadTokenFile(filePath: string): TokenData {
+  const tokenFilePath = resolveTokenFilePath(filePath);
+
+  if (!fs.existsSync(tokenFilePath)) {
+    throw new Error(chalk.redBright(`File is not exists: ${tokenFilePath}`));
+  }
+
+  const content = fs.readFileSync(tokenFilePath, "utf-8");
+  return JSON.parse(content);
 }
 
-// Get the reference path
-function getReferencePath(value: string): string | null {
+function getReference(value: string): string | null {
   const match = value.match(/\{([^}]+)\}/);
   return match ? match[1] : null;
 }
 
-// Reference path cache
-const referencePathCache = new Map<string, { prefix: string, path: string }>();
-
-// Map reference path to prefix based on the first part of the path
-function mapReferenceToPrefix(
-  reference: string,
-  paramPrefixes: string[]
-): { prefix: string, path: string } {
-  // Check cache
-  const cacheKey = `${reference}:${paramPrefixes.join(',')}`;
-  const cachedResult = referencePathCache.get(cacheKey);
-  if (cachedResult) {
-    return cachedResult;
-  }
-
-  // Split reference path
-  const parts = reference.split('.');
-  const firstPart = parts[0];
-  
-  // Check if the first part matches any of our parameter prefixes
-  const matchedPrefix = paramPrefixes.find(p => 
-    firstPart === p || firstPart.startsWith(`${p}-`)
-  );
-  
-  // If we found a match, use it as prefix, otherwise use the theme name as default
-  const prefix = matchedPrefix || 'theme';
-  
-  // Keep original path unchanged
-  const result = { prefix, path: reference };
-  
-  // Store in cache
-  referencePathCache.set(cacheKey, result);
-  
-  return result;
+interface ProcessTokenOption {
+  scope: string;
+  selector: string;
+  prefix: string;
+  filePath: string;
 }
 
-// CSS variable conversion cache
-const cssVarCache = new Map<string, string>();
-
-// Convert reference path to CSS variable reference
-function pathToCssVar(
-  reference: string,
-  basePrefix: string,
-  paramPrefixes: string[]
-): string {
-  const cacheKey = `${reference}:${basePrefix}:${paramPrefixes.join(',')}`;
-  const cachedResult = cssVarCache.get(cacheKey);
-  if (cachedResult) {
-    return cachedResult;
-  }
-  
-  const { prefix, path } = mapReferenceToPrefix(reference, paramPrefixes);
-  const result = `var(--${basePrefix}-${prefix}-${path.replace(/\./g, '-')})`;
-  
-  cssVarCache.set(cacheKey, result);
-  return result;
+let referenceTokenInstance: Record<TokenKey, CacheTokenObject> = {};
+function clearReferenceTokenInstance() {
+  referenceTokenInstance = {};
 }
 
-// Reference to CSS variable cache
-const referenceToCssCache = new Map<string, string>();
+function processTokens({
+  scope,
+  selector,
+  prefix,
+  filePath,
+}: ProcessTokenOption): Token {
+  const token: Token = {
+    selector,
+    data: {},
+  };
 
-// Parse simple references and convert to CSS variable references
-function convertReferencesToCssVars(
-  value: string,
-  prefix: string,
-  paramPrefixes: string[]
-): string {
-  if (!isReference(value)) return value;
-  
-  const cacheKey = `${value}:${prefix}:${paramPrefixes.join(',')}`;
-  const cachedResult = referenceToCssCache.get(cacheKey);
-  if (cachedResult) {
-    return cachedResult;
-  }
-  
-  let result: string;
-  
-  // If it's a pure reference like {brand}, directly return CSS variable reference
-  if (value.match(/^\{[^}]+\}$/)) {
-    const refPath = getReferencePath(value);
-    if (refPath) {
-      result = pathToCssVar(refPath, prefix, paramPrefixes);
-      referenceToCssCache.set(cacheKey, result);
-      return result;
+  function getTokenValue(value: string): string | CacheTokenObject {
+    const reference = getReference(value);
+    if (!reference) {
+      return value;
     }
-  }
-  
-  // If it's a mixed reference like #rgba({brand}, 0.5), replace the reference parts
-  result = value.replace(/\{([^}]+)\}/g, (_, path) => {
-    return pathToCssVar(path, prefix, paramPrefixes);
-  });
-  
-  referenceToCssCache.set(cacheKey, result);
-  return result;
-}
 
-// Flatten nested token objects to a single layer structure with prefix
-function flattenTokens(
-  tokens: TokenData,
-  tokenPrefix: string,
-  cssPrefix: string,
-  paramPrefixes: string[]
-): Record<string, string> {
-  const result: Record<string, string> = {};
-  
-  function processTokens(obj: TokenData, currentPath: string) {
-    for (const key in obj) {
-      const value = obj[key];
-      const newPath = currentPath ? `${currentPath}-${key}` : key;
-      
+    const referenceKey = reference;
+    let referenceToken = referenceTokenInstance[referenceKey];
+    if (!referenceToken) {
+      referenceToken = { key: referenceKey };
+      referenceTokenInstance[referenceKey] = referenceToken;
+    }
+
+    return referenceToken;
+  }
+
+  function process(
+    prefix: string,
+    tokenData: TokenData,
+    tokenKeyPath: string[] = []
+  ) {
+    for (const key in tokenData) {
+      if (isPrivateToken(key)) {
+        continue;
+      }
+
+      const value = tokenData[key];
+
+      const currentTokenKeyPath = tokenKeyPath.concat(key);
+      const currentCacheKey = currentTokenKeyPath.join(".");
+      const currentFormattedTokenKey = `${prefix}-${currentTokenKeyPath.join(
+        "-"
+      )}`;
+
       if (isTokenValue(value)) {
-        // This is a token
-        if (isReference(value.$value)) {
-          // If the value is a reference, convert to CSS variable reference
-          result[newPath] = convertReferencesToCssVars(value.$value, cssPrefix, paramPrefixes);
-        } else {
-          // Otherwise use the value directly
-          result[newPath] = value.$value;
+        if (!value.$value) {
+          continue;
         }
-      } else if (isTokenData(value)) {
-        // This is a nested object
-        processTokens(value, newPath);
+
+        let tokenInstance = referenceTokenInstance[currentCacheKey];
+        if (!tokenInstance) {
+          tokenInstance = {
+            key: currentCacheKey,
+          };
+          referenceTokenInstance[currentCacheKey] = tokenInstance;
+        }
+
+        tokenInstance.formattedKey = currentFormattedTokenKey;
+        tokenInstance.value = getTokenValue(value.$value);
+
+        if (isReferenceToken(value.$value)) {
+          token.data[currentFormattedTokenKey] = tokenInstance;
+        } else {
+          token.data[currentFormattedTokenKey] = value.$value;
+        }
+      } else {
+        process(prefix, value, currentTokenKeyPath);
       }
     }
   }
-  
-  // Use tokenPrefix as path prefix
-  processTokens(tokens, tokenPrefix);
-  return result;
+
+  const tokenData = loadTokenFile(filePath);
+  process(`--${scope}-${prefix}`, tokenData);
+
+  return token;
 }
 
-// Generate CSS variable text with selector
-function generateCSSVariablesWithSelector(
-  tokens: Record<string, string>,
-  prefix: string,
-  selector: string
-): string {
-  let css = `${selector} {\n`;
-  
-  for (const [key, value] of Object.entries(tokens)) {
-    css += `  --${prefix}-${key}: ${value};\n`;
+function processGrayTokens(option: Option) {
+  const grayTokens: ThemeToken[] = [];
+  for (const grayFilePath of option.gray || []) {
+    const { prefix, filePath } = parseTokenProtocolFile(grayFilePath);
+
+    const token = processTokens({
+      scope: option.scope,
+      selector: ":root",
+      prefix: "gray",
+      filePath,
+    });
+
+    const grayToken: ThemeToken = {
+      name: "gray",
+      tokenSets: [],
+    };
+
+    grayToken.tokenSets.push({
+      name: prefix,
+      tokens: [token],
+    });
+
+    grayTokens.push(grayToken);
   }
-  
+
+  return grayTokens;
+}
+
+interface ThemeTokenOption {
+  dark: Token;
+  light: Token;
+  palette: Token;
+  component: Token;
+}
+function processThemeTokens(
+  option: Option,
+  { dark, light, palette, component }: ThemeTokenOption
+) {
+  const themeTokens: ThemeToken[] = [];
+  for (const themeFilePath of option.themes || []) {
+    const { prefix, filePath } = parseTokenProtocolFile(themeFilePath);
+
+    const token = processTokens({
+      scope: option.scope,
+      selector: ":root",
+      prefix: "common",
+      filePath,
+    });
+
+    const themeToken: ThemeToken = {
+      name: `theme/${prefix}`,
+      tokenSets: [],
+    };
+
+    themeToken.tokenSets.push({
+      name: "common",
+      tokens: [dark, light, token],
+    });
+
+    themeToken.tokenSets.push({
+      name: "palette",
+      tokens: [palette],
+    });
+
+    themeToken.tokenSets.push({
+      name: "component",
+      tokens: [component],
+    });
+
+    themeTokens.push(themeToken);
+  }
+
+  return themeTokens;
+}
+
+function getTokenSelectors(tokens: Token[]): Token[] {
+  const selectorTokenMap: Record<string, Token> = {};
+
+  for (const token of tokens) {
+    let currentSelector = selectorTokenMap[token.selector];
+    if (!currentSelector) {
+      currentSelector = {
+        selector: token.selector,
+        data: {},
+      };
+      selectorTokenMap[token.selector] = currentSelector;
+    }
+
+    currentSelector.data = {
+      ...currentSelector.data,
+      ...token.data,
+    };
+  }
+
+  return Object.values(selectorTokenMap);
+}
+
+function generateCSSVariablesWithSelector(token: Token): string {
+  let css = `${token.selector} {\n`;
+
+  for (const [key, item] of Object.entries(token.data)) {
+    if (typeof item === "string") {
+      css += `  ${key}: ${item};\n`;
+      continue;
+    }
+    
+    if (typeof item.value === "string") {
+      css += `  ${key}: ${item.value};\n`;
+      continue;
+    }
+
+    const reference = item.value;
+    if (!reference) {
+      console.info(chalk.redBright(`Unknown token: ${key}`));
+      continue;
+    }
+
+    css += `  ${key}: var(${reference.formattedKey});\n`;
+  }
+
   css += "}\n";
   return css;
 }
 
-// Generate and write CSS for both light and dark modes
-function generateAndWriteCssFile(
-  lightTokens: Record<string, string>,
-  darkTokens: Record<string, string>,
-  prefix: string,
-  outputPath: string,
-  lightSelector = CONFIG.selectors.light,
-  darkSelector = CONFIG.selectors.dark
-): void {
-  const lightCss = generateCSSVariablesWithSelector(lightTokens, prefix, lightSelector);
-  const darkCss = generateCSSVariablesWithSelector(darkTokens, prefix, darkSelector);
-  const combinedCss = `${lightCss}\n${darkCss}`;
-  fs.writeFileSync(outputPath, combinedCss);
+function create(themeTokens: ThemeToken[], outputFile: string, createIndexFile = true) {
+  const outputDirectory = path.resolve(process.cwd(), outputFile);
+
+  for (const themeToken of themeTokens) {
+    let indexFileContent = "";
+
+    for (const tokenSet of themeToken.tokenSets) {
+      const themeTokenFilePath = path.resolve(
+        outputDirectory,
+        `${themeToken.name}/${tokenSet.name}.css`
+      );
+      const selectorTokens = getTokenSelectors(tokenSet.tokens);
+
+      const themeTokenFileContent = selectorTokens.reduce(
+        (acc, selectorToken) => {
+          acc.push(generateCSSVariablesWithSelector(selectorToken));
+          return acc;
+        },
+        [] as string[]
+      );
+
+      createFile(themeTokenFilePath, themeTokenFileContent.join("\n\n"));
+
+      indexFileContent += `@import "./${tokenSet.name}.css";\n`
+    }
+
+    const indexFilePath = path.resolve(outputDirectory, `${themeToken.name}/index.css`);
+    createIndexFile && createFile(indexFilePath, indexFileContent);
+  }
 }
 
-// Read JSON file
-function loadTokenFile(filePath: string, isRequired = true): TokenData {
-  try {
-    if (!fs.existsSync(filePath)) {
-      if (isRequired) {
-        handleError(`File not found: ${filePath}`);
-      }
-      return {};
-    }
-    
-    const content = fs.readFileSync(filePath, 'utf-8');
-    return JSON.parse(content);
-  } catch (error) {
-    handleError(`Error loading token file ${filePath}: ${error}`, isRequired);
-    return {};
-  }
-}
+export function token(option: Option) {
+  clearReferenceTokenInstance();
 
-// Extract theme name and file from parameter format "themeName:filePath.json"
-function parseThemeParam(param: string): { name: string, file: string } | null {
-  const parts = param.split(':');
-  if (parts.length === 2) {
-    return {
-      name: parts[0],
-      file: parts[1]
-    };
-  }
-  return null;
-}
+  const dark = processTokens({
+    scope: option.scope,
+    selector: ":root[data-theme=\"dark\"]",
+    prefix: "common",
+    filePath: option.dark,
+  });
 
-// Process a token category (palette, component, gray, theme)
-function processTokenCategory(
-  tokens: TokenData,
-  prefix: string,
-  paramPrefix: string,
-  paramPrefixes: string[],
-  themeDir: string,
-  filename: string,
-  prefixKey = true
-): void {
-  // Calculate once to avoid duplicate processing
-  const flatTokens = flattenTokens(tokens, '', prefix, paramPrefixes);
-  
-  const lightVars: Record<string, string> = {};
-  const darkVars: Record<string, string> = {};
-  
-  // Process variables based on whether they need prefixed keys
-  for (const [key, value] of Object.entries(flatTokens)) {
-    const varKey = prefixKey ? `${paramPrefix}-${key}` : key;
-    lightVars[varKey] = value;
-    darkVars[varKey] = value;
-  }
-  
-  // Generate and write CSS file
-  generateAndWriteCssFile(
-    lightVars,
-    darkVars,
-    prefix,
-    path.join(themeDir, filename)
-  );
-}
+  const light = processTokens({
+    scope: option.scope,
+    selector: ":root",
+    prefix: "common",
+    filePath: option.light,
+  });
 
-// Main function
-export async function token(options: TokenOptions) {
-  const { prefix, output, component, palette, light, dark, gray = [], themes = [] } = options;
-  
-  // Ensure output directory exists
-  if (!fs.existsSync(output)) {
-    fs.mkdirSync(output, { recursive: true });
-  }
-  
-  // Track all parameter prefixes for dynamic reference resolution
-  const paramPrefixes = [...CONFIG.baseCategories];
-  
-  // Load shared files
-  const componentTokens = loadTokenFile(component);
-  const paletteTokens = loadTokenFile(palette);
-  const lightThemeTokens = loadTokenFile(light);
-  const darkThemeTokens = loadTokenFile(dark);
-  const grayTokens = gray.length ? loadTokenFile(gray[0]) : {};
-  
-  // Extract theme information from theme parameters (format: themeName:filePath.json)
-  const themeFiles: {name: string, file: string}[] = [];
-  const invalidParams: string[] = [];
-  
-  for (const themeParam of themes) {
-    const result = parseThemeParam(themeParam);
-    
-    if (result) {
-      // Check if file exists
-      if (!fs.existsSync(result.file)) {
-        handleError(`Theme file not found: ${result.file}`);
-      }
-      
-      themeFiles.push(result);
-      // Add theme name to paramPrefixes for dynamic reference resolution
-      paramPrefixes.push(result.name);
-    } else {
-      invalidParams.push(themeParam);
-    }
-  }
-  
-  // Check if there are invalid theme parameters
-  if (invalidParams.length > 0) {
-    handleError('Invalid theme parameter format detected. The following parameters are invalid:');
-    for (const param of invalidParams) {
-      handleError(`  - ${param}`, false);
-    }
-    handleError('The correct format is "themeName:filePath.json", for example: "blue:brand.blue.tokens.json"');
-  }
-  
-  // Process each theme
-  for (const theme of themeFiles) {
-    // Load theme file
-    const themeTokens = loadTokenFile(theme.file);
-    
-    // Create directory for each theme
-    const themeDir = path.join(output, theme.name);
-    if (!fs.existsSync(themeDir)) {
-      fs.mkdirSync(themeDir, { recursive: true });
-    }
-    
-    // Process standard categories
-    processTokenCategory(
-      paletteTokens, 
-      prefix, 
-      'palette', 
-      paramPrefixes, 
-      themeDir, 
-      CONFIG.outputFiles.palette
-    );
-    
-    processTokenCategory(
-      componentTokens, 
-      prefix, 
-      'component', 
-      paramPrefixes, 
-      themeDir, 
-      CONFIG.outputFiles.component
-    );
-    
-    processTokenCategory(
-      grayTokens, 
-      prefix, 
-      'gray', 
-      paramPrefixes, 
-      themeDir, 
-      CONFIG.outputFiles.gray
-    );
-    
-    // Process special theme category (includes light/dark/custom theme handling)
-    // 4. Theme related variables
-    const lightThemeVars = flattenTokens(lightThemeTokens, '', prefix, paramPrefixes);
-    const darkThemeVars = flattenTokens(darkThemeTokens, '', prefix, paramPrefixes);
-    const customThemeVars = flattenTokens(themeTokens, '', prefix, paramPrefixes);
-    
-    const combinedLightVars: Record<string, string> = {};
-    const combinedDarkVars: Record<string, string> = {};
-    
-    // Add custom theme variables
-    for (const [key, value] of Object.entries(customThemeVars)) {
-      combinedLightVars[key] = value;
-      combinedDarkVars[key] = value;
-    }
-    
-    // Add light theme variables
-    for (const [key, value] of Object.entries(lightThemeVars)) {
-      combinedLightVars[`light-${key}`] = value;
-    }
-    
-    // Add dark theme variables
-    for (const [key, value] of Object.entries(darkThemeVars)) {
-      combinedDarkVars[`dark-${key}`] = value;
-    }
-    
-    // Generate and write theme CSS
-    generateAndWriteCssFile(
-      combinedLightVars,
-      combinedDarkVars,
-      prefix,
-      path.join(themeDir, CONFIG.outputFiles.theme)
-    );
-    
-    // 5. Create a main file that imports all CSS files
-    const indexCss = `@import './${CONFIG.outputFiles.palette}';
-@import './${CONFIG.outputFiles.component}';
-@import './${CONFIG.outputFiles.gray}';
-@import './${CONFIG.outputFiles.theme}';
-`;
-    fs.writeFileSync(path.join(themeDir, CONFIG.outputFiles.index), indexCss);
-  }
+  const palette = processTokens({
+    scope: option.scope,
+    selector: ":root",
+    prefix: "palette",
+    filePath: option.palette,
+  });
+
+  const component = processTokens({
+    scope: option.scope,
+    selector: ":root",
+    prefix: "component",
+    filePath: option.component,
+  });
+
+  const grayTokens = processGrayTokens(option);
+  const themeTokens = processThemeTokens(option, {
+    dark,
+    light,
+    palette,
+    component,
+  });
+
+  create(themeTokens, option.output);
+  create(grayTokens, option.output, false);
 }

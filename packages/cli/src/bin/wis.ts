@@ -35,7 +35,7 @@ cli
   .requiredOption("--palette <file>", "Palette theme token file")
   .requiredOption("--gray <files...>", "Gray theme token file")
   .requiredOption("-t, --themes <files...>", "Theme JSON file paths")
-  .option("-p, --prefix <prefix>", "CSS variable prefix", "wis")
+  .option("-s, --scope <scope>", "CSS variable prefix", "wis")
   .option("-o, --output <dir>", "Output directory", "./dist")
   .action(token);
 
