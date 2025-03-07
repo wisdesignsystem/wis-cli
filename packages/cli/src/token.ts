@@ -24,7 +24,7 @@ interface CacheTokenObject {
 
 interface Token {
   selector: string;
-  data: Record<FormattedTokenKey, CacheTokenObject>;
+  data: Record<FormattedTokenKey, string | CacheTokenObject>;
 }
 
 interface TokenValue {
@@ -62,6 +62,10 @@ function isTokenProtocolFile(file: string) {
 
 function isPrivateToken(key: string) {
   return key.startsWith("_");
+}
+
+function isReferenceToken(value: string) {
+  return value.startsWith("{") && value.endsWith("}");
 }
 
 function createFile(filePath: string, fileContent: string) {
@@ -116,9 +120,9 @@ interface ProcessTokenOption {
   filePath: string;
 }
 
-let cacheTokenInstance: Record<TokenKey, CacheTokenObject> = {};
-function clearCacheTokenInstance() {
-  cacheTokenInstance = {};
+let referenceTokenInstance: Record<TokenKey, CacheTokenObject> = {};
+function clearReferenceTokenInstance() {
+  referenceTokenInstance = {};
 }
 
 function processTokens({
@@ -138,13 +142,14 @@ function processTokens({
       return value;
     }
 
-    let referenceTokenInstance = cacheTokenInstance[reference];
-    if (!referenceTokenInstance) {
-      referenceTokenInstance = { key: reference };
-      cacheTokenInstance[reference] = referenceTokenInstance;
+    const referenceKey = reference;
+    let referenceToken = referenceTokenInstance[referenceKey];
+    if (!referenceToken) {
+      referenceToken = { key: referenceKey };
+      referenceTokenInstance[referenceKey] = referenceToken;
     }
 
-    return referenceTokenInstance;
+    return referenceToken;
   }
 
   function process(
@@ -170,18 +175,22 @@ function processTokens({
           continue;
         }
 
-        let tokenInstance = cacheTokenInstance[currentCacheKey];
+        let tokenInstance = referenceTokenInstance[currentCacheKey];
         if (!tokenInstance) {
           tokenInstance = {
             key: currentCacheKey,
           };
-          cacheTokenInstance[currentCacheKey] = tokenInstance;
+          referenceTokenInstance[currentCacheKey] = tokenInstance;
         }
 
         tokenInstance.formattedKey = currentFormattedTokenKey;
         tokenInstance.value = getTokenValue(value.$value);
 
-        token.data[currentFormattedTokenKey] = tokenInstance;
+        if (isReferenceToken(value.$value)) {
+          token.data[currentFormattedTokenKey] = tokenInstance;
+        } else {
+          token.data[currentFormattedTokenKey] = value.$value;
+        }
       } else {
         process(prefix, value, currentTokenKeyPath);
       }
@@ -194,27 +203,32 @@ function processTokens({
   return token;
 }
 
-function processGrayToken(option: Option) {
-  const grays: Token[] = [];
+function processGrayTokens(option: Option) {
+  const grayTokens: ThemeToken[] = [];
   for (const grayFilePath of option.gray || []) {
     const { prefix, filePath } = parseTokenProtocolFile(grayFilePath);
 
-    let selector = `:root[data-theme-gray="${prefix}"]`;
-    if (prefix === "default") {
-      selector = ":root"
-    }
-
     const token = processTokens({
       scope: option.scope,
-      selector,
+      selector: ":root",
       prefix: "gray",
       filePath,
     });
 
-    grays.push(token);
+    const grayToken: ThemeToken = {
+      name: "gray",
+      tokenSets: [],
+    };
+
+    grayToken.tokenSets.push({
+      name: prefix,
+      tokens: [token],
+    });
+
+    grayTokens.push(grayToken);
   }
 
-  return grays;
+  return grayTokens;
 }
 
 interface ThemeTokenOption {
@@ -222,11 +236,10 @@ interface ThemeTokenOption {
   light: Token;
   palette: Token;
   component: Token;
-  grays: Token[];
 }
-function processThemeToken(
+function processThemeTokens(
   option: Option,
-  { dark, light, palette, component, grays }: ThemeTokenOption
+  { dark, light, palette, component }: ThemeTokenOption
 ) {
   const themeTokens: ThemeToken[] = [];
   for (const themeFilePath of option.themes || []) {
@@ -240,7 +253,7 @@ function processThemeToken(
     });
 
     const themeToken: ThemeToken = {
-      name: prefix,
+      name: `theme/${prefix}`,
       tokenSets: [],
     };
 
@@ -257,11 +270,6 @@ function processThemeToken(
     themeToken.tokenSets.push({
       name: "component",
       tokens: [component],
-    });
-
-    themeToken.tokenSets.push({
-      name: "gray",
-      tokens: grays,
     });
 
     themeTokens.push(themeToken);
@@ -296,6 +304,11 @@ function generateCSSVariablesWithSelector(token: Token): string {
   let css = `${token.selector} {\n`;
 
   for (const [key, item] of Object.entries(token.data)) {
+    if (typeof item === "string") {
+      css += `  ${key}: ${item};\n`;
+      continue;
+    }
+    
     if (typeof item.value === "string") {
       css += `  ${key}: ${item.value};\n`;
       continue;
@@ -314,10 +327,12 @@ function generateCSSVariablesWithSelector(token: Token): string {
   return css;
 }
 
-function create(themeTokens: ThemeToken[], outputFile: string) {
+function create(themeTokens: ThemeToken[], outputFile: string, createIndexFile = true) {
   const outputDirectory = path.resolve(process.cwd(), outputFile);
 
   for (const themeToken of themeTokens) {
+    let indexFileContent = "";
+
     for (const tokenSet of themeToken.tokenSets) {
       const themeTokenFilePath = path.resolve(
         outputDirectory,
@@ -334,17 +349,17 @@ function create(themeTokens: ThemeToken[], outputFile: string) {
       );
 
       createFile(themeTokenFilePath, themeTokenFileContent.join("\n\n"));
-    }
-  }
 
-  createFile(
-    path.resolve(outputDirectory, "data.json"),
-    JSON.stringify(themeTokens, null, 2)
-  );
+      indexFileContent += `@import "./${tokenSet.name}.css";\n`
+    }
+
+    const indexFilePath = path.resolve(outputDirectory, `${themeToken.name}/index.css`);
+    createIndexFile && createFile(indexFilePath, indexFileContent);
+  }
 }
 
 export function token(option: Option) {
-  clearCacheTokenInstance();
+  clearReferenceTokenInstance();
 
   const dark = processTokens({
     scope: option.scope,
@@ -374,14 +389,14 @@ export function token(option: Option) {
     filePath: option.component,
   });
 
-  const grays = processGrayToken(option);
-  const themeTokens = processThemeToken(option, {
+  const grayTokens = processGrayTokens(option);
+  const themeTokens = processThemeTokens(option, {
     dark,
     light,
     palette,
     component,
-    grays,
   });
 
   create(themeTokens, option.output);
+  create(grayTokens, option.output, false);
 }
