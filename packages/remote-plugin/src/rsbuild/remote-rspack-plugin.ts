@@ -26,7 +26,7 @@ export class RemoteRspackPlugin {
       shared: shared(this.context),
       getPublicPath: `return "${process.env.PUBLIC_PATH}"`,
       manifest: {
-        fileName: "manifest.json",
+        fileName: "mf-manifest.json",
       },
       shareStrategy: "loaded-first",
       runtimePlugins: [
