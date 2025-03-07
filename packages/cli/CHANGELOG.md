@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.29
+
+### Patch Changes
+
+- [#42](https://github.com/wisdesignsystem/wis-cli/pull/42) [`e8a281e`](https://github.com/wisdesignsystem/wis-cli/commit/e8a281e58412925039bb154f812f82a6208cfb90) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] create the token generator tool
+
 ## 0.0.28
 
 ### Patch Changes
