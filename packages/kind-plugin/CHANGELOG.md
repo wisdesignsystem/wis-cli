@@ -1,5 +1,11 @@
 # @wisdesign/kind-plugin
 
+## 0.0.3
+
+### Patch Changes
+
+- [#47](https://github.com/wisdesignsystem/wis-cli/pull/47) [`fc8b091`](https://github.com/wisdesignsystem/wis-cli/commit/fc8b09123821b1fd3bd4ca932798767bd66d2a56) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] add the none export
+
 ## 0.0.2
 
 ### Patch Changes
