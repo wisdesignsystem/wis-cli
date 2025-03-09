@@ -1,6 +1,6 @@
 import type { FederationRuntimePlugin } from "@module-federation/enhanced/runtime";
 
-import { getLangKind, getThemeKind } from "./kind.js";
+import { getKinds } from "./kind.js";
 
 type RuntimePlugin = () => FederationRuntimePlugin;
 
@@ -9,34 +9,46 @@ interface RemoteModule {
   moduleName: string;
 }
 
-function matchModule({
-  modules,
-  kind,
-  moduleExpose,
-}: {
-  modules: RemoteModule[];
-  kind?: string;
-  moduleExpose: string;
-}) {
-  if (!kind) {
-    return;
+function isMatchModule(moduleExpose: string, module: RemoteModule) {
+  if (!module.modulePath.startsWith(moduleExpose)) {
+    return false;
   }
 
-  const kindModuleExpose = `${moduleExpose}/${kind}`;
+  const replacedPath = module.modulePath.slice(moduleExpose.length);
+  return replacedPath.startsWith("/");
+}
+
+function isMatchModuleIn(moduleExpose: string, module: RemoteModule) {
+  if (!module.modulePath.startsWith(moduleExpose)) {
+    return false;
+  }
+
+  const replacedPath = module.modulePath.slice(moduleExpose.length);
+  return replacedPath === "" || replacedPath.startsWith("/");
+}
+
+function isKindModule(moduleExpose: string, modules: RemoteModule[]) {
+  return modules.some((mod) => isMatchModule(moduleExpose, mod));
+}
+
+function matchKindModule(moduleExpose: string, modules: RemoteModule[], kinds: string[]) {
+  let kindModuleExpose = "";
   const isMatched = modules.some((mod) => {
-    if (!mod.modulePath.startsWith(kindModuleExpose)) {
+    return kinds.some((kind) => {
+      kindModuleExpose = `${moduleExpose}/${kind}`;
+      if (isMatchModuleIn(kindModuleExpose, mod)) {
+        return true;
+      }
+
       return false;
-    }
+    })
+  })
 
-    const replacedPath = mod.modulePath.slice(kindModuleExpose.length);
-    return replacedPath === "" || replacedPath.startsWith("/");
-  });
-
-  if (isMatched) {
-    return kindModuleExpose;
+  if (!isMatched) {
+    return "./$none";
   }
 
-  return;
+  return kindModuleExpose;
 }
 
 const kindPlugin: RuntimePlugin = () => {
@@ -46,29 +58,19 @@ const kindPlugin: RuntimePlugin = () => {
       // @ts-ignore
       const modules: RemoteModule[] = data.remoteSnapshot?.modules || [];
 
-      const themeKind = getThemeKind();
-      let moduleKindExpose = matchModule({
-        modules,
-        kind: themeKind,
-        moduleExpose: data.expose,
-      });
-
-      if (!moduleKindExpose) {
-        const langKind = getLangKind();
-        moduleKindExpose = matchModule({
-          modules,
-          kind: langKind,
-          moduleExpose: data.expose,
-        });
+      if (!isKindModule(data.expose, modules)) {
+        return data;
       }
 
-      if (!moduleKindExpose) {
-        moduleKindExpose = data.expose;
+      const kinds = getKinds();
+      if (!kinds.length) {
+        return data;
       }
 
+      const moduleKindExpose = matchKindModule(data.expose, modules, kinds);
       data.expose = moduleKindExpose;
 
-      return data;
+      return data
     },
   };
 };
