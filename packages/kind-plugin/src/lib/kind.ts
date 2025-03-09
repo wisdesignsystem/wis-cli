@@ -1,9 +1,9 @@
-export function getThemeKind() {
+export function getKinds() {
   // @ts-ignore
-  return document.documentElement.getAttribute("data-kind-theme");
-}
+  const kind = document.documentElement.getAttribute("data-kind");
+  if (!kind) {
+    return;
+  }
 
-export function getLangKind() {
-  // @ts-ignore
-  return document.documentElement.getAttribute("data-kind-lang");
+  return kind.split(",").filter(Boolean);
 }
