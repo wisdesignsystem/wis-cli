@@ -131,6 +131,28 @@ function processTokens({
   prefix,
   filePath,
 }: ProcessTokenOption): Token {
+  const tokenData = loadTokenFile(filePath);
+
+  return processTokensByData({
+    scope,
+    selector,
+    prefix,
+    tokenData,
+  })
+}
+
+interface ProcessTokensByDataOption {
+  scope: string;
+  selector: string;
+  prefix: string;
+  tokenData: TokenData;
+}
+function processTokensByData({
+  scope,
+  selector,
+  prefix,
+  tokenData,
+}: ProcessTokensByDataOption) {
   const token: Token = {
     selector,
     data: {},
@@ -191,16 +213,51 @@ function processTokens({
         } else {
           token.data[currentFormattedTokenKey] = value.$value;
         }
-      } else {
+      } else if (typeof value === 'object') {
         process(prefix, value, currentTokenKeyPath);
       }
     }
   }
 
-  const tokenData = loadTokenFile(filePath);
   process(`--${scope}-${prefix}`, tokenData);
 
   return token;
+}
+
+function processComponentTokens(option: Option) {
+  const componentTokenSets: TokenSet[] = [];
+
+  const componentGroupTokenData = loadTokenFile(option.component);
+  for (const groupName in componentGroupTokenData) {
+    if (isPrivateToken(groupName)) {
+      continue;
+    }
+
+    const componentTokenData = componentGroupTokenData[groupName] as TokenData;
+    for (const componentName in componentTokenData) {
+      if (isPrivateToken(componentName)) {
+        continue;
+      }
+
+      const token = processTokensByData({
+        scope: option.scope,
+        selector: ':root',
+        prefix: groupName,
+        tokenData: {
+          [componentName]: componentTokenData[componentName],
+        },
+      })
+
+      const componentTokenSet: TokenSet = {
+        name: componentName,
+        tokens: [token],
+      }
+
+      componentTokenSets.push(componentTokenSet);
+    }
+  }
+
+  return componentTokenSets;
 }
 
 function processGrayTokens(option: Option) {
@@ -216,12 +273,12 @@ function processGrayTokens(option: Option) {
     });
 
     const grayToken: ThemeToken = {
-      name: "gray",
+      name: `gray/${prefix}`,
       tokenSets: [],
     };
 
     grayToken.tokenSets.push({
-      name: prefix,
+      name: "token",
       tokens: [token],
     });
 
@@ -235,11 +292,11 @@ interface ThemeTokenOption {
   dark: Token;
   light: Token;
   palette: Token;
-  component: Token;
+  componentSets: TokenSet[];
 }
 function processThemeTokens(
   option: Option,
-  { dark, light, palette, component }: ThemeTokenOption
+  { dark, light, palette, componentSets }: ThemeTokenOption
 ) {
   const themeTokens: ThemeToken[] = [];
   for (const themeFilePath of option.themes || []) {
@@ -267,10 +324,7 @@ function processThemeTokens(
       tokens: [palette],
     });
 
-    themeToken.tokenSets.push({
-      name: "component",
-      tokens: [component],
-    });
+    themeToken.tokenSets.push(...componentSets);
 
     themeTokens.push(themeToken);
   }
@@ -327,7 +381,7 @@ function generateCSSVariablesWithSelector(token: Token): string {
   return css;
 }
 
-function create(themeTokens: ThemeToken[], outputFile: string, createIndexFile = true) {
+function create(themeTokens: ThemeToken[], outputFile: string) {
   const outputDirectory = path.resolve(process.cwd(), outputFile);
 
   for (const themeToken of themeTokens) {
@@ -353,8 +407,11 @@ function create(themeTokens: ThemeToken[], outputFile: string, createIndexFile =
       indexFileContent += `@import "./${tokenSet.name}.css";\n`
     }
 
-    const indexFilePath = path.resolve(outputDirectory, `${themeToken.name}/index.css`);
-    createIndexFile && createFile(indexFilePath, indexFileContent);
+    const indexStyleFilePath = path.resolve(outputDirectory, `${themeToken.name}/index.css`);
+    createFile(indexStyleFilePath, indexFileContent);
+
+    const indexFilePath = path.resolve(outputDirectory, `${themeToken.name}/index.ts`);
+    createFile(indexFilePath, 'import "./index.css"');
   }
 }
 
@@ -382,21 +439,15 @@ export function token(option: Option) {
     filePath: option.palette,
   });
 
-  const component = processTokens({
-    scope: option.scope,
-    selector: ":root",
-    prefix: "component",
-    filePath: option.component,
-  });
-
+  const componentSets = processComponentTokens(option);
   const grayTokens = processGrayTokens(option);
   const themeTokens = processThemeTokens(option, {
     dark,
     light,
     palette,
-    component,
+    componentSets,
   });
 
   create(themeTokens, option.output);
-  create(grayTokens, option.output, false);
+  create(grayTokens, option.output);
 }
