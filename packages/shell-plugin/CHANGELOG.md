@@ -1,5 +1,11 @@
 # @wisdesign/shell-plugin
 
+## 0.0.4
+
+### Patch Changes
+
+- [#52](https://github.com/wisdesignsystem/wis-cli/pull/52) [`5db50ed`](https://github.com/wisdesignsystem/wis-cli/commit/5db50ed44e214ac09d719bb819f73922f06eaad2) Thanks [@FaureWu](https://github.com/FaureWu)! - [Chore] upgrade the dependencies version
+
 ## 0.0.3
 
 ### Patch Changes

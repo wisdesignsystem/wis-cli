@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.31
+
+### Patch Changes
+
+- [#52](https://github.com/wisdesignsystem/wis-cli/pull/52) [`5db50ed`](https://github.com/wisdesignsystem/wis-cli/commit/5db50ed44e214ac09d719bb819f73922f06eaad2) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] suit the react 19
+
 ## 0.0.30
 
 ### Patch Changes
