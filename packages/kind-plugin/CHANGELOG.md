@@ -1,5 +1,13 @@
 # @wisdesign/kind-plugin
 
+## 0.0.4
+
+### Patch Changes
+
+- [#49](https://github.com/wisdesignsystem/wis-cli/pull/49) [`13a27cd`](https://github.com/wisdesignsystem/wis-cli/commit/13a27cd97878811ef5cad3bdc95dce9b2affc449) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] make the kind plugin to common tool
+
+- [#51](https://github.com/wisdesignsystem/wis-cli/pull/51) [`4765bfe`](https://github.com/wisdesignsystem/wis-cli/commit/4765bfefe9a63aa62435edab78e3bc7f58959bf0) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] change the kind plugin to support pattern match
+
 ## 0.0.3
 
 ### Patch Changes

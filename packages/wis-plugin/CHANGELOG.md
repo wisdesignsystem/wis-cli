@@ -1,5 +1,12 @@
 # @wisdesign/wis-plugin
 
+## 0.0.5
+
+### Patch Changes
+
+- Updated dependencies [[`13a27cd`](https://github.com/wisdesignsystem/wis-cli/commit/13a27cd97878811ef5cad3bdc95dce9b2affc449), [`4765bfe`](https://github.com/wisdesignsystem/wis-cli/commit/4765bfefe9a63aa62435edab78e3bc7f58959bf0)]:
+  - @wisdesign/kind-plugin@0.0.4
+
 ## 0.0.4
 
 ### Patch Changes

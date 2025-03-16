@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.30
+
+### Patch Changes
+
+- [#51](https://github.com/wisdesignsystem/wis-cli/pull/51) [`4765bfe`](https://github.com/wisdesignsystem/wis-cli/commit/4765bfefe9a63aa62435edab78e3bc7f58959bf0) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] change the token generator file struct
+
 ## 0.0.29
 
 ### Patch Changes
