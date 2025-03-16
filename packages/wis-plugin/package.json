@@ -33,7 +33,7 @@
     "@wisdesign/context": "workspace:*"
   },
   "peerDependencies": {
-    "@rsbuild/core": "~1"
+    "@rsbuild/core": ">=1"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
