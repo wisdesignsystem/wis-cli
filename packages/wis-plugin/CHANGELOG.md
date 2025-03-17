@@ -1,5 +1,14 @@
 # @wisdesign/wis-plugin
 
+## 0.0.7
+
+### Patch Changes
+
+- [#57](https://github.com/wisdesignsystem/wis-cli/pull/57) [`15f3d23`](https://github.com/wisdesignsystem/wis-cli/commit/15f3d2374b349a3f76e5a79874b60e3b5f488aac) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] change the host to 127.0.0.1
+
+- Updated dependencies [[`9404a89`](https://github.com/wisdesignsystem/wis-cli/commit/9404a8966ed64a63d385b1804b1bd04ee411441b)]:
+  - @wisdesign/shell-plugin@0.0.5
+
 ## 0.0.6
 
 ### Patch Changes
