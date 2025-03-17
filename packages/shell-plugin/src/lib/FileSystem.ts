@@ -31,12 +31,16 @@ export class FileSystem {
   start() {
     this.stop();
 
-    addTemplate(this.context, "App.tsx.hbr", {
+    addTemplate(this.context, "useApplication.ts.hbr", {
       browserRouter: this.context.config.browserRouter,
       remotes: Object.keys(this.context.config.remotes),
     });
 
-    addTemplate(this.context, "Root.tsx.hbr", {});
+    addTemplate(this.context, "Root.tsx.hbr", {
+      browserRouter: this.context.config.browserRouter,
+    });
+
+    addTemplate(this.context, "Error.tsx.hbr", {});
 
     const bootstrapTemplate = this.context.template.get("bootstrap.tsx");
     if (bootstrapTemplate) {

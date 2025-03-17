@@ -1,10 +1,38 @@
+import {
+  RouterProvider,
+{{#if browserRouter }}
+  createBrowserRouter as createRouter,
+{{else}}
+  createHashRouter as createRouter,
+{{/if}}
+} from "wiscore/router";
+
 import { Layout } from "./layouts/Index";
-import { App } from "./App";
+import { useApplication } from "./useApplication";
+
+{{#if browserRouter }}
+// @ts-ignore
+window.$__wis_router__ = "browserRouter";
+{{else}}
+// @ts-ignore
+window.$__wis_router__ = "hashRouter";
+{{/if}}
 
 export default function Root() {
+  const { routes, basename, ready } = useApplication()
+
+  if (!ready) {
+    return null
+  }
+
+  const rootRoutes = [
+    {
+      Component: Layout,
+      children: routes,
+    }
+  ]
+
   return (
-    <Layout>
-      <App />
-    </Layout>
+    <RouterProvider router={createRouter(rootRoutes, { basename })} />
   )
 }

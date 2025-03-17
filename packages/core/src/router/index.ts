@@ -8,7 +8,7 @@ export { useRouterChange, useNavigate, useRedirect };
 export const useParams = ReactRouter.useParams;
 export const useSearchParams = ReactRouter.useSearchParams;
 
-export const BrowserRouter = ReactRouter.BrowserRouter;
-export const HashRouter = ReactRouter.HashRouter;
-export const Routes = ReactRouter.Routes;
-export const Route = ReactRouter.Route;
+export const createBrowserRouter = ReactRouter.createBrowserRouter;
+export const createHashRouter = ReactRouter.createHashRouter;
+export const RouterProvider = ReactRouter.RouterProvider;
+export const Outlet = ReactRouter.Outlet;

@@ -79,6 +79,7 @@ export class LayoutFileParser extends FileParser {
           .toString(),
       },
       data: {
+        componentName: fileMeta.component.name,
         importName: fileMeta.component.importName,
         importPath: fileMeta.component.importPath,
       },
