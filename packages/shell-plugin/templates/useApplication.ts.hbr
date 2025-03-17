@@ -1,11 +1,10 @@
-import { lazy } from "react";
 import type { ComponentType } from "react";
 import { useState, useEffect } from "react";
 import { useRouterChange } from "wiscore/router";
 import { remote } from "wiscore/runtime";
 
 import { hasLayout } from "./layouts/Index";
-import { Application as DefaultApplication } from "./pages/Index";
+import { routes as defaultRoutes } from "./pages/index";
 
 // @ts-ignore
 window.$__wis_app__ = [
@@ -29,8 +28,13 @@ function getRouteParts(): string[] {
   return pathname.split("/").filter(Boolean);
 }
 
-function useApplication() {
-  const [Application, setApplication] = useState<ComponentType<Record<string, unknown>>>();
+interface Route {
+  path: string;
+  Component: ComponentType<Record<string, unknown>>;
+}
+
+export function useApplication() {
+  const [routes, setRoutes] = useState<Route[]>();
   const [ready, setReady] = useState(false);
   const [basename, setBasename] = useState("/");
 
@@ -51,21 +55,21 @@ function useApplication() {
 
     const basename = [layout, app].filter(Boolean).join("/");
     if (basename) {
-      setBasename(basename);
+      setBasename(basename.startsWith("/") ? basename : `/${basename}`);
     }
 
     if (app) {
-      setApplication(lazy(() => remote(`${app}/$application`).then((mod) => {
-        // @ts-ignore
-        return { default: mod.Application }
-      })));
+      const { routes } = await remote(`${app}/$application`);
+      setRoutes(routes);
+    } else {
+      setRoutes(defaultRoutes);
     }
 
     setReady(true);
   }
 
   function reset() {
-    setApplication(undefined);
+    setRoutes(undefined);
     setReady(false);
     setBasename("/");
   }
@@ -81,19 +85,5 @@ function useApplication() {
     }
   }, [ready]);
 
-  return { Application, basename, ready };
-}
-
-export function App() {
-  const { Application, basename, ready } = useApplication()
-
-  if (!ready) {
-    return null;
-  }
-
-  if (!Application) {
-    return <DefaultApplication basename={basename} />
-  }
-
-  return <Application basename={basename} />
+  return { routes, basename, ready };
 }

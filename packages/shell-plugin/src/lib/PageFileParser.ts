@@ -27,7 +27,7 @@ export class PageFileParser extends FileParser {
   }
 
   getRootPath() {
-    return path.resolve(this.context.path.compiler, "pages/Index.tsx");
+    return path.resolve(this.context.path.compiler, "pages/index.ts");
   }
 
   getName(filePath: string) {
