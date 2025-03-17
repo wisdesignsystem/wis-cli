@@ -15,7 +15,7 @@
 <div align="center">
   <a href="https://www.npmjs.com/package/@wisdesign/cli"><img alt="wis cli" src="https://img.shields.io/badge/@wisdesign/cli-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/@wisdesign/cli.svg?style=flat-square&labelColor=4f46e5"></a>
   <a href="https://www.npmjs.com/package/wiscore"><img alt="wis cli" src="https://img.shields.io/badge/wiscore-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/wiscore.svg?style=flat-square&labelColor=4f46e5"></a>
-  <a href="https://www.npmjs.com/package/wiscore"><img alt="wis cli" src="https://img.shields.io/badge/@wisdesign/wis%20plugin-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/wiscore.svg?style=flat-square&labelColor=4f46e5"></a>
+  <a href="https://www.npmjs.com/package/@wisdesign/wis-plugin"><img alt="wis cli" src="https://img.shields.io/badge/@wisdesign/wis%20plugin-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/wiscore.svg?style=flat-square&labelColor=4f46e5"></a>
 </div>
 
 ## Introduction
