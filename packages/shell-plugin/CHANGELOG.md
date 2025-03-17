@@ -1,5 +1,11 @@
 # @wisdesign/shell-plugin
 
+## 0.0.5
+
+### Patch Changes
+
+- [#55](https://github.com/wisdesignsystem/wis-cli/pull/55) [`9404a89`](https://github.com/wisdesignsystem/wis-cli/commit/9404a8966ed64a63d385b1804b1bd04ee411441b) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] The routing API supports being called in the layout.
+
 ## 0.0.4
 
 ### Patch Changes
