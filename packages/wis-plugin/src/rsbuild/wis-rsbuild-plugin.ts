@@ -28,7 +28,7 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
         injectRemotePublicPath({
           https: !!config.server?.https,
           port: config.server?.port || 3000,
-          host: config.server?.host || "0.0.0.0",
+          host: config.server?.host || "127.0.0.1",
           homepage: process.env.BASE_URL || "/",
         });
 
