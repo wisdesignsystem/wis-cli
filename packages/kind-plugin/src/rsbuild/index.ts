@@ -1,3 +1,3 @@
-import { kindRsbuildPlugin } from "./kind-rsbuild-plugin.js";
+import { pluginKind } from "./pluginKind.js";
 
-export { kindRsbuildPlugin };
+export { pluginKind };

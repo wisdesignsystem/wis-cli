@@ -3,18 +3,18 @@ import fs from "node:fs";
 import path from "node:path";
 import type { RsbuildPlugin } from "@rsbuild/core";
 import { Context } from "@wisdesign/context";
-import { crossRsbuildPlugin } from "@wisdesign/cross-plugin/rsbuild";
-import { kindRsbuildPlugin } from "@wisdesign/kind-plugin/rsbuild";
-import { remoteRsbuildPlugin } from "@wisdesign/remote-plugin/rsbuild";
-import { shellRsbuildPlugin } from "@wisdesign/shell-plugin/rsbuild";
+import { pluginCross } from "@wisdesign/cross-plugin/rsbuild";
+import { pluginKind } from "@wisdesign/kind-plugin/rsbuild";
+import { pluginRemote } from "@wisdesign/remote-plugin/rsbuild";
+import { pluginShell } from "@wisdesign/shell-plugin/rsbuild";
 
 import { injectRemotePublicPath } from "./publicPath.js";
 
-export function wisRsbuildPlugin(): RsbuildPlugin[] {
+export function pluginWis(): RsbuildPlugin[] {
   const context = new Context();
 
   const plugin: RsbuildPlugin = {
-    name: "wisRsbuildPlugin",
+    name: "pluginWis",
     setup(api) {
       context.reset();
 
@@ -89,9 +89,9 @@ export function wisRsbuildPlugin(): RsbuildPlugin[] {
 
   return [
     plugin,
-    remoteRsbuildPlugin(context),
-    crossRsbuildPlugin(context),
-    kindRsbuildPlugin(context),
-    shellRsbuildPlugin(context),
+    pluginRemote(context),
+    pluginCross(context),
+    pluginKind(context),
+    pluginShell(context),
   ];
 }
