@@ -1,5 +1,11 @@
 # @wisdesign/shell-plugin
 
+## 0.0.6
+
+### Patch Changes
+
+- [#58](https://github.com/wisdesignsystem/wis-cli/pull/58) [`0ddb277`](https://github.com/wisdesignsystem/wis-cli/commit/0ddb2775f91467541514a5fba118c24343284c30) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Unify the export naming convention of plugin
+
 ## 0.0.5
 
 ### Patch Changes
