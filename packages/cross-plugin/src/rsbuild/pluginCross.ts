@@ -9,9 +9,9 @@ import { getPXToVWConfig } from "../lib/config.js";
 const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export function crossRsbuildPlugin(context: Context): RsbuildPlugin {
+export function pluginCross(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
-    name: "crossRsbuildPlugin",
+    name: "pluginCross",
     setup(api) {
       context.config.addRuntimePlugin(
         path.resolve(__dirname, "../lib/crossPlugin.js"),

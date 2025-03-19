@@ -1,3 +1,3 @@
-import { remoteRsbuildPlugin } from "./remote-rsbuild-plugin.js";
+import { pluginRemote } from "./pluginRemote.js";
 
-export { remoteRsbuildPlugin };
+export { pluginRemote };

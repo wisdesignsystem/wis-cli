@@ -38,7 +38,7 @@ export class FileSystem {
     addTemplate(this.context, "Root.tsx.hbr", {
       browserRouter: this.context.config.browserRouter,
     });
-    addTemplate(this.context, "Error.tsx.hbr", {});
+    addTemplate(this.context, "ErrorBoundary.tsx.hbr", {});
 
     const bootstrapTemplate = this.context.template.get("bootstrap.tsx");
     if (bootstrapTemplate) {

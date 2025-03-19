@@ -10,7 +10,7 @@ import { shared } from "../lib/shared.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-export class RemoteRspackPlugin {
+export class PluginRspackRemote {
   context: Context;
 
   constructor(context: Context) {

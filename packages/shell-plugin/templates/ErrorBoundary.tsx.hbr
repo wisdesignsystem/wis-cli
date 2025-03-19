@@ -1,15 +1,15 @@
 import { Component } from "react";
 import type { ReactNode } from "react";
 
-interface ErrorProps {
+interface ErrorBoundaryProps {
   children: ReactNode;
 }
 
-interface ErrorState {
+interface ErrorBoundaryState {
   error: boolean;
 }
 
-export class Error extends Component<ErrorProps, ErrorState> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props) {
     super(props);
     this.state = { error: false };

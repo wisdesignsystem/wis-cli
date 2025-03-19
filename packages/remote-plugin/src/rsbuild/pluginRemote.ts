@@ -3,11 +3,11 @@ import type { RsbuildPlugin } from "@rsbuild/core";
 import type { Context } from "@wisdesign/context";
 
 import { addTemplate } from "../lib/template.js";
-import { RemoteRspackPlugin } from "./remote-rspack-plugin.js";
+import { PluginRspackRemote } from "./pluginRspackRemote.js";
 
-export function remoteRsbuildPlugin(context: Context): RsbuildPlugin {
+export function pluginRemote(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
-    name: "remoteRsbuildPlugin",
+    name: "pluginRemote",
     setup(api) {
       addTemplate(context, "index.ts.hbr", {});
       addTemplate(context, "bootstrap.tsx.hbr", {
@@ -21,7 +21,10 @@ export function remoteRsbuildPlugin(context: Context): RsbuildPlugin {
         config.output.publicPath = process.env.PUBLIC_PATH;
 
         config.plugins ||= [];
-        config.plugins.push(new RemoteRspackPlugin(context));
+        config.plugins.push(new PluginRspackRemote(context));
+
+        config.optimization ||= {}
+        config.optimization.runtimeChunk = "single"
       });
 
       api.modifyRsbuildConfig((config) => {

@@ -1,3 +1,3 @@
-import { wisRsbuildPlugin } from "./wis-rsbuild-plugin.js";
+import { pluginWis } from "./pluginWis.js";
 
-export { wisRsbuildPlugin };
+export { pluginWis };

@@ -1,3 +1,3 @@
-import { crossRsbuildPlugin } from "./cross-rsbuild-plugin.js";
+import { pluginCross } from "./pluginCross.js";
 
-export { crossRsbuildPlugin };
+export { pluginCross };

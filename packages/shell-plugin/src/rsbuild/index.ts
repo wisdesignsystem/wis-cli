@@ -1,3 +1,3 @@
-import { shellRsbuildPlugin } from "./shell-rsbuild-plugin.js";
+import { pluginShell } from "./pluginShell.js";
 
-export { shellRsbuildPlugin };
+export { pluginShell };
