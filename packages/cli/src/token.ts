@@ -51,9 +51,12 @@ function isTokenValue(data: unknown): data is TokenValue {
     typeof data === "object" &&
     data !== null &&
     "$type" in data &&
-    data.$type === "color" &&
     "$value" in data
   );
+}
+
+function isTokenData(data: unknown): data is TokenData {
+  return typeof data === 'object';
 }
 
 function isTokenProtocolFile(file: string) {
@@ -193,10 +196,6 @@ function processTokensByData({
       )}`;
 
       if (isTokenValue(value)) {
-        if (!value.$value) {
-          continue;
-        }
-
         let tokenInstance = referenceTokenInstance[currentCacheKey];
         if (!tokenInstance) {
           tokenInstance = {
@@ -213,7 +212,9 @@ function processTokensByData({
         } else {
           token.data[currentFormattedTokenKey] = value.$value;
         }
-      } else if (typeof value === 'object') {
+      }
+      
+      if (isTokenData(value)) {
         process(prefix, value, currentTokenKeyPath);
       }
     }
