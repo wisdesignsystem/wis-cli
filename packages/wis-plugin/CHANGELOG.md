@@ -1,5 +1,17 @@
 # @wisdesign/wis-plugin
 
+## 0.0.8
+
+### Patch Changes
+
+- [#58](https://github.com/wisdesignsystem/wis-cli/pull/58) [`0ddb277`](https://github.com/wisdesignsystem/wis-cli/commit/0ddb2775f91467541514a5fba118c24343284c30) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] Unify the export naming convention of plugin
+
+- Updated dependencies [[`0ddb277`](https://github.com/wisdesignsystem/wis-cli/commit/0ddb2775f91467541514a5fba118c24343284c30)]:
+  - @wisdesign/remote-plugin@0.0.5
+  - @wisdesign/cross-plugin@0.0.4
+  - @wisdesign/shell-plugin@0.0.6
+  - @wisdesign/kind-plugin@0.0.6
+
 ## 0.0.7
 
 ### Patch Changes

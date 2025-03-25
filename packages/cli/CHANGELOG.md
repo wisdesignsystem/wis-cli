@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.32
+
+### Patch Changes
+
+- [#60](https://github.com/wisdesignsystem/wis-cli/pull/60) [`e8dd4dd`](https://github.com/wisdesignsystem/wis-cli/commit/e8dd4ddd8b87c044bf985cf6130507b763f59e36) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] repair the token tool to suit wis token new struct.
+
 ## 0.0.31
 
 ### Patch Changes
