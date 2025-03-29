@@ -1,5 +1,14 @@
 # @wisdesign/wis-plugin
 
+## 0.0.9
+
+### Patch Changes
+
+- [#61](https://github.com/wisdesignsystem/wis-cli/pull/61) [`bd6cf04`](https://github.com/wisdesignsystem/wis-cli/commit/bd6cf04ee154d6570848cf5d1c429d88420387fe) Thanks [@FaureWu](https://github.com/FaureWu)! - [Feature] change the default share resource
+
+- Updated dependencies [[`bd6cf04`](https://github.com/wisdesignsystem/wis-cli/commit/bd6cf04ee154d6570848cf5d1c429d88420387fe)]:
+  - @wisdesign/remote-plugin@0.0.6
+
 ## 0.0.8
 
 ### Patch Changes
