@@ -25,10 +25,13 @@ export function pluginWis(): RsbuildPlugin[] {
       });
 
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
+        const port = config.server?.port || 3000;
+        const host = config.server?.host || "0.0.0.0";
+
         injectRemotePublicPath({
           https: !!config.server?.https,
-          port: config.server?.port || 3000,
-          host: config.server?.host || "127.0.0.1",
+          port,
+          host,
           homepage: process.env.BASE_URL || "/",
         });
 
@@ -36,7 +39,8 @@ export function pluginWis(): RsbuildPlugin[] {
 
         const newConfig = mergeRsbuildConfig(config, {
           server: {
-            strictPort: true,
+            port,
+            host,
           },
           dev: {
             watchFiles: [
