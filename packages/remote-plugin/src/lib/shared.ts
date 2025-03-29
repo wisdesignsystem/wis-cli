@@ -22,6 +22,18 @@ function getDefaultShared() {
       import: "wiscore",
       singleton: true,
     },
+    "react-router": {
+      import: "react-router",
+      singleton: true,
+    },
+    history: {
+      import: "history",
+      singleton: true,
+    },
+    "@module-federation/enhanced/runtime": {
+      import: "@module-federation/enhanced/runtime",
+      singleton: true,
+    },
   };
 
   return defaultShared;

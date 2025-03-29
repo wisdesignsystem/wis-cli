@@ -22,9 +22,6 @@ export function pluginRemote(context: Context): RsbuildPlugin {
 
         config.plugins ||= [];
         config.plugins.push(new PluginRspackRemote(context));
-
-        config.optimization ||= {}
-        config.optimization.runtimeChunk = "single"
       });
 
       api.modifyRsbuildConfig((config) => {

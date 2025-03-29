@@ -4,9 +4,7 @@ export function remotes(context: Context) {
   const remotes = context.config.remotes;
 
   const result: Record<string, string> = {
-    [context.config.name]: `${context.config.name}@${
-      process.env.NODE_ENV === "production" ? process.env.PUBLIC_PATH : "/"
-    }mf-manifest.json`,
+    [context.config.name]: `${context.config.name}@${process.env.PUBLIC_PATH}mf-manifest.json`,
   };
 
   for (const remote in remotes) {
