@@ -1,5 +1,11 @@
 # wiscore
 
+## 0.0.5
+
+### Patch Changes
+
+- [#63](https://github.com/wisdesignsystem/wis-cli/pull/63) [`1906c63`](https://github.com/wisdesignsystem/wis-cli/commit/1906c6323507ae231e2294c85db65701e7487cb4) Thanks [@FaureWu](https://github.com/FaureWu)! - [Chore] set the react and react-dom to 18.2.0
+
 ## 0.0.4
 
 ### Patch Changes
