@@ -1,5 +1,13 @@
 # @wisdesign/wis-plugin
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies [[`adfeac4`](https://github.com/wisdesignsystem/wis-cli/commit/adfeac463f29a41ddc3f55057be4b4d83dda828f), [`adfeac4`](https://github.com/wisdesignsystem/wis-cli/commit/adfeac463f29a41ddc3f55057be4b4d83dda828f)]:
+  - @wisdesign/shell-plugin@0.0.7
+  - @wisdesign/remote-plugin@0.0.7
+
 ## 0.0.9
 
 ### Patch Changes

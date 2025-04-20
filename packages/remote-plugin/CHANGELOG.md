@@ -1,5 +1,11 @@
 # @wisdesign/remote-plugin
 
+## 0.0.7
+
+### Patch Changes
+
+- [#65](https://github.com/wisdesignsystem/wis-cli/pull/65) [`adfeac4`](https://github.com/wisdesignsystem/wis-cli/commit/adfeac463f29a41ddc3f55057be4b4d83dda828f) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] set the remote runtime single
+
 ## 0.0.6
 
 ### Patch Changes
