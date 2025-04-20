@@ -33,10 +33,14 @@ interface Route {
   Component: ComponentType<Record<string, unknown>>;
 }
 
+interface ApplicationInfo {
+  basename: string;
+  ready: boolean;
+  routes: Route[];
+}
+
 export function useApplication() {
-  const [routes, setRoutes] = useState<Route[]>();
-  const [ready, setReady] = useState(false);
-  const [basename, setBasename] = useState("/");
+  const [info, setInfo] = useState<ApplicationInfo>({ basename: "/", ready: false, routes: [] });
 
   async function install() {
     let [maybeLayout, maybeApp] = getRouteParts();
@@ -53,25 +57,28 @@ export function useApplication() {
       app = maybeApp;
     }
 
-    const basename = [layout, app].filter(Boolean).join("/");
+    let basename = [layout, app].filter(Boolean).join("/");
     if (basename) {
-      setBasename(basename.startsWith("/") ? basename : `/${basename}`);
+      basename = basename.startsWith("/") ? basename : `/${basename}`
     }
 
+    let applicationRoutes: Route[] = [];
     if (app) {
       const { routes } = await remote(`${app}/$application`);
-      setRoutes(routes);
+      applicationRoutes = routes;
     } else {
-      setRoutes(defaultRoutes);
+      applicationRoutes = defaultRoutes;
     }
 
-    setReady(true);
+    setInfo({
+      routes: applicationRoutes,
+      basename,
+      ready: true,
+    })
   }
 
   function reset() {
-    setRoutes(undefined);
-    setReady(false);
-    setBasename("/");
+    setInfo({ basename: "/", ready: false, routes: [] });
   }
 
   useRouterChange(() => {
@@ -80,10 +87,10 @@ export function useApplication() {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    if (!ready) {
+    if (!info.ready) {
       install();
     }
-  }, [ready]);
+  }, [info]);
 
-  return { routes, basename, ready };
+  return info;
 }
