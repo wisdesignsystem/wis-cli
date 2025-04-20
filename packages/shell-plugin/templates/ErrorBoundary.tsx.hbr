@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { PureComponent } from "react";
 import type { ReactNode } from "react";
 
 interface ErrorBoundaryProps {
@@ -9,7 +9,7 @@ interface ErrorBoundaryState {
   error: boolean;
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends PureComponent<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props) {
     super(props);
     this.state = { error: false };

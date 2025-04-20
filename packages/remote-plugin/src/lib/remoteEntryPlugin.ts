@@ -7,7 +7,28 @@ const remoteEntryPlugin: RuntimePlugin = () => {
 
   return {
     name: "remote-entry-plugin",
+    beforeInit(data) {
+      return data;
+    },
     init(data) {
+      if (__FEDERATION__.__INSTANCES__[0]) {
+        const hostName = __FEDERATION__.__INSTANCES__[0].name;
+
+        if (data.options.name !== hostName) {
+          const hostsRemote = data.options.remotes.find((remote) => {
+            return remote.name === hostName || remote.alias === hostName;
+          });
+
+          if (hostsRemote) {
+            // @ts-ignore
+            hostsRemote.entry = hostsRemote.entry.replace(
+              "remote",
+              `${hostName}_partial`,
+            );
+          }
+        }
+      }
+
       if (isInjectRemoteEntry) {
         return data;
       }
