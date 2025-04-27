@@ -1,5 +1,11 @@
 # @wisdesign/wis-plugin
 
+## 0.0.11
+
+### Patch Changes
+
+- [#69](https://github.com/wisdesignsystem/wis-cli/pull/69) [`52c409e`](https://github.com/wisdesignsystem/wis-cli/commit/52c409e5b306df326c3fa1fcd24f1283223afc85) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] set the default server and default port
+
 ## 0.0.10
 
 ### Patch Changes
