@@ -1,5 +1,11 @@
 # @wisdesign/cli
 
+## 0.0.34
+
+### Patch Changes
+
+- [#67](https://github.com/wisdesignsystem/wis-cli/pull/67) [`6562802`](https://github.com/wisdesignsystem/wis-cli/commit/6562802f700561ec1d1a5aab0cdc8f10c3a16e98) Thanks [@FaureWu](https://github.com/FaureWu)! - [Fix] fix the cli create project template import error
+
 ## 0.0.33
 
 ### Patch Changes
