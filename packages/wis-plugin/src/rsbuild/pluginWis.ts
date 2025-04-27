@@ -25,8 +25,10 @@ export function pluginWis(): RsbuildPlugin[] {
       });
 
       api.modifyRsbuildConfig((config, { mergeRsbuildConfig }) => {
-        const port = config.server?.port || 3000;
-        const host = config.server?.host || "0.0.0.0";
+        const rawConfig = api.getRsbuildConfig('original');
+
+        const port = rawConfig.server?.port || 3000;
+        const host = rawConfig.server?.host || "localhost";
 
         injectRemotePublicPath({
           https: !!config.server?.https,
