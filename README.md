@@ -1,40 +1,45 @@
-<div align="center">
+<p align="center">
   <a href="https://wis.design">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://wis.design/static/website.jpg">
-      <img alt="Wis Design logo" src="https://wis.design/static/website.jpg" height="128">
-    </picture>
+    <img alt="wis design" src="./assets/logo-bg-white.jpg" width="100%" />
   </a>
-  <h1>Wis Design</h1>
-  
-  <a href="https://github.com/wisdesignsystem/wis-cli/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/npm/l/@wisdesign/cli.svg?style=for-the-badge&labelColor=4f46e5"></a>
-  <a href="https://github.com/wisdesignsystem/wis/discussions"><img alt="Join the community on GitHub" src="https://img.shields.io/badge/Join%20Community-4f46e5?style=for-the-badge&labelColor=4f46e5&logoWidth=20"></a>
+</p>
+<h1 align="center">
+  Wis Design System
+</h1>
 
-</div>
+Wis is an open-source design system launched by [Wis.design](https://wis.design), dedicated to delivering exceptional multi-device user experiences for B2B products.
 
-<div align="center">
-  <a href="https://www.npmjs.com/package/@wisdesign/cli"><img alt="wis cli" src="https://img.shields.io/badge/@wisdesign/cli-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/@wisdesign/cli.svg?style=flat-square&labelColor=4f46e5"></a>
-  <a href="https://www.npmjs.com/package/wiscore"><img alt="wis cli" src="https://img.shields.io/badge/wiscore-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/wiscore.svg?style=flat-square&labelColor=4f46e5"></a>
-  <a href="https://www.npmjs.com/package/@wisdesign/wis-plugin"><img alt="wis cli" src="https://img.shields.io/badge/@wisdesign/wis%20plugin-4f46e5?style=flat-square&labelColor=4f46e5"><img alt="NPM version" src="https://img.shields.io/npm/v/wiscore.svg?style=flat-square&labelColor=4f46e5"></a>
-</div>
+>All components support both **PC** and **Mobile** platforms, with consistent properties and functionalities, ensuring systematically designed and validated user experiences.
 
-## Introduction
+The system is built upon an "Essence-Driven" design language, offering ready-to-use code components, design tools, and product design guidelines to help teams create unified, scalable interfaces more efficiently.
 
-Wis Design is committed to building an ecosystem applicable to Sass software, providing all aspects involved in the software development process. It covers design resources required during the design and development processes, construction tools, cross-platform UI component, etc.
+<p align="center">
+  <img alt="NPM License" src="https://img.shields.io/npm/l/@wisdesign/wis.svg">
+</p>
 
-This Repository is mainly used for maintaining construction - related tools.
+🌐 [English](./README.md) | [中文](./README.zh-CN.md)
+
+## Getting started
+If you're just getting started, we highly recommend checking out our [Quick Start Guide](https://wis.design/getting-started/quick-start).
+
+You can find a list of all our resource packs here.
+
+| Package name	      | Version | Description |
+| :------- | :------- | :----------- |
+| [wis](https://github.com/wisdesignsystem/wis) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis.svg"> | Provides an enterprise-ready cross-device UI component library for B2B products |
+| [wiscore](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/core) | <img alt="wiscore" src="https://img.shields.io/npm/v/wiscore.svg"> | Provides core runtime utilities (e.g., routing, micro-frontends) |
+| [@wisdesign/wis-plugin](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/wis-plugin) | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/wis-plugin.svg"> | Plugin for integrating community build tools with core engineering features |
+| [@wisdesign/cli](https://github.com/wisdesignsystem/wis-cli/tree/main/packages/cli)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/cli.svg"> | Manage the tools related to the wis design R&D process|
+| [@wisdesign/lsicon](https://github.com/wisdesignsystem/lsicon)      | <img alt="wiscore" src="https://img.shields.io/npm/v/@wisdesign/lsicon.svg"> | Elegant and Open-Source Icon Library|
+| [@wisdesign/lsicon-figma](https://github.com/wisdesignsystem/lsicon-figma) | none | A Figma plugin to manage icon component |
 
 ## Documentation
+Please refer to our [documentation website](https://wis.design/getting-started/quick-start) for the complete operation guide.
 
-Visit the official website to obtain detailed [document](https://wis.design/getting-started/quick-start) contents.
+## Contributing
+We are a group of designers and developers passionate about open source, and we aspire to build a vibrant contributor community.
 
-## Community
-
-When you have any questions, please contact us.
-
-- [Contact US](https://www.wis.design/community/contactUS)
-- [Contribution](https://www.wis.design/community/contribution)
+We are always looking for designers and engineers to help us fix bugs, build new components, and write project documentation. If you're interested, please check out our [Contribution Guide](https://wis.design/community/contribution).
 
 ## License
-
-[MIT License](./LICENSE)
+This library is licensed under the MIT License.
