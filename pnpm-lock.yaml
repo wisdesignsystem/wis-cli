@@ -141,6 +141,12 @@ importers:
         specifier: 4.0.3
         version: 4.0.3
 
+  packages/table-plugin:
+    dependencies:
+      '@rsbuild/core':
+        specifier: '>=1'
+        version: 1.3.1
+
   packages/wis-plugin:
     dependencies:
       '@rsbuild/core':
@@ -161,6 +167,9 @@ importers:
       '@wisdesign/shell-plugin':
         specifier: workspace:*
         version: link:../shell-plugin
+      '@wisdesign/table-plugin':
+        specifier: workspace:*
+        version: link:../table-plugin
 
 packages:
 

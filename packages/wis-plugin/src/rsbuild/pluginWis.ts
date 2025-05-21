@@ -7,6 +7,7 @@ import { pluginCross } from "@wisdesign/cross-plugin/rsbuild";
 import { pluginKind } from "@wisdesign/kind-plugin/rsbuild";
 import { pluginRemote } from "@wisdesign/remote-plugin/rsbuild";
 import { pluginShell } from "@wisdesign/shell-plugin/rsbuild";
+import { pluginTable } from "@wisdesign/table-plugin/rsbuild";
 
 import { injectRemotePublicPath } from "./publicPath.js";
 
@@ -99,5 +100,6 @@ export function pluginWis(): RsbuildPlugin[] {
     pluginCross(context),
     pluginKind(context),
     pluginShell(context),
+    pluginTable(),
   ];
 }
