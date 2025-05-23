@@ -26,7 +26,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@babel/traverse": "7.27.1",
+    "@babel/parser": "7.27.2",
+    "@babel/generator": "7.27.1",
+    "@babel/types": "7.27.1"
+  },
   "peerDependencies": {
     "@rsbuild/core": ">=1"
   },
