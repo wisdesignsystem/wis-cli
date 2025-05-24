@@ -1,6 +1,6 @@
 {
-  "name": "@wisdesign/wis-plugin",
-  "version": "0.0.11",
+  "name": "@wisdesign/table-plugin",
+  "version": "0.0.0",
   "description": "",
   "author": "wisdesign <dev@wis.design>",
   "license": "MIT",
@@ -9,6 +9,7 @@
     "build": "tsc",
     "dev": "tsc --watch"
   },
+  "files": ["dist", "templates"],
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -26,12 +27,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@wisdesign/remote-plugin": "workspace:*",
-    "@wisdesign/cross-plugin": "workspace:*",
-    "@wisdesign/kind-plugin": "workspace:*",
-    "@wisdesign/shell-plugin": "workspace:*",
-    "@wisdesign/table-plugin": "workspace:*",
-    "@wisdesign/context": "workspace:*"
+    "@wisdesign/context": "workspace:*",
+    "@babel/traverse": "7.27.1",
+    "@babel/parser": "7.27.2",
+    "@babel/generator": "7.27.1",
+    "@babel/types": "7.27.1"
   },
   "peerDependencies": {
     "@rsbuild/core": ">=1"
