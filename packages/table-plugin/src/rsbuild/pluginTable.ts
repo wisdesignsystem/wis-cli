@@ -1,9 +1,10 @@
-import type { RsbuildPlugin } from "@rsbuild/core";
 import { createRequire } from "node:module";
+import type { RsbuildPlugin } from "@rsbuild/core";
+import type { Context } from "@wisdesign/context";
 
 const require = createRequire(import.meta.url);
 
-export function pluginTable(): RsbuildPlugin {
+export function pluginTable(context: Context): RsbuildPlugin {
   const plugin: RsbuildPlugin = {
     name: "pluginTable",
     setup(api) {
@@ -20,7 +21,9 @@ export function pluginTable(): RsbuildPlugin {
             .use("table-loader")
             .after(CHAIN_ID.USE.SWC)
             .loader(require.resolve("./loaderTable"))
-            .options({});
+            .options({
+              context
+            });
         });
 
         return config;

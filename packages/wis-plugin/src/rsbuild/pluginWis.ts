@@ -100,6 +100,6 @@ export function pluginWis(): RsbuildPlugin[] {
     pluginCross(context),
     pluginKind(context),
     pluginShell(context),
-    pluginTable(),
+    pluginTable(context),
   ];
 }

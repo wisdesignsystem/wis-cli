@@ -120,8 +120,15 @@ export function isPlatformClassifyExpose(
   });
 }
 
+interface WisComplex {
+  name: string;
+}
+type Wis = string | WisComplex;
+
 export interface WisConfig {
   name?: string;
+
+  wis?: Wis;
 
   libraryRegExp?: RegExp;
 
@@ -146,6 +153,10 @@ export class Config {
   libraryRegExp?: RegExp = undefined;
 
   name = "";
+
+  wis: WisComplex = {
+    name: "wis",
+  };
 
   remotes: Remotes = {};
 
@@ -175,6 +186,14 @@ export class Config {
     this.runtimePlugins = this.rawConfig.runtimePlugins || this.runtimePlugins;
     this.designWidth = this.rawConfig.designWidth || this.designWidth;
     this.browserRouter = this.rawConfig.browserRouter || this.browserRouter;
+
+    if (typeof this.rawConfig.wis === "object") {
+      this.wis = this.rawConfig.wis;
+    } else if (typeof this.rawConfig.wis === "string") {
+      this.wis = {
+        name: this.rawConfig.wis || this.wis.name,
+      };
+    }
   }
 
   addRuntimePlugin(plugin: string) {
